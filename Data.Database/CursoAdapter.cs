@@ -45,6 +45,31 @@ namespace Data.Database
 
             return cursos;
         }
+
+        public void Save(Curso curso)
+        {
+            try
+            {
+                if (curso.State == BusinessEntity.States.Deleted)
+                {
+                    Delete(curso.ID);
+                }
+                else if (curso.State == BusinessEntity.States.New)
+                {
+                    Insert(curso);
+                }
+                else if (curso.State == BusinessEntity.States.Modified)
+                {
+                    Update(curso);
+                }
+                curso.State = BusinessEntity.States.Unmodified;
+            }
+            catch(Exception Ex)
+            {
+                throw Ex;
+            }
+        }
+
         public Curso GetOne(int ID)
         {
             Curso cur = new Curso();
