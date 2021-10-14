@@ -1,11 +1,8 @@
-﻿using System;
+﻿using Business.Entities;
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Business.Entities;
-using System.Data.SqlClient;
 using System.Data;
+using System.Data.SqlClient;
 
 namespace Data.Database
 {
@@ -23,19 +20,20 @@ namespace Data.Database
 
                 while (drCursos.Read())
                 {
-                    Curso cur = new Curso();
-
-                    cur.ID = (int)drCursos["id_curso"];
-                    cur.IDMateria = (int)drCursos["id_materia"];
-                    cur.IDComision = (int)drCursos["id_comision"];
-                    cur.AnioCalendario = (int)drCursos["anio_calendario"];
-                    cur.Cupo = (int)drCursos["cupo"];
+                    Curso cur = new Curso
+                    {
+                        ID = (int)drCursos["id_curso"],
+                        IDMateria = (int)drCursos["id_materia"],
+                        IDComision = (int)drCursos["id_comision"],
+                        AnioCalendario = (int)drCursos["anio_calendario"],
+                        Cupo = (int)drCursos["cupo"]
+                    };
 
                     cursos.Add(cur);
                 }
                 drCursos.Close();
             }
-            catch(Exception Ex)
+            catch (Exception Ex)
             {
                 Exception ExcepcionCursos = new Exception("Error al recuperar la lsita de cursos", Ex);
                 throw ExcepcionCursos;
@@ -47,7 +45,6 @@ namespace Data.Database
 
             return cursos;
         }
-
         public Curso GetOne(int ID)
         {
             Curso cur = new Curso();
@@ -68,7 +65,7 @@ namespace Data.Database
                 }
                 drCursos.Close();
             }
-            catch(Exception Ex)
+            catch (Exception Ex)
             {
                 Exception ExcepcionCursos = new Exception("Error al recuperar datos del curso", Ex);
                 throw ExcepcionCursos;
@@ -79,7 +76,7 @@ namespace Data.Database
             }
             return cur;
         }
-        protected void Delete(int ID)
+        public void Delete(int ID)
         {
             try
             {

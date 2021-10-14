@@ -8,64 +8,6 @@ namespace Data.Database
 {
     public class UsuarioAdapter : Adapter
     {
-        #region DatosEnMemoria
-        // Esta región solo se usa en esta etapa donde los datos se mantienen en memoria.
-        // Al modificar este proyecto para que acceda a la base de datos esta será eliminada
-        private static List<Usuario> _Usuarios;
-
-        private static List<Usuario> Usuarios
-        {
-            get
-            {
-                if (_Usuarios == null)
-                {
-                    _Usuarios = new List<Usuario>();
-                    Usuario usr;
-                    usr = new Usuario
-                    {
-                        ID = 1,
-                        State = BusinessEntity.States.Unmodified,
-                        Nombre = "Casimiro",
-                        Apellido = "Cegado",
-                        NombreUsuario = "casicegado",
-                        Clave = "miro",
-                        EMail = "casimirocegado@gmail.com",
-                        Habilitado = true
-                    };
-                    _Usuarios.Add(usr);
-
-                    usr = new Usuario
-                    {
-                        ID = 2,
-                        State = BusinessEntity.States.Unmodified,
-                        Nombre = "Armando Esteban",
-                        Apellido = "Quito",
-                        NombreUsuario = "aequito",
-                        Clave = "carpintero",
-                        EMail = "armandoquito@gmail.com",
-                        Habilitado = true
-                    };
-                    _Usuarios.Add(usr);
-
-                    usr = new Usuario
-                    {
-                        ID = 3,
-                        State = BusinessEntity.States.Unmodified,
-                        Nombre = "Alan",
-                        Apellido = "Brado",
-                        NombreUsuario = "alanbrado",
-                        Clave = "abrete sesamo",
-                        EMail = "alanbrado@gmail.com",
-                        Habilitado = true
-                    };
-                    _Usuarios.Add(usr);
-
-                }
-                return _Usuarios;
-            }
-        }
-        #endregion
-
         public List<Usuario> GetAll()
         {
             List<Usuario> usuarios = new List<Usuario>();
@@ -80,15 +22,16 @@ namespace Data.Database
 
                 while (drUsuarios.Read())
                 {
-                    Usuario usr = new Usuario();
-
-                    usr.ID = (int)drUsuarios["id_usuario"];
-                    usr.NombreUsuario = (string)drUsuarios["nombre_usuario"];
-                    usr.Clave = (string)drUsuarios["clave"];
-                    usr.Habilitado = (bool)drUsuarios["habilitado"];
-                    usr.Nombre = (string)drUsuarios["nombre"];
-                    usr.Apellido = (string)drUsuarios["apellido"];
-                    usr.EMail = (string)drUsuarios["email"];
+                    Usuario usr = new Usuario
+                    {
+                        ID = (int)drUsuarios["id_usuario"],
+                        NombreUsuario = (string)drUsuarios["nombre_usuario"],
+                        Clave = (string)drUsuarios["clave"],
+                        Habilitado = (bool)drUsuarios["habilitado"],
+                        Nombre = (string)drUsuarios["nombre"],
+                        Apellido = (string)drUsuarios["apellido"],
+                        EMail = (string)drUsuarios["email"]
+                    };
 
                     usuarios.Add(usr);
                 }
@@ -107,7 +50,6 @@ namespace Data.Database
 
             return usuarios;
         }
-
         public Usuario GetOne(int ID)
         {
             Usuario usr = new Usuario();
@@ -141,7 +83,6 @@ namespace Data.Database
             }
             return usr;
         }
-
         public void Delete(int ID)
         {
             try
@@ -151,7 +92,7 @@ namespace Data.Database
                 cmdDelete.Parameters.Add("@id", SqlDbType.Int).Value = ID;
                 cmdDelete.ExecuteNonQuery();
             }
-            catch(Exception Ex)
+            catch (Exception Ex)
             {
                 Exception ExcepcionManejada = new Exception("Error al eliminar usuario", Ex);
                 throw ExcepcionManejada;
@@ -161,7 +102,6 @@ namespace Data.Database
                 CloseConnection();
             }
         }
-
         public void Save(Usuario usuario)
         {
             if (usuario.State == BusinessEntity.States.Deleted)
