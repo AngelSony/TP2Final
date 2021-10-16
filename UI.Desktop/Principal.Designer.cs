@@ -54,7 +54,7 @@ namespace UI.Desktop
             this.administraciónToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(800, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(1177, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -107,12 +107,14 @@ namespace UI.Desktop
             this.tsmiUsuarios.Name = "tsmiUsuarios";
             this.tsmiUsuarios.Size = new System.Drawing.Size(180, 22);
             this.tsmiUsuarios.Text = "Usuarios";
+            this.tsmiUsuarios.Click += new System.EventHandler(this.tsmiUsuarios_Click);
             // 
             // tsmiCursos
             // 
             this.tsmiCursos.Name = "tsmiCursos";
             this.tsmiCursos.Size = new System.Drawing.Size(180, 22);
             this.tsmiCursos.Text = "Cursos";
+            this.tsmiCursos.Click += new System.EventHandler(this.tsmiCursos_Click);
             // 
             // tsmiMaterias
             // 
@@ -154,10 +156,11 @@ namespace UI.Desktop
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1177, 689);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Principal";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Principal";
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
