@@ -107,12 +107,14 @@ namespace UI.Desktop
             this.tsmiUsuarios.Name = "tsmiUsuarios";
             this.tsmiUsuarios.Size = new System.Drawing.Size(180, 22);
             this.tsmiUsuarios.Text = "Usuarios";
+            this.tsmiUsuarios.Click += new System.EventHandler(this.tsmiUsuarios_Click);
             // 
             // tsmiCursos
             // 
             this.tsmiCursos.Name = "tsmiCursos";
             this.tsmiCursos.Size = new System.Drawing.Size(180, 22);
             this.tsmiCursos.Text = "Cursos";
+            this.tsmiCursos.Click += new System.EventHandler(this.tsmiCursos_Click);
             // 
             // tsmiMaterias
             // 

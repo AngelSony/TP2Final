@@ -31,12 +31,12 @@ namespace UI.Desktop
         {
             this.tsCursos = new System.Windows.Forms.ToolStrip();
             this.tsbNuevo = new System.Windows.Forms.ToolStripButton();
+            this.tspEditar = new System.Windows.Forms.ToolStripButton();
+            this.tspEliminar = new System.Windows.Forms.ToolStripButton();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.btnSalir = new System.Windows.Forms.Button();
             this.btnActualizar = new System.Windows.Forms.Button();
             this.dgvCursos = new System.Windows.Forms.DataGridView();
-            this.tspEditar = new System.Windows.Forms.ToolStripButton();
-            this.tspEliminar = new System.Windows.Forms.ToolStripButton();
             this.id_curso = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.id_materia = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.id_comision = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -68,6 +68,24 @@ namespace UI.Desktop
             this.tsbNuevo.Size = new System.Drawing.Size(23, 22);
             this.tsbNuevo.Text = "toolStripButton1";
             // 
+            // tspEditar
+            // 
+            this.tspEditar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tspEditar.Image = global::UI.Desktop.Properties.Resources.ModificarBoton;
+            this.tspEditar.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tspEditar.Name = "tspEditar";
+            this.tspEditar.Size = new System.Drawing.Size(23, 22);
+            this.tspEditar.Text = "toolStripButton1";
+            // 
+            // tspEliminar
+            // 
+            this.tspEliminar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tspEliminar.Image = global::UI.Desktop.Properties.Resources.EliminarBoton;
+            this.tspEliminar.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tspEliminar.Name = "tspEliminar";
+            this.tspEliminar.Size = new System.Drawing.Size(23, 22);
+            this.tspEliminar.Text = "toolStripButton1";
+            // 
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.ColumnCount = 2;
@@ -94,6 +112,7 @@ namespace UI.Desktop
             this.btnSalir.TabIndex = 0;
             this.btnSalir.Text = "Salir";
             this.btnSalir.UseVisualStyleBackColor = true;
+            this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
             // 
             // btnActualizar
             // 
@@ -126,24 +145,6 @@ namespace UI.Desktop
             this.dgvCursos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvCursos.Size = new System.Drawing.Size(733, 365);
             this.dgvCursos.TabIndex = 2;
-            // 
-            // tspEditar
-            // 
-            this.tspEditar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tspEditar.Image = global::UI.Desktop.Properties.Resources.ModificarBoton;
-            this.tspEditar.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tspEditar.Name = "tspEditar";
-            this.tspEditar.Size = new System.Drawing.Size(23, 22);
-            this.tspEditar.Text = "toolStripButton1";
-            // 
-            // tspEliminar
-            // 
-            this.tspEliminar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tspEliminar.Image = global::UI.Desktop.Properties.Resources.EliminarBoton;
-            this.tspEliminar.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tspEliminar.Name = "tspEliminar";
-            this.tspEliminar.Size = new System.Drawing.Size(23, 22);
-            this.tspEliminar.Text = "toolStripButton1";
             // 
             // id_curso
             // 

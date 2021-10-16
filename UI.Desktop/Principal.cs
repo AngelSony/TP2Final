@@ -21,5 +21,17 @@ namespace UI.Desktop
         {
             Dispose();
         }
+
+        private void tsmiUsuarios_Click(object sender, EventArgs e)
+        {
+            Usuarios formUsuario = new Usuarios();
+            formUsuario.ShowDialog();
+        }
+
+        private void tsmiCursos_Click(object sender, EventArgs e)
+        {
+            Cursos formCurso = new Cursos();
+            formCurso.ShowDialog();
+        }
     }
 }

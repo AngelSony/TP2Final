@@ -41,5 +41,10 @@ namespace UI.Desktop
         {
             listar();
         }
+
+        private void btnSalir_Click(object sender, EventArgs e)
+        {
+            Dispose();
+        }
     }
 }
