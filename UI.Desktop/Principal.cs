@@ -33,5 +33,11 @@ namespace UI.Desktop
             Cursos formCurso = new Cursos();
             formCurso.ShowDialog();
         }
+
+        private void modulosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Modulos formModulo = new Modulos();
+            formModulo.ShowDialog();
+        }
     }
 }

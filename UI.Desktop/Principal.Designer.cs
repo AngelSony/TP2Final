@@ -43,6 +43,7 @@ namespace UI.Desktop
             this.tsmiEspecialidades = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiPlanes = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiComisiones = new System.Windows.Forms.ToolStripMenuItem();
+            this.modulosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -69,7 +70,7 @@ namespace UI.Desktop
             // tsmiSalir
             // 
             this.tsmiSalir.Name = "tsmiSalir";
-            this.tsmiSalir.Size = new System.Drawing.Size(180, 22);
+            this.tsmiSalir.Size = new System.Drawing.Size(96, 22);
             this.tsmiSalir.Text = "Salir";
             this.tsmiSalir.Click += new System.EventHandler(this.tsmiSalir_Click);
             // 
@@ -84,7 +85,7 @@ namespace UI.Desktop
             // cerrarSesiónToolStripMenuItem
             // 
             this.cerrarSesiónToolStripMenuItem.Name = "cerrarSesiónToolStripMenuItem";
-            this.cerrarSesiónToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.cerrarSesiónToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
             this.cerrarSesiónToolStripMenuItem.Text = "Cerrar Sesión";
             // 
             // administraciónToolStripMenuItem
@@ -97,7 +98,8 @@ namespace UI.Desktop
             this.tsmiDocentes,
             this.tsmiEspecialidades,
             this.tsmiPlanes,
-            this.tsmiComisiones});
+            this.tsmiComisiones,
+            this.modulosToolStripMenuItem});
             this.administraciónToolStripMenuItem.Name = "administraciónToolStripMenuItem";
             this.administraciónToolStripMenuItem.Size = new System.Drawing.Size(100, 20);
             this.administraciónToolStripMenuItem.Text = "Administración";
@@ -152,6 +154,13 @@ namespace UI.Desktop
             this.tsmiComisiones.Size = new System.Drawing.Size(180, 22);
             this.tsmiComisiones.Text = "Comisiones";
             // 
+            // modulosToolStripMenuItem
+            // 
+            this.modulosToolStripMenuItem.Name = "modulosToolStripMenuItem";
+            this.modulosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.modulosToolStripMenuItem.Text = "Modulos";
+            this.modulosToolStripMenuItem.Click += new System.EventHandler(this.modulosToolStripMenuItem_Click);
+            // 
             // Principal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -185,5 +194,6 @@ namespace UI.Desktop
         private System.Windows.Forms.ToolStripMenuItem tsmiEspecialidades;
         private System.Windows.Forms.ToolStripMenuItem tsmiPlanes;
         private System.Windows.Forms.ToolStripMenuItem tsmiComisiones;
+        private System.Windows.Forms.ToolStripMenuItem modulosToolStripMenuItem;
     }
 }
