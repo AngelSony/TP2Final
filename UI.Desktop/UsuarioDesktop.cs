@@ -98,11 +98,13 @@ namespace UI.Desktop
                     break;
             }
         }
+
         public override void GuardarCambios() {
             MapearADatos();
             UsuarioLogic UsuarioNegocio = new UsuarioLogic();
             UsuarioNegocio.Save(UsuarioActual);
         }
+
         public override bool Validar() {
             if (string.IsNullOrWhiteSpace(txtNombre.Text)){
                 Notificar("Advertencia", "Campo Nombre incompleto", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -140,7 +142,9 @@ namespace UI.Desktop
             {
                 GuardarCambios();
                 Close();
-            }else if (Validar())
+            }
+            else if (Validar())
+
             {
                 GuardarCambios();
                 Close();
