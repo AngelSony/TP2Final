@@ -40,6 +40,13 @@ namespace UI.Desktop
             formModulo.ShowDialog();
         }
 
+     
+        private void tsmiPlanes_Click(object sender, EventArgs e)
+        {
+            Planes formPlanes = new Planes();
+            formPlanes.ShowDialog();
+        }
+
         private void tsmiAlumnos_Click(object sender, EventArgs e)
         {
             Alumnos formAlumno = new Alumnos();

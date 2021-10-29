@@ -129,6 +129,7 @@ namespace UI.Desktop
             this.tsmiAlumnos.Name = "tsmiAlumnos";
             this.tsmiAlumnos.Size = new System.Drawing.Size(180, 22);
             this.tsmiAlumnos.Text = "Alumnos";
+            this.tsmiAlumnos.Click += new System.EventHandler(this.tsmiAlumnos_Click);
             // 
             // tsmiDocentes
             // 
@@ -147,6 +148,7 @@ namespace UI.Desktop
             this.tsmiPlanes.Name = "tsmiPlanes";
             this.tsmiPlanes.Size = new System.Drawing.Size(180, 22);
             this.tsmiPlanes.Text = "Planes";
+            this.tsmiPlanes.Click += new System.EventHandler(this.tsmiPlanes_Click);
             // 
             // tsmiComisiones
             // 
