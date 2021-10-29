@@ -39,5 +39,11 @@ namespace UI.Desktop
             Modulos formModulo = new Modulos();
             formModulo.ShowDialog();
         }
+
+        private void tsmiAlumnos_Click(object sender, EventArgs e)
+        {
+            Alumnos formAlumno = new Alumnos();
+            formAlumno.ShowDialog();
+        }
     }
 }

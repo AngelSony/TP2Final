@@ -39,8 +39,8 @@ namespace UI.Desktop
             txtApellido.Text = AlumnoActual.Apellido;
             txtNombre.Text = AlumnoActual.Nombre;
             txtDireccion.Text = AlumnoActual.Direccion;
-            txtEmail.Text = AlumnoActual.Telefono;
-            txtTelefono.Text = AlumnoActual.Email;
+            txtEmail.Text = AlumnoActual.Email;
+            txtTelefono.Text = AlumnoActual.Telefono;
             txtLegajo.Text = AlumnoActual.Legajo.ToString();
             txtFechaDeNacimiento.Text = AlumnoActual.FechaNacimiento.ToString();
             txtPlan.Text = AlumnoActual.IDPlan.ToString();
