@@ -7,6 +7,7 @@ using Business.Entities;
 using System.Data.Sql;
 using System.Data;
 using System.Data.SqlClient;
+
 namespace Data.Database
 {
     public class PersonasAdapter : Adapter

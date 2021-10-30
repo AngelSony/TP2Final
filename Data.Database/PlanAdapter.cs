@@ -51,14 +51,17 @@ namespace Data.Database
             return planes;
 
         }
-
-
         public Plan GetOne(int id)
         {
-
-            var miPlan = from u in GetAll() where u.ID.Equals(id) select u;
-
-            return miPlan.First();
+            try
+            {
+                var miPlan = from u in GetAll() where u.ID == id select u;
+                return miPlan.Single();
+            }
+            catch (Exception Ex)
+            {
+                throw new Exception("Error el recuperar datos del Plan", Ex);
+            }
         }
 
 
@@ -73,8 +76,7 @@ namespace Data.Database
             }
             catch (Exception Ex)
             {
-                Exception ExcepcionPlan = new Exception("-Error al encontrar Plan", Ex); //COMPLETAR
-                throw ExcepcionPlan;
+                throw new Exception("-Error al eliminar el Plan", Ex);
             }
             finally
             {
@@ -98,15 +100,12 @@ namespace Data.Database
             }
             catch (Exception Ex)
             {
-                Exception ExcepcionPersona = new Exception("Error al crear Plan", Ex); //Completar
-                throw ExcepcionPersona;
-
+                throw new Exception("Error al crear Plan", Ex);
             }
             finally
             {
                 CloseConnection();
             }
-
         }
 
         protected void Update(Plan plan)
@@ -119,33 +118,27 @@ namespace Data.Database
                 cmdPlan.Parameters.Add("@desc_plan", SqlDbType.VarChar, 50).Value = plan.Descripcion;
                 cmdPlan.Parameters.Add("@id_especialidad", SqlDbType.Int).Value = plan.IDEspecialidad;
                 cmdPlan.ExecuteNonQuery();
-
             }
             catch (Exception Ex)
             {
-                Exception ExcepcionPersona = new Exception("Error al modificar Plan ", Ex);
-                throw ExcepcionPersona;
+                throw new Exception("Error al modificar Plan ", Ex);
             }
             finally
             {
                 CloseConnection();
             }
-
         }
 
         public void Save(Plan plan)
         {
-
             if (plan.State == BusinessEntity.States.Deleted)
             {
                 Delete(plan.ID);
             }
-
             if (plan.State == BusinessEntity.States.Modified)
             {
                 Update(plan);
             }
-
             if (plan.State == BusinessEntity.States.New)
             {
                 Insert(plan);
@@ -153,11 +146,5 @@ namespace Data.Database
 
             plan.State = BusinessEntity.States.Unmodified;
         }
-
-
-
-
-
-
     }
 }

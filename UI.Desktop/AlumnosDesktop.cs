@@ -53,18 +53,14 @@ namespace UI.Desktop
         public override void MapearADatos()
         {
            if(Modo == ModoForm.Alta)
-            {
+           {
 
-                AlumnoActual = new Personas();
+               AlumnoActual = new Personas();
 
-            }
+           }
 
            if(Modo == ModoForm.Alta || Modo == ModoForm.Modificacion)
-
-
             {
-
-                
                 AlumnoActual.Apellido = txtApellido.Text.Trim();
                 AlumnoActual.Nombre = txtNombre.Text.Trim();
                 AlumnoActual.Legajo = Convert.ToInt32(txtLegajo.Text);
@@ -74,10 +70,9 @@ namespace UI.Desktop
                 AlumnoActual.TipoPersona = Personas.TiposPersonas.Alumno;
                 AlumnoActual.FechaNacimiento = DateTime.Parse(txtFechaDeNacimiento.Text);
                 AlumnoActual.IDPlan = Convert.ToInt32(cbPlanes.SelectedValue);
-
             }
 
-           switch(Modo)
+            switch(Modo)
             {
                 case ModoForm.Alta:
                     AlumnoActual.State = BusinessEntity.States.New;
