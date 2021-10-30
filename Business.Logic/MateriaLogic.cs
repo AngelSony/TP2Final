@@ -8,49 +8,46 @@ using Data.Database;
 
 namespace Business.Logic
 {
-    public class CursoLogic : BusinessLogic
+    public class MateriaLogic : BusinessLogic
     {
-        public CursoLogic()
-        {
-        }
-        public static Curso GetOne(int ID)
+        public static Materia GetOne(int ID)
         {
             try
             {
-                return new CursoAdapter().GetOne(ID);
+                return new MateriaAdapter().GetOne(ID);
             }
             catch (Exception Ex)
             {
                 throw Ex;
             }
         }
-        public static List<Curso> GetAll()
+        public static List<Materia> GetAll()
         {
             try
             {
-                return new CursoAdapter().GetAll();
+                return new MateriaAdapter().GetAll();
             }
             catch (Exception Ex)
             {
                 throw Ex;
             }
         }
-        public static void Save(Curso cur)
+        public void Save(Materia mat)
         {
             try
             {
-                new CursoAdapter().Save(cur);
+                new MateriaAdapter().Save(mat);
             }
             catch (Exception Ex)
             {
                 throw Ex;
             }
         }
-        public static void Delete(int ID)
+        public void Delete(int ID)
         {
             try
             {
-                new CursoAdapter().Delete(ID);
+                new MateriaAdapter().Delete(ID);
             }
             catch (Exception Ex)
             {

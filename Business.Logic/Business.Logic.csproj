@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="BusinessLogic.cs" />
     <Compile Include="CursoLogic.cs" />
+    <Compile Include="MateriaLogic.cs" />
     <Compile Include="ModuloLogic.cs" />
     <Compile Include="PersonasLogic.cs" />
     <Compile Include="PlanLogic.cs" />
