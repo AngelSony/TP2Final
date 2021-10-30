@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using Business.Logic;
 using Business.Entities;
+using System.Windows.Forms;
 
 namespace UI.Web
 {
@@ -13,7 +14,28 @@ namespace UI.Web
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            LoadGrid();
+            if (!IsPostBack)
+            {
+                LoadGrid();
+
+                CargarCombo();
+               
+            }
+       
+        }
+
+
+        private void CargarCombo()
+        {
+
+            PlanLogic plan = new PlanLogic();
+            ddPlanes.DataSource = plan.GetAll();
+            ddPlanes.DataTextField = "Descripcion";
+            ddPlanes.DataValueField = "ID";
+            ddPlanes.DataBind();
+            ddPlanes.Items.Insert(0, new ListItem("-- Seleccione --", "0"));
+
+
         }
 
         PersonasLogic _logic;
@@ -44,6 +66,7 @@ namespace UI.Web
 
             grdAlumnos.DataSource = misAlu;
             grdAlumnos.DataBind();
+        
 
         }
 
@@ -101,8 +124,8 @@ namespace UI.Web
             nombreTextBox.Text = Entity.Nombre;
             apellidoTextBox.Text = Entity.Apellido;
             emailTextBox.Text = Entity.Email;
-            fechanacimientoTextBox.Text = Entity.FechaNacimiento.ToString();
-            planTextBox.Text = Entity.IDPlan.ToString();
+            fechanacimientoTextBox.Text = Entity.FechaNacimiento.ToString("dd/MM/yyyy");
+            ddPlanes.SelectedValue = Entity.IDPlan.ToString();
             legajoTextBox.Text = Entity.Legajo.ToString();
             telefonoTextBox.Text = Entity.Telefono;
             direccionTextBox.Text = Entity.Direccion;
@@ -112,15 +135,18 @@ namespace UI.Web
 
         private void LoadEntity(Personas alumno)
         {
+
             alumno.Nombre = nombreTextBox.Text;
             alumno.Apellido = apellidoTextBox.Text;
             alumno.Email = emailTextBox.Text;
             alumno.Direccion= direccionTextBox.Text;
-            alumno.FechaNacimiento= DateTime.Parse(fechanacimientoTextBox.Text);
+            alumno.FechaNacimiento= Convert.ToDateTime(fechanacimientoTextBox.Text);
             alumno.Legajo = Convert.ToInt32(legajoTextBox.Text);
-            alumno.IDPlan = Convert.ToInt32(planTextBox.Text); //CAMBIAR
+            alumno.IDPlan = Convert.ToInt32(ddPlanes.SelectedValue);
             alumno.Telefono = telefonoTextBox.Text;
             alumno.TipoPersona = Personas.TiposPersonas.Alumno;
+            
+
         }
 
         private void DeleteEntity(int id)
@@ -134,9 +160,6 @@ namespace UI.Web
             Logic.Save(alumno);
         }
 
-       
-
-
         private void EnableForm(bool enable)
         {
             nombreTextBox.Enabled = enable;
@@ -144,9 +167,11 @@ namespace UI.Web
             emailTextBox.Enabled = enable;
             telefonoTextBox.Enabled = enable;
             fechanacimientoTextBox.Enabled = enable;
-            planTextBox.Enabled = enable;
+            ddPlanes.Enabled = enable;
             direccionTextBox.Enabled = enable;
             legajoTextBox.Enabled = enable;
+           
+           
 
         }
         private void ClearForm()
@@ -156,7 +181,6 @@ namespace UI.Web
             apellidoTextBox.Text = string.Empty;
             emailTextBox.Text = string.Empty;
             fechanacimientoTextBox.Text = string.Empty;
-            planTextBox.Text = string.Empty;
             legajoTextBox.Text = string.Empty;
             telefonoTextBox.Text = string.Empty;
             direccionTextBox.Text = string.Empty;
@@ -172,6 +196,8 @@ namespace UI.Web
                 LoadForm(SelectedID);
                 EnableForm(true);
                 formActionPanel.Visible = true;
+                grdAlumnos.Enabled = false;
+                gridActionsPanel.Visible = false;
             }
         }
 
@@ -188,6 +214,7 @@ namespace UI.Web
                     Entity.State = BusinessEntity.States.Modified;
                     LoadEntity(Entity);
                     SaveEntity(Entity);
+                   
                     break;
                 case FormModes.Alta:
                     Entity = new Personas();
@@ -198,10 +225,8 @@ namespace UI.Web
                     break;
             }
 
-            LoadGrid();
-            formPanel.Visible = false;
-            formActionPanel.Visible = false;
-           
+            Response.Redirect("~/Alumno.aspx");
+
         }
 
         protected void eliminarLinkButton_Click(object sender, EventArgs e)
@@ -214,6 +239,10 @@ namespace UI.Web
                 LoadForm(SelectedID);
                 EnableForm(false);
                 formActionPanel.Visible = true;
+                grdAlumnos.Enabled = false;
+                gridActionsPanel.Visible = false;
+
+
             }
 
         }
@@ -225,6 +254,8 @@ namespace UI.Web
             ClearForm();
             EnableForm(true);
             formActionPanel.Visible = true;
+            gridActionsPanel.Visible = false;
+
         }
 
         protected void cancelarLinkButton_Click(object sender, EventArgs e)
@@ -235,6 +266,11 @@ namespace UI.Web
         protected void grdAlumnos_SelectedIndexChanged(object sender, EventArgs e)
         {
             SelectedID = (int)grdAlumnos.SelectedValue;
+            
         }
+
     }
+
+
+
 }

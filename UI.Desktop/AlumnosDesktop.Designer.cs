@@ -38,7 +38,6 @@ namespace UI.Desktop
             this.txtDireccion = new System.Windows.Forms.TextBox();
             this.txtApellido = new System.Windows.Forms.TextBox();
             this.txtFechaDeNacimiento = new System.Windows.Forms.TextBox();
-            this.txtPlan = new System.Windows.Forms.TextBox();
             this.txtLegajo = new System.Windows.Forms.TextBox();
             this.btnAceptar = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
@@ -50,6 +49,7 @@ namespace UI.Desktop
             this.label1 = new System.Windows.Forms.Label();
             this.txtID = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
+            this.cbPlanes = new System.Windows.Forms.ComboBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -68,7 +68,6 @@ namespace UI.Desktop
             this.tableLayoutPanel1.Controls.Add(this.txtDireccion, 3, 0);
             this.tableLayoutPanel1.Controls.Add(this.txtApellido, 1, 2);
             this.tableLayoutPanel1.Controls.Add(this.txtFechaDeNacimiento, 3, 1);
-            this.tableLayoutPanel1.Controls.Add(this.txtPlan, 3, 2);
             this.tableLayoutPanel1.Controls.Add(this.txtLegajo, 3, 3);
             this.tableLayoutPanel1.Controls.Add(this.btnAceptar, 2, 4);
             this.tableLayoutPanel1.Controls.Add(this.btnCancelar, 3, 4);
@@ -80,6 +79,7 @@ namespace UI.Desktop
             this.tableLayoutPanel1.Controls.Add(this.label1, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.txtID, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.label8, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.cbPlanes, 3, 2);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -123,7 +123,7 @@ namespace UI.Desktop
             // lblLegajo
             // 
             this.lblLegajo.AutoSize = true;
-            this.lblLegajo.Location = new System.Drawing.Point(456, 78);
+            this.lblLegajo.Location = new System.Drawing.Point(456, 79);
             this.lblLegajo.Name = "lblLegajo";
             this.lblLegajo.Size = new System.Drawing.Size(39, 13);
             this.lblLegajo.TabIndex = 7;
@@ -161,18 +161,10 @@ namespace UI.Desktop
             this.txtFechaDeNacimiento.Size = new System.Drawing.Size(392, 20);
             this.txtFechaDeNacimiento.TabIndex = 11;
             // 
-            // txtPlan
-            // 
-            this.txtPlan.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtPlan.Location = new System.Drawing.Point(572, 55);
-            this.txtPlan.Name = "txtPlan";
-            this.txtPlan.Size = new System.Drawing.Size(392, 20);
-            this.txtPlan.TabIndex = 13;
-            // 
             // txtLegajo
             // 
             this.txtLegajo.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtLegajo.Location = new System.Drawing.Point(572, 81);
+            this.txtLegajo.Location = new System.Drawing.Point(572, 82);
             this.txtLegajo.Name = "txtLegajo";
             this.txtLegajo.Size = new System.Drawing.Size(392, 20);
             this.txtLegajo.TabIndex = 15;
@@ -180,7 +172,7 @@ namespace UI.Desktop
             // btnAceptar
             // 
             this.btnAceptar.Dock = System.Windows.Forms.DockStyle.Right;
-            this.btnAceptar.Location = new System.Drawing.Point(491, 107);
+            this.btnAceptar.Location = new System.Drawing.Point(491, 108);
             this.btnAceptar.Name = "btnAceptar";
             this.btnAceptar.Size = new System.Drawing.Size(75, 25);
             this.btnAceptar.TabIndex = 16;
@@ -191,7 +183,7 @@ namespace UI.Desktop
             // btnCancelar
             // 
             this.btnCancelar.Dock = System.Windows.Forms.DockStyle.Left;
-            this.btnCancelar.Location = new System.Drawing.Point(572, 107);
+            this.btnCancelar.Location = new System.Drawing.Point(572, 108);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(75, 25);
             this.btnCancelar.TabIndex = 17;
@@ -202,7 +194,7 @@ namespace UI.Desktop
             // txtEmail
             // 
             this.txtEmail.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtEmail.Location = new System.Drawing.Point(58, 107);
+            this.txtEmail.Location = new System.Drawing.Point(58, 108);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(392, 20);
             this.txtEmail.TabIndex = 12;
@@ -210,7 +202,7 @@ namespace UI.Desktop
             // txtTelefono
             // 
             this.txtTelefono.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtTelefono.Location = new System.Drawing.Point(58, 81);
+            this.txtTelefono.Location = new System.Drawing.Point(58, 82);
             this.txtTelefono.Name = "txtTelefono";
             this.txtTelefono.Size = new System.Drawing.Size(392, 20);
             this.txtTelefono.TabIndex = 14;
@@ -218,7 +210,7 @@ namespace UI.Desktop
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(3, 104);
+            this.label4.Location = new System.Drawing.Point(3, 105);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(36, 13);
             this.label4.TabIndex = 3;
@@ -227,7 +219,7 @@ namespace UI.Desktop
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(3, 78);
+            this.label3.Location = new System.Drawing.Point(3, 79);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(49, 13);
             this.label3.TabIndex = 2;
@@ -269,6 +261,15 @@ namespace UI.Desktop
             this.label8.TabIndex = 19;
             this.label8.Text = "ID";
             // 
+            // cbPlanes
+            // 
+            this.cbPlanes.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.cbPlanes.FormattingEnabled = true;
+            this.cbPlanes.Location = new System.Drawing.Point(572, 55);
+            this.cbPlanes.Name = "cbPlanes";
+            this.cbPlanes.Size = new System.Drawing.Size(392, 21);
+            this.cbPlanes.TabIndex = 20;
+            // 
             // AlumnosDesktop
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -300,10 +301,10 @@ namespace UI.Desktop
         private System.Windows.Forms.Button btnAceptar;
         private System.Windows.Forms.TextBox txtDireccion;
         private System.Windows.Forms.TextBox txtFechaDeNacimiento;
-        private System.Windows.Forms.TextBox txtPlan;
         private System.Windows.Forms.TextBox txtLegajo;
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.TextBox txtID;
         private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.ComboBox cbPlanes;
     }
 }

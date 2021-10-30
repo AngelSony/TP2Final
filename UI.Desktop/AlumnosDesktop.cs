@@ -18,6 +18,7 @@ namespace UI.Desktop
         public AlumnosDesktop()
         {
             InitializeComponent();
+            CargaCombo();
         }
         public AlumnosDesktop(ModoForm modo) : this()
         {
@@ -41,9 +42,9 @@ namespace UI.Desktop
             txtDireccion.Text = AlumnoActual.Direccion;
             txtEmail.Text = AlumnoActual.Email;
             txtTelefono.Text = AlumnoActual.Telefono;
+            cbPlanes.SelectedValue = AlumnoActual.IDPlan;
             txtLegajo.Text = AlumnoActual.Legajo.ToString();
             txtFechaDeNacimiento.Text = AlumnoActual.FechaNacimiento.ToString();
-            txtPlan.Text = AlumnoActual.IDPlan.ToString(); //CAMBIAR
             txtDireccion.Text = AlumnoActual.Direccion;
             ModoBoton();
 
@@ -72,8 +73,8 @@ namespace UI.Desktop
                 AlumnoActual.Telefono = txtEmail.Text;
                 AlumnoActual.TipoPersona = Personas.TiposPersonas.Alumno;
                 AlumnoActual.FechaNacimiento = DateTime.Parse(txtFechaDeNacimiento.Text);
-                AlumnoActual.IDPlan = Convert.ToInt32(txtPlan.Text); //MODIFICAR CUANDO ESTE LA CAPA DE PLAN 
-               
+                AlumnoActual.IDPlan = Convert.ToInt32(cbPlanes.SelectedValue);
+
             }
 
            switch(Modo)
@@ -169,9 +170,9 @@ namespace UI.Desktop
                 Notificar("Advertencia", "Campo Direccion incompleto", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
-            else if (string.IsNullOrWhiteSpace(txtPlan.Text)) //MODIFICAR
+            else if (cbPlanes.SelectedValue == null) 
             {
-                Notificar("Advertencia", "Campo Plan incompleto", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                Notificar("Advertencia", "Seleccione un plan", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
 
@@ -213,5 +214,17 @@ namespace UI.Desktop
         {
             Close();
         }
+
+        private void CargaCombo()
+        {
+            PlanLogic plan = new PlanLogic();
+            cbPlanes.DataSource = plan.GetAll();
+            cbPlanes.DisplayMember = "Descripcion";
+            cbPlanes.ValueMember = "ID";
+            cbPlanes.SelectedIndex = -1;
+
+        }
+
+
     }
 }

@@ -12,7 +12,7 @@ namespace Business.Logic
     {
 
 
-        private PlanAdapter PlanData;
+        private  PlanAdapter PlanData;
 
         public PlanLogic()
         {
@@ -34,7 +34,7 @@ namespace Business.Logic
         }
 
 
-        public List<Plan> GetAll()
+        public  List<Plan> GetAll()
         {
 
             try
