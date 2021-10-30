@@ -31,17 +31,10 @@ namespace UI.Desktop
         {
             Modo = modo;
             CursoActual = CursoLogic.GetOne(ID);
-            MapearADatos();
+            MapearDeDatos();
         }
         public override void MapearADatos()
         {
-            if(Modo == ModoForm.Alta || Modo == ModoForm.Modificacion)
-            {
-                CursoActual.IDMateria = Convert.ToInt32(cbMateria.SelectedValue);
-                CursoActual.IDComision = Convert.ToInt32(cbComision.SelectedValue);
-                CursoActual.Cupo = Convert.ToInt32(txtCupo.Text);
-                CursoActual.AnioCalendario = Convert.ToInt32(txtAnioCalendario.Text);
-            }
             switch (Modo)
             {
                 case ModoForm.Alta:
@@ -60,6 +53,22 @@ namespace UI.Desktop
                 default:
                     break;
             }
+            if (Modo == ModoForm.Alta || Modo == ModoForm.Modificacion)
+            {
+                CursoActual.IDMateria = Convert.ToInt32(cbMateria.SelectedValue);
+                //CursoActual.IDComision = Convert.ToInt32(cbComision.SelectedValue);
+                CursoActual.IDComision = 4;
+                CursoActual.Cupo = Convert.ToInt32(txtCupo.Text);
+                CursoActual.AnioCalendario = Convert.ToInt32(txtAnioCalendario.Text);
+            }
+        }
+        public override void MapearDeDatos() 
+        {
+            txtID.Text = CursoActual.ID.ToString();
+            //cbComision.SelectedValue = CursoActual.IDComision;
+            cbMateria.SelectedValue = CursoActual.IDMateria;
+            txtCupo.Text = CursoActual.Cupo.ToString();
+            txtAnioCalendario.Text = CursoActual.AnioCalendario.ToString();
         }
         private void ModoBoton()
         {
@@ -87,13 +96,65 @@ namespace UI.Desktop
         }
         private void CargaCombos()
         {
-
+            cbMateria.DataSource = MateriaLogic.GetAll();
+            cbMateria.DisplayMember = "Descripcion";
+            cbMateria.ValueMember = "ID";
+            cbMateria.SelectedIndex = -1;
+            //Cargar combo de comisiones
         }
-
-
+        public override void GuardarCambios()
+        {
+            MapearADatos();
+            CursoLogic.Save(CursoActual);
+            switch (Modo)
+            {
+                case ModoForm.Alta:
+                    Notificar("Curso registrado con éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    break;
+                case ModoForm.Modificacion:
+                    Notificar("Curso actualizado con éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    break;
+                case ModoForm.Baja:
+                    Notificar("Curso eliminado con éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    break;
+                default:
+                    break;
+            }
+        }
+        public override bool Validar()
+        {
+            if (string.IsNullOrWhiteSpace(txtAnioCalendario.Text))
+            {
+                Notificar("Error", "El campo Año Calendario no debe estar vacío", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+            else if(string.IsNullOrWhiteSpace(txtCupo.Text))
+            {
+                Notificar("Error", "El campo Cupo no debe estar vacío", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+            /*else if(cbComision.SelectedValue == null)
+            {
+                Notificar("Error", "Debe especificar una comisión", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }*/
+            else if (cbMateria.SelectedValue.Equals(null))
+            {
+                Notificar("Error", "Debe especificar una materia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
         private void btnAceptar_Click(object sender, EventArgs e)
         {
-            
+            if(Validar())
+            {
+                GuardarCambios();
+                Close();
+            }
         }
     }
 }

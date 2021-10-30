@@ -49,7 +49,25 @@ namespace UI.Desktop
 
         private void tsbNuevo_Click(object sender, EventArgs e)
         {
+            CursosDesktop formCurso = new CursosDesktop(ApplicationForm.ModoForm.Alta);
+            formCurso.ShowDialog();
+            listar();
+        }
 
+        private void tspEditar_Click(object sender, EventArgs e)
+        {
+            int ID = ((Curso)dgvCursos.SelectedRows[0].DataBoundItem).ID;
+            CursosDesktop formCurso = new CursosDesktop(ID, ApplicationForm.ModoForm.Modificacion);
+            formCurso.ShowDialog();
+            listar();
+        }
+
+        private void tspEliminar_Click(object sender, EventArgs e)
+        {
+            int ID = ((Curso)dgvCursos.SelectedRows[0].DataBoundItem).ID;
+            CursosDesktop formCurso = new CursosDesktop(ID, ApplicationForm.ModoForm.Baja);
+            formCurso.ShowDialog();
+            listar();
         }
     }
 }

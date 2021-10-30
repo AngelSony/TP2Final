@@ -197,7 +197,6 @@ namespace UI.Desktop
                 Close();
             }
             else if (Validar())
-
             {
                 GuardarCambios();
                 Close();

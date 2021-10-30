@@ -26,6 +26,7 @@ namespace Data.Database
                     {
                         ID = (int)drCursos["id_curso"],
                         IDMateria = (int)drCursos["id_materia"],
+                        IDComision = (int)drCursos["id_comision"],
                         Cupo = (int)drCursos["cupo"],
                         AnioCalendario = (int)drCursos["anio_calendario"]
                     };
@@ -59,6 +60,7 @@ namespace Data.Database
                 {
                     cur.ID = (int)drCursos["id_curso"];
                     cur.IDMateria = (int)drCursos["id_materia"];
+                    cur.IDComision = (int)drCursos["id_comision"];
                     cur.Cupo = (int)drCursos["cupo"];
                     cur.AnioCalendario = (int)drCursos["anio_calendario"];
                 }
@@ -108,8 +110,7 @@ namespace Data.Database
             }
             catch (Exception Ex)
             {
-                Exception ExcepcionManejada = new Exception("Error al crear usuario", Ex);
-                throw ExcepcionManejada;
+                throw new Exception("Error al crear usuario", Ex);
             }
             finally
             {
@@ -121,12 +122,12 @@ namespace Data.Database
             try
             {
                 OpenConnection();
-                SqlCommand cmdSave = new SqlCommand("UPDATE usuarios SET id_materia = @id_materia, id_comision = @id_comision, anio_calendario = @anio_calendario, cupo = @cupo WHERE id_curso=@id", sqlConn);
+                SqlCommand cmdSave = new SqlCommand("UPDATE cursos SET id_materia = @id_materia, id_comision = @id_comision, anio_calendario = @anio_calendario, cupo = @cupo WHERE id_curso=@id", sqlConn);
                 cmdSave.Parameters.Add("@id_materia", SqlDbType.Int).Value = curso.IDMateria;
                 cmdSave.Parameters.Add("@id_comision", SqlDbType.Int).Value = curso.IDComision;
                 cmdSave.Parameters.Add("@anio_calendario", SqlDbType.Int).Value = curso.AnioCalendario;
                 cmdSave.Parameters.Add("@cupo", SqlDbType.Int).Value = curso.Cupo;
-                cmdSave.Parameters.Add("@id_curso", SqlDbType.Int).Value = curso.ID;
+                cmdSave.Parameters.Add("@id", SqlDbType.Int).Value = curso.ID;
                 cmdSave.ExecuteNonQuery();
             }
             catch (Exception Ex)
