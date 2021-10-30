@@ -13,10 +13,17 @@ namespace UI.Web
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            LoadGrid();
+            if (!IsPostBack)
+            {
+
+                LoadGrid();
+
+
+            }
         }
 
         UsuarioLogic _logic;
+
         private UsuarioLogic Logic
         {
             get
@@ -32,7 +39,9 @@ namespace UI.Web
         {
             get;
             set;
+
         }
+
         private int SelectedID
         {
             get
@@ -69,6 +78,8 @@ namespace UI.Web
             get { return (FormModes)ViewState["FormMode"]; }
             set { ViewState["FormMode"] = value; }
         }
+
+
         private void LoadForm(int id)
         {
             Entity = Logic.GetOne(id);
@@ -77,12 +88,18 @@ namespace UI.Web
             emailTextBox.Text = Entity.EMail;
             habilitadoCheckBox.Checked = Entity.Habilitado;
             nombreUsuarioTextBox.Text = Entity.NombreUsuario;
+            claveTextBox.Text = Entity.Clave;
         }
+
+
+
         private void LoadGrid()
         {
             gridView.DataSource = Logic.GetAll();
             gridView.DataBind();
         }
+
+
         private void LoadEntity(Usuario usuario)
         {
             usuario.Nombre = nombreTextBox.Text;
@@ -92,29 +109,34 @@ namespace UI.Web
             usuario.Clave = claveTextBox.Text;
             usuario.Habilitado = habilitadoCheckBox.Checked;
         }
+
+
         private void DeleteEntity(int id)
         {
             Logic.Delete(id);
         }
+
         private void SaveEntity(Usuario usuario)
         {
-            Logic.Save(usuario);
+            try
+            {
+                Logic.Save(usuario);
+            }catch (Exception Ex)
+            {
+                System.Windows.Forms.MessageBox.Show(Ex.Message);
+                
+            }
+
         }
+
         protected void gridView_SelectedIndexChanged(object sender, EventArgs e)
         {
             SelectedID = (int)gridView.SelectedValue;
         }
 
-        protected void editarLinkButton_Click(object sender, EventArgs e)
-        {
-            if (IsEntitySelected)
-            {
-                formPanel.Visible = true;
-                FormMode = FormModes.Modificacion;
-                LoadForm(SelectedID);
-                EnableForm(true);
-            }
-        }
+      
+
+
         private void EnableForm(bool enable)
         {
             nombreTextBox.Enabled = enable;
@@ -125,6 +147,7 @@ namespace UI.Web
             claveLabel.Visible = enable;
             repetirClaveTextBox.Visible = enable;
             repetirClaveLabel.Visible = enable;
+
         }
         private void ClearForm()
         {
@@ -134,6 +157,54 @@ namespace UI.Web
             habilitadoCheckBox.Checked = false;
             nombreUsuarioTextBox.Text = string.Empty;
         }
+
+
+
+        protected void eliminarLinkButton_Click(object sender, EventArgs e)
+        {
+            if (IsEntitySelected)
+            {
+                formPanel.Visible = true;
+                FormMode = FormModes.Baja;
+                EnableForm(false);
+                LoadForm(SelectedID);
+                formActionsPanel.Visible = true;
+                gridView.Enabled = false;
+                gridActionsPanel.Visible = false;
+
+            }
+        }
+
+        protected void nuevoLinkButton_Click(object sender, EventArgs e)
+        {
+            formPanel.Visible = true;
+            FormMode = FormModes.Alta;
+            ClearForm();
+            EnableForm(true);
+            formActionsPanel.Visible = true;
+            gridActionsPanel.Visible = false;
+        }
+
+        protected void cancelarLinkButton_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/Usuarios.aspx");
+        }
+
+        protected void editarLinkButton_Click(object sender, EventArgs e)
+        {
+            if (IsEntitySelected)
+            {
+                formPanel.Visible = true;
+                FormMode = FormModes.Modificacion;
+                LoadForm(SelectedID);
+                EnableForm(true);
+                formActionsPanel.Visible = true;
+                gridView.Enabled = false;
+                gridActionsPanel.Visible = false;
+
+            }
+        }
+
         protected void aceptarLinkButton_Click(object sender, EventArgs e)
         {
             switch (FormMode)
@@ -157,32 +228,8 @@ namespace UI.Web
                     break;
             }
 
-            LoadGrid();
-            formPanel.Visible = false;
-        }
-
-        protected void eliminarLinkButton_Click(object sender, EventArgs e)
-        {
-            if (IsEntitySelected)
-            {
-                formPanel.Visible = true;
-                FormMode = FormModes.Baja;
-                EnableForm(false);
-                LoadForm(SelectedID);
-            }
-        }
-
-        protected void nuevoLinkButton_Click(object sender, EventArgs e)
-        {
-            formPanel.Visible = true;
-            FormMode = FormModes.Alta;
-            ClearForm();
-            EnableForm(true);
-        }
-
-        protected void cancelarLinkButton_Click(object sender, EventArgs e)
-        {
             Response.Redirect("~/Usuarios.aspx");
         }
+
     }
 }
