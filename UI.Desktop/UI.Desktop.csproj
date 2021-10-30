@@ -123,6 +123,9 @@
     <EmbeddedResource Include="Planes.resx">
       <DependentUpon>Planes.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="PlanesDesktop.resx">
+      <DependentUpon>PlanesDesktop.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Principal.resx">
       <DependentUpon>Principal.cs</DependentUpon>
     </EmbeddedResource>

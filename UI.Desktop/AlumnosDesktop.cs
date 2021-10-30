@@ -43,7 +43,7 @@ namespace UI.Desktop
             txtTelefono.Text = AlumnoActual.Telefono;
             txtLegajo.Text = AlumnoActual.Legajo.ToString();
             txtFechaDeNacimiento.Text = AlumnoActual.FechaNacimiento.ToString();
-            txtPlan.Text = AlumnoActual.IDPlan.ToString();
+            txtPlan.Text = AlumnoActual.IDPlan.ToString(); //CAMBIAR
             txtDireccion.Text = AlumnoActual.Direccion;
             ModoBoton();
 
@@ -152,7 +152,7 @@ namespace UI.Desktop
                 Notificar("Advertencia", "Campo Apellido incompleto", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
-           
+
             else if (string.IsNullOrWhiteSpace(txtLegajo.Text))
             {
                 Notificar("Advertencia", "Campo Legajo incompleto", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -186,9 +186,6 @@ namespace UI.Desktop
                 Notificar("Advertencia", "El formato de la fecha debe ser dd/MM/aaaa", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
-
-
-
 
             else { return true; }
         }

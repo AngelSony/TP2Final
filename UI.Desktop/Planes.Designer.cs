@@ -98,6 +98,7 @@ namespace UI.Desktop
             this.dgvPlanes.Location = new System.Drawing.Point(3, 3);
             this.dgvPlanes.Name = "dgvPlanes";
             this.dgvPlanes.ReadOnly = true;
+            this.dgvPlanes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvPlanes.Size = new System.Drawing.Size(762, 390);
             this.dgvPlanes.TabIndex = 0;
             // 
@@ -163,6 +164,7 @@ namespace UI.Desktop
             this.tsbNuevo.Name = "tsbNuevo";
             this.tsbNuevo.Size = new System.Drawing.Size(23, 22);
             this.tsbNuevo.Text = "toolStripButton1";
+            this.tsbNuevo.Click += new System.EventHandler(this.tsbNuevo_Click);
             // 
             // tsbEditar
             // 
@@ -172,6 +174,7 @@ namespace UI.Desktop
             this.tsbEditar.Name = "tsbEditar";
             this.tsbEditar.Size = new System.Drawing.Size(23, 22);
             this.tsbEditar.Text = "toolStripButton2";
+            this.tsbEditar.Click += new System.EventHandler(this.tsbEditar_Click);
             // 
             // tsbEliminar
             // 
@@ -181,6 +184,7 @@ namespace UI.Desktop
             this.tsbEliminar.Name = "tsbEliminar";
             this.tsbEliminar.Size = new System.Drawing.Size(23, 22);
             this.tsbEliminar.Text = "toolStripButton3";
+            this.tsbEliminar.Click += new System.EventHandler(this.tsbEliminar_Click);
             // 
             // Planes
             // 

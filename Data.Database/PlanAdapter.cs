@@ -90,7 +90,7 @@ namespace Data.Database
             {
                 OpenConnection();
 
-                SqlCommand cmdPlan = new SqlCommand("INSERT into personas(desc_plan,id_especialidad) values(@desc_plan,@id_especialidad) select @@identity", sqlConn);
+                SqlCommand cmdPlan = new SqlCommand("INSERT into planes(desc_plan,id_especialidad) values(@desc_plan,@id_especialidad) select @@identity", sqlConn);
                 cmdPlan.Parameters.Add("@desc_plan", SqlDbType.VarChar, 50).Value = plan.Descripcion;
                 cmdPlan.Parameters.Add("@id_especialidad", SqlDbType.Int).Value = plan.IDEspecialidad;
                 
@@ -114,7 +114,7 @@ namespace Data.Database
             try
             {
                 OpenConnection();
-                SqlCommand cmdPlan = new SqlCommand("UPDATE plan SET desc_plan = @desc_plan, id_especialidad = @id_especialidad WHERE id_plan = @id ", sqlConn);
+                SqlCommand cmdPlan = new SqlCommand("UPDATE planes SET desc_plan = @desc_plan, id_especialidad = @id_especialidad WHERE id_plan = @id ", sqlConn);
                 cmdPlan.Parameters.Add("@id", SqlDbType.Int).Value = plan.ID;
                 cmdPlan.Parameters.Add("@desc_plan", SqlDbType.VarChar, 50).Value = plan.Descripcion;
                 cmdPlan.Parameters.Add("@id_especialidad", SqlDbType.Int).Value = plan.IDEspecialidad;
