@@ -21,7 +21,6 @@ namespace UI.Desktop
         }
         public void listar()
         {
-            CursoLogic cl = new CursoLogic();
             try
             {
                 dgvCursos.DataSource = CursoLogic.GetAll();

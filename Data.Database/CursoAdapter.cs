@@ -37,8 +37,7 @@ namespace Data.Database
             }
             catch (Exception Ex)
             {
-                Exception ExcepcionManejada = new Exception("Error al recuperar lista de cursos", Ex);
-                throw ExcepcionManejada;
+                throw new Exception("Error al recuperar lista de cursos", Ex);
             }
             finally
             {
@@ -68,8 +67,7 @@ namespace Data.Database
             }
             catch (Exception Ex)
             {
-                Exception ExcepcionManejada = new Exception("Error al recuperar los datos del curso", Ex);
-                throw ExcepcionManejada;
+                throw new Exception("Error al recuperar los datos del curso", Ex);
             }
             finally
             {

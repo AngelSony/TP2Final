@@ -214,9 +214,11 @@ namespace UI.Web
                     DeleteEntity(SelectedID);
                     break;
                 case FormModes.Modificacion:
-                    Entity = new Usuario();
-                    Entity.ID = SelectedID;
-                    Entity.State = BusinessEntity.States.Modified;
+                    Entity = new Usuario
+                    {
+                        ID = SelectedID,
+                        State = BusinessEntity.States.Modified
+                    };
                     LoadEntity(Entity);
                     SaveEntity(Entity);
                     break;

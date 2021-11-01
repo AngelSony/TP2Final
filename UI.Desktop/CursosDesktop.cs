@@ -38,8 +38,10 @@ namespace UI.Desktop
             switch (Modo)
             {
                 case ModoForm.Alta:
-                    CursoActual = new Curso();
-                    CursoActual.State = BusinessEntity.States.New;
+                    CursoActual = new Curso
+                    {
+                        State = BusinessEntity.States.New
+                    };
                     break;
                 case ModoForm.Baja:
                     CursoActual.State = BusinessEntity.States.Deleted;
@@ -56,8 +58,7 @@ namespace UI.Desktop
             if (Modo == ModoForm.Alta || Modo == ModoForm.Modificacion)
             {
                 CursoActual.IDMateria = Convert.ToInt32(cbMateria.SelectedValue);
-                //CursoActual.IDComision = Convert.ToInt32(cbComision.SelectedValue);
-                CursoActual.IDComision = 4;
+                CursoActual.IDComision = Convert.ToInt32(cbComision.SelectedValue);
                 CursoActual.Cupo = Convert.ToInt32(txtCupo.Text);
                 CursoActual.AnioCalendario = Convert.ToInt32(txtAnioCalendario.Text);
             }
@@ -65,7 +66,7 @@ namespace UI.Desktop
         public override void MapearDeDatos() 
         {
             txtID.Text = CursoActual.ID.ToString();
-            //cbComision.SelectedValue = CursoActual.IDComision;
+            cbComision.SelectedValue = CursoActual.IDComision;
             cbMateria.SelectedValue = CursoActual.IDMateria;
             txtCupo.Text = CursoActual.Cupo.ToString();
             txtAnioCalendario.Text = CursoActual.AnioCalendario.ToString();
@@ -100,7 +101,11 @@ namespace UI.Desktop
             cbMateria.DisplayMember = "Descripcion";
             cbMateria.ValueMember = "ID";
             cbMateria.SelectedIndex = -1;
-            //Cargar combo de comisiones
+
+            cbComision.DataSource = ComisionesLogic.GetAll();
+            cbComision.DisplayMember = "Descripcion";
+            cbComision.ValueMember = "ID";
+            cbComision.SelectedIndex = -1;
         }
         public override void GuardarCambios()
         {

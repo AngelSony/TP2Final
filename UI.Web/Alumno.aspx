@@ -1,19 +1,8 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Alumno.aspx.cs" Inherits="UI.Web.Alumno" %>
+﻿<%@ Page Title='Alumnos' Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Alumno.aspx.cs" Inherits="UI.Web.Alumno" %>
 
-<%@ Register assembly="System.Web.DataVisualization, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" namespace="System.Web.UI.DataVisualization.Charting" tagprefix="asp" %>
-
-<!DOCTYPE html>
-
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <title></title>
-</head>
-<body style="height: 502px">
-    <form id="form1" runat="server">
+<asp:Content ID="Content1" ContentPlaceHolderID="bodyContentPlaceHolder" runat="server">
         <div>
             <asp:Panel ID="gridPanel" runat="server">
-                <br />
                 <asp:GridView ID="grdAlumnos" runat="server" AutoGenerateColumns="False" DataKeyNames="ID" OnSelectedIndexChanged="grdAlumnos_SelectedIndexChanged" CellPadding="4" ForeColor="#333333" GridLines="None">
                     <AlternatingRowStyle BackColor="White" />
                     <Columns>
@@ -102,6 +91,4 @@
             </asp:Panel>
             <asp:ValidationSummary ID="ValidationSummary" runat="server" ForeColor="Red" ValidationGroup="validar" />
         </div>
-    </form>
-</body>
-</html>
+</asp:Content>

@@ -23,12 +23,14 @@ namespace Data.Database
 
                 while (drMaterias.Read())
                 {
-                    Materia mat = new Materia();
-                    mat.ID = (int)drMaterias["id_materia"];
-                    mat.Descripcion = (string)drMaterias["desc_materia"];
-                    mat.HSSemanales = (int)drMaterias["hs_semanales"];
-                    mat.HSTotales = (int)drMaterias["hs_totales"];
-                    mat.IDPlan = (int)drMaterias["id_plan"];
+                    Materia mat = new Materia
+                    {
+                        ID = (int)drMaterias["id_materia"],
+                        Descripcion = (string)drMaterias["desc_materia"],
+                        HSSemanales = (int)drMaterias["hs_semanales"],
+                        HSTotales = (int)drMaterias["hs_totales"],
+                        IDPlan = (int)drMaterias["id_plan"]
+                    };
 
                     materias.Add(mat);
                 }
@@ -66,7 +68,7 @@ namespace Data.Database
             }
             catch (Exception Ex)
             {
-                throw new Exception("Error al eliminar el Plan", Ex);
+                throw new Exception("Error al eliminar la Materia", Ex);
             }
             finally
             {
@@ -80,7 +82,7 @@ namespace Data.Database
                 OpenConnection();
 
                 SqlCommand cmdMateria = new SqlCommand("INSERT into materias(desc_materia,hs_semanales,hs_totales,id_plan) values(@desc_materia,@hs_semanales,@hs_totales,@id_plan) select @@identity", sqlConn);
-                cmdMateria.Parameters.Add("@desc_materia", SqlDbType.NVarChar, 50).Value = mat.Descripcion;
+                cmdMateria.Parameters.Add("@desc_materia", SqlDbType.VarChar, 50).Value = mat.Descripcion;
                 cmdMateria.Parameters.Add("@hs_semanales", SqlDbType.Int).Value = mat.HSSemanales;
                 cmdMateria.Parameters.Add("@hs_totales", SqlDbType.Int).Value = mat.HSTotales;
                 cmdMateria.Parameters.Add("@id_plan", SqlDbType.Int).Value = mat.IDPlan;

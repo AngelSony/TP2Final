@@ -7,7 +7,7 @@
     </head>
     <body>
         <form id="bodyForm" runat ="server">
-            <asp:Menu runat="server" ID="menu" DataSourceID="SiteMapDataSource">
+            <asp:Menu runat="server" ID="menu" DataSourceID="SiteMapDataSource" RenderingMode="Table">
             </asp:Menu>
             <asp:SiteMapDataSource ID="SiteMapDataSource" runat ="server" />
             <div>
