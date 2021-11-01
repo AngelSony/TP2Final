@@ -40,5 +40,24 @@ namespace Business.Logic
         {
             UsuarioData.Delete(ID);
         }
+
+
+        public static Usuario GetUsuarioPorNombre(Usuario usuario)
+        {
+            try
+            {
+
+                return new UsuarioAdapter().GetUsuarioPorNombre(usuario);
+            }
+            catch (Exception Ex)
+            {
+                throw Ex;
+            }
+
+        }
+
+
+
+
     }
 }

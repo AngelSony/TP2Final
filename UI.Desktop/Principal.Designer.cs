@@ -107,59 +107,59 @@ namespace UI.Desktop
             // tsmiUsuarios
             // 
             this.tsmiUsuarios.Name = "tsmiUsuarios";
-            this.tsmiUsuarios.Size = new System.Drawing.Size(180, 22);
+            this.tsmiUsuarios.Size = new System.Drawing.Size(150, 22);
             this.tsmiUsuarios.Text = "Usuarios";
             this.tsmiUsuarios.Click += new System.EventHandler(this.tsmiUsuarios_Click);
             // 
             // tsmiCursos
             // 
             this.tsmiCursos.Name = "tsmiCursos";
-            this.tsmiCursos.Size = new System.Drawing.Size(180, 22);
+            this.tsmiCursos.Size = new System.Drawing.Size(150, 22);
             this.tsmiCursos.Text = "Cursos";
             this.tsmiCursos.Click += new System.EventHandler(this.tsmiCursos_Click);
             // 
             // tsmiMaterias
             // 
             this.tsmiMaterias.Name = "tsmiMaterias";
-            this.tsmiMaterias.Size = new System.Drawing.Size(180, 22);
+            this.tsmiMaterias.Size = new System.Drawing.Size(150, 22);
             this.tsmiMaterias.Text = "Materias";
             // 
             // tsmiAlumnos
             // 
             this.tsmiAlumnos.Name = "tsmiAlumnos";
-            this.tsmiAlumnos.Size = new System.Drawing.Size(180, 22);
+            this.tsmiAlumnos.Size = new System.Drawing.Size(150, 22);
             this.tsmiAlumnos.Text = "Alumnos";
             this.tsmiAlumnos.Click += new System.EventHandler(this.tsmiAlumnos_Click);
             // 
             // tsmiDocentes
             // 
             this.tsmiDocentes.Name = "tsmiDocentes";
-            this.tsmiDocentes.Size = new System.Drawing.Size(180, 22);
+            this.tsmiDocentes.Size = new System.Drawing.Size(150, 22);
             this.tsmiDocentes.Text = "Docentes";
             // 
             // tsmiEspecialidades
             // 
             this.tsmiEspecialidades.Name = "tsmiEspecialidades";
-            this.tsmiEspecialidades.Size = new System.Drawing.Size(180, 22);
+            this.tsmiEspecialidades.Size = new System.Drawing.Size(150, 22);
             this.tsmiEspecialidades.Text = "Especialidades";
             // 
             // tsmiPlanes
             // 
             this.tsmiPlanes.Name = "tsmiPlanes";
-            this.tsmiPlanes.Size = new System.Drawing.Size(180, 22);
+            this.tsmiPlanes.Size = new System.Drawing.Size(150, 22);
             this.tsmiPlanes.Text = "Planes";
             this.tsmiPlanes.Click += new System.EventHandler(this.tsmiPlanes_Click);
             // 
             // tsmiComisiones
             // 
             this.tsmiComisiones.Name = "tsmiComisiones";
-            this.tsmiComisiones.Size = new System.Drawing.Size(180, 22);
+            this.tsmiComisiones.Size = new System.Drawing.Size(150, 22);
             this.tsmiComisiones.Text = "Comisiones";
             // 
             // modulosToolStripMenuItem
             // 
             this.modulosToolStripMenuItem.Name = "modulosToolStripMenuItem";
-            this.modulosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.modulosToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
             this.modulosToolStripMenuItem.Text = "Modulos";
             this.modulosToolStripMenuItem.Click += new System.EventHandler(this.modulosToolStripMenuItem_Click);
             // 
@@ -173,6 +173,7 @@ namespace UI.Desktop
             this.Name = "Principal";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Principal";
+            this.Shown += new System.EventHandler(this.Principal_Shown);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);

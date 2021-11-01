@@ -3,6 +3,8 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.Linq;
+
 
 namespace Data.Database
 {
@@ -167,5 +169,23 @@ namespace Data.Database
                 CloseConnection();
             }
         }
+
+        public  Usuario GetUsuarioPorNombre(Usuario user)
+        {
+            try
+            {
+                var miUsuario = from c in GetAll() where c.NombreUsuario.Equals(user.NombreUsuario) select c;
+                return miUsuario.Single();
+            }
+            catch (Exception Ex)
+            {
+                throw new Exception("Error el recuperar datos del Usuario", Ex);
+            }
+
+
+        }
+
+      
+
     }
 }
