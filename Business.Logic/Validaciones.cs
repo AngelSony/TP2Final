@@ -4,7 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Text.RegularExpressions;
-
+using Data.Database;
+using Business.Entities;
+using System.Windows.Forms;
 
 namespace Business.Logic
 {
@@ -25,10 +27,48 @@ namespace Business.Logic
 
         }
 
+        public static Boolean EsUsuarioValido(Usuario usuario)
+        {
+
+
+            try
+            {
+                Usuario miUsuario = UsuarioLogic.GetUsuarioPorNombre(usuario);
+
+
+                if (miUsuario.Equals(null))
+                {
+                    return false;
+                }
+              
+                else if (miUsuario.Clave.Equals(usuario.Clave))
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+
+                }
+
+            }catch(Exception Ex)
+            { 
+
+                return false;
+            }
+
+
+
+
+            }
+          
+        }
+
+        }
 
 
 
 
 
-    }
-}
+    
+

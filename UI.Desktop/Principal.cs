@@ -52,5 +52,15 @@ namespace UI.Desktop
             Alumnos formAlumno = new Alumnos();
             formAlumno.ShowDialog();
         }
+
+        private void Principal_Shown(object sender, EventArgs e)
+        {
+            Login formLogin = new Login();
+            if (formLogin.ShowDialog() != DialogResult.OK)
+            {
+                Dispose();
+            }
+        }
+
     }
 }
