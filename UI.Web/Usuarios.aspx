@@ -53,6 +53,7 @@
         <asp:Label ID="claveLabel" runat="server" Text="Clave: "></asp:Label>
         <asp:TextBox ID="claveTextBox" runat="server"></asp:TextBox>
         <asp:RequiredFieldValidator ID="claveValidator" runat="server" ControlToValidate="claveTextBox" ErrorMessage="La clave no puede estar vacía" ForeColor="Red" ValidationGroup="validar">*</asp:RequiredFieldValidator>
+        <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ControlToValidate="claveTextBox" ErrorMessage="La clave debe tener al 8 caracteres o más y al menos una letra y un número" ForeColor="Red" ValidationExpression="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$" ValidationGroup="validar">*</asp:RegularExpressionValidator>
         <br />
         <asp:Label ID="repetirClaveLabel" runat="server" Text="Repetir Clave: "></asp:Label>
         <asp:TextBox ID="repetirClaveTextBox" TextMode="Password" runat="server"></asp:TextBox>
