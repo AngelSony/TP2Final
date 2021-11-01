@@ -89,6 +89,7 @@ namespace UI.Web
             habilitadoCheckBox.Checked = Entity.Habilitado;
             nombreUsuarioTextBox.Text = Entity.NombreUsuario;
             claveTextBox.Text = Entity.Clave;
+            repetirClaveTextBox.Text = Entity.Clave;
         }
 
 

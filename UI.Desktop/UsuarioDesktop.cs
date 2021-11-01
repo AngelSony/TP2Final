@@ -112,25 +112,16 @@ namespace UI.Desktop
             else if (string.IsNullOrWhiteSpace(txtApellido.Text)) {
                 Notificar("Advertencia", "Campo Apellido incompleto", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false; }
-            else if (string.IsNullOrWhiteSpace(txtEmail.Text)) {
-                Notificar("Advertencia", "Campo Email incompleto", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return false; }
             else if (string.IsNullOrWhiteSpace(txtUsuario.Text)) {
                 Notificar("Advertencia", "Campo Usuario incompleto", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false; }
-            else if (string.IsNullOrWhiteSpace(txtClave.Text)) {
-                Notificar("Advertencia", "Campo Clave incompleto", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return false; }
-            else if (string.IsNullOrWhiteSpace(txtConfirmarclave.Text)) {
-                Notificar("Advertencia", "Campo Confirmar Clave incompleto", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            else if (Validaciones.EsClaveValida(txtClave.Text)) {
+                Notificar("Advertencia", "La clave debe tener al menos ocho caracteres, y al menos una letra y un número", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false; }
             else if (!txtClave.Text.Equals(txtConfirmarclave.Text)){
                 Notificar("Advertencia", "Las claves no coinciden", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false; }
-            else if (txtClave.Text.Length < 8){
-                Notificar("Advertencia", "La clave debe tener al menos 8 caracteres", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return false; }
-            else if (!txtEmail.Text.Contains('@')) {
+            else if (Validaciones.EsMailValido(txtEmail.Text)) {
                 Notificar("Advertencia", "Email no válido", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false; }
             else { return true; }
