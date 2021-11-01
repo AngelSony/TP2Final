@@ -37,7 +37,6 @@ namespace UI.Desktop
             this.label1 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.btnIngresar = new System.Windows.Forms.Button();
-            this.lnkOlvideClave = new System.Windows.Forms.LinkLabel();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -54,7 +53,6 @@ namespace UI.Desktop
             this.tableLayoutPanel1.Controls.Add(this.label1, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.label3, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.btnIngresar, 1, 3);
-            this.tableLayoutPanel1.Controls.Add(this.lnkOlvideClave, 0, 3);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -68,7 +66,7 @@ namespace UI.Desktop
             // 
             // btnCancelar
             // 
-            this.btnCancelar.Location = new System.Drawing.Point(192, 140);
+            this.btnCancelar.Location = new System.Drawing.Point(190, 140);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(75, 23);
             this.btnCancelar.TabIndex = 1;
@@ -83,7 +81,7 @@ namespace UI.Desktop
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(3, 91);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(102, 46);
+            this.label2.Size = new System.Drawing.Size(100, 46);
             this.label2.TabIndex = 1;
             this.label2.Text = "Ingresar Clave";
             // 
@@ -91,18 +89,18 @@ namespace UI.Desktop
             // 
             this.tableLayoutPanel1.SetColumnSpan(this.txtUsuario, 2);
             this.txtUsuario.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtUsuario.Location = new System.Drawing.Point(111, 48);
+            this.txtUsuario.Location = new System.Drawing.Point(109, 48);
             this.txtUsuario.Name = "txtUsuario";
-            this.txtUsuario.Size = new System.Drawing.Size(341, 20);
+            this.txtUsuario.Size = new System.Drawing.Size(343, 20);
             this.txtUsuario.TabIndex = 2;
             // 
             // txtClave
             // 
             this.tableLayoutPanel1.SetColumnSpan(this.txtClave, 2);
             this.txtClave.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtClave.Location = new System.Drawing.Point(111, 94);
+            this.txtClave.Location = new System.Drawing.Point(109, 94);
             this.txtClave.Name = "txtClave";
-            this.txtClave.Size = new System.Drawing.Size(341, 20);
+            this.txtClave.Size = new System.Drawing.Size(343, 20);
             this.txtClave.TabIndex = 3;
             // 
             // label1
@@ -112,7 +110,7 @@ namespace UI.Desktop
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(3, 45);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(102, 46);
+            this.label1.Size = new System.Drawing.Size(100, 46);
             this.label1.TabIndex = 0;
             this.label1.Text = "Ingresar Usuario";
             // 
@@ -123,9 +121,9 @@ namespace UI.Desktop
             this.label3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.label3.Location = new System.Drawing.Point(111, 0);
+            this.label3.Location = new System.Drawing.Point(109, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(341, 45);
+            this.label3.Size = new System.Drawing.Size(343, 45);
             this.label3.TabIndex = 4;
             this.label3.Text = "¡Bienvenido al sistema Academia!";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -133,25 +131,13 @@ namespace UI.Desktop
             // btnIngresar
             // 
             this.btnIngresar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnIngresar.Location = new System.Drawing.Point(111, 140);
+            this.btnIngresar.Location = new System.Drawing.Point(109, 140);
             this.btnIngresar.Name = "btnIngresar";
             this.btnIngresar.Size = new System.Drawing.Size(75, 23);
             this.btnIngresar.TabIndex = 5;
             this.btnIngresar.Text = "Ingresar";
             this.btnIngresar.UseVisualStyleBackColor = true;
             this.btnIngresar.Click += new System.EventHandler(this.btnIngresar_Click);
-            // 
-            // lnkOlvideClave
-            // 
-            this.lnkOlvideClave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.lnkOlvideClave.AutoSize = true;
-            this.lnkOlvideClave.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lnkOlvideClave.Location = new System.Drawing.Point(3, 151);
-            this.lnkOlvideClave.Name = "lnkOlvideClave";
-            this.lnkOlvideClave.Size = new System.Drawing.Size(102, 16);
-            this.lnkOlvideClave.TabIndex = 7;
-            this.lnkOlvideClave.TabStop = true;
-            this.lnkOlvideClave.Text = "Olvidé mi Clave";
             // 
             // Login
             // 
@@ -182,6 +168,5 @@ namespace UI.Desktop
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button btnIngresar;
         private System.Windows.Forms.Button btnCancelar;
-        private System.Windows.Forms.LinkLabel lnkOlvideClave;
     }
 }
