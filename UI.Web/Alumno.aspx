@@ -64,7 +64,7 @@
                 &nbsp;
                 <asp:DropDownList ID="ddPlanes" runat="server" Height="21px" Width="169px">
                 </asp:DropDownList>
-                <asp:RangeValidator ID="RangeValidator1" runat="server" ControlToValidate="ddPlanes" ErrorMessage="Seleecione un item Válido" ForeColor="#CC0000" MaximumValue="999999" MinimumValue="1" ValidationGroup="validar">*</asp:RangeValidator>
+                <asp:RangeValidator ID="RangeValidator1" runat="server" ControlToValidate="ddPlanes" ErrorMessage="Seleecione un item Válido" ForeColor="Red" MaximumValue="999999" MinimumValue="1" ValidationGroup="validar">*</asp:RangeValidator>
                 <br />
                 <asp:Label ID="legajoLabel" runat="server" Text="Legajo:"></asp:Label>
                 &nbsp;
