@@ -25,42 +25,33 @@
         </asp:GridView>
     </asp:Panel>
     <asp:Panel ID="gridActionsPanel" runat="server">
-        <asp:LinkButton ID="editarLinkButton" runat="server">Editar</asp:LinkButton>
-        <asp:LinkButton ID="eliminarLinkButton" runat="server">Eliminar</asp:LinkButton>
-        <asp:LinkButton ID="nuevoLinkButton" runat="server">Nuevo</asp:LinkButton>
+        <asp:LinkButton ID="editarLinkButton" runat="server" OnClick="editarLinkButton_Click">Editar</asp:LinkButton>
+        <asp:LinkButton ID="eliminarLinkButton" runat="server" OnClick="eliminarLinkButton_Click">Eliminar</asp:LinkButton>
+        <asp:LinkButton ID="nuevoLinkButton" runat="server" OnClick="nuevoLinkButton_Click">Nuevo</asp:LinkButton>
     </asp:Panel>
     <asp:Panel ID="formPanel" Visible="false" runat="server">
-        <asp:Label ID="idLabel" runat="server" Text="ID: "></asp:Label>
-        <asp:TextBox ID="nombreTextBox" runat="server"></asp:TextBox>
-        <asp:RequiredFieldValidator ID="nombreValidator" runat="server" ControlToValidate="nombreTextBox" ErrorMessage="El nombre no puede estar vacío" ValidationGroup="validar" ForeColor="Red">*</asp:RequiredFieldValidator>
-        <br />
         <asp:Label ID="idMateriaLabel" runat="server" Text="Materia: "></asp:Label>
-        <asp:TextBox ID="apellidoTextBox" runat="server"></asp:TextBox>
-        <asp:RequiredFieldValidator ID="apellidoValidator" runat="server" ControlToValidate="apellidoTextBox" ErrorMessage="El apellido no puede estar vacío" ForeColor="Red" ValidationGroup="validar">*</asp:RequiredFieldValidator>
+        <asp:DropDownList ID="ddMateria" runat="server">
+        </asp:DropDownList>
+        <asp:RangeValidator ID="RangeValidator1" runat="server" ControlToValidate="ddMateria" ErrorMessage="Debe seleccionar una Materia" ForeColor="Red" MaximumValue="999999" MinimumValue="1" ValidationGroup="validar">*</asp:RangeValidator>
         <br />
-        <asp:Label ID="comisionLabel" runat="server" Text="Comisióm: "></asp:Label>
-        <asp:TextBox ID="emailTextBox" runat="server"></asp:TextBox>
-        <asp:RegularExpressionValidator ID="emailValidator" runat="server" ControlToValidate="emailTextBox" ErrorMessage="El email es inválido" ForeColor="Red" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*" ValidationGroup="validar">*</asp:RegularExpressionValidator>
-        <asp:RequiredFieldValidator ID="emailValidator1" runat="server" ControlToValidate="emailTextBox" ErrorMessage="El email no puede estar vacío" ForeColor="Red" ValidationGroup="validar">*</asp:RequiredFieldValidator>
+        <asp:Label ID="comisionLabel" runat="server" Text="Comisión: "></asp:Label>
+        <asp:DropDownList ID="ddComision" runat="server">
+        </asp:DropDownList>
+        <asp:RangeValidator ID="RangeValidator2" runat="server" ControlToValidate="ddComision" ErrorMessage="Debe seleccionar una Comisión" ForeColor="Red" MaximumValue="999999" MinimumValue="1" ValidationGroup="validar">*</asp:RangeValidator>
         <br />
-        <asp:Label ID="nombreUsuarioLabel" runat="server" Text="Usuario: "></asp:Label>
-        <asp:TextBox ID="nombreUsuarioTextBox" runat="server"></asp:TextBox>
-        <asp:RequiredFieldValidator ID="nombreUsuarioValidator" runat="server" ControlToValidate="nombreUsuarioTextBox" ErrorMessage="El nombre de usuario no puede estar vacío" ForeColor="Red" SetFocusOnError="True" ValidationGroup="validar">*</asp:RequiredFieldValidator>
+        <asp:Label ID="anioCalendarioLabel" runat="server" Text="Año Calendario:  "></asp:Label>
+        <asp:TextBox ID="anioCalendarioTextBox" runat="server"></asp:TextBox>
+        <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="anioCalendarioTextBox" ErrorMessage="El año Calendario no puede estar vacío" ForeColor="Red" ValidationGroup="validar">*</asp:RequiredFieldValidator>
         <br />
-        <asp:Label ID="claveLabel" runat="server" Text="Clave: "></asp:Label>
-        <asp:TextBox ID="claveTextBox" runat="server"></asp:TextBox>
-        <asp:RequiredFieldValidator ID="claveValidator" runat="server" ControlToValidate="claveTextBox" ErrorMessage="La clave no puede estar vacía" ForeColor="Red" ValidationGroup="validar">*</asp:RequiredFieldValidator>
-        <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ControlToValidate="claveTextBox" ErrorMessage="La clave debe tener al 8 caracteres o más y al menos una letra y un número" ForeColor="Red" ValidationExpression="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$" ValidationGroup="validar">*</asp:RegularExpressionValidator>
-        <br />
-        <asp:Label ID="repetirClaveLabel" runat="server" Text="Repetir Clave: "></asp:Label>
-        <asp:TextBox ID="repetirClaveTextBox" TextMode="Password" runat="server"></asp:TextBox>
-        <asp:CompareValidator ID="repetirClaveValidator" runat="server" ControlToCompare="claveTextBox" ControlToValidate="repetirClaveTextBox" ErrorMessage="Las claves no coinciden" ForeColor="Red" ValidationGroup="validar">*</asp:CompareValidator>
-        <asp:RequiredFieldValidator ID="repetirClaveValidator1" runat="server" ControlToValidate="repetirClaveTextBox" ErrorMessage="Debe comfirmar su clave" ForeColor="Red" ValidationGroup="validar">*</asp:RequiredFieldValidator>
+        <asp:Label ID="cupoLabel" runat="server" Text="Cupo: "></asp:Label>
+        <asp:TextBox ID="cupoTextBox" runat="server"></asp:TextBox>
+        <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="cupoTextBox" ErrorMessage="El Cupo no puede estar vacío" ForeColor="Red" ValidationGroup="validar">*</asp:RequiredFieldValidator>
         <br />
     </asp:Panel>
     <asp:Panel ID="formActionsPanel" runat="server" Visible="False">
-        <asp:LinkButton ID="aceptarLinkButton" runat="server" ValidationGroup="validar">Aceptar</asp:LinkButton>
-        <asp:LinkButton ID="cancelarLinkButton" runat="server">Cancelar</asp:LinkButton>
+        <asp:LinkButton ID="aceptarLinkButton" runat="server" ValidationGroup="validar" OnClick="aceptarLinkButton_Click">Aceptar</asp:LinkButton>
+        <asp:LinkButton ID="cancelarLinkButton" runat="server" OnClick="cancelarLinkButton_Click">Cancelar</asp:LinkButton>
     </asp:Panel>
 <asp:ValidationSummary ID="ValidationSummary" runat="server" ValidationGroup="validar" ForeColor="Red" />
 </asp:Content>

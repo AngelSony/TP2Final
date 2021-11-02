@@ -32,7 +32,7 @@ namespace Business.Logic
                 throw Ex;
             }
         }
-        public void Save(Materia mat)
+        public static void Save(Materia mat)
         {
             try
             {
@@ -43,7 +43,7 @@ namespace Business.Logic
                 throw Ex;
             }
         }
-        public void Delete(int ID)
+        public static void Delete(int ID)
         {
             try
             {

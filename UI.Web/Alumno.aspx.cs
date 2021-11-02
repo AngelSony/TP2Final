@@ -17,27 +17,18 @@ namespace UI.Web
             if (!IsPostBack)
             {
                 LoadGrid();
-
                 CargarCombo();
-               
             }
-       
         }
-
-
         private void CargarCombo()
         {
-
             PlanLogic plan = new PlanLogic();
             ddPlanes.DataSource = plan.GetAll();
             ddPlanes.DataTextField = "Descripcion";
             ddPlanes.DataValueField = "ID";
             ddPlanes.DataBind();
             ddPlanes.Items.Insert(0, new ListItem("-- Seleccione --", "0"));
-
-
         }
-
         PersonasLogic _logic;
         private PersonasLogic Logic
         {
@@ -50,8 +41,6 @@ namespace UI.Web
                 return _logic;
             }
         }
-
-
         private void LoadGrid()
         {
             PersonasLogic pl = new PersonasLogic();
@@ -69,14 +58,11 @@ namespace UI.Web
         
 
         }
-
         private Personas Entity
         {
             get;
             set;
         }
-
-
         private int SelectedID
         {
             get
@@ -95,8 +81,6 @@ namespace UI.Web
                 ViewState["SelectedID"] = value;
             }
         }
-
-
         private bool IsEntitySelected
         {
             get
@@ -104,20 +88,17 @@ namespace UI.Web
                 return (SelectedID != 0);
             }
         }
-
         public enum FormModes
         {
             Alta,
             Baja,
             Modificacion
         }
-
         public FormModes FormMode
         {
             get { return (FormModes)ViewState["FormMode"]; }
             set { ViewState["FormMode"] = value; }
         }
-
         private void LoadForm(int id)
         {
             Entity = Logic.GetOne(id);
@@ -131,11 +112,8 @@ namespace UI.Web
             direccionTextBox.Text = Entity.Direccion;
 
         }
-
-
         private void LoadEntity(Personas alumno)
         {
-
             alumno.Nombre = nombreTextBox.Text;
             alumno.Apellido = apellidoTextBox.Text;
             alumno.Email = emailTextBox.Text;
@@ -145,21 +123,15 @@ namespace UI.Web
             alumno.IDPlan = Convert.ToInt32(ddPlanes.SelectedValue);
             alumno.Telefono = telefonoTextBox.Text;
             alumno.TipoPersona = Personas.TiposPersonas.Alumno;
-            
-
         }
-
         private void DeleteEntity(int id)
         {
             Logic.Delete(id);
-
         }
-
         private void SaveEntity(Personas alumno)
         {
             Logic.Save(alumno);
         }
-
         private void EnableForm(bool enable)
         {
             nombreTextBox.Enabled = enable;
@@ -170,13 +142,9 @@ namespace UI.Web
             ddPlanes.Enabled = enable;
             direccionTextBox.Enabled = enable;
             legajoTextBox.Enabled = enable;
-           
-           
-
         }
         private void ClearForm()
         {
-
             nombreTextBox.Text = string.Empty;
             apellidoTextBox.Text = string.Empty;
             emailTextBox.Text = string.Empty;
@@ -184,9 +152,7 @@ namespace UI.Web
             legajoTextBox.Text = string.Empty;
             telefonoTextBox.Text = string.Empty;
             direccionTextBox.Text = string.Empty;
-
         }
-
         protected void editarLinkButton_Click(object sender, EventArgs e)
         {
             if (IsEntitySelected)
@@ -200,7 +166,6 @@ namespace UI.Web
                 gridActionsPanel.Visible = false;
             }
         }
-
         protected void aceptarLinkButton_Click(object sender, EventArgs e)
         {
             switch (FormMode)
@@ -214,7 +179,6 @@ namespace UI.Web
                     Entity.State = BusinessEntity.States.Modified;
                     LoadEntity(Entity);
                     SaveEntity(Entity);
-                   
                     break;
                 case FormModes.Alta:
                     Entity = new Personas();
@@ -224,14 +188,10 @@ namespace UI.Web
                 default:
                     break;
             }
-
             Response.Redirect("~/Alumno.aspx");
-
         }
-
         protected void eliminarLinkButton_Click(object sender, EventArgs e)
         {
-
             if (IsEntitySelected)
             {
                 formPanel.Visible = true;
@@ -241,12 +201,8 @@ namespace UI.Web
                 formActionPanel.Visible = true;
                 grdAlumnos.Enabled = false;
                 gridActionsPanel.Visible = false;
-
-
             }
-
         }
-
         protected void nuevoLinkButton_Click(object sender, EventArgs e)
         {
             formPanel.Visible = true;
@@ -255,22 +211,14 @@ namespace UI.Web
             EnableForm(true);
             formActionPanel.Visible = true;
             gridActionsPanel.Visible = false;
-
         }
-
         protected void cancelarLinkButton_Click(object sender, EventArgs e)
         {
             Response.Redirect("~/Alumno.aspx");
         }
-
         protected void grdAlumnos_SelectedIndexChanged(object sender, EventArgs e)
         {
             SelectedID = (int)grdAlumnos.SelectedValue;
-            
         }
-
     }
-
-
-
 }
