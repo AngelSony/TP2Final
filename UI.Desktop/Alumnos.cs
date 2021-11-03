@@ -17,48 +17,36 @@ namespace UI.Desktop
         {
             InitializeComponent();
             dgvAlumnos.AutoGenerateColumns = false;
-
         }
-        
-
         public void Listar()
         {
-            PersonasLogic pl = new PersonasLogic();
             List<Personas> misAlu = new List<Personas>();
-            foreach(var unAlu in pl.GetAll())
+            foreach(var unAlu in PersonasLogic.GetAll())
             {
                 if(unAlu.TipoPersona.Equals(Personas.TiposPersonas.Alumno))
                 {
                     misAlu.Add(unAlu);
                 }
             }
-
             dgvAlumnos.DataSource = misAlu; 
-            
         }
-
         private void Alumnos_Load(object sender, EventArgs e)
         {
             Listar();   
         }
-
         private void btnActualizar_Click(object sender, EventArgs e)
         {
             Listar();
         }
-
         private void btnSalir_Click(object sender, EventArgs e)
         {
             Close();
         }
-
         private void tsbNuevo_Click(object sender, EventArgs e)
         {
-
             AlumnosDesktop formAlumno = new AlumnosDesktop(ApplicationForm.ModoForm.Alta);
             formAlumno.ShowDialog();
-            Listar();       
-        
+            Listar();     
         }
 
         private void tsbEditar_Click(object sender, EventArgs e)

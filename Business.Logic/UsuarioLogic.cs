@@ -46,7 +46,6 @@ namespace Business.Logic
         {
             try
             {
-
                 return new UsuarioAdapter().GetUsuarioPorNombre(usuario);
             }
             catch (Exception Ex)

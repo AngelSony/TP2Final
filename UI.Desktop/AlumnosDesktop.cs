@@ -120,13 +120,11 @@ namespace UI.Desktop
         public override void GuardarCambios()
         {
             MapearADatos();
-            PersonasLogic PersonaNegocio = new PersonasLogic();
-            PersonaNegocio.Save(AlumnoActual);
+            PersonasLogic.Save(AlumnoActual);
 
             if(Modo == ModoForm.Alta)
             {
                 MessageBox.Show("Alumno Agregado con Éxito");
-
             }
             if(Modo == ModoForm.Modificacion)
             {

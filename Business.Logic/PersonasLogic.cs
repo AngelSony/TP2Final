@@ -11,58 +11,49 @@ namespace Business.Logic
 {
     public class PersonasLogic : BusinessLogic
     {
-        private PersonasAdapter PersonaData;
-
-        public PersonasLogic(){
-
-            PersonaData = new PersonasAdapter();
-        }
-    
-
-        public Personas GetOne(int ID)
+        public static Personas GetOne(int ID)
         {
             try
             {
-                return PersonaData.GetOne(ID);
+                return new PersonasAdapter().GetOne(ID);
             }
             catch(Exception Ex)
             {
                 throw Ex;
             }
         }
-
-        public List<Personas> GetAll()
+        public static List<Personas> GetAll()
         {
-
             try
             {
-                return PersonaData.GetAll();
-
+                return new PersonasAdapter().GetAll();
             }
             catch(Exception Ex)
             {
                 throw Ex;
             }
-         
         }
-
-
-        public void Save(Personas persona) // Validar Plan
+        public static void Save(Personas persona)
         {
-            
-
-            PersonaData.Save(persona);
-
+            try
+            {
+                new PersonasAdapter().Save(persona);
+            }
+            catch (Exception Ex)
+            {
+                throw Ex;
+            }
         }
-
-        public void Delete(int ID)
+        public static void Delete(int ID)
         {
-            PersonaData.Delete(ID);
+            try
+            {
+                new PersonasAdapter().Delete(ID);
+            }
+            catch (Exception Ex)
+            {
+                throw Ex;
+            }
         }
-
-
-
-
-
     }
 }

@@ -35,9 +35,6 @@ namespace UI.Desktop
         {
             txtID.Text = UsuarioActual.ID.ToString();
             chkHabilitado.Checked = UsuarioActual.Habilitado;
-            txtNombre.Text = UsuarioActual.Nombre;
-            txtApellido.Text = UsuarioActual.Apellido;
-            txtEmail.Text = UsuarioActual.EMail;
             txtUsuario.Text = UsuarioActual.NombreUsuario;
             txtClave.Text = UsuarioActual.Clave;
             txtConfirmarclave.Text = UsuarioActual.Clave;
@@ -74,9 +71,6 @@ namespace UI.Desktop
             if(Modo == ModoForm.Modificacion || Modo == ModoForm.Alta)
             {
                 UsuarioActual.Habilitado = chkHabilitado.Checked;
-                UsuarioActual.Nombre = txtNombre.Text.Trim();
-                UsuarioActual.Apellido = txtApellido.Text.Trim();
-                UsuarioActual.EMail = txtEmail.Text.Trim();
                 UsuarioActual.NombreUsuario = txtUsuario.Text.Trim();
                 UsuarioActual.Clave = txtClave.Text.Trim();
             }

@@ -83,9 +83,6 @@ namespace UI.Web
         private void LoadForm(int id)
         {
             Entity = Logic.GetOne(id);
-            nombreTextBox.Text = Entity.Nombre;
-            apellidoTextBox.Text = Entity.Apellido;
-            emailTextBox.Text = Entity.EMail;
             habilitadoCheckBox.Checked = Entity.Habilitado;
             nombreUsuarioTextBox.Text = Entity.NombreUsuario;
             claveTextBox.Text = Entity.Clave;
@@ -103,9 +100,6 @@ namespace UI.Web
 
         private void LoadEntity(Usuario usuario)
         {
-            usuario.Nombre = nombreTextBox.Text;
-            usuario.Apellido = apellidoTextBox.Text;
-            usuario.EMail = emailTextBox.Text;
             usuario.NombreUsuario = nombreUsuarioTextBox.Text;
             usuario.Clave = claveTextBox.Text;
             usuario.Habilitado = habilitadoCheckBox.Checked;
