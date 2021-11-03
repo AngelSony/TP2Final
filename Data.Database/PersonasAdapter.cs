@@ -59,12 +59,9 @@ namespace Data.Database
             return personas;
 
         }
-
-
         public Personas GetOne(int ID)
         {
             Personas per = new Personas();
-
             try
             {
                 OpenConnection();
@@ -104,7 +101,6 @@ namespace Data.Database
             }
             return per;
         }
-
         public void Delete(int ID)
         {
             try
@@ -123,9 +119,7 @@ namespace Data.Database
             {
                 CloseConnection();
             }
-
         }
-
         protected void Insert(Personas persona)
         {
             try
@@ -148,13 +142,11 @@ namespace Data.Database
             {
                 Exception ExcepcionPersona = new Exception("Error al crear Alumno ", Ex); //Completar
                 throw ExcepcionPersona;
-
             }
             finally
             {
                 CloseConnection();
             }
-
         }
         protected void Update(Personas persona)
         {
@@ -184,36 +176,22 @@ namespace Data.Database
             {
                 CloseConnection();
             }
-
         }
-
-
-
-
-          public void Save(Personas persona)
-            {
-
+        public void Save(Personas persona)
+        {
             if(persona.State == BusinessEntity.States.Deleted)
             {
                 Delete(persona.ID);
             }
-
             if(persona.State == BusinessEntity.States.Modified)
             {
                 Update(persona);
             }
-
             if(persona.State == BusinessEntity.States.New)
             {
                 Insert(persona);
             }
-
             persona.State = BusinessEntity.States.Unmodified;
         }
-
-
-
-
-
     }
 }

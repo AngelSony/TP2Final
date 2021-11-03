@@ -34,11 +34,7 @@ namespace UI.Desktop
             this.btnActualizar = new System.Windows.Forms.Button();
             this.btnSalir = new System.Windows.Forms.Button();
             this.dgvPersonas = new System.Windows.Forms.DataGridView();
-            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.btnNuevo = new System.Windows.Forms.ToolStripButton();
-            this.btnEditar = new System.Windows.Forms.ToolStripButton();
-            this.btnEliminar = new System.Windows.Forms.ToolStripButton();
-            this.idPersona = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.idUsuario = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.apellido = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.legajo = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -49,6 +45,10 @@ namespace UI.Desktop
             this.email = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.direccion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.telefono = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.btnNuevo = new System.Windows.Forms.ToolStripButton();
+            this.btnEditar = new System.Windows.Forms.ToolStripButton();
+            this.btnEliminar = new System.Windows.Forms.ToolStripButton();
             this.toolStripContainer1.ContentPanel.SuspendLayout();
             this.toolStripContainer1.TopToolStripPanel.SuspendLayout();
             this.toolStripContainer1.SuspendLayout();
@@ -119,7 +119,7 @@ namespace UI.Desktop
             this.dgvPersonas.AllowUserToDeleteRows = false;
             this.dgvPersonas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvPersonas.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.idPersona,
+            this.idUsuario,
             this.nombre,
             this.apellido,
             this.legajo,
@@ -140,52 +140,12 @@ namespace UI.Desktop
             this.dgvPersonas.Size = new System.Drawing.Size(1150, 426);
             this.dgvPersonas.TabIndex = 2;
             // 
-            // toolStrip1
+            // idUsuario
             // 
-            this.toolStrip1.Dock = System.Windows.Forms.DockStyle.None;
-            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.btnNuevo,
-            this.btnEditar,
-            this.btnEliminar});
-            this.toolStrip1.Location = new System.Drawing.Point(3, 0);
-            this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(81, 25);
-            this.toolStrip1.TabIndex = 0;
-            // 
-            // btnNuevo
-            // 
-            this.btnNuevo.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btnNuevo.Image = global::UI.Desktop.Properties.Resources.InsertarBoton;
-            this.btnNuevo.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnNuevo.Name = "btnNuevo";
-            this.btnNuevo.Size = new System.Drawing.Size(23, 22);
-            this.btnNuevo.Text = "toolStripButton1";
-            this.btnNuevo.Click += new System.EventHandler(this.btnNuevo_Click);
-            // 
-            // btnEditar
-            // 
-            this.btnEditar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btnEditar.Image = global::UI.Desktop.Properties.Resources.ModificarBoton;
-            this.btnEditar.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnEditar.Name = "btnEditar";
-            this.btnEditar.Size = new System.Drawing.Size(23, 22);
-            this.btnEditar.Text = "toolStripButton2";
-            // 
-            // btnEliminar
-            // 
-            this.btnEliminar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btnEliminar.Image = global::UI.Desktop.Properties.Resources.EliminarBoton;
-            this.btnEliminar.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnEliminar.Name = "btnEliminar";
-            this.btnEliminar.Size = new System.Drawing.Size(23, 22);
-            this.btnEliminar.Text = "toolStripButton3";
-            // 
-            // idPersona
-            // 
-            this.idPersona.DataPropertyName = "IDUsuario";
-            this.idPersona.HeaderText = "ID";
-            this.idPersona.Name = "idPersona";
-            this.idPersona.ReadOnly = true;
+            this.idUsuario.DataPropertyName = "ID";
+            this.idUsuario.HeaderText = "ID";
+            this.idUsuario.Name = "idUsuario";
+            this.idUsuario.ReadOnly = true;
             // 
             // nombre
             // 
@@ -233,7 +193,7 @@ namespace UI.Desktop
             // 
             // fechaNac
             // 
-            this.fechaNac.DataPropertyName = "FechaNac";
+            this.fechaNac.DataPropertyName = "FechaNacimiento";
             this.fechaNac.HeaderText = "Fecha Nacimiento";
             this.fechaNac.Name = "fechaNac";
             this.fechaNac.ReadOnly = true;
@@ -259,6 +219,48 @@ namespace UI.Desktop
             this.telefono.Name = "telefono";
             this.telefono.ReadOnly = true;
             // 
+            // toolStrip1
+            // 
+            this.toolStrip1.Dock = System.Windows.Forms.DockStyle.None;
+            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.btnNuevo,
+            this.btnEditar,
+            this.btnEliminar});
+            this.toolStrip1.Location = new System.Drawing.Point(3, 0);
+            this.toolStrip1.Name = "toolStrip1";
+            this.toolStrip1.Size = new System.Drawing.Size(81, 25);
+            this.toolStrip1.TabIndex = 0;
+            // 
+            // btnNuevo
+            // 
+            this.btnNuevo.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btnNuevo.Image = global::UI.Desktop.Properties.Resources.InsertarBoton;
+            this.btnNuevo.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnNuevo.Name = "btnNuevo";
+            this.btnNuevo.Size = new System.Drawing.Size(23, 22);
+            this.btnNuevo.Text = "toolStripButton1";
+            this.btnNuevo.Click += new System.EventHandler(this.btnNuevo_Click);
+            // 
+            // btnEditar
+            // 
+            this.btnEditar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btnEditar.Image = global::UI.Desktop.Properties.Resources.ModificarBoton;
+            this.btnEditar.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnEditar.Name = "btnEditar";
+            this.btnEditar.Size = new System.Drawing.Size(23, 22);
+            this.btnEditar.Text = "toolStripButton2";
+            this.btnEditar.Click += new System.EventHandler(this.btnEditar_Click);
+            // 
+            // btnEliminar
+            // 
+            this.btnEliminar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btnEliminar.Image = global::UI.Desktop.Properties.Resources.EliminarBoton;
+            this.btnEliminar.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnEliminar.Name = "btnEliminar";
+            this.btnEliminar.Size = new System.Drawing.Size(23, 22);
+            this.btnEliminar.Text = "toolStripButton3";
+            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
+            // 
             // formPersonas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -266,6 +268,7 @@ namespace UI.Desktop
             this.ClientSize = new System.Drawing.Size(1156, 486);
             this.Controls.Add(this.toolStripContainer1);
             this.Name = "formPersonas";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "fromPersonas";
             this.Load += new System.EventHandler(this.fromPersonas_Load);
             this.toolStripContainer1.ContentPanel.ResumeLayout(false);
@@ -292,7 +295,7 @@ namespace UI.Desktop
         private System.Windows.Forms.ToolStripButton btnNuevo;
         private System.Windows.Forms.ToolStripButton btnEditar;
         private System.Windows.Forms.ToolStripButton btnEliminar;
-        private System.Windows.Forms.DataGridViewTextBoxColumn idPersona;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idUsuario;
         private System.Windows.Forms.DataGridViewTextBoxColumn nombre;
         private System.Windows.Forms.DataGridViewTextBoxColumn apellido;
         private System.Windows.Forms.DataGridViewTextBoxColumn legajo;

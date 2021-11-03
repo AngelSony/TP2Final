@@ -25,9 +25,9 @@ namespace UI.Desktop
         public void Listar()
         {
             var PersonasUsuarios = from p in PersonasLogic.GetAll()
-                                   join u in new UsuarioLogic().GetAll() on p.ID equals u.IDPersona
+                                   join u in UsuarioLogic.GetAll() on p.ID equals u.IDPersona
                                    where p.TipoPersona.Equals(tipoPersona) 
-                                   select new { IDUsuario = u.ID, NombreUsuario = u.NombreUsuario, Clave = u.Clave, Habilitado = u.Habilitado, TipoPersona = p.TipoPersona};
+                                   select new { u.ID, u.NombreUsuario, u.Clave, u.Habilitado, p.Nombre, p.Apellido, p.Legajo, p.FechaNacimiento, p.Email, p.Direccion, p.Telefono};
 
             dgvPersonas.DataSource = PersonasUsuarios.ToList();
         }
@@ -45,7 +45,23 @@ namespace UI.Desktop
         }
         private void btnNuevo_Click(object sender, EventArgs e)
         {
-            //Abrir PersonasDesktop
+            PersonaDesktop frmPersonas = new PersonaDesktop(tipoPersona, ApplicationForm.ModoForm.Alta);
+            frmPersonas.ShowDialog();
+            Listar();
+        }
+        private void btnEditar_Click(object sender, EventArgs e)
+        {
+            int ID = (int)dgvPersonas.SelectedRows[0].Cells["idUsuario"].Value;
+            PersonaDesktop frmPersonas = new PersonaDesktop(tipoPersona, ApplicationForm.ModoForm.Modificacion, ID);
+            frmPersonas.ShowDialog();
+            Listar();
+        }
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+            int ID = (int)dgvPersonas.SelectedRows[0].Cells["idUsuario"].Value;
+            PersonaDesktop frmPersonas = new PersonaDesktop(tipoPersona, ApplicationForm.ModoForm.Baja, ID);
+            frmPersonas.ShowDialog();
+            Listar();
         }
     }
 }

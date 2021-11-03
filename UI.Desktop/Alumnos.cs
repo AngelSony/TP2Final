@@ -48,7 +48,6 @@ namespace UI.Desktop
             formAlumno.ShowDialog();
             Listar();     
         }
-
         private void tsbEditar_Click(object sender, EventArgs e)
         {
             int ID = ((Personas)dgvAlumnos.SelectedRows[0].DataBoundItem).ID;
@@ -57,7 +56,6 @@ namespace UI.Desktop
             Listar();
 
         }
-
         private void tsbEliminar_Click(object sender, EventArgs e)
         {
             int ID = ((Personas)dgvAlumnos.SelectedRows[0].DataBoundItem).ID;

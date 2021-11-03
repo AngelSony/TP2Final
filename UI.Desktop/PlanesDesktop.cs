@@ -114,8 +114,7 @@ namespace UI.Desktop
         public override void GuardarCambios()
         {
             MapearADatos();
-            PlanLogic PlanNegocio = new PlanLogic();
-            PlanNegocio.Save(planActual);
+            PlanLogic.Save(planActual);
             if (Modo == ModoForm.Alta)
             {
                 MessageBox.Show("Plan Agregado con Éxito");

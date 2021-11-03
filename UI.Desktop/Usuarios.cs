@@ -14,10 +14,9 @@ namespace UI.Desktop
         }
         public void listar()
         {
-            UsuarioLogic ul = new UsuarioLogic();
             try
             {
-                dgvUsuarios.DataSource = ul.GetAll();
+                dgvUsuarios.DataSource = UsuarioLogic.GetAll();
             }catch(Exception ex)
             {
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);

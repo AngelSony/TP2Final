@@ -23,7 +23,6 @@ namespace Business.Entities
         public string Nombre { get => _Nombre; set => _Nombre = value; }
         public string Telefono { get => _Telefono; set => _Telefono = value; }
         public TiposPersonas TipoPersona { get => _TipoPersona; set => _TipoPersona = value; }
-
         public enum TiposPersonas
         {
             Alumno,

@@ -22,8 +22,7 @@ namespace UI.Web
         }
         private void CargarCombo()
         {
-            PlanLogic plan = new PlanLogic();
-            ddPlanes.DataSource = plan.GetAll();
+            ddPlanes.DataSource = PlanLogic.GetAll();
             ddPlanes.DataTextField = "Descripcion";
             ddPlanes.DataValueField = "ID";
             ddPlanes.DataBind();

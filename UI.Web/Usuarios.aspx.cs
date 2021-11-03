@@ -15,31 +15,13 @@ namespace UI.Web
         {
             if (!IsPostBack)
             {
-
                 LoadGrid();
-
-
-            }
-        }
-
-        UsuarioLogic _logic;
-
-        private UsuarioLogic Logic
-        {
-            get
-            {
-                if (_logic == null)
-                {
-                    _logic = new UsuarioLogic();
-                }
-                return _logic;
             }
         }
         private Usuario Entity
         {
             get;
             set;
-
         }
 
         private int SelectedID
@@ -82,7 +64,7 @@ namespace UI.Web
 
         private void LoadForm(int id)
         {
-            Entity = Logic.GetOne(id);
+            Entity = UsuarioLogic.GetOne(id);
             habilitadoCheckBox.Checked = Entity.Habilitado;
             nombreUsuarioTextBox.Text = Entity.NombreUsuario;
             claveTextBox.Text = Entity.Clave;
@@ -93,7 +75,7 @@ namespace UI.Web
 
         private void LoadGrid()
         {
-            gridView.DataSource = Logic.GetAll();
+            gridView.DataSource = UsuarioLogic.GetAll();
             gridView.DataBind();
         }
 
@@ -108,14 +90,14 @@ namespace UI.Web
 
         private void DeleteEntity(int id)
         {
-            Logic.Delete(id);
+            UsuarioLogic.Delete(id);
         }
 
         private void SaveEntity(Usuario usuario)
         {
             try
             {
-                Logic.Save(usuario);
+                UsuarioLogic.Save(usuario);
             }catch (Exception Ex)
             {
                 System.Windows.Forms.MessageBox.Show(Ex.Message);

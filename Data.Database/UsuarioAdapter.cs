@@ -34,7 +34,6 @@ namespace Data.Database
                     };
                     usuarios.Add(usr);
                 }
-
                 drUsuarios.Close();
             }
             catch (Exception Ex)

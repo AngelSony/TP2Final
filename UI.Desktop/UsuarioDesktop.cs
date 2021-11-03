@@ -27,8 +27,7 @@ namespace UI.Desktop
         public UsuarioDesktop(int ID, ModoForm modo) : this()
         {
             Modo = modo;
-            UsuarioLogic UsuarioNegocio = new UsuarioLogic();
-            UsuarioActual = UsuarioNegocio.GetOne(ID);
+            UsuarioActual = UsuarioLogic.GetOne(ID);
             MapearDeDatos();
         }
         public override void MapearDeDatos()
@@ -95,8 +94,7 @@ namespace UI.Desktop
 
         public override void GuardarCambios() {
             MapearADatos();
-            UsuarioLogic UsuarioNegocio = new UsuarioLogic();
-            UsuarioNegocio.Save(UsuarioActual);
+            UsuarioLogic.Save(UsuarioActual);
         }
 
         public override bool Validar() {

@@ -10,60 +10,51 @@ namespace Business.Logic
 {
    public class PlanLogic
     {
-
-
-        private  PlanAdapter PlanData;
-
-        public PlanLogic()
-        {
-
-            PlanData = new PlanAdapter();
-
-        }
-
-        public Plan GetOne(int ID)
+        public static Plan GetOne(int ID)
         {
             try
             {
-                return PlanData.GetOne(ID);
+                return new PlanAdapter().GetOne(ID);
             }
             catch (Exception Ex)
             {
                 throw Ex;
             }
         }
-
-
-        public  List<Plan> GetAll()
+        public static List<Plan> GetAll()
         {
-
             try
             {
-                return PlanData.GetAll();
+                return new PlanAdapter().GetAll();
+            }
+            catch (Exception Ex)
+            {
+                throw Ex;
+            }
+        }
+        public static void Save(Plan plan)
+        {
+            try
+            {
+                new PlanAdapter().Save(plan);
 
             }
             catch (Exception Ex)
             {
                 throw Ex;
             }
-
         }
-
-        public void Save(Plan plan)
+        public static void Delete(int ID)
         {
+            try
+            {
+                new PlanAdapter().Delete(ID);
 
-
-            PlanData.Save(plan);
-
+            }
+            catch (Exception Ex)
+            {
+                throw Ex;
+            }
         }
-
-        public void Delete(int ID)
-        {
-            PlanData.Delete(ID);
-        }
-
-
-
-
     }
 }
