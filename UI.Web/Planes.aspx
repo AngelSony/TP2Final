@@ -1,14 +1,9 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Planes.aspx.cs" Inherits="UI.Web.Planes" %>
+﻿<%@ Page Title='Planes' Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Planes.aspx.cs" Inherits="UI.Web.Planes" %>
 
-<!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <title></title>
-</head>
-<body>
-    <form id="form1" runat="server">
+
+<asp:Content ID="Content1" ContentPlaceHolderID="bodyContentPlaceHolder" runat="server">
+
         <div>
             <asp:Panel ID="grdPanel" runat="server" Width="1374px">
                 <asp:GridView ID="grdPlanes" runat="server" AutoGenerateColumns="False" CellPadding="4" DataKeyNames="ID" ForeColor="#333333" GridLines="None" OnSelectedIndexChanged="grdPlanes_SelectedIndexChanged">
@@ -55,6 +50,4 @@
             <asp:ValidationSummary ID="ValidationSummary1" runat="server" ForeColor="Red" ValidationGroup="validar" />
             <br />
         </div>
-    </form>
-</body>
-</html>
+</asp:Content>
