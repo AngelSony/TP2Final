@@ -37,6 +37,7 @@
             <asp:Label ID="Label3" runat="server" Text="Label"></asp:Label>
             <br />
             <asp:Panel ID="formPanel" runat="server" Visible="False">
+                <br />
                 <asp:Label ID="nombreLabel" runat="server" Text="Nombre: "></asp:Label>
                 <asp:TextBox ID="nombreTextBox" runat="server"></asp:TextBox>
                    <asp:RequiredFieldValidator ID="nombreValidator" runat="server" ControlToValidate="nombreTextBox" ErrorMessage="El nombre no puede estar vacío" ForeColor="Red" ValidationGroup="validar">*</asp:RequiredFieldValidator>
