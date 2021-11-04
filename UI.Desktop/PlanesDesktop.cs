@@ -14,15 +14,14 @@ namespace UI.Desktop
 {
     public partial class PlanesDesktop : ApplicationForm
     {
-
         public Plan planActual;
+        public List<Materia> materiasActuales;
         public PlanesDesktop()
         {
             InitializeComponent();
+            dgvMaterias.AutoGenerateColumns = false;
+            materiasActuales = new List<Materia>();
         }
-
-        
-
         public PlanesDesktop(ModoForm modo) : this()
         {
             Modo = modo;
@@ -32,55 +31,38 @@ namespace UI.Desktop
         public PlanesDesktop(int ID, ModoForm modo) : this()
         {
             Modo = modo;
-            PlanLogic PlanLogic = new PlanLogic();
             planActual = PlanLogic.GetOne(ID);
+            foreach (Materia materia in MateriaLogic.GetAll())
+            {
+                if (materia.IDPlan.Equals(planActual.ID))
+                {
+                    materiasActuales.Add(materia);
+                    materia.State = BusinessEntity.States.Unmodified;
+                }
+            }
             MapearDeDatos();
         }
-
-
-
         public override void MapearDeDatos()
         {
             txtID.Text = planActual.ID.ToString();
             txtDescripcion.Text = planActual.Descripcion;
             txtEspecialidad.Text = planActual.IDEspecialidad.ToString(); //CAMBIAR
 
-
-            List<Materia> misMaterias = new List<Materia>();
-
-            foreach (var materia in MateriaLogic.GetAll())
-            {
-                if (materia.IDPlan.Equals(planActual.ID))
-                {
-                    misMaterias.Add(materia);
-                }
-            }
-            dgvMaterias.AutoGenerateColumns = false;
-            dgvMaterias.DataSource = misMaterias;
+            listar();
             ModoBoton();
 
         }
-
-
-
-
         public override void MapearADatos()
         {
             if (Modo == ModoForm.Alta)
             {
-
                 planActual = new Plan();
-
-               
-
+                materiasActuales = new List<Materia>();
             }
-
             if (Modo == ModoForm.Alta || Modo == ModoForm.Modificacion)
             {
                 planActual.Descripcion= txtDescripcion.Text.Trim();
                 planActual.IDEspecialidad = Convert.ToInt32(txtEspecialidad.Text.Trim()); //CAMNIAR
-
-
             }
 
             switch (Modo)
@@ -123,46 +105,67 @@ namespace UI.Desktop
                     break;
                 default:
                     break;
-
             }
-        }
-
-        public List<>
-
-        public static Materia MisMaterias(Materia materia)
-        {
-            ListaMaterias = new List<Materia>();
-            ListaMaterias.Add(materia);
-            return ListaMaterias;
-            
         }
 
         public override void GuardarCambios()
         {
             MapearADatos();
-            PlanLogic PlanNegocio = new PlanLogic();
-            PlanNegocio.Save(planActual);
+            MessageBox.Show(materiasActuales.Count.ToString());
 
-            
-
-
-
-    
-
-            PlanLogic.Save(planActual);
             if (Modo == ModoForm.Alta)
             {
+                PlanLogic.Save(planActual);
+                foreach (Materia mat in materiasActuales)
+                {
+                    mat.IDPlan = planActual.ID;
+                    MateriaLogic.Save(mat);
+                }
                 MessageBox.Show("Plan Agregado con Éxito");
-
             }
             if (Modo == ModoForm.Modificacion)
             {
+                foreach (Materia mat in materiasActuales)
+                {
+                    if(mat.State == BusinessEntity.States.Deleted)
+                    {
+                        MessageBox.Show("Se va a eliminar: "+mat.ID);
+                        MateriaLogic.Delete(mat.ID);
+                    }
+                }
+                PlanLogic.Save(planActual);
+                foreach (Materia mat in materiasActuales)
+                {
+                    if (mat.State != BusinessEntity.States.Deleted)
+                    {
+                        MateriaLogic.Save(mat);
+                    }
+                }
                 MessageBox.Show("Plan Modificado con Éxito");
             }
-
+            if(Modo == ModoForm.Baja)
+            {
+                foreach (Materia mat in materiasActuales)
+                {
+                    MateriaLogic.Delete(mat.ID);
+                }
+                PlanLogic.Delete(planActual.ID);
+            }
         }
 
-
+        public void listar()
+        {
+            List<Materia> matListar = new List<Materia>();
+            foreach(Materia mat in materiasActuales)
+            {
+                if(mat.State!= BusinessEntity.States.Deleted)
+                {
+                    matListar.Add(mat);
+                }
+            }
+            dgvMaterias.DataSource = null;
+            dgvMaterias.DataSource = matListar;
+        }
 
         public override bool Validar()
         {
@@ -176,16 +179,8 @@ namespace UI.Desktop
                 Notificar("Advertencia", "Campo Apellido incompleto", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
-
-
             else { return true; }
         }
-
-
-
-
-   
-
         private void btnAceptar_Click(object sender, EventArgs e)
         {
             if (Modo == ModoForm.Baja)
@@ -208,30 +203,29 @@ namespace UI.Desktop
 
         private void tsbNuevo_Click(object sender, EventArgs e)
         {
-                MateriasDesktop formMaterias = new MateriasDesktop(ApplicationForm.ModoForm.Alta);
-                formMaterias.ShowDialog();
-                
+            MateriasDesktop formMaterias = new MateriasDesktop(ref materiasActuales, ApplicationForm.ModoForm.Alta);
+            formMaterias.ShowDialog();
+            listar();
         }
 
         private void tsbEditar_Click(object sender, EventArgs e)
         {
             int ID = ((Materia)dgvMaterias.SelectedRows[0].DataBoundItem).ID;
-            MateriasDesktop formMaterias = new MateriasDesktop(ID, ApplicationForm.ModoForm.Modificacion);
+            MateriasDesktop formMaterias = new MateriasDesktop(ref materiasActuales, ID, ApplicationForm.ModoForm.Modificacion);
             formMaterias.ShowDialog();
-            
+            listar();
         }
 
         private void tsbEliminar_Click(object sender, EventArgs e)
         {
             int ID = ((Materia)dgvMaterias.SelectedRows[0].DataBoundItem).ID;
-            MateriasDesktop formMateria = new MateriasDesktop(ID, ApplicationForm.ModoForm.Baja);
+            MateriasDesktop formMateria = new MateriasDesktop(ref materiasActuales, ID, ApplicationForm.ModoForm.Baja);
             formMateria.ShowDialog();
-         
+            listar();
         }
 
         private void PlanesDesktop_Load(object sender, EventArgs e)
         {
-
         }
     }
 }

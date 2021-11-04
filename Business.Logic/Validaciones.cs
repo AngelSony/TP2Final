@@ -47,7 +47,7 @@ namespace Business.Logic
                     return false;
                 }
             }
-            catch(ArgumentNullException Ex)
+            catch(ArgumentNullException)
             {
                 return false;
             }
