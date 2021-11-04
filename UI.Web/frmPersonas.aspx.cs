@@ -13,7 +13,7 @@ namespace UI.Web
         {
             if (!IsPostBack)
             {
-                Label3.Text = Application["TipoPersona"].ToString();
+                Legajo.Text = Application["TipoPersona"].ToString();
             }
         }
     }

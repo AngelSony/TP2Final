@@ -27,7 +27,6 @@ namespace UI.Desktop
             Modo = modo;
             ModoBoton();
         }
-
         public PlanesDesktop(int ID, ModoForm modo) : this()
         {
             Modo = modo;
@@ -82,7 +81,6 @@ namespace UI.Desktop
                     break;
             }
         }
-
         private void ModoBoton()
         {
             switch (Modo)
@@ -106,9 +104,6 @@ namespace UI.Desktop
                     break;
             }
         }
-
-       
-        
 
         public override void GuardarCambios()
         {
@@ -159,7 +154,6 @@ namespace UI.Desktop
                 PlanLogic.Delete(planActual.ID);
             }
         }
-
         public void listar()
         {
             List<Materia> matListar = new List<Materia>();
@@ -173,7 +167,6 @@ namespace UI.Desktop
             dgvMaterias.DataSource = null;
             dgvMaterias.DataSource = matListar;
         }
-
         public override bool Validar()
         {
             if (string.IsNullOrWhiteSpace(txtDescripcion.Text))
@@ -202,19 +195,16 @@ namespace UI.Desktop
                 Close();
             }
         }
-
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             Close();
         }
-
         private void tsbNuevo_Click(object sender, EventArgs e)
         {
             MateriasDesktop formMaterias = new MateriasDesktop(ref materiasActuales, ApplicationForm.ModoForm.Alta);
             formMaterias.ShowDialog();
             listar();
         }
-
         private void tsbEditar_Click(object sender, EventArgs e)
         {
             int ID = ((Materia)dgvMaterias.SelectedRows[0].DataBoundItem).ID;
@@ -222,7 +212,6 @@ namespace UI.Desktop
             formMaterias.ShowDialog();
             listar();
         }
-
         private void tsbEliminar_Click(object sender, EventArgs e)
         {
             int ID = ((Materia)dgvMaterias.SelectedRows[0].DataBoundItem).ID;
@@ -230,7 +219,6 @@ namespace UI.Desktop
             formMateria.ShowDialog();
             listar();
         }
-
         private void PlanesDesktop_Load(object sender, EventArgs e)
         {
         }
