@@ -127,29 +127,16 @@ namespace UI.Desktop
             }
         }
 
-        public List<>
-
-        public static Materia MisMaterias(Materia materia)
-        {
-            ListaMaterias = new List<Materia>();
-            ListaMaterias.Add(materia);
-            return ListaMaterias;
-            
-        }
+       
+        
 
         public override void GuardarCambios()
         {
             MapearADatos();
-            PlanLogic PlanNegocio = new PlanLogic();
-            PlanNegocio.Save(planActual);
-
-            
-
-
-
-    
-
+           
             PlanLogic.Save(planActual);
+
+          
             if (Modo == ModoForm.Alta)
             {
                 MessageBox.Show("Plan Agregado con Éxito");

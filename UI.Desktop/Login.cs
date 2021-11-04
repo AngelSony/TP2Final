@@ -16,21 +16,23 @@ namespace UI.Desktop
     {
 
    
-        Usuario usuario;
-        public Login()
+        Usuario usuarioActual;
+        public Login(Usuario usu)
         {
             InitializeComponent();
+            usuarioActual = usu;
+            
         }
 
       
 
         private void btnIngresar_Click(object sender, EventArgs e)
         {
-            usuario = new Usuario();
-            usuario.NombreUsuario = txtUsuario.Text;
-            usuario.Clave = txtClave.Text;
+            usuarioActual = new Usuario();
+            usuarioActual.NombreUsuario = txtUsuario.Text;
+            usuarioActual.Clave = txtClave.Text;
 
-            if(Validaciones.EsUsuarioValido(usuario))
+            if(Validaciones.EsUsuarioValido(usuarioActual))
                 {
 
                 MessageBox.Show("Usuario Valido");

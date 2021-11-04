@@ -8,11 +8,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Business.Entities;
+using Business.Logic;
 
 namespace UI.Desktop
 {
     public partial class Principal : Form
     {
+        Usuario usuarioActual;
+        Personas personaActual;
         public Principal()
         {
             InitializeComponent();
@@ -56,11 +59,40 @@ namespace UI.Desktop
 
         private void Principal_Shown(object sender, EventArgs e)
         {
-            Login formLogin = new Login();
+            Login formLogin = new Login(usuarioActual);
+           
             if (formLogin.ShowDialog() != DialogResult.OK)
             {
                 Dispose();
+            
             }
+            else
+            {
+                personaActual = PersonasLogic.GetOne(usuarioActual.IDPersona);
+                MessageBox.Show("Bienvenido " + personaActual.Nombre + " " + personaActual.Apellido, "UTN FRRO",
+               MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                switch(personaActual.TipoPersona)
+                {
+                    case Personas.TiposPersonas.Administrativo:
+                        MessageBox.Show("Inicio de sesion como administrativo");
+                        //SACARLE PERMISO DE NOTAS E INSCRIPCION
+                        break;
+                    case Personas.TiposPersonas.Alumno:
+                        tsmiEspecialidades.Enabled = false;
+                        tsmiPlanes.Enabled = false;
+                        //SACAR NOTAS, REPORTES;
+                       
+                        break;
+                    
+
+                }
+
+
+            }
+
+
+
+
         }
 
         private void tsmiDocentes_Click(object sender, EventArgs e)
