@@ -34,10 +34,7 @@
                 <asp:LinkButton ID="eliminarLinkButton" runat="server">Eliminar</asp:LinkButton>
                 &nbsp;<asp:LinkButton ID="nuevoLinkButton" runat="server">Nuevo</asp:LinkButton>
             </asp:Panel>
-            <asp:Label ID="Label3" runat="server" Text="Label"></asp:Label>
-            <br />
             <asp:Panel ID="formPanel" runat="server" Visible="False">
-                <br />
                 <asp:Label ID="nombreLabel" runat="server" Text="Nombre: "></asp:Label>
                 <asp:TextBox ID="nombreTextBox" runat="server"></asp:TextBox>
                    <asp:RequiredFieldValidator ID="nombreValidator" runat="server" ControlToValidate="nombreTextBox" ErrorMessage="El nombre no puede estar vacío" ForeColor="Red" ValidationGroup="validar">*</asp:RequiredFieldValidator>
@@ -47,8 +44,15 @@
                 <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="apellidoTextBox" ErrorMessage="Ingrese Apellido" ForeColor="Red" ValidationGroup="validar">*</asp:RequiredFieldValidator>
 
                 <br />
+
+                <asp:Label ID="legajoLabel" runat="server" Text="Legajo:"></asp:Label>
+                <asp:TextBox ID="legajoTextBox" runat="server"></asp:TextBox>
+
+                <asp:RequiredFieldValidator ID="RequiredFieldValidator8" runat="server" ControlToValidate="legajoTextBox" ErrorMessage="Ingrese un legajo" ForeColor="Red" ValidationGroup="validar">*</asp:RequiredFieldValidator>
+                <br />
                 <asp:Label ID="fechaNacimientoLabel" runat="server" Text="Fecha de Nacimiento"></asp:Label>
                 <asp:TextBox ID="fechanacimientoTextBox" runat="server"></asp:TextBox>
+
                 <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ControlToValidate="fechanacimientoTextBox" ErrorMessage="La fecha de nacimiento no puede estar vacío" ForeColor="Red" ValidationGroup="validar">*</asp:RequiredFieldValidator>
 
                 <asp:RegularExpressionValidator ID="RegularExpressionValidator3" runat="server" ControlToValidate="fechanacimientoTextBox" ErrorMessage="Ingrese Formato de Fecha dd/MM/aaaa" ForeColor="Red" ValidationExpression="^([0-2][0-9]|3[0-1])(\/|-)(0[1-9]|1[0-2])\2(\d{4})" ValidationGroup="validar">*</asp:RegularExpressionValidator>
@@ -57,9 +61,8 @@
                 <asp:Label ID="Label1" runat="server" Text="E-Mail"></asp:Label>
                 &nbsp;&nbsp;
                 <asp:TextBox ID="emailTextBox" runat="server"></asp:TextBox>
-                 <asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server" ControlToValidate="emailTextBox" ErrorMessage="Ingresar Email Válido" ForeColor="Red" ValidationExpression="^(([\w-]+\.)+[\w-]+|([a-zA-Z]{1}|[\w-]{2,}))@(([a-zA-Z]+[\w-]+\.){1,2}[a-zA-Z]{2,4})$" ValidationGroup="validar">*</asp:RegularExpressionValidator>
+                <asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server" ControlToValidate="emailTextBox" ErrorMessage="Ingresar Email Válido" ForeColor="Red" ValidationExpression="^(([\w-]+\.)+[\w-]+|([a-zA-Z]{1}|[\w-]{2,}))@(([a-zA-Z]+[\w-]+\.){1,2}[a-zA-Z]{2,4})$" ValidationGroup="validar">*</asp:RegularExpressionValidator>
                 <asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server" ControlToValidate="emailTextBox" ErrorMessage="El correo no puede estar vacío" ForeColor="Red" ValidationGroup="validar">*</asp:RequiredFieldValidator>
-  
                 <br />
                 <asp:Label ID="Label2" runat="server" Text="Plan"></asp:Label>
                 &nbsp;
@@ -67,12 +70,7 @@
                 </asp:DropDownList>
                 <asp:RangeValidator ID="RangeValidator1" runat="server" ControlToValidate="ddPlanes" ErrorMessage="Seleecione un item Válido" ForeColor="Red" MaximumValue="999999" MinimumValue="1" ValidationGroup="validar">*</asp:RangeValidator>
                 <br />
-                <asp:Label ID="legajoLabel" runat="server" Text="Legajo:"></asp:Label>
                 &nbsp;
-                <asp:TextBox ID="legajoTextBox" runat="server"></asp:TextBox>
-
-                <asp:RequiredFieldValidator ID="RequiredFieldValidator8" runat="server" ControlToValidate="legajoTextBox" ErrorMessage="Ingrese un legajo" ForeColor="#CC0000" ValidationGroup="validar">*</asp:RequiredFieldValidator>
-
                 <br />
                 <asp:Label ID="telefonoLabel" runat="server" Text="Telefono: "></asp:Label>
                 <asp:TextBox ID="telefonoTextBox" runat="server"></asp:TextBox>
