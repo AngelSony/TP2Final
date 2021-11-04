@@ -59,8 +59,8 @@ namespace UI.Desktop
 
         private void Principal_Shown(object sender, EventArgs e)
         {
-            Login formLogin = new Login(usuarioActual);
-           
+            Login formLogin = new Login(ref usuarioActual);
+            
             if (formLogin.ShowDialog() != DialogResult.OK)
             {
                 Dispose();
@@ -78,10 +78,12 @@ namespace UI.Desktop
                         //SACARLE PERMISO DE NOTAS E INSCRIPCION
                         break;
                     case Personas.TiposPersonas.Alumno:
-                        tsmiEspecialidades.Enabled = false;
-                        tsmiPlanes.Enabled = false;
+                        MessageBox.Show("Inicio de sesion como alumno");
                         //SACAR NOTAS, REPORTES;
-                       
+                        break;
+
+                    case Personas.TiposPersonas.Docente:
+                        MessageBox.Show("Inicio de sesion como Docente");
                         break;
                     
 

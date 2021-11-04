@@ -16,13 +16,15 @@ namespace UI.Desktop
     {
 
    
-        Usuario usuarioActual;
-        public Login(Usuario usu)
+        public Usuario usuarioActual;
+
+        public Login(ref Usuario usu)
         {
             InitializeComponent();
             usuarioActual = usu;
             
         }
+
 
       
 
@@ -33,11 +35,9 @@ namespace UI.Desktop
             usuarioActual.Clave = txtClave.Text;
 
             if(Validaciones.EsUsuarioValido(usuarioActual))
-                {
-
+            { 
                 MessageBox.Show("Usuario Valido");
                 DialogResult = DialogResult.OK;
-             
                }
             else
             {

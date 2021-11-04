@@ -123,14 +123,9 @@ namespace UI.Desktop
                     mat.IDPlan = planActual.ID;
                     MateriaLogic.Save(mat);
                 }
-           
+            }
             PlanLogic.Save(planActual);
-
-          
-            if (Modo == ModoForm.Alta)
-            {
-            if (Modo == ModoForm.Alta)
-            {
+            
             if (Modo == ModoForm.Alta)
             {
                 MessageBox.Show("Plan Agregado con Éxito");
