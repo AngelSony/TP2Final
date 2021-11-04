@@ -26,8 +26,9 @@ namespace UI.Desktop
         {
             var PersonasUsuarios = from p in PersonasLogic.GetAll()
                                    join u in UsuarioLogic.GetAll() on p.ID equals u.IDPersona
+                                   join pl in PlanLogic.GetAll() on p.IDPlan equals pl.ID
                                    where p.TipoPersona.Equals(tipoPersona) 
-                                   select new { u.ID, u.NombreUsuario, u.Clave, u.Habilitado, p.Nombre, p.Apellido, p.Legajo, p.FechaNacimiento, p.Email, p.Direccion, p.Telefono};
+                                   select new { u.ID, u.NombreUsuario, u.Clave, u.Habilitado, p.Nombre, p.Apellido, p.Legajo, p.FechaNacimiento, p.Email, p.Direccion, p.Telefono, pl.Descripcion};
 
             dgvPersonas.DataSource = PersonasUsuarios.ToList();
         }

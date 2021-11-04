@@ -47,9 +47,13 @@ namespace Business.Logic
                     return false;
                 }
             }
-            catch(Exception Ex)
+            catch(ArgumentNullException Ex)
             {
                 return false;
+            }
+            catch (Exception Ex)
+            {
+                throw Ex;
             }
         }
     }

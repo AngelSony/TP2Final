@@ -72,6 +72,7 @@
     <Content Include="Alumno.aspx" />
     <Content Include="Cursos.aspx" />
     <Content Include="Default.aspx" />
+    <Content Include="frmPersonas.aspx" />
     <Content Include="Login.aspx" />
     <Content Include="Planes.aspx" />
     <Content Include="Usuarios.aspx" />
@@ -98,6 +99,13 @@
     </Compile>
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="frmPersonas.aspx.cs">
+      <DependentUpon>frmPersonas.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="frmPersonas.aspx.designer.cs">
+      <DependentUpon>frmPersonas.aspx</DependentUpon>
     </Compile>
     <Compile Include="Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>

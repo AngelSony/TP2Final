@@ -158,7 +158,6 @@ namespace Data.Database
                 CloseConnection();
             }
         }
-
         public  Usuario GetUsuarioPorNombre(Usuario user)
         {
             try

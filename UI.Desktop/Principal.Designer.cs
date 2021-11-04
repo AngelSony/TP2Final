@@ -35,7 +35,6 @@ namespace UI.Desktop
             this.cuentaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cerrarSesiónToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.administraciónToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiUsuarios = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiCursos = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiMaterias = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiAlumnos = new System.Windows.Forms.ToolStripMenuItem();
@@ -43,7 +42,6 @@ namespace UI.Desktop
             this.tsmiEspecialidades = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiPlanes = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiComisiones = new System.Windows.Forms.ToolStripMenuItem();
-            this.modulosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -91,25 +89,16 @@ namespace UI.Desktop
             // administraciónToolStripMenuItem
             // 
             this.administraciónToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsmiUsuarios,
             this.tsmiCursos,
             this.tsmiMaterias,
             this.tsmiAlumnos,
             this.tsmiDocentes,
             this.tsmiEspecialidades,
             this.tsmiPlanes,
-            this.tsmiComisiones,
-            this.modulosToolStripMenuItem});
+            this.tsmiComisiones});
             this.administraciónToolStripMenuItem.Name = "administraciónToolStripMenuItem";
             this.administraciónToolStripMenuItem.Size = new System.Drawing.Size(100, 20);
             this.administraciónToolStripMenuItem.Text = "Administración";
-            // 
-            // tsmiUsuarios
-            // 
-            this.tsmiUsuarios.Name = "tsmiUsuarios";
-            this.tsmiUsuarios.Size = new System.Drawing.Size(180, 22);
-            this.tsmiUsuarios.Text = "Usuarios";
-            this.tsmiUsuarios.Click += new System.EventHandler(this.tsmiUsuarios_Click);
             // 
             // tsmiCursos
             // 
@@ -157,13 +146,6 @@ namespace UI.Desktop
             this.tsmiComisiones.Size = new System.Drawing.Size(180, 22);
             this.tsmiComisiones.Text = "Comisiones";
             // 
-            // modulosToolStripMenuItem
-            // 
-            this.modulosToolStripMenuItem.Name = "modulosToolStripMenuItem";
-            this.modulosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.modulosToolStripMenuItem.Text = "Modulos";
-            this.modulosToolStripMenuItem.Click += new System.EventHandler(this.modulosToolStripMenuItem_Click);
-            // 
             // Principal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -190,7 +172,6 @@ namespace UI.Desktop
         private System.Windows.Forms.ToolStripMenuItem cuentaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem cerrarSesiónToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem administraciónToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem tsmiUsuarios;
         private System.Windows.Forms.ToolStripMenuItem tsmiCursos;
         private System.Windows.Forms.ToolStripMenuItem tsmiMaterias;
         private System.Windows.Forms.ToolStripMenuItem tsmiAlumnos;
@@ -198,6 +179,5 @@ namespace UI.Desktop
         private System.Windows.Forms.ToolStripMenuItem tsmiEspecialidades;
         private System.Windows.Forms.ToolStripMenuItem tsmiPlanes;
         private System.Windows.Forms.ToolStripMenuItem tsmiComisiones;
-        private System.Windows.Forms.ToolStripMenuItem modulosToolStripMenuItem;
     }
 }
