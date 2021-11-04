@@ -64,7 +64,6 @@ namespace UI.Desktop
                 planActual.Descripcion= txtDescripcion.Text.Trim();
                 planActual.IDEspecialidad = Convert.ToInt32(txtEspecialidad.Text.Trim()); //CAMNIAR
             }
-
             switch (Modo)
             {
                 case ModoForm.Alta:
