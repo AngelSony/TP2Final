@@ -34,30 +34,16 @@ namespace UI.Web
         }
         private void CargarCombo()
         {
-            PlanLogic plan = new PlanLogic();
-            ddPlanes.DataSource = plan.GetAll();
+            ddPlanes.DataSource = PlanLogic.GetAll();
             ddPlanes.DataTextField = "Descripcion";
             ddPlanes.DataValueField = "ID";
             ddPlanes.DataBind();
             ddPlanes.Items.Insert(0, new ListItem("-- Seleccione --", "0"));
         }
-        PersonasLogic _logic;
-        private PersonasLogic Logic
-        {
-            get
-            {
-                if (_logic == null)
-                {
-                    _logic = new PersonasLogic();
-                }
-                return _logic;
-            }
-        }
         private void LoadGrid()
         {
-            PersonasLogic pl = new PersonasLogic();
             List<Personas> misAlu = new List<Personas>();
-            foreach (var unAlu in pl.GetAll())
+            foreach (var unAlu in PersonasLogic.GetAll())
             {
                 if (unAlu.TipoPersona.Equals(Personas.TiposPersonas.Alumno))
                 {
@@ -113,7 +99,7 @@ namespace UI.Web
         }
         private void LoadForm(int id)
         {
-            Entity = Logic.GetOne(id);
+            Entity = PersonasLogic.GetOne(id);
             nombreTextBox.Text = Entity.Nombre;
             apellidoTextBox.Text = Entity.Apellido;
             emailTextBox.Text = Entity.Email;
@@ -138,11 +124,11 @@ namespace UI.Web
         }
         private void DeleteEntity(int id)
         {
-            Logic.Delete(id);
+            PersonasLogic.Delete(id);
         }
         private void SaveEntity(Personas alumno)
         {
-            Logic.Save(alumno);
+            PersonasLogic.Save(alumno);
         }
         private void EnableForm(bool enable)
         {

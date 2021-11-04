@@ -149,6 +149,7 @@ namespace UI.Desktop
 
     
 
+            PlanLogic.Save(planActual);
             if (Modo == ModoForm.Alta)
             {
                 MessageBox.Show("Plan Agregado con Éxito");

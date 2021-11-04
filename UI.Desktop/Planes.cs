@@ -22,11 +22,9 @@ namespace UI.Desktop
 
         public void Listar()
         {
-            
-            PlanLogic pl = new PlanLogic();
             try
             {
-                dgvPlanes.DataSource = pl.GetAll();
+                dgvPlanes.DataSource = PlanLogic.GetAll();
             }
             catch (Exception ex)
             {

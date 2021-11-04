@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Business.Entities;
 
 namespace UI.Desktop
 {
@@ -49,8 +50,8 @@ namespace UI.Desktop
 
         private void tsmiAlumnos_Click(object sender, EventArgs e)
         {
-            Alumnos formAlumno = new Alumnos();
-            formAlumno.ShowDialog();
+            formPersonas Personas = new formPersonas(Business.Entities.Personas.TiposPersonas.Alumno);
+            Personas.ShowDialog();
         }
 
         private void Principal_Shown(object sender, EventArgs e)
@@ -62,5 +63,10 @@ namespace UI.Desktop
             }
         }
 
+        private void tsmiDocentes_Click(object sender, EventArgs e)
+        {
+            formPersonas Personas = new formPersonas(Business.Entities.Personas.TiposPersonas.Docente);
+            Personas.ShowDialog();
+        }
     }
 }

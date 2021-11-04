@@ -12,8 +12,6 @@ namespace UI.Desktop
 {
     public partial class AlumnosDesktop : ApplicationForm
     {
-
-
         public Personas AlumnoActual;
         public AlumnosDesktop()
         {
@@ -25,15 +23,12 @@ namespace UI.Desktop
             Modo = modo;
             ModoBoton();
         }
-
         public AlumnosDesktop(int ID, ModoForm modo) : this()
         {
             Modo = modo;
-            PersonasLogic PersonasLogic = new PersonasLogic();
             AlumnoActual = PersonasLogic.GetOne(ID);
             MapearDeDatos();
         }
-
         public override void MapearDeDatos()
         {
             txtID.Text = AlumnoActual.ID.ToString();
@@ -45,18 +40,13 @@ namespace UI.Desktop
             cbPlanes.SelectedValue = AlumnoActual.IDPlan;
             txtLegajo.Text = AlumnoActual.Legajo.ToString();
             txtFechaDeNacimiento.Text = AlumnoActual.FechaNacimiento.ToString();
-            txtDireccion.Text = AlumnoActual.Direccion;
             ModoBoton();
-
         }
-
         public override void MapearADatos()
         {
            if(Modo == ModoForm.Alta)
            {
-
                AlumnoActual = new Personas();
-
            }
 
            if(Modo == ModoForm.Alta || Modo == ModoForm.Modificacion)
@@ -71,7 +61,6 @@ namespace UI.Desktop
                 AlumnoActual.FechaNacimiento = DateTime.Parse(txtFechaDeNacimiento.Text);
                 AlumnoActual.IDPlan = Convert.ToInt32(cbPlanes.SelectedValue);
             }
-
             switch(Modo)
             {
                 case ModoForm.Alta:
@@ -90,8 +79,6 @@ namespace UI.Desktop
                     break;
             }
         }
-
-
         private void ModoBoton()
         {
             switch (Modo)
@@ -116,26 +103,20 @@ namespace UI.Desktop
                   
             }
         }
-
         public override void GuardarCambios()
         {
             MapearADatos();
-            PersonasLogic PersonaNegocio = new PersonasLogic();
-            PersonaNegocio.Save(AlumnoActual);
+            PersonasLogic.Save(AlumnoActual);
 
             if(Modo == ModoForm.Alta)
             {
                 MessageBox.Show("Alumno Agregado con Éxito");
-
             }
             if(Modo == ModoForm.Modificacion)
             {
                 MessageBox.Show("Alumno Modificado con Éxito");
             }
-            
         }
-
-
         public override bool Validar()
         {
             if (string.IsNullOrWhiteSpace(txtNombre.Text))
@@ -171,13 +152,13 @@ namespace UI.Desktop
                 return false;
             }
 
-            else if (!Business.Logic.Validaciones.EsMailValido(txtEmail.Text))
+            else if (!Validaciones.EsMailValido(txtEmail.Text))
             {
                 Notificar("Advertencia", "Email no válido", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
 
-            else if (!Business.Logic.Validaciones.EsFechaValida(txtFechaDeNacimiento.Text))
+            else if (!Validaciones.EsFechaValida(txtFechaDeNacimiento.Text))
             {
                 Notificar("Advertencia", "El formato de la fecha debe ser dd/MM/aaaa", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
@@ -185,40 +166,24 @@ namespace UI.Desktop
 
             else { return true; }
         }
-
-
-
         private void btnAceptar_Click(object sender, EventArgs e)
         {
-
-            if (Modo == ModoForm.Baja)
+            if (Modo == ModoForm.Baja || Validar())
             {
                 GuardarCambios();
                 Close();
             }
-            else if (Validar())
-            {
-                GuardarCambios();
-                Close();
-            }
-
         }
-
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             Close();
         }
-
         private void CargaCombo()
         {
-            PlanLogic plan = new PlanLogic();
-            cbPlanes.DataSource = plan.GetAll();
+            cbPlanes.DataSource = PlanLogic.GetAll();
             cbPlanes.DisplayMember = "Descripcion";
             cbPlanes.ValueMember = "ID";
             cbPlanes.SelectedIndex = -1;
-
         }
-
-
     }
 }

@@ -9,35 +9,35 @@ using Data.Database;
 
 namespace Business.Logic
 {
-    public class PersonasLogic : BusinessLogic
+    public class EspecialidadesLogic : BusinessLogic
     {
-        public static Personas GetOne(int ID)
+        public static Materia GetOne(int ID)
         {
             try
             {
-                return new PersonasAdapter().GetOne(ID);
+                return new EspecialidadAdapter().GetOne(ID);
             }
-            catch(Exception Ex)
+            catch (Exception Ex)
             {
                 throw Ex;
             }
         }
-        public static List<Personas> GetAll()
+        public static List<Especialidad> GetAll()
         {
             try
             {
-                return new PersonasAdapter().GetAll();
+                return new EspecialidadAdapter().GetAll();
             }
-            catch(Exception Ex)
+            catch (Exception Ex)
             {
                 throw Ex;
             }
         }
-        public static void Save(Personas persona)
+        public static void Save(Especialidad es)
         {
             try
             {
-                new PersonasAdapter().Save(persona);
+                new EspecialidadAdapter().Save(es);
             }
             catch (Exception Ex)
             {
@@ -48,12 +48,14 @@ namespace Business.Logic
         {
             try
             {
-                new PersonasAdapter().Delete(ID);
+                new EspecialidadAdapter().Delete(ID);
             }
             catch (Exception Ex)
             {
                 throw Ex;
             }
         }
+    }
+}
     }
 }

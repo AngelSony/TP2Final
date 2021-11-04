@@ -31,18 +31,13 @@ namespace Business.Logic
 
         public static Boolean EsUsuarioValido(Usuario usuario)
         {
-
-
             try
             {
                 Usuario miUsuario = UsuarioLogic.GetUsuarioPorNombre(usuario);
-
-
                 if (miUsuario.Equals(null))
                 {
                     return false;
                 }
-              
                 else if (miUsuario.Clave.Equals(usuario.Clave))
                 {
                     return true;
@@ -50,22 +45,15 @@ namespace Business.Logic
                 else
                 {
                     return false;
-
                 }
-
-            }catch(Exception Ex)
-            { 
+            }
+            catch(Exception Ex)
+            {
                 return false;
             }
-
-
-
-
-            }
-          
         }
-
-        }
+    }
+}
 
 
 
