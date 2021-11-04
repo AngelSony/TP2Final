@@ -13,7 +13,19 @@ namespace UI.Web
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            LoadGrid();
+            if (Session["inputText"] == null)
+            {
+
+                Response.Redirect("~/AdvertenciaLogin.aspx");
+            }
+            else
+            {
+                if (!IsPostBack)
+                {
+
+                    LoadGrid();
+                }
+            }
         }
         private void LoadGrid()
         {

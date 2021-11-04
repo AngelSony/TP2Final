@@ -27,13 +27,13 @@ namespace UI.Web
             {
 
                 Page.Response.Write("Usuario Valido");
-                
-
+                Session["inputText"] = txtUsuario;
             }
             else
             {
 
                 Page.Response.Write("Usuario Invalido");
+                Session["inputText"] = null;
             }
         }
 

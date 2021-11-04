@@ -14,11 +14,23 @@ namespace UI.Web
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack)
+            if (Session["inputText"] == null)
             {
-                LoadGrid();
-                CargarCombo();
+                
+                Response.Redirect("~/AdvertenciaLogin.aspx");
             }
+            else
+            {
+                if (!IsPostBack)
+                {
+                   
+                    LoadGrid();
+                    CargarCombo();
+     
+                }
+            }
+
+
         }
         private void CargarCombo()
         {

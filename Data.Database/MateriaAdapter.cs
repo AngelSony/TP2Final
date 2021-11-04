@@ -103,7 +103,7 @@ namespace Data.Database
             try
             {
                 OpenConnection();
-                SqlCommand cmdMateria = new SqlCommand("UPDATE materias SET desc_materia = @desc_materia, hs_semanales = @hs_semanalesm hs_totales = @hs_totales, id_plan = @id_plan WHERE id_materia = @id ", sqlConn);
+                SqlCommand cmdMateria = new SqlCommand("UPDATE materias SET desc_materia = @desc_materia, hs_semanales = @hs_semanales, hs_totales = @hs_totales, id_plan = @id_plan WHERE id_materia = @id ", sqlConn);
                 cmdMateria.Parameters.Add("@id", SqlDbType.Int).Value = mat.ID;
                 cmdMateria.Parameters.Add("@desc_materia", SqlDbType.NVarChar, 50).Value = mat.Descripcion;
                 cmdMateria.Parameters.Add("@hs_semanales", SqlDbType.Int).Value = mat.HSSemanales;

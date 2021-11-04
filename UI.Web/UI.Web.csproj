@@ -69,6 +69,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="AdvertenciaLogin.aspx" />
     <Content Include="Alumno.aspx" />
     <Content Include="Cursos.aspx" />
     <Content Include="Default.aspx" />
@@ -79,6 +80,13 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AdvertenciaLogin.aspx.cs">
+      <DependentUpon>AdvertenciaLogin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdvertenciaLogin.aspx.designer.cs">
+      <DependentUpon>AdvertenciaLogin.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Alumno.aspx.cs">
       <DependentUpon>Alumno.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

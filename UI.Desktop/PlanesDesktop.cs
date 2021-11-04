@@ -21,7 +21,7 @@ namespace UI.Desktop
             InitializeComponent();
         }
 
-       
+        
 
         public PlanesDesktop(ModoForm modo) : this()
         {
@@ -44,9 +44,25 @@ namespace UI.Desktop
             txtID.Text = planActual.ID.ToString();
             txtDescripcion.Text = planActual.Descripcion;
             txtEspecialidad.Text = planActual.IDEspecialidad.ToString(); //CAMBIAR
+
+
+            List<Materia> misMaterias = new List<Materia>();
+
+            foreach (var materia in MateriaLogic.GetAll())
+            {
+                if (materia.IDPlan.Equals(planActual.ID))
+                {
+                    misMaterias.Add(materia);
+                }
+            }
+            dgvMaterias.AutoGenerateColumns = false;
+            dgvMaterias.DataSource = misMaterias;
             ModoBoton();
 
         }
+
+
+
 
         public override void MapearADatos()
         {
@@ -55,6 +71,8 @@ namespace UI.Desktop
 
                 planActual = new Plan();
 
+               
+
             }
 
             if (Modo == ModoForm.Alta || Modo == ModoForm.Modificacion)
@@ -62,8 +80,6 @@ namespace UI.Desktop
                 planActual.Descripcion= txtDescripcion.Text.Trim();
                 planActual.IDEspecialidad = Convert.ToInt32(txtEspecialidad.Text.Trim()); //CAMNIAR
 
-               
-              
 
             }
 
@@ -111,9 +127,28 @@ namespace UI.Desktop
             }
         }
 
+        public List<>
+
+        public static Materia MisMaterias(Materia materia)
+        {
+            ListaMaterias = new List<Materia>();
+            ListaMaterias.Add(materia);
+            return ListaMaterias;
+            
+        }
+
         public override void GuardarCambios()
         {
             MapearADatos();
+            PlanLogic PlanNegocio = new PlanLogic();
+            PlanNegocio.Save(planActual);
+
+            
+
+
+
+    
+
             PlanLogic.Save(planActual);
             if (Modo == ModoForm.Alta)
             {
@@ -169,6 +204,34 @@ namespace UI.Desktop
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void tsbNuevo_Click(object sender, EventArgs e)
+        {
+                MateriasDesktop formMaterias = new MateriasDesktop(ApplicationForm.ModoForm.Alta);
+                formMaterias.ShowDialog();
+                
+        }
+
+        private void tsbEditar_Click(object sender, EventArgs e)
+        {
+            int ID = ((Materia)dgvMaterias.SelectedRows[0].DataBoundItem).ID;
+            MateriasDesktop formMaterias = new MateriasDesktop(ID, ApplicationForm.ModoForm.Modificacion);
+            formMaterias.ShowDialog();
+            
+        }
+
+        private void tsbEliminar_Click(object sender, EventArgs e)
+        {
+            int ID = ((Materia)dgvMaterias.SelectedRows[0].DataBoundItem).ID;
+            MateriasDesktop formMateria = new MateriasDesktop(ID, ApplicationForm.ModoForm.Baja);
+            formMateria.ShowDialog();
+         
+        }
+
+        private void PlanesDesktop_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
