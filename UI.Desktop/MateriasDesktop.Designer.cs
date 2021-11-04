@@ -176,6 +176,7 @@ namespace UI.Desktop
             this.ClientSize = new System.Drawing.Size(656, 84);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "MateriasDesktop";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "MateriasDesktop";
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();

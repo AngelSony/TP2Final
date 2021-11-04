@@ -11,10 +11,9 @@ namespace Data.Database
 {
     public class EspecialidadesAdapter: Adapter
     {
-        public List<Especialidades> GetAll()
+        public List<Especialidad> GetAll()
         {
-            List<Especialidades> especialidades = new List<Especialidad>();
-
+            List<Especialidad> especialidades = new List<Especialidad>();
             try
             {
                 OpenConnection();
@@ -25,8 +24,8 @@ namespace Data.Database
                 {
                     Especialidad es = new Especialidad
                     {
-                        ID = (int)drEspecialidadess["id_especialidad"],
-                        Descripcion = (string)drEspecialidad["desc_especialidad"]
+                        ID = (int)drEspecialidades["id_especialidad"],
+                        Descripcion = (string)drEspecialidades["desc_especialidad"]
                     };
 
                     especialidades.Add(es);
@@ -42,7 +41,7 @@ namespace Data.Database
             }
             return especialidades;
         }
-        public Materia GetOne(int ID)
+        public Especialidad GetOne(int ID)
         {
             try
             {
@@ -131,5 +130,3 @@ namespace Data.Database
         }
     }
 }
-   
-

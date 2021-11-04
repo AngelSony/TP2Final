@@ -15,27 +15,30 @@ namespace UI.Desktop
     public partial class MateriasDesktop : ApplicationForm
     {
         public Materia MateriaActual;
-
+        public List<Materia> materiasActuales;
         public MateriasDesktop()
         {
             InitializeComponent();
         }
-
-
-
-
-        public MateriasDesktop(ModoForm modo) : this()
+        public MateriasDesktop(ref List<Materia> mats, ModoForm modo) : this()
         {
             Modo = modo;
+            materiasActuales = mats;
             ModoBoton();
         }
 
-        public MateriasDesktop(int ID, ModoForm modo) : this()
+        public MateriasDesktop(ref List<Materia> mats,int ID, ModoForm modo) : this()
         {
             Modo = modo;
-            MateriaActual = MateriaLogic.GetOne(ID);
+            materiasActuales = mats;
+            foreach(Materia mat in materiasActuales)
+            {
+                if(mat.ID == ID)
+                {
+                    MateriaActual = mat;
+                }
+            }
             MapearDeDatos();
-
         }
 
         public override void MapearDeDatos()
@@ -46,8 +49,6 @@ namespace UI.Desktop
             txtHSTotales.Text = MateriaActual.HSTotales.ToString();
             ModoBoton();
         }
-
-
         private void ModoBoton()
         {
             switch (Modo)
@@ -74,16 +75,13 @@ namespace UI.Desktop
             if (Modo == ModoForm.Alta)
             {
                 MateriaActual = new Materia();
+                MateriaActual.ID = 0;
             }
-
             if (Modo == ModoForm.Modificacion || Modo == ModoForm.Alta)
             {
                 MateriaActual.Descripcion = txtDescripcion.Text.Trim();
                 MateriaActual.HSSemanales = Convert.ToInt32(txtHSSemanales.Text);
                 MateriaActual.HSTotales = Convert.ToInt32(txtHSTotales.Text);
-
-
-
             }
             switch (Modo)
             {
@@ -102,14 +100,15 @@ namespace UI.Desktop
                 default:
                     break;
             }
-
         }
 
-           public override void GuardarCambios() {
+        public override void GuardarCambios() {
             MapearADatos();
-            
-
+            if (Modo == ModoForm.Alta)
+            {
+                materiasActuales.Add(MateriaActual);
             }
+        }
 
         public override bool Validar()
         {
@@ -128,8 +127,6 @@ namespace UI.Desktop
                 Notificar("Advertencia", "Campo Usuario incompleto", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
-          
-         
             else { return true; }
         }
 
@@ -141,7 +138,6 @@ namespace UI.Desktop
                 Close();
             }
             else if (Validar())
-
             {
                 GuardarCambios();
                 Close();

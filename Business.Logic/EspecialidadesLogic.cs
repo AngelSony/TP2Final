@@ -11,11 +11,11 @@ namespace Business.Logic
 {
     public class EspecialidadesLogic : BusinessLogic
     {
-        public static Materia GetOne(int ID)
+        public static Especialidad GetOne(int ID)
         {
             try
             {
-                return new EspecialidadAdapter().GetOne(ID);
+                return new EspecialidadesAdapter().GetOne(ID);
             }
             catch (Exception Ex)
             {
@@ -26,7 +26,7 @@ namespace Business.Logic
         {
             try
             {
-                return new EspecialidadAdapter().GetAll();
+                return new EspecialidadesAdapter().GetAll();
             }
             catch (Exception Ex)
             {
@@ -37,7 +37,7 @@ namespace Business.Logic
         {
             try
             {
-                new EspecialidadAdapter().Save(es);
+                new EspecialidadesAdapter().Save(es);
             }
             catch (Exception Ex)
             {
@@ -48,14 +48,12 @@ namespace Business.Logic
         {
             try
             {
-                new EspecialidadAdapter().Delete(ID);
+                new EspecialidadesAdapter().Delete(ID);
             }
             catch (Exception Ex)
             {
                 throw Ex;
             }
         }
-    }
-}
     }
 }
