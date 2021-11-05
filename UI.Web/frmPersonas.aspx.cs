@@ -17,7 +17,7 @@ namespace UI.Web
         protected Personas pEntity { get; set; }
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack)
+            /*if (!IsPostBack)
             {
                 if (Session["inputText"] == null)
                 {
@@ -27,6 +27,7 @@ namespace UI.Web
                 LoadGrid();
                 CargarCombo();
             }
+            */
         }
         private void CargarCombo()
         {

@@ -26,14 +26,14 @@
         }
         .auto-style7 {
             height: 26px;
-            width: 154px;
+            width: 195px;
         }
         .auto-style8 {
-            width: 154px;
+            width: 195px;
         }
         .auto-style9 {
             height: 22px;
-            width: 154px;
+            width: 195px;
         }
     </style>
 
@@ -60,7 +60,7 @@
                         <asp:Label ID="Label2" runat="server" Font-Bold="True" Font-Italic="False" Text="Ingresar Contraseña:"></asp:Label>
                     </td>
                     <td class="auto-style8">
-                        <asp:TextBox ID="txtClave" runat="server" Width="145px"></asp:TextBox>
+                        <asp:TextBox ID="txtClave" runat="server" Width="145px" TextMode="Password" ViewStateMode="Enabled"></asp:TextBox>
                     </td>
                     <td>&nbsp;</td>
                 </tr>
@@ -70,6 +70,13 @@
                         <asp:Button ID="btnAceptar" runat="server" OnClick="btnAceptar_Click" Text="Aceptar" />
 &nbsp;&nbsp;&nbsp;&nbsp;
                         <asp:Button ID="cancelarBtn" runat="server" OnClick="btnCancelar_Click" Text="Cancelar" Width="62px" />
+                    </td>
+                    <td class="auto-style1">&nbsp;</td>
+                </tr>
+                <tr>
+                    <td class="auto-style6">&nbsp;</td>
+                    <td class="auto-style9">
+                        <asp:Label ID="lblMensaje" runat="server" Enabled="False" Font-Bold="True" ForeColor="Red"></asp:Label>
                     </td>
                     <td class="auto-style1">&nbsp;</td>
                 </tr>

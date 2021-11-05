@@ -107,6 +107,7 @@ namespace UI.Desktop
             txtEspecialidad.Enabled = enable;
             toolStrip1.Enabled = enable;
         }
+
         public override void GuardarCambios()
         {
             MapearADatos();
@@ -120,6 +121,11 @@ namespace UI.Desktop
                     mat.IDPlan = planActual.ID;
                     MateriaLogic.Save(mat);
                 }
+            }
+            PlanLogic.Save(planActual);
+            
+            if (Modo == ModoForm.Alta)
+            {
                 MessageBox.Show("Plan Agregado con Éxito");
             }
             if (Modo == ModoForm.Modificacion)

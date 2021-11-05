@@ -70,6 +70,18 @@
     <Compile Include="CursosDesktop.Designer.cs">
       <DependentUpon>CursosDesktop.cs</DependentUpon>
     </Compile>
+    <Compile Include="DocenteCurso.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DocenteCurso.Designer.cs">
+      <DependentUpon>DocenteCurso.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DocenteCursoDesktop.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DocenteCursoDesktop.Designer.cs">
+      <DependentUpon>DocenteCursoDesktop.cs</DependentUpon>
+    </Compile>
     <Compile Include="Especialidades.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -158,6 +170,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="CursosDesktop.resx">
       <DependentUpon>CursosDesktop.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DocenteCurso.resx">
+      <DependentUpon>DocenteCurso.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DocenteCursoDesktop.resx">
+      <DependentUpon>DocenteCursoDesktop.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Especialidades.resx">
       <DependentUpon>Especialidades.cs</DependentUpon>
