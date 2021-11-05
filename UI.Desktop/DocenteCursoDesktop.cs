@@ -131,6 +131,8 @@ namespace UI.Desktop
             cbDocente.DisplayMember = "NombreApellido";
             cbDocente.ValueMember = "ID";
 
+
+
             var CursoMateria = from c in CursoLogic.GetAll()
                                    join m in MateriaLogic.GetAll() on c.IDMateria equals m.ID
                                    join cm in ComisionesLogic.GetAll() on c.IDComision equals cm.ID

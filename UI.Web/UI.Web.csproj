@@ -74,6 +74,7 @@
     <Content Include="Alumno.aspx" />
     <Content Include="Cursos.aspx" />
     <Content Include="Default.aspx" />
+    <Content Include="DocenteCurso.aspx" />
     <Content Include="frmPersonas.aspx" />
     <Content Include="Login.aspx" />
     <Content Include="Planes.aspx" />
@@ -115,6 +116,13 @@
     </Compile>
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DocenteCurso.aspx.cs">
+      <DependentUpon>DocenteCurso.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DocenteCurso.aspx.designer.cs">
+      <DependentUpon>DocenteCurso.aspx</DependentUpon>
     </Compile>
     <Compile Include="frmPersonas.aspx.cs">
       <DependentUpon>frmPersonas.aspx</DependentUpon>
