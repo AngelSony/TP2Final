@@ -193,6 +193,7 @@ namespace UI.Desktop
             this.ClientSize = new System.Drawing.Size(349, 222);
             this.Controls.Add(this.toolStripContainer1);
             this.Name = "Planes";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Planes";
             this.Load += new System.EventHandler(this.Planes_Load);
             this.toolStripContainer1.ContentPanel.ResumeLayout(false);

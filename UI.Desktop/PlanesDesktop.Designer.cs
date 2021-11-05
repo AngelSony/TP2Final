@@ -39,6 +39,10 @@ namespace UI.Desktop
             this.toolStripContainer1 = new System.Windows.Forms.ToolStripContainer();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.dgvMaterias = new System.Windows.Forms.DataGridView();
+            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Descripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HSTotales = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HSSemanales = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.tsbNuevo = new System.Windows.Forms.ToolStripButton();
             this.tsbEditar = new System.Windows.Forms.ToolStripButton();
@@ -50,10 +54,6 @@ namespace UI.Desktop
             this.RightToolStripPanel = new System.Windows.Forms.ToolStripPanel();
             this.LeftToolStripPanel = new System.Windows.Forms.ToolStripPanel();
             this.ContentPanel = new System.Windows.Forms.ToolStripContentPanel();
-            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Descripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.HSTotales = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.HSSemanales = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tableLayoutPanel1.SuspendLayout();
             this.toolStripContainer1.ContentPanel.SuspendLayout();
             this.toolStripContainer1.TopToolStripPanel.SuspendLayout();
@@ -86,9 +86,9 @@ namespace UI.Desktop
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 139F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 8F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(691, 256);
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(595, 324);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // label1
@@ -125,7 +125,7 @@ namespace UI.Desktop
             this.txtID.Location = new System.Drawing.Point(87, 3);
             this.txtID.Name = "txtID";
             this.txtID.ReadOnly = true;
-            this.txtID.Size = new System.Drawing.Size(601, 20);
+            this.txtID.Size = new System.Drawing.Size(505, 20);
             this.txtID.TabIndex = 5;
             // 
             // txtDescripcion
@@ -134,7 +134,7 @@ namespace UI.Desktop
             this.txtDescripcion.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtDescripcion.Location = new System.Drawing.Point(87, 29);
             this.txtDescripcion.Name = "txtDescripcion";
-            this.txtDescripcion.Size = new System.Drawing.Size(601, 20);
+            this.txtDescripcion.Size = new System.Drawing.Size(505, 20);
             this.txtDescripcion.TabIndex = 6;
             // 
             // txtEspecialidad
@@ -143,7 +143,7 @@ namespace UI.Desktop
             this.txtEspecialidad.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtEspecialidad.Location = new System.Drawing.Point(87, 55);
             this.txtEspecialidad.Name = "txtEspecialidad";
-            this.txtEspecialidad.Size = new System.Drawing.Size(601, 20);
+            this.txtEspecialidad.Size = new System.Drawing.Size(505, 20);
             this.txtEspecialidad.TabIndex = 7;
             // 
             // toolStripContainer1
@@ -153,11 +153,11 @@ namespace UI.Desktop
             // toolStripContainer1.ContentPanel
             // 
             this.toolStripContainer1.ContentPanel.Controls.Add(this.tableLayoutPanel2);
-            this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(601, 108);
+            this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(505, 186);
             this.toolStripContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.toolStripContainer1.Location = new System.Drawing.Point(87, 81);
             this.toolStripContainer1.Name = "toolStripContainer1";
-            this.toolStripContainer1.Size = new System.Drawing.Size(601, 133);
+            this.toolStripContainer1.Size = new System.Drawing.Size(505, 211);
             this.toolStripContainer1.TabIndex = 8;
             this.toolStripContainer1.Text = "toolStripContainer1";
             // 
@@ -175,7 +175,7 @@ namespace UI.Desktop
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(601, 108);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(505, 186);
             this.tableLayoutPanel2.TabIndex = 0;
             // 
             // dgvMaterias
@@ -193,8 +193,36 @@ namespace UI.Desktop
             this.dgvMaterias.Name = "dgvMaterias";
             this.dgvMaterias.ReadOnly = true;
             this.dgvMaterias.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvMaterias.Size = new System.Drawing.Size(595, 102);
+            this.dgvMaterias.Size = new System.Drawing.Size(499, 180);
             this.dgvMaterias.TabIndex = 0;
+            // 
+            // ID
+            // 
+            this.ID.DataPropertyName = "ID";
+            this.ID.HeaderText = "ID";
+            this.ID.Name = "ID";
+            this.ID.ReadOnly = true;
+            // 
+            // Descripcion
+            // 
+            this.Descripcion.DataPropertyName = "Descripcion";
+            this.Descripcion.HeaderText = "Descripcion";
+            this.Descripcion.Name = "Descripcion";
+            this.Descripcion.ReadOnly = true;
+            // 
+            // HSTotales
+            // 
+            this.HSTotales.DataPropertyName = "HSTotales";
+            this.HSTotales.HeaderText = "Horas Totales";
+            this.HSTotales.Name = "HSTotales";
+            this.HSTotales.ReadOnly = true;
+            // 
+            // HSSemanales
+            // 
+            this.HSSemanales.DataPropertyName = "HSSemanales";
+            this.HSSemanales.HeaderText = "Horas Semanales";
+            this.HSSemanales.Name = "HSSemanales";
+            this.HSSemanales.ReadOnly = true;
             // 
             // toolStrip1
             // 
@@ -241,7 +269,7 @@ namespace UI.Desktop
             // btnAceptar
             // 
             this.btnAceptar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnAceptar.Location = new System.Drawing.Point(87, 220);
+            this.btnAceptar.Location = new System.Drawing.Point(87, 298);
             this.btnAceptar.Name = "btnAceptar";
             this.btnAceptar.Size = new System.Drawing.Size(76, 23);
             this.btnAceptar.TabIndex = 3;
@@ -251,7 +279,7 @@ namespace UI.Desktop
             // 
             // btnCancelar
             // 
-            this.btnCancelar.Location = new System.Drawing.Point(169, 220);
+            this.btnCancelar.Location = new System.Drawing.Point(169, 298);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(75, 23);
             this.btnCancelar.TabIndex = 4;
@@ -295,44 +323,15 @@ namespace UI.Desktop
             // 
             this.ContentPanel.Size = new System.Drawing.Size(512, 108);
             // 
-            // ID
-            // 
-            this.ID.DataPropertyName = "ID";
-            this.ID.HeaderText = "ID";
-            this.ID.Name = "ID";
-            this.ID.ReadOnly = true;
-            // 
-            // Descripcion
-            // 
-            this.Descripcion.DataPropertyName = "Descripcion";
-            this.Descripcion.HeaderText = "Descripcion";
-            this.Descripcion.Name = "Descripcion";
-            this.Descripcion.ReadOnly = true;
-            // 
-            // HSTotales
-            // 
-            this.HSTotales.DataPropertyName = "HSTotales";
-            this.HSTotales.HeaderText = "Horas Totales";
-            this.HSTotales.Name = "HSTotales";
-            this.HSTotales.ReadOnly = true;
-            // 
-            // HSSemanales
-            // 
-            this.HSSemanales.DataPropertyName = "HSSemanales";
-            this.HSSemanales.HeaderText = "Horas Semanales";
-            this.HSSemanales.Name = "HSSemanales";
-            this.HSSemanales.ReadOnly = true;
-            // 
             // PlanesDesktop
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(691, 256);
+            this.ClientSize = new System.Drawing.Size(595, 324);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "PlanesDesktop";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "PlanesDesktop";
-            this.Load += new System.EventHandler(this.PlanesDesktop_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             this.toolStripContainer1.ContentPanel.ResumeLayout(false);
