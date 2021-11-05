@@ -49,7 +49,6 @@ namespace UI.Desktop
 
             listar();
             ModoBoton();
-
         }
         public override void MapearADatos()
         {
@@ -88,21 +87,25 @@ namespace UI.Desktop
                 case ModoForm.Alta:
                     btnAceptar.Text = "Guardar";
                     break;
-
                 case ModoForm.Modificacion:
                     btnAceptar.Text = "Guardar";
                     break;
-
                 case ModoForm.Baja:
+                    EnableForm(false);
                     btnAceptar.Text = "Eliminar";
                     break;
-
                 case ModoForm.Consulta:
                     btnAceptar.Text = "Aceptar";
                     break;
                 default:
                     break;
             }
+        }
+        public void EnableForm(bool enable)
+        {
+            txtDescripcion.Enabled = enable;
+            txtEspecialidad.Enabled = enable;
+            toolStrip1.Enabled = enable;
         }
         public override void GuardarCambios()
         {

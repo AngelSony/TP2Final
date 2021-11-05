@@ -39,7 +39,7 @@
                 <asp:TextBox ID="descripcionTextBox" runat="server"></asp:TextBox>
                 <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="descripcionTextBox" ErrorMessage="Completar Descripciòn" ForeColor="Red" ValidationGroup="validar">*</asp:RequiredFieldValidator>
                 <br />
-                <asp:Label ID="Label2" runat="server" Text="Especialidad"></asp:Label>
+                <asp:Label ID="Label2" runat="server" Text="Especialidad: "></asp:Label>
                 <asp:TextBox ID="especialdadTextBox" runat="server"></asp:TextBox>
             </asp:Panel>
             <asp:Panel ID="formActionPanel" runat="server">

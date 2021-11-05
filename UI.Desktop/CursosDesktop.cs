@@ -20,8 +20,6 @@ namespace UI.Desktop
             InitializeComponent();
             CargaCombos();
         }
-
-        
         public CursosDesktop(ModoForm modo) : this()
         {
             Modo = modo;
