@@ -35,8 +35,6 @@ namespace UI.Web
 
                 }
             }
-
-
         }
         private void CargarCombo()
         {
@@ -56,11 +54,8 @@ namespace UI.Web
                     misAlu.Add(unAlu);
                 }
             }
-
             grdAlumnos.DataSource = misAlu;
             grdAlumnos.DataBind();
-        
-
         }
         private Personas Entity
         {
@@ -114,7 +109,6 @@ namespace UI.Web
             legajoTextBox.Text = Entity.Legajo.ToString();
             telefonoTextBox.Text = Entity.Telefono;
             direccionTextBox.Text = Entity.Direccion;
-
         }
         private void LoadEntity(Personas alumno)
         {

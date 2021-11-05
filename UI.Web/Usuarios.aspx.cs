@@ -82,8 +82,6 @@ namespace UI.Web
             get { return (FormModes)ViewState["FormMode"]; }
             set { ViewState["FormMode"] = value; }
         }
-
-
         private void LoadForm(int id)
         {
             Entity = UsuarioLogic.GetOne(id);
@@ -92,9 +90,6 @@ namespace UI.Web
             claveTextBox.Text = Entity.Clave;
             repetirClaveTextBox.Text = Entity.Clave;
         }
-
-
-
         private void LoadGrid()
         {
             gridView.DataSource = UsuarioLogic.GetAll();
