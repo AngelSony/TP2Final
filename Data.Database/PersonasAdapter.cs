@@ -24,8 +24,6 @@ namespace Data.Database
 
                 SqlDataReader drPersonas = cmdPersonas.ExecuteReader();
 
-
-
                 while (drPersonas.Read())
                 {
                     Personas per = new Personas();
@@ -48,7 +46,7 @@ namespace Data.Database
             }
             catch (Exception Ex)
             {
-                Exception ExcepcionPersonas = new Exception("-Error al recuperar lista de Alumnos", Ex);
+                Exception ExcepcionPersonas = new Exception("Error al recuperar lista de Personas", Ex);
                 throw ExcepcionPersonas;
             }
             finally
@@ -91,7 +89,7 @@ namespace Data.Database
 
             catch(Exception Ex)
             {
-                Exception ExcepcionPersonas = new Exception("No se encontro Alumno", Ex);
+                Exception ExcepcionPersonas = new Exception("No se encontro la Persona", Ex);
                 throw ExcepcionPersonas;
 
             }
@@ -112,7 +110,7 @@ namespace Data.Database
             }
             catch(Exception Ex)
             {
-                Exception ExcepcionPersona = new Exception("Error al encontrar Alumno",Ex); //COMPLETAR
+                Exception ExcepcionPersona = new Exception("Error al encontrar la Persona",Ex);
                 throw ExcepcionPersona;
             }
             finally
@@ -140,7 +138,7 @@ namespace Data.Database
             }
             catch(Exception Ex)
             {
-                Exception ExcepcionPersona = new Exception("Error al crear Alumno ", Ex); //Completar
+                Exception ExcepcionPersona = new Exception("Error al crear la Persona", Ex);
                 throw ExcepcionPersona;
             }
             finally
@@ -169,7 +167,7 @@ namespace Data.Database
             }
             catch (Exception Ex)
             {
-                Exception ExcepcionPersona = new Exception("Error al modificar: ",Ex); //COMPLETAR
+                Exception ExcepcionPersona = new Exception("Error al modificar la Persona",Ex);
                 throw ExcepcionPersona;
             }
             finally

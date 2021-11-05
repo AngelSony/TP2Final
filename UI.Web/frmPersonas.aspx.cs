@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using Business.Logic;
 using Business.Entities;
+using System.Windows.Forms;
 
 namespace UI.Web
 {
@@ -18,6 +19,10 @@ namespace UI.Web
         {
             if (!IsPostBack)
             {
+                if (Session["inputText"] == null)
+                {
+                    Response.Redirect("~/AdvertenciaLogin.aspx");
+                }
                 tipo = Personas.TiposPersonas.Alumno;
                 LoadGrid();
                 CargarCombo();
@@ -176,7 +181,7 @@ namespace UI.Web
                     uEntity = new Usuario();
                     pEntity = new Personas();
                     uEntity.ID = SelectedID;
-                    pEntity.ID = uEntity.IDPersona;
+                    pEntity.ID = UsuarioLogic.GetOne(SelectedID).IDPersona;
                     uEntity.State = BusinessEntity.States.Modified;
                     pEntity.State = BusinessEntity.States.Modified;
                     LoadEntity(pEntity, uEntity);
@@ -191,7 +196,7 @@ namespace UI.Web
                 default:
                     break;
             }
-            Response.Redirect("~/Alumno.aspx");
+            Response.Redirect("~/frmPersonas.aspx");
         }
         protected void eliminarLinkButton_Click(object sender, EventArgs e)
         {
@@ -217,7 +222,7 @@ namespace UI.Web
         }
         protected void cancelarLinkButton_Click(object sender, EventArgs e)
         {
-            Response.Redirect("~/Alumno.aspx");
+            Response.Redirect("~/frmPersonas.aspx");
         }
         protected void grvPersonas_SelectedIndexChanged(object sender, EventArgs e)
         {
