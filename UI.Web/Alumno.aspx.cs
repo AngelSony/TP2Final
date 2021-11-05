@@ -6,34 +6,28 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using Business.Logic;
 using Business.Entities;
-using System.Windows.Forms;
 
 namespace UI.Web
 {
-    public partial class Alumno : System.Web.UI.Page
+    public partial class frmPersonas : Page
     {
+        const Personas.TiposPersonas tipo = Personas.TiposPersonas.Alumno;
+        protected Usuario uEntity { get; set; }
+        protected Personas pEntity { get; set; }
         protected void Page_Load(object sender, EventArgs e)
         {
-
-            if ( Session["TipoPersona"] == null)
+            if (!IsPostBack)
             {
-
-                Response.Redirect("~/AdvertenciaLogin.aspx");
-            }
-            else if((int)Session["TipoPersona"] != (int)Personas.TiposPersonas.Alumno)
-            {
-
-                Response.Redirect("~/AdvertenciaAccesoUsuario.aspx");
-            }
-            else
-            {
-                if (!IsPostBack)
+                if (Session["TipoPersona"] == null)
                 {
-
-                    LoadGrid();
-                    CargarCombo();
-
+                    Response.Redirect("~/AdvertenciaLogin.aspx");
                 }
+                else if ((int)Session["TipoPersona"] != (int)Personas.TiposPersonas.Alumno)
+                {
+                    Response.Redirect("~/AdvertenciaAccesoUsuario.aspx");
+                }
+                LoadGrid();
+                CargarCombo();
             }
         }
         private void CargarCombo()
@@ -46,21 +40,13 @@ namespace UI.Web
         }
         private void LoadGrid()
         {
-            List<Personas> misAlu = new List<Personas>();
-            foreach (var unAlu in PersonasLogic.GetAll())
-            {
-                if (unAlu.TipoPersona.Equals(Personas.TiposPersonas.Alumno))
-                {
-                    misAlu.Add(unAlu);
-                }
-            }
-            grdAlumnos.DataSource = misAlu;
-            grdAlumnos.DataBind();
-        }
-        private Personas Entity
-        {
-            get;
-            set;
+            var PersonasUsuarios = from p in PersonasLogic.GetAll()
+                                   join u in UsuarioLogic.GetAll() on p.ID equals u.IDPersona
+                                   join pl in PlanLogic.GetAll() on p.IDPlan equals pl.ID
+                                   where p.TipoPersona.Equals(tipo)
+                                   select new { u.ID, u.NombreUsuario, u.Clave, u.Habilitado, p.Nombre, p.Apellido, p.Legajo, p.FechaNacimiento, p.Email, p.Direccion, p.Telefono, pl.Descripcion };
+            grvPersonas.DataSource = PersonasUsuarios.ToList();
+            grvPersonas.DataBind();
         }
         private int SelectedID
         {
@@ -100,38 +86,55 @@ namespace UI.Web
         }
         private void LoadForm(int id)
         {
-            Entity = PersonasLogic.GetOne(id);
-            nombreTextBox.Text = Entity.Nombre;
-            apellidoTextBox.Text = Entity.Apellido;
-            emailTextBox.Text = Entity.Email;
-            fechanacimientoTextBox.Text = Entity.FechaNacimiento.ToString("dd/MM/yyyy");
-            ddPlanes.SelectedValue = Entity.IDPlan.ToString();
-            legajoTextBox.Text = Entity.Legajo.ToString();
-            telefonoTextBox.Text = Entity.Telefono;
-            direccionTextBox.Text = Entity.Direccion;
+            uEntity = UsuarioLogic.GetOne(id);
+            pEntity = PersonasLogic.GetOne(uEntity.IDPersona);
+            nombreUsuarioTextBox.Text = uEntity.NombreUsuario;
+            claveTextBox.Text = uEntity.Clave;
+            confirmarClaveTextBox.Text = uEntity.Clave;
+            habilitadoCheckBox.Checked = uEntity.Habilitado;
+            nombreTextBox.Text = pEntity.Nombre;
+            apellidoTextBox.Text = pEntity.Apellido;
+            emailTextBox.Text = pEntity.Email;
+            fechanacimientoTextBox.Text = pEntity.FechaNacimiento.ToString("dd/MM/yyyy");
+            ddPlanes.SelectedValue = pEntity.IDPlan.ToString();
+            legajoTextBox.Text = pEntity.Legajo.ToString();
+            telefonoTextBox.Text = pEntity.Telefono;
+            direccionTextBox.Text = pEntity.Direccion;
         }
-        private void LoadEntity(Personas alumno)
+        private void LoadEntity(Personas persona, Usuario user)
         {
-            alumno.Nombre = nombreTextBox.Text;
-            alumno.Apellido = apellidoTextBox.Text;
-            alumno.Email = emailTextBox.Text;
-            alumno.Direccion= direccionTextBox.Text;
-            alumno.FechaNacimiento= Convert.ToDateTime(fechanacimientoTextBox.Text);
-            alumno.Legajo = Convert.ToInt32(legajoTextBox.Text);
-            alumno.IDPlan = Convert.ToInt32(ddPlanes.SelectedValue);
-            alumno.Telefono = telefonoTextBox.Text;
-            alumno.TipoPersona = Personas.TiposPersonas.Alumno;
+            persona.Nombre = nombreTextBox.Text;
+            persona.Apellido = apellidoTextBox.Text;
+            persona.Email = emailTextBox.Text;
+            persona.Direccion = direccionTextBox.Text;
+            persona.FechaNacimiento = Convert.ToDateTime(fechanacimientoTextBox.Text);
+            persona.Legajo = Convert.ToInt32(legajoTextBox.Text);
+            persona.IDPlan = Convert.ToInt32(ddPlanes.SelectedValue);
+            persona.Telefono = telefonoTextBox.Text;
+            persona.TipoPersona = tipo;
+
+            user.NombreUsuario = nombreUsuarioTextBox.Text;
+            user.Clave = claveTextBox.Text;
+            user.Habilitado = habilitadoCheckBox.Checked;
         }
         private void DeleteEntity(int id)
         {
-            PersonasLogic.Delete(id);
+            Usuario usr = UsuarioLogic.GetOne(id);
+            UsuarioLogic.Delete(id);
+            PersonasLogic.Delete(usr.IDPersona);
         }
-        private void SaveEntity(Personas alumno)
+        private void SaveEntity(Personas persona, Usuario user)
         {
-            PersonasLogic.Save(alumno);
+            PersonasLogic.Save(persona);
+            user.IDPersona = persona.ID;
+            UsuarioLogic.Save(user);
         }
         private void EnableForm(bool enable)
         {
+            nombreUsuarioTextBox.Enabled = enable;
+            claveTextBox.Enabled = enable;
+            confirmarClaveTextBox.Enabled = enable;
+            habilitadoCheckBox.Enabled = enable;
             nombreTextBox.Enabled = enable;
             apellidoTextBox.Enabled = enable;
             emailTextBox.Enabled = enable;
@@ -143,6 +146,11 @@ namespace UI.Web
         }
         private void ClearForm()
         {
+            nombreUsuarioTextBox.Text = string.Empty;
+            claveTextBox.Text = string.Empty;
+            confirmarClaveTextBox.Text = string.Empty;
+            habilitadoCheckBox.Checked = false;
+            ddPlanes.SelectedValue = "0";
             nombreTextBox.Text = string.Empty;
             apellidoTextBox.Text = string.Empty;
             emailTextBox.Text = string.Empty;
@@ -160,7 +168,7 @@ namespace UI.Web
                 LoadForm(SelectedID);
                 EnableForm(true);
                 formActionPanel.Visible = true;
-                grdAlumnos.Enabled = false;
+                grvPersonas.Enabled = false;
                 gridActionsPanel.Visible = false;
             }
         }
@@ -172,16 +180,20 @@ namespace UI.Web
                     DeleteEntity(SelectedID);
                     break;
                 case FormModes.Modificacion:
-                    Entity = new Personas();
-                    Entity.ID = SelectedID;
-                    Entity.State = BusinessEntity.States.Modified;
-                    LoadEntity(Entity);
-                    SaveEntity(Entity);
+                    uEntity = new Usuario();
+                    pEntity = new Personas();
+                    uEntity.ID = SelectedID;
+                    pEntity.ID = UsuarioLogic.GetOne(SelectedID).IDPersona;
+                    uEntity.State = BusinessEntity.States.Modified;
+                    pEntity.State = BusinessEntity.States.Modified;
+                    LoadEntity(pEntity, uEntity);
+                    SaveEntity(pEntity, uEntity);
                     break;
                 case FormModes.Alta:
-                    Entity = new Personas();
-                    LoadEntity(Entity);
-                    SaveEntity(Entity);
+                    uEntity = new Usuario();
+                    pEntity = new Personas();
+                    LoadEntity(pEntity, uEntity);
+                    SaveEntity(pEntity, uEntity);
                     break;
                 default:
                     break;
@@ -197,7 +209,7 @@ namespace UI.Web
                 LoadForm(SelectedID);
                 EnableForm(false);
                 formActionPanel.Visible = true;
-                grdAlumnos.Enabled = false;
+                grvPersonas.Enabled = false;
                 gridActionsPanel.Visible = false;
             }
         }
@@ -214,9 +226,9 @@ namespace UI.Web
         {
             Response.Redirect("~/Alumno.aspx");
         }
-        protected void grdAlumnos_SelectedIndexChanged(object sender, EventArgs e)
+        protected void grvPersonas_SelectedIndexChanged(object sender, EventArgs e)
         {
-            SelectedID = (int)grdAlumnos.SelectedValue;
+            SelectedID = (int)grvPersonas.SelectedValue;
         }
     }
 }

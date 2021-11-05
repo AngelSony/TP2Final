@@ -51,7 +51,7 @@ namespace Business.Logic
             {
                 return false;
             }
-            catch (Exception Ex)
+            catch (Exception)
             {
                 return false;
             }

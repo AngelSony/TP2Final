@@ -222,8 +222,5 @@ namespace UI.Desktop
             formMateria.ShowDialog();
             listar();
         }
-        private void PlanesDesktop_Load(object sender, EventArgs e)
-        {
-        }
     }
 }

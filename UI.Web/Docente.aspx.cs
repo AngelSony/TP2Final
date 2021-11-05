@@ -6,28 +6,29 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using Business.Logic;
 using Business.Entities;
-using System.Windows.Forms;
 
 namespace UI.Web
 {
-    public partial class frmPersonas : Page
+    public partial class Docente : System.Web.UI.Page
     {
-        protected Personas.TiposPersonas tipo;
+        const Personas.TiposPersonas tipo = Personas.TiposPersonas.Docente;
         protected Usuario uEntity { get; set; }
         protected Personas pEntity { get; set; }
         protected void Page_Load(object sender, EventArgs e)
         {
-            /*if (!IsPostBack)
+            if (!IsPostBack)
             {
-                if (Session["inputText"] == null)
+                if (Session["TipoPersona"] == null)
                 {
                     Response.Redirect("~/AdvertenciaLogin.aspx");
                 }
-                tipo = Personas.TiposPersonas.Alumno;
+                else if ((int)Session["TipoPersona"] != (int)Personas.TiposPersonas.Alumno)
+                {
+                    Response.Redirect("~/AdvertenciaAccesoUsuario.aspx");
+                }
                 LoadGrid();
                 CargarCombo();
             }
-            */
         }
         private void CargarCombo()
         {
@@ -197,7 +198,7 @@ namespace UI.Web
                 default:
                     break;
             }
-            Response.Redirect("~/frmPersonas.aspx");
+            Response.Redirect("~/Docente.aspx");
         }
         protected void eliminarLinkButton_Click(object sender, EventArgs e)
         {
@@ -223,7 +224,7 @@ namespace UI.Web
         }
         protected void cancelarLinkButton_Click(object sender, EventArgs e)
         {
-            Response.Redirect("~/frmPersonas.aspx");
+            Response.Redirect("~/Docente.aspx");
         }
         protected void grvPersonas_SelectedIndexChanged(object sender, EventArgs e)
         {
