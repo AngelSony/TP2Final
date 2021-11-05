@@ -46,6 +46,7 @@
     <Compile Include="BusinessLogic.cs" />
     <Compile Include="ComisionesLogic.cs" />
     <Compile Include="CursoLogic.cs" />
+    <Compile Include="DocenteCursoLogic.cs" />
     <Compile Include="EspecialidadesLogic.cs" />
     <Compile Include="MateriaLogic.cs" />
     <Compile Include="ModuloLogic.cs" />

@@ -53,9 +53,19 @@ namespace Business.Logic
             }
             catch (Exception Ex)
             {
-                throw Ex;
+                return false;
             }
+
         }
+
+        public static void ValidarDocentes(DocenteCurso docenteCurso)
+        {
+            List<DocenteCurso> docentesCursos = DocenteCursoLogic.GetAll();
+            List<DocenteCurso> docenteCursosRepetidos = docentesCursos.Where(dc => dc.IDCurso == docenteCurso.IDCurso && dc.IDDocente == docenteCurso.IDDocente).ToList();
+            if (docenteCursosRepetidos.Count != 0)
+                throw new Exception("El docente ya se encuetra asignado al curso seleccionado");
+        }
+
     }
 }
 

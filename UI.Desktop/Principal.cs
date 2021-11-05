@@ -32,11 +32,6 @@ namespace UI.Desktop
             formUsuario.ShowDialog();
         }
 
-        private void tsmiCursos_Click(object sender, EventArgs e)
-        {
-            Cursos formCurso = new Cursos();
-            formCurso.ShowDialog();
-        }
 
         private void modulosToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -68,6 +63,8 @@ namespace UI.Desktop
             }
             else
             {
+                usuarioActual = formLogin.usuarioActual;
+                usuarioActual = UsuarioLogic.GetUsuarioPorNombre(usuarioActual);
                 personaActual = PersonasLogic.GetOne(usuarioActual.IDPersona);
                 MessageBox.Show("Bienvenido " + personaActual.Nombre + " " + personaActual.Apellido, "UTN FRRO",
                MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
@@ -101,6 +98,18 @@ namespace UI.Desktop
         {
             formPersonas Personas = new formPersonas(Business.Entities.Personas.TiposPersonas.Docente);
             Personas.ShowDialog();
+        }
+
+        private void administrarCursosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Cursos formCurso = new Cursos();
+            formCurso.ShowDialog();
+        }
+
+        private void asignarDocentesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DocenteCurso formDocenteCurso = new DocenteCurso();
+            formDocenteCurso.ShowDialog();
         }
     }
 }

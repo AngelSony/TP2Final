@@ -163,7 +163,9 @@ namespace Data.Database
             try
             {
                 var miUsuario = from c in GetAll() where c.NombreUsuario.Equals(user.NombreUsuario) select c;
+               
                 return miUsuario.Single();
+           
             }
             catch (Exception Ex)
             {

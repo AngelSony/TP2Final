@@ -7,15 +7,18 @@ using System.Web.UI.WebControls;
 
 namespace UI.Web
 {
-    public partial class frmPersonas : System.Web.UI.Page
+    public partial class AdvertenciaAccesoUsuario : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            /*if (!IsPostBack)
-            {
-                Legajo.Text = Application["TipoPersona"].ToString();
-            }
-            */
+
+        }
+
+        protected void btnVolverMenu_Click(object sender, EventArgs e)
+        {
+
+            Response.Redirect("~/Default.aspx");
+
         }
     }
 }

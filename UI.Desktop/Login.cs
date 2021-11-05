@@ -36,13 +36,16 @@ namespace UI.Desktop
 
             if(Validaciones.EsUsuarioValido(usuarioActual))
             { 
-                MessageBox.Show("Usuario Valido");
+               
                 DialogResult = DialogResult.OK;
+                
                }
             else
             {
 
-                MessageBox.Show("Usuario Invalido");
+                MessageBox.Show("Usuario y/o contraseña incorrectos", "Login"
+                     , MessageBoxButtons.OK, MessageBoxIcon.Error);
+                limpiaCampos();
             }
 
         }
@@ -51,5 +54,14 @@ namespace UI.Desktop
         {
             Dispose();
         }
+
+        private void limpiaCampos()
+        {
+            this.txtUsuario.Text = "";
+            this.txtClave.Text = "";
+            this.txtUsuario.Focus();
+        }
+
+
     }
 }

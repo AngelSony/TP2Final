@@ -14,28 +14,37 @@ namespace UI.Web
         Usuario usuario;
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            lblMensaje.Visible = false;
         }
 
         protected void btnAceptar_Click(object sender, EventArgs e)
         {
             usuario = new Usuario();
+            PersonasLogic lp = new PersonasLogic();
             usuario.NombreUsuario = txtUsuario.Text;
             usuario.Clave = txtClave.Text;
 
             if (Validaciones.EsUsuarioValido(usuario))
             {
 
-                Page.Response.Write("Usuario Valido");
-                Session["inputText"] = txtUsuario;
+                usuario = UsuarioLogic.GetUsuarioPorNombre(usuario);
+                Session ["Usuario"] = (Usuario)usuario;
+                Session["TipoPersona"] = PersonasLogic.GetOne(usuario.IDPersona).TipoPersona;
+                
+                lblMensaje.Text = "Bienvenido al sistema Academia: " + PersonasLogic.GetOne(usuario.IDPersona).Nombre +" "+ PersonasLogic.GetOne(usuario.IDPersona).Apellido +" Usted ingreso al sistema como: " + PersonasLogic.GetOne(usuario.IDPersona).TipoPersona;
+                lblMensaje.Visible = true;
+               
             }
             else
             {
-
-                Page.Response.Write("Usuario Invalido");
-                Session["inputText"] = null;
+                lblMensaje.Text = "Usuario y/o Contraseña Inválida";
+                lblMensaje.Visible = true;
+                txtClave.Text = "";
+                txtUsuario.Text = "";
             }
         }
+
+
 
         protected void btnCancelar_Click(object sender, EventArgs e)
         {

@@ -14,19 +14,25 @@ namespace UI.Web
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["inputText"] == null)
+
+            if ( Session["TipoPersona"] == null)
             {
-                
+
                 Response.Redirect("~/AdvertenciaLogin.aspx");
+            }
+            else if((int)Session["TipoPersona"] != (int)Personas.TiposPersonas.Alumno)
+            {
+
+                Response.Redirect("~/AdvertenciaAccesoUsuario.aspx");
             }
             else
             {
                 if (!IsPostBack)
                 {
-                   
+
                     LoadGrid();
                     CargarCombo();
-     
+
                 }
             }
 

@@ -36,6 +36,8 @@ namespace UI.Desktop
             this.cerrarSesiónToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.administraciónToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiCursos = new System.Windows.Forms.ToolStripMenuItem();
+            this.asignarDocentesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.administrarCursosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiMaterias = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiAlumnos = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiDocentes = new System.Windows.Forms.ToolStripMenuItem();
@@ -102,10 +104,26 @@ namespace UI.Desktop
             // 
             // tsmiCursos
             // 
+            this.tsmiCursos.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.asignarDocentesToolStripMenuItem,
+            this.administrarCursosToolStripMenuItem});
             this.tsmiCursos.Name = "tsmiCursos";
             this.tsmiCursos.Size = new System.Drawing.Size(180, 22);
             this.tsmiCursos.Text = "Cursos";
-            this.tsmiCursos.Click += new System.EventHandler(this.tsmiCursos_Click);
+            // 
+            // asignarDocentesToolStripMenuItem
+            // 
+            this.asignarDocentesToolStripMenuItem.Name = "asignarDocentesToolStripMenuItem";
+            this.asignarDocentesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.asignarDocentesToolStripMenuItem.Text = "Asignar Docentes";
+            this.asignarDocentesToolStripMenuItem.Click += new System.EventHandler(this.asignarDocentesToolStripMenuItem_Click);
+            // 
+            // administrarCursosToolStripMenuItem
+            // 
+            this.administrarCursosToolStripMenuItem.Name = "administrarCursosToolStripMenuItem";
+            this.administrarCursosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.administrarCursosToolStripMenuItem.Text = "Administrar Cursos";
+            this.administrarCursosToolStripMenuItem.Click += new System.EventHandler(this.administrarCursosToolStripMenuItem_Click);
             // 
             // tsmiMaterias
             // 
@@ -179,5 +197,7 @@ namespace UI.Desktop
         private System.Windows.Forms.ToolStripMenuItem tsmiEspecialidades;
         private System.Windows.Forms.ToolStripMenuItem tsmiPlanes;
         private System.Windows.Forms.ToolStripMenuItem tsmiComisiones;
+        private System.Windows.Forms.ToolStripMenuItem asignarDocentesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem administrarCursosToolStripMenuItem;
     }
 }
