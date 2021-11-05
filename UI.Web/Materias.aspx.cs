@@ -4,37 +4,46 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using Business.Entities;
 using Business.Logic;
+using Business.Entities;
 
 namespace UI.Web
 {
-    public partial class Planes : System.Web.UI.Page
+    public partial class Materias : Page
     {
+        protected Materia Entity { get; set; }
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["TipoPersona"] == null)
+            if (!IsPostBack)
             {
-                Response.Redirect("~/AdvertenciaLogin.aspx");
-            }
-            else
-            {
-                if (!IsPostBack)
+                if (Session["TipoPersona"] == null)
                 {
-
-                    LoadGrid();
+                    Response.Redirect("~/AdvertenciaLogin.aspx");
                 }
+                else if ((int)Session["TipoPersona"] != (int)Personas.TiposPersonas.Alumno)
+                {
+                    Response.Redirect("~/AdvertenciaAccesoUsuario.aspx");
+                }
+                CargarCombo();
             }
+        }
+        private void CargarCombo()
+        {
+            planesDropDown.DataSource = PlanLogic.GetAll();
+            planesDropDown.DataTextField = "Descripcion";
+            planesDropDown.DataValueField = "ID";
+            planesDropDown.DataBind();
+            planesDropDown.Items.Insert(0, new ListItem("-- Seleccione --", "0"));
         }
         private void LoadGrid()
         {
-            grdPlanes.DataSource = PlanLogic.GetAll();
-            grdPlanes.DataBind();
-        }
-        private Plan Entity
-        {
-            get;
-            set;
+            var materias = from m in MateriaLogic.GetAll()
+                           where m.IDPlan == Convert.ToInt32(planesDropDown.SelectedValue)
+                           select m;
+            grvMaterias.DataSource = null;
+            grvMaterias.DataSource = materias.ToList();
+            grvMaterias.DataBind();
+            grdActionPanel.Visible = true;
         }
         private int SelectedID
         {
@@ -72,34 +81,43 @@ namespace UI.Web
             get { return (FormModes)ViewState["FormMode"]; }
             set { ViewState["FormMode"] = value; }
         }
+        protected void planesDropDown_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            LoadGrid();
+        }
         private void LoadForm(int id)
         {
-            Entity = PlanLogic.GetOne(id);
+            Entity = MateriaLogic.GetOne(id);
             descripcionTextBox.Text = Entity.Descripcion;
-            especialdadTextBox.Text = Entity.IDEspecialidad.ToString(); //CAMBIAR
+            HSTextBox.Text = Entity.HSSemanales.ToString();
+            HTTextBox.Text = Entity.HSTotales.ToString();
         }
-        private void LoadEntity(Plan plan)
+        private void LoadEntity(Materia mat)
         {
-            plan.Descripcion = descripcionTextBox.Text;
-            plan.IDEspecialidad = Convert.ToInt32( especialdadTextBox.Text);
+            mat.Descripcion = descripcionTextBox.Text;
+            mat.HSSemanales = Convert.ToInt32(HSTextBox.Text);
+            mat.HSTotales = Convert.ToInt32(HTTextBox.Text);
+            mat.IDPlan = Convert.ToInt32(planesDropDown.SelectedValue);
         }
         private void DeleteEntity(int id)
         {
-            PlanLogic.Delete(id);
+            MateriaLogic.Delete(id);
         }
-        private void SaveEntity(Plan plan)
+        private void SaveEntity(Materia mat)
         {
-            PlanLogic.Save(plan);
+            MateriaLogic.Save(mat);
         }
         private void EnableForm(bool enable)
         {
             descripcionTextBox.Enabled = enable;
-            especialdadTextBox.Enabled = enable;
+            HSTextBox.Enabled = enable;
+            HTTextBox.Enabled = enable;
         }
         private void ClearForm()
         {
             descripcionTextBox.Text = string.Empty;
-            especialdadTextBox.Text = string.Empty;
+            HSTextBox.Text = string.Empty;
+            HTTextBox.Text = string.Empty;
         }
         protected void editarLinkButton_Click(object sender, EventArgs e)
         {
@@ -110,7 +128,8 @@ namespace UI.Web
                 LoadForm(SelectedID);
                 EnableForm(true);
                 formActionPanel.Visible = true;
-                grdPlanes.Enabled = false;
+                planesDropDown.Enabled = false;
+                grvMaterias.Enabled = false;
                 grdActionPanel.Visible = false;
             }
         }
@@ -122,21 +141,20 @@ namespace UI.Web
                     DeleteEntity(SelectedID);
                     break;
                 case FormModes.Modificacion:
-                    Entity = new Plan();
-                    Entity.ID = SelectedID;
+                    Entity = new Materia();
                     Entity.State = BusinessEntity.States.Modified;
                     LoadEntity(Entity);
                     SaveEntity(Entity);
                     break;
                 case FormModes.Alta:
-                    Entity = new Plan();
+                    Entity = new Materia();
                     LoadEntity(Entity);
                     SaveEntity(Entity);
                     break;
                 default:
                     break;
             }
-            Response.Redirect("~/Planes.aspx");
+            Response.Redirect("~/Materias.aspx");
         }
         protected void elmininarLinkButton_Click(object sender, EventArgs e)
         {
@@ -147,7 +165,8 @@ namespace UI.Web
                 LoadForm(SelectedID);
                 EnableForm(false);
                 formActionPanel.Visible = true;
-                grdPlanes.Enabled = false;
+                planesDropDown.Enabled = false;
+                grvMaterias.Enabled = false;
                 grdActionPanel.Visible = false;
             }
         }
@@ -158,15 +177,16 @@ namespace UI.Web
             ClearForm();
             EnableForm(true);
             formActionPanel.Visible = true;
+            planesDropDown.Enabled = false;
             grdActionPanel.Visible = false;
         }
         protected void cancelarLinkButton_Click(object sender, EventArgs e)
         {
-            Response.Redirect("~/Planes.aspx");
+            Response.Redirect("~/Materias.aspx");
         }
-        protected void grdPlanes_SelectedIndexChanged(object sender, EventArgs e)
+        protected void grvMaterias_SelectedIndexChanged(object sender, EventArgs e)
         {
-            SelectedID = (int)grdPlanes.SelectedValue;
+            SelectedID = (int)grvMaterias.SelectedValue;
         }
     }
 }

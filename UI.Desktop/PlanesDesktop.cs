@@ -111,7 +111,6 @@ namespace UI.Desktop
         public override void GuardarCambios()
         {
             MapearADatos();
-            MessageBox.Show(materiasActuales.Count.ToString());
 
             if (Modo == ModoForm.Alta)
             {
@@ -134,7 +133,6 @@ namespace UI.Desktop
                 {
                     if(mat.State == BusinessEntity.States.Deleted)
                     {
-                        MessageBox.Show("Se va a eliminar: "+mat.ID);
                         MateriaLogic.Delete(mat.ID);
                     }
                 }
@@ -143,6 +141,7 @@ namespace UI.Desktop
                 {
                     if (mat.State != BusinessEntity.States.Deleted)
                     {
+                        mat.IDPlan = planActual.ID;
                         MateriaLogic.Save(mat);
                     }
                 }
