@@ -16,21 +16,16 @@ namespace UI.Web
         {
             if (Session["inputText"] == null)
             {
-                
                 Response.Redirect("~/AdvertenciaLogin.aspx");
             }
             else
             {
                 if (!IsPostBack)
                 {
-                   
                     LoadGrid();
                     CargarCombo();
-     
                 }
             }
-
-
         }
         private void CargarCombo()
         {
@@ -50,11 +45,8 @@ namespace UI.Web
                     misAlu.Add(unAlu);
                 }
             }
-
             grdAlumnos.DataSource = misAlu;
             grdAlumnos.DataBind();
-        
-
         }
         private Personas Entity
         {
@@ -108,7 +100,6 @@ namespace UI.Web
             legajoTextBox.Text = Entity.Legajo.ToString();
             telefonoTextBox.Text = Entity.Telefono;
             direccionTextBox.Text = Entity.Direccion;
-
         }
         private void LoadEntity(Personas alumno)
         {

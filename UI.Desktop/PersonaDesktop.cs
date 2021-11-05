@@ -72,7 +72,7 @@ namespace UI.Desktop
             txtTelefono.Text = perActual.Telefono;
             cbPlan.SelectedValue = perActual.IDPlan;
             txtLegajo.Text = perActual.Legajo.ToString();
-            txtFechaNac.Text = perActual.FechaNacimiento.ToString();
+            txtFechaNac.Text = perActual.FechaNacimiento.ToString("dd/MM/yyyy");
             ModoBoton();
         }
         public override void MapearADatos()
