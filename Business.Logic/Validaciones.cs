@@ -65,6 +65,20 @@ namespace Business.Logic
             if (docenteCursosRepetidos.Count != 0)
                 throw new Exception("El docente ya se encuetra asignado al curso seleccionado");
         }
+        public static Boolean EsNumeroPositivo(string text)
+        {
+            if (!Int32.TryParse(text,out int n))
+            {
+                return false;
+            }else if (Int32.Parse(text) < 0)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
 
     }
 }

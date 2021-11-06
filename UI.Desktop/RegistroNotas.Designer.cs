@@ -35,15 +35,14 @@ namespace UI.Desktop
             this.toolStripContainer1 = new System.Windows.Forms.ToolStripContainer();
             this.dgvNotas = new System.Windows.Forms.DataGridView();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.tsbNuevo = new System.Windows.Forms.ToolStripButton();
-            this.tsbEditar = new System.Windows.Forms.ToolStripButton();
-            this.tsbEliminar = new System.Windows.Forms.ToolStripButton();
             this.btnSalir = new System.Windows.Forms.Button();
             this.btnActualizar = new System.Windows.Forms.Button();
             this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Alumno = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Condición = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Nota = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tsbEditar = new System.Windows.Forms.ToolStripButton();
+            this.tsbEliminar = new System.Windows.Forms.ToolStripButton();
             this.tableLayoutPanel1.SuspendLayout();
             this.toolStripContainer1.ContentPanel.SuspendLayout();
             this.toolStripContainer1.TopToolStripPanel.SuspendLayout();
@@ -70,7 +69,7 @@ namespace UI.Desktop
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(450, 286);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(454, 284);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // cbCurso
@@ -79,7 +78,7 @@ namespace UI.Desktop
             this.cbCurso.FormattingEnabled = true;
             this.cbCurso.Location = new System.Drawing.Point(49, 3);
             this.cbCurso.Name = "cbCurso";
-            this.cbCurso.Size = new System.Drawing.Size(317, 21);
+            this.cbCurso.Size = new System.Drawing.Size(321, 21);
             this.cbCurso.TabIndex = 1;
             this.cbCurso.SelectedValueChanged += new System.EventHandler(this.cbCurso_SelectedValueChanged);
             // 
@@ -101,11 +100,11 @@ namespace UI.Desktop
             // toolStripContainer1.ContentPanel
             // 
             this.toolStripContainer1.ContentPanel.Controls.Add(this.dgvNotas);
-            this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(444, 199);
+            this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(448, 197);
             this.toolStripContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.toolStripContainer1.Location = new System.Drawing.Point(3, 30);
             this.toolStripContainer1.Name = "toolStripContainer1";
-            this.toolStripContainer1.Size = new System.Drawing.Size(444, 224);
+            this.toolStripContainer1.Size = new System.Drawing.Size(448, 222);
             this.toolStripContainer1.TabIndex = 2;
             this.toolStripContainer1.Text = "toolStripContainer1";
             // 
@@ -129,51 +128,23 @@ namespace UI.Desktop
             this.dgvNotas.Name = "dgvNotas";
             this.dgvNotas.ReadOnly = true;
             this.dgvNotas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvNotas.Size = new System.Drawing.Size(444, 199);
+            this.dgvNotas.Size = new System.Drawing.Size(448, 197);
             this.dgvNotas.TabIndex = 0;
             // 
             // toolStrip1
             // 
             this.toolStrip1.Dock = System.Windows.Forms.DockStyle.None;
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsbNuevo,
             this.tsbEditar,
             this.tsbEliminar});
             this.toolStrip1.Location = new System.Drawing.Point(3, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(81, 25);
+            this.toolStrip1.Size = new System.Drawing.Size(89, 25);
             this.toolStrip1.TabIndex = 0;
-            // 
-            // tsbNuevo
-            // 
-            this.tsbNuevo.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbNuevo.Image = global::UI.Desktop.Properties.Resources.InsertarBoton;
-            this.tsbNuevo.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbNuevo.Name = "tsbNuevo";
-            this.tsbNuevo.Size = new System.Drawing.Size(23, 22);
-            this.tsbNuevo.Text = "toolStripButton1";
-            // 
-            // tsbEditar
-            // 
-            this.tsbEditar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbEditar.Image = global::UI.Desktop.Properties.Resources.ModificarBoton;
-            this.tsbEditar.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbEditar.Name = "tsbEditar";
-            this.tsbEditar.Size = new System.Drawing.Size(23, 22);
-            this.tsbEditar.Text = "toolStripButton1";
-            // 
-            // tsbEliminar
-            // 
-            this.tsbEliminar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbEliminar.Image = global::UI.Desktop.Properties.Resources.EliminarBoton;
-            this.tsbEliminar.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbEliminar.Name = "tsbEliminar";
-            this.tsbEliminar.Size = new System.Drawing.Size(23, 22);
-            this.tsbEliminar.Text = "toolStripButton1";
             // 
             // btnSalir
             // 
-            this.btnSalir.Location = new System.Drawing.Point(372, 260);
+            this.btnSalir.Location = new System.Drawing.Point(376, 258);
             this.btnSalir.Name = "btnSalir";
             this.btnSalir.Size = new System.Drawing.Size(75, 23);
             this.btnSalir.TabIndex = 3;
@@ -184,7 +155,7 @@ namespace UI.Desktop
             // btnActualizar
             // 
             this.btnActualizar.Dock = System.Windows.Forms.DockStyle.Right;
-            this.btnActualizar.Location = new System.Drawing.Point(291, 260);
+            this.btnActualizar.Location = new System.Drawing.Point(295, 258);
             this.btnActualizar.Name = "btnActualizar";
             this.btnActualizar.Size = new System.Drawing.Size(75, 23);
             this.btnActualizar.TabIndex = 4;
@@ -220,11 +191,31 @@ namespace UI.Desktop
             this.Nota.Name = "Nota";
             this.Nota.ReadOnly = true;
             // 
+            // tsbEditar
+            // 
+            this.tsbEditar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbEditar.Image = global::UI.Desktop.Properties.Resources.ModificarBoton;
+            this.tsbEditar.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbEditar.Name = "tsbEditar";
+            this.tsbEditar.Size = new System.Drawing.Size(23, 22);
+            this.tsbEditar.Text = "toolStripButton1";
+            this.tsbEditar.Click += new System.EventHandler(this.tsbEditar_Click);
+            // 
+            // tsbEliminar
+            // 
+            this.tsbEliminar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbEliminar.Image = global::UI.Desktop.Properties.Resources.EliminarBoton;
+            this.tsbEliminar.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbEliminar.Name = "tsbEliminar";
+            this.tsbEliminar.Size = new System.Drawing.Size(23, 22);
+            this.tsbEliminar.Text = "toolStripButton1";
+            this.tsbEliminar.Click += new System.EventHandler(this.tsbEliminar_Click);
+            // 
             // RegistroNotas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(450, 286);
+            this.ClientSize = new System.Drawing.Size(454, 284);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "RegistroNotas";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
@@ -250,7 +241,6 @@ namespace UI.Desktop
         private System.Windows.Forms.ComboBox cbCurso;
         private System.Windows.Forms.ToolStripContainer toolStripContainer1;
         private System.Windows.Forms.ToolStrip toolStrip1;
-        private System.Windows.Forms.ToolStripButton tsbNuevo;
         private System.Windows.Forms.ToolStripButton tsbEditar;
         private System.Windows.Forms.ToolStripButton tsbEliminar;
         private System.Windows.Forms.DataGridView dgvNotas;

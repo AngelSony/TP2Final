@@ -156,6 +156,12 @@
     <Compile Include="RegistroNotas.Designer.cs">
       <DependentUpon>RegistroNotas.cs</DependentUpon>
     </Compile>
+    <Compile Include="RegistroNotasDesktop.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RegistroNotasDesktop.Designer.cs">
+      <DependentUpon>RegistroNotasDesktop.cs</DependentUpon>
+    </Compile>
     <Compile Include="UsuarioDesktop.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -231,6 +237,9 @@
     </Compile>
     <EmbeddedResource Include="RegistroNotas.resx">
       <DependentUpon>RegistroNotas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RegistroNotasDesktop.resx">
+      <DependentUpon>RegistroNotasDesktop.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UsuarioDesktop.resx">
       <DependentUpon>UsuarioDesktop.cs</DependentUpon>

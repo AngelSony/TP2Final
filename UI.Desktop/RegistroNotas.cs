@@ -41,6 +41,7 @@ namespace UI.Desktop
                                  where dc.IDDocente.Equals(personaActual.ID)
                                  select new { ID = c.ID, Descripcion = m.Descripcion + " " + cm.Descripcion + " " + c.AnioCalendario };
                     cbCurso.DataSource = cursos.ToList();
+                    tsbEliminar.Enabled = false;
                     break;
                 case Personas.TiposPersonas.Administrativo:
                     var todoscursos = from c in CursoLogic.GetAll()
@@ -86,6 +87,22 @@ namespace UI.Desktop
         private void btnSalir_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void tsbEditar_Click(object sender, EventArgs e)
+        {
+            int ID = Convert.ToInt32(dgvNotas.SelectedRows[0].Cells["ID"].Value);
+            RegistroNotasDesktop formNotas = new RegistroNotasDesktop(ID, ApplicationForm.ModoForm.Modificacion);
+            formNotas.ShowDialog();
+            Listar();
+        }
+
+        private void tsbEliminar_Click(object sender, EventArgs e)
+        {
+            int ID = Convert.ToInt32(dgvNotas.SelectedRows[0].Cells["ID"].Value);
+            RegistroNotasDesktop formNotas = new RegistroNotasDesktop(ID, ApplicationForm.ModoForm.Baja);
+            formNotas.ShowDialog();
+            Listar();
         }
     }
 }
