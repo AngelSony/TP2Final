@@ -19,10 +19,9 @@ namespace UI.Desktop
         public AlumnoInscripciones()
         {
             InitializeComponent();
-         
         }
 
-        public AlumnoInscripciones(Personas alumno)
+        public AlumnoInscripciones(Personas alumno):this()
         {
             AlumnoActual = alumno;
             listar();
@@ -30,14 +29,14 @@ namespace UI.Desktop
 
         public void listar()
         {
-            var Listado = from alu_ins in AlumnoInscripcionesLogic.GetAll()
+            
+            var listado = from alu_ins in AlumnoInscripcionesLogic.GetAll()
                           join cur in CursoLogic.GetAll() on alu_ins.IDCurso equals cur.ID
                           join alu in PersonasLogic.GetAll() on alu_ins.IDAlumno equals alu.ID
                           join mat in MateriaLogic.GetAll() on cur.IDMateria equals mat.ID
-                          where alu.ID.Equals(AlumnoActual.ID)
+                          where alu.ID == AlumnoActual.ID
                           select new {alu_ins.ID, alu.Nombre , alu.Apellido,  cur.AnioCalendario, alu_ins.Nota,alu_ins.Condicion };
-
-            dgvInscripcion.DataSource = Listado.ToList();
+            dgvInscripcion.DataSource = listado.ToList();
 
         }
 
