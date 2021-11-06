@@ -116,7 +116,9 @@ namespace UI.Desktop
             new RegistroNotas(personaActual).ShowDialog();
         }
 
-        private void inscripciònACursosToolStripMenuItem_Click(object sender, EventArgs e)
+               
+
+        private void registrarseACursosToolStripMenuItem_Click(object sender, EventArgs e)
         {
             AlumnoInscripciones formAluInsc = new AlumnoInscripciones(personaActual);
             formAluInsc.ShowDialog();
