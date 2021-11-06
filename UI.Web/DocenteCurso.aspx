@@ -35,13 +35,13 @@
         <asp:Label ID="Label2" runat="server" Text="Curso"></asp:Label>
         &nbsp;&nbsp;<asp:DropDownList ID="ddlCurso" runat="server">
         </asp:DropDownList>
-        <asp:RangeValidator ID="RangeValidator1" runat="server" ControlToValidate="ddlCurso" ErrorMessage="RangeValidator" ForeColor="Red" MaximumValue="999999" MinimumValue="1" ValidationGroup="validar">*</asp:RangeValidator>
+        <asp:RangeValidator ID="RangeValidator1" runat="server" ControlToValidate="ddlCurso" ErrorMessage="Seleccione un Curso" ForeColor="Red" MaximumValue="999999" MinimumValue="1" ValidationGroup="validar">*</asp:RangeValidator>
         <br />
         <br />
         <asp:Label ID="Label3" runat="server" Text="Docente"></asp:Label>
         &nbsp;<asp:DropDownList ID="ddlDocente" runat="server">
         </asp:DropDownList>
-        <asp:RangeValidator ID="RangeValidator2" runat="server" ControlToValidate="ddlDocente" ErrorMessage="RangeValidator" ForeColor="Red" MaximumValue="99999" MinimumValue="1" ValidationGroup="validar">*</asp:RangeValidator>
+        <asp:RangeValidator ID="RangeValidator2" runat="server" ControlToValidate="ddlDocente" ErrorMessage="Seleccione Docente" ForeColor="Red" MaximumValue="99999" MinimumValue="1" ValidationGroup="validar" EnableViewState="False">*</asp:RangeValidator>
         <br />
         <br />
         <asp:Label ID="Label4" runat="server" Text="Cargo"></asp:Label>

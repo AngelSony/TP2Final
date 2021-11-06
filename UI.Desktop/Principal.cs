@@ -54,12 +54,17 @@ namespace UI.Desktop
 
         private void Principal_Shown(object sender, EventArgs e)
         {
+            Log();
+        }
+
+        private void Log()
+        {
             Login formLogin = new Login(ref usuarioActual);
-            
+
             if (formLogin.ShowDialog() != DialogResult.OK)
             {
                 Dispose();
-            
+
             }
             else
             {
@@ -68,21 +73,39 @@ namespace UI.Desktop
                 personaActual = PersonasLogic.GetOne(usuarioActual.IDPersona);
                 MessageBox.Show("Bienvenido " + personaActual.Nombre + " " + personaActual.Apellido, "UTN FRRO",
                MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                switch(personaActual.TipoPersona)
+                switch (personaActual.TipoPersona)
                 {
                     case Personas.TiposPersonas.Administrativo:
                         MessageBox.Show("Inicio de sesion como administrativo");
-                        //SACARLE PERMISO DE NOTAS E INSCRIPCION
+                        inscribirseACursosToolStripMenuItem.Visible = false;
                         break;
                     case Personas.TiposPersonas.Alumno:
                         MessageBox.Show("Inicio de sesion como alumno");
-                        //SACAR NOTAS, REPORTES;
+                        asignarDocentesToolStripMenuItem.Visible = false;
+                        administrarCursosToolStripMenuItem.Visible = false;
+                        tsmiMaterias.Visible = false;
+                        tsmiDocentes.Visible = false;
+                        tsmiEspecialidades.Visible = false;
+                        tsmiPlanes.Visible = false;
+                        tsmiComisiones.Visible = false;
+                        registrarNotasToolStripMenuItem.Visible = false;
+                        tsmiMaterias.Visible = false;
                         break;
 
                     case Personas.TiposPersonas.Docente:
                         MessageBox.Show("Inicio de sesion como Docente");
+                        asignarDocentesToolStripMenuItem.Visible = false;
+                        administrarCursosToolStripMenuItem.Visible = false;
+                        inscribirseACursosToolStripMenuItem.Visible = false;
+                        tsmiMaterias.Visible = false;
+                        tsmiAlumnos.Visible = false;
+                        tsmiDocentes.Visible = false;
+                        tsmiEspecialidades.Visible = false;
+                        tsmiPlanes.Visible = false;
+                        tsmiComisiones.Visible = false;
+                        tsmiCursos.Visible = false;
                         break;
-          
+
                 }
             }
         }
@@ -119,6 +142,11 @@ namespace UI.Desktop
         private void registrarNotasToolStripMenuItem_Click(object sender, EventArgs e)
         {
             new RegistroNotas(personaActual).ShowDialog();
+        }
+
+        private void cerrarSesiónToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Log();
         }
     }
 }

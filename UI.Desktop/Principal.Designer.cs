@@ -38,13 +38,13 @@ namespace UI.Desktop
             this.tsmiCursos = new System.Windows.Forms.ToolStripMenuItem();
             this.asignarDocentesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.administrarCursosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.inscribirseACursosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiMaterias = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiAlumnos = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiDocentes = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiEspecialidades = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiPlanes = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiComisiones = new System.Windows.Forms.ToolStripMenuItem();
-            this.inscribirseACursosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.registrarNotasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -87,8 +87,9 @@ namespace UI.Desktop
             // cerrarSesiónToolStripMenuItem
             // 
             this.cerrarSesiónToolStripMenuItem.Name = "cerrarSesiónToolStripMenuItem";
-            this.cerrarSesiónToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
+            this.cerrarSesiónToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.cerrarSesiónToolStripMenuItem.Text = "Cerrar Sesión";
+            this.cerrarSesiónToolStripMenuItem.Click += new System.EventHandler(this.cerrarSesiónToolStripMenuItem_Click);
             // 
             // administraciónToolStripMenuItem
             // 
@@ -120,14 +121,20 @@ namespace UI.Desktop
             this.asignarDocentesToolStripMenuItem.Name = "asignarDocentesToolStripMenuItem";
             this.asignarDocentesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.asignarDocentesToolStripMenuItem.Text = "Asignar Docentes";
-            this.asignarDocentesToolStripMenuItem.Click += new System.EventHandler(this.asignarDocentesToolStripMenuItem_Click);
             // 
             // administrarCursosToolStripMenuItem
             // 
             this.administrarCursosToolStripMenuItem.Name = "administrarCursosToolStripMenuItem";
-            this.administrarCursosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.administrarCursosToolStripMenuItem.Size = new System.Drawing.Size(175, 22);
             this.administrarCursosToolStripMenuItem.Text = "Administrar Cursos";
             this.administrarCursosToolStripMenuItem.Click += new System.EventHandler(this.administrarCursosToolStripMenuItem_Click);
+            // 
+            // inscribirseACursosToolStripMenuItem
+            // 
+            this.inscribirseACursosToolStripMenuItem.Name = "inscribirseACursosToolStripMenuItem";
+            this.inscribirseACursosToolStripMenuItem.Size = new System.Drawing.Size(175, 22);
+            this.inscribirseACursosToolStripMenuItem.Text = "Inscribirse a Cursos";
+            this.inscribirseACursosToolStripMenuItem.Click += new System.EventHandler(this.inscribirseACursosToolStripMenuItem_Click);
             // 
             // tsmiMaterias
             // 
@@ -168,13 +175,6 @@ namespace UI.Desktop
             this.tsmiComisiones.Name = "tsmiComisiones";
             this.tsmiComisiones.Size = new System.Drawing.Size(180, 22);
             this.tsmiComisiones.Text = "Comisiones";
-            // 
-            // inscribirseACursosToolStripMenuItem
-            // 
-            this.inscribirseACursosToolStripMenuItem.Name = "inscribirseACursosToolStripMenuItem";
-            this.inscribirseACursosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.inscribirseACursosToolStripMenuItem.Text = "Inscribirse a Cursos";
-            this.inscribirseACursosToolStripMenuItem.Click += new System.EventHandler(this.inscribirseACursosToolStripMenuItem_Click);
             // 
             // registrarNotasToolStripMenuItem
             // 
