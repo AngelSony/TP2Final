@@ -71,6 +71,7 @@
   <ItemGroup>
     <Content Include="AdvertenciaAccesoUsuario.aspx" />
     <Content Include="AdvertenciaLogin.aspx" />
+    <Content Include="AlumnoInscripciones.aspx" />
     <Content Include="Cursos.aspx" />
     <Content Include="Default.aspx" />
     <Content Include="Alumno.aspx" />
@@ -95,6 +96,13 @@
     </Compile>
     <Compile Include="AdvertenciaLogin.aspx.designer.cs">
       <DependentUpon>AdvertenciaLogin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AlumnoInscripciones.aspx.cs">
+      <DependentUpon>AlumnoInscripciones.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AlumnoInscripciones.aspx.designer.cs">
+      <DependentUpon>AlumnoInscripciones.aspx</DependentUpon>
     </Compile>
     <Compile Include="Cursos.aspx.cs">
       <DependentUpon>Cursos.aspx</DependentUpon>

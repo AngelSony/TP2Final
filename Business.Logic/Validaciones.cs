@@ -66,6 +66,35 @@ namespace Business.Logic
                 throw new Exception("El docente ya se encuetra asignado al curso seleccionado");
         }
 
+        public static Boolean ValidarCupo(Curso curso)
+        {
+            if(curso.Cupo.Equals(0))
+            {
+                 MessageBox.Show("NO HAY CUPOS PARA EL CURSO");
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+
+        public static Boolean ValidarAlumno(Personas alumno, Curso cur)
+        {
+            foreach (var al in AlumnoInscripcionesLogic.GetAll())
+            {
+                if (al.IDAlumno == alumno.ID && al.IDCurso == cur.ID)
+                {
+                    return false;
+                }
+
+            }
+            return true;
+
+        }
+
+
+
     }
 }
 
