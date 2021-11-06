@@ -111,15 +111,15 @@ namespace UI.Desktop
             formEspecialidad.ShowDialog();
         }
 
+        private void registroDeNotasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            new RegistroNotas(personaActual).ShowDialog();
+        }
+
         private void inscripciònACursosToolStripMenuItem_Click(object sender, EventArgs e)
         {
             AlumnoInscripciones formAluInsc = new AlumnoInscripciones(personaActual);
             formAluInsc.ShowDialog();
-        }
-
-        private void registrarNotasToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            new RegistroNotas(personaActual).ShowDialog();
         }
     }
 }
