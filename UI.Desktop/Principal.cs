@@ -105,6 +105,17 @@ namespace UI.Desktop
             formDocenteCurso.ShowDialog();
         }
 
+        private void tsmiEspecialidades_Click(object sender, EventArgs e)
+        {
+            Especialidades formEspecialidad = new Especialidades();
+            formEspecialidad.ShowDialog();
+        }
+
+        private void registroDeNotasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            new RegistroNotas(personaActual).ShowDialog();
+        }
+
         private void inscripciònACursosToolStripMenuItem_Click(object sender, EventArgs e)
         {
             AlumnoInscripciones formAluInsc = new AlumnoInscripciones(personaActual);
