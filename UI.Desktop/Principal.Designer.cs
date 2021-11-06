@@ -44,8 +44,7 @@ namespace UI.Desktop
             this.tsmiEspecialidades = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiPlanes = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiComisiones = new System.Windows.Forms.ToolStripMenuItem();
-            this.registroDeNotasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.inscripciònACursosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -99,8 +98,8 @@ namespace UI.Desktop
             this.tsmiDocentes,
             this.tsmiEspecialidades,
             this.tsmiPlanes,
-            this.tsmiComisiones,
-            this.registroDeNotasToolStripMenuItem});
+            this.tsmiComisiones
+            });
             this.administraciónToolStripMenuItem.Name = "administraciónToolStripMenuItem";
             this.administraciónToolStripMenuItem.Size = new System.Drawing.Size(100, 20);
             this.administraciónToolStripMenuItem.Text = "Administración";
@@ -110,7 +109,7 @@ namespace UI.Desktop
             this.tsmiCursos.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.asignarDocentesToolStripMenuItem,
             this.administrarCursosToolStripMenuItem,
-            this.inscripciònACursosToolStripMenuItem});
+            });
             this.tsmiCursos.Name = "tsmiCursos";
             this.tsmiCursos.Size = new System.Drawing.Size(180, 22);
             this.tsmiCursos.Text = "Cursos";

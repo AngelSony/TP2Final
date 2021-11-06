@@ -31,14 +31,14 @@ namespace UI.Desktop
 
         public void listar()
         {
-            var listado = from alu_ins in AlumnoInscripcionesLogic.GetAll()
+            var Listado = from alu_ins in AlumnoInscripcionesLogic.GetAll()
                           join cur in CursoLogic.GetAll() on alu_ins.IDCurso equals cur.ID
                           join alu in PersonasLogic.GetAll() on alu_ins.IDAlumno equals alu.ID
                           join mat in MateriaLogic.GetAll() on cur.IDMateria equals mat.ID
                           where alu.ID.Equals(AlumnoActual.ID)
-                          select new { IDDesc = alu_ins.ID, AlumnoDesc = alu.Nombre + " " + alu.Apellido, CursoDesc = cur.AnioCalendario, NotaDesc = alu_ins.Nota, CondicionDesc = alu_ins.Condicion };
+                          select new {IDDesc = alu_ins.ID, AlumnoDesc = alu.Nombre + " " + alu.Apellido, CursoDesc = cur.AnioCalendario, NotaDesc = alu_ins.Nota, CondicionDesc = alu_ins.Condicion };
 
-            dgvInscripcion.DataSource = null;
+            dgvInscripcion.DataSource = Listado.ToList();
         }
 
 
