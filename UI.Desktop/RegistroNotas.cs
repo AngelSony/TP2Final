@@ -59,8 +59,9 @@ namespace UI.Desktop
         private void Listar()
         {
             var inscripciones = from i in AlumnoInscripcionesLogic.GetAll()
+                                join a in PersonasLogic.GetAll() on i.IDAlumno equals a.ID
                                 where i.IDCurso == idCurso
-                                select i;
+                                select new { i.ID, Alumno = a.Apellido + " " + a.Nombre, i.Condicion, i.Nota};
             dgvNotas.DataSource = inscripciones.ToList();
         }
 

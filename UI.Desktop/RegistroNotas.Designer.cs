@@ -201,7 +201,7 @@ namespace UI.Desktop
             // 
             // Alumno
             // 
-            this.Alumno.DataPropertyName = "IDAlumno";
+            this.Alumno.DataPropertyName = "Alumno";
             this.Alumno.HeaderText = "Alumno";
             this.Alumno.Name = "Alumno";
             this.Alumno.ReadOnly = true;
