@@ -136,20 +136,6 @@ namespace UI.Web
             notaTextBox.Enabled = enable;
             condicionTextBox.Enabled = enable;
         }
-        protected void editarLinkButton_Click(object sender, EventArgs e)
-        {
-            if (IsEntitySelected)
-            {
-                formPanel.Visible = true;
-                FormMode = FormModes.Modificacion;
-                LoadForm(SelectedID);
-                EnableForm(true);
-                formActionPanel.Visible = true;
-                cursosDropDown.Enabled = false;
-                grvNotas.Enabled = false;
-                grdActionPanel.Visible = false;
-            }
-        }
         protected void cursosDropDown_SelectedIndexChanged(object sender, EventArgs e)
         {
             LoadGrid();
@@ -162,7 +148,7 @@ namespace UI.Web
                     DeleteEntity(SelectedID);
                     break;
                 case FormModes.Modificacion:
-                    Entity = new AlumnoInscripcion();
+                    Entity = AlumnoInscripcionesLogic.GetOne(SelectedID);
                     Entity.State = BusinessEntity.States.Modified;
                     LoadEntity(Entity);
                     SaveEntity(Entity);
@@ -193,6 +179,20 @@ namespace UI.Web
         protected void grvNotas_SelectedIndexChanged(object sender, EventArgs e)
         {
             SelectedID = (int)grvNotas.SelectedValue;
+        }
+        protected void editarLinkButton_Click(object sender, EventArgs e)
+        {
+            if (IsEntitySelected)
+            {
+                formPanel.Visible = true;
+                FormMode = FormModes.Modificacion;
+                LoadForm(SelectedID);
+                EnableForm(true);
+                formActionPanel.Visible = true;
+                cursosDropDown.Enabled = false;
+                grvNotas.Enabled = false;
+                grdActionPanel.Visible = false;
+            }
         }
     }
 }

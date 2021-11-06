@@ -13,6 +13,7 @@
                         <asp:BoundField DataField="Alumno" HeaderText="Alumno" SortExpression="Alumno" />
                         <asp:BoundField DataField="Condicion" HeaderText="Condición" SortExpression="Condicion" />
                         <asp:BoundField DataField="Nota" HeaderText="Nota" />
+                        <asp:CommandField ShowSelectButton="True" />
                     </Columns>
                     <EditRowStyle BackColor="#2461BF" />
                     <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />

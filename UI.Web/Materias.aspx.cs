@@ -148,6 +148,7 @@ namespace UI.Web
                     break;
                 case FormModes.Alta:
                     Entity = new Materia();
+                    Entity.ID = SelectedID;
                     LoadEntity(Entity);
                     SaveEntity(Entity);
                     break;
