@@ -20,6 +20,7 @@ namespace UI.Desktop
         public RegistroNotas() 
         {
             band = false;
+            idCurso = 0;
             InitializeComponent();
             dgvNotas.AutoGenerateColumns = false;
         }
@@ -74,6 +75,16 @@ namespace UI.Desktop
             {
                 band = true;
             }
+        }
+
+        private void btnActualizar_Click(object sender, EventArgs e)
+        {
+            Listar();
+        }
+
+        private void btnSalir_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }
