@@ -96,8 +96,9 @@ namespace Data.Database
             try
             {
                 OpenConnection();
-                SqlCommand cmdEspecialidad = new SqlCommand("UPDATE especialidades SET desc_especialidad = @desc_especialidad", sqlConn);
+                SqlCommand cmdEspecialidad = new SqlCommand("UPDATE especialidades SET desc_especialidad = @desc_especialidad WHERE id_especialidad=@id", sqlConn);
                 cmdEspecialidad.Parameters.Add("@id", SqlDbType.Int).Value = es.ID;
+                cmdEspecialidad.Parameters.Add("@desc_especialidad", SqlDbType.VarChar, 50).Value = es.Descripcion;
                 cmdEspecialidad.ExecuteNonQuery();
             }
             catch (Exception Ex)
