@@ -44,6 +44,7 @@ namespace UI.Desktop
             this.tsmiEspecialidades = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiPlanes = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiComisiones = new System.Windows.Forms.ToolStripMenuItem();
+            this.inscripciònACursosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -70,7 +71,7 @@ namespace UI.Desktop
             // tsmiSalir
             // 
             this.tsmiSalir.Name = "tsmiSalir";
-            this.tsmiSalir.Size = new System.Drawing.Size(96, 22);
+            this.tsmiSalir.Size = new System.Drawing.Size(180, 22);
             this.tsmiSalir.Text = "Salir";
             this.tsmiSalir.Click += new System.EventHandler(this.tsmiSalir_Click);
             // 
@@ -85,7 +86,7 @@ namespace UI.Desktop
             // cerrarSesiónToolStripMenuItem
             // 
             this.cerrarSesiónToolStripMenuItem.Name = "cerrarSesiónToolStripMenuItem";
-            this.cerrarSesiónToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
+            this.cerrarSesiónToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.cerrarSesiónToolStripMenuItem.Text = "Cerrar Sesión";
             // 
             // administraciónToolStripMenuItem
@@ -106,7 +107,8 @@ namespace UI.Desktop
             // 
             this.tsmiCursos.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.asignarDocentesToolStripMenuItem,
-            this.administrarCursosToolStripMenuItem});
+            this.administrarCursosToolStripMenuItem,
+            this.inscripciònACursosToolStripMenuItem});
             this.tsmiCursos.Name = "tsmiCursos";
             this.tsmiCursos.Size = new System.Drawing.Size(180, 22);
             this.tsmiCursos.Text = "Cursos";
@@ -164,6 +166,13 @@ namespace UI.Desktop
             this.tsmiComisiones.Size = new System.Drawing.Size(180, 22);
             this.tsmiComisiones.Text = "Comisiones";
             // 
+            // inscripciònACursosToolStripMenuItem
+            // 
+            this.inscripciònACursosToolStripMenuItem.Name = "inscripciònACursosToolStripMenuItem";
+            this.inscripciònACursosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.inscripciònACursosToolStripMenuItem.Text = "Inscripciòn a Cursos";
+            this.inscripciònACursosToolStripMenuItem.Click += new System.EventHandler(this.inscripciònACursosToolStripMenuItem_Click);
+            // 
             // Principal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -199,5 +208,6 @@ namespace UI.Desktop
         private System.Windows.Forms.ToolStripMenuItem tsmiComisiones;
         private System.Windows.Forms.ToolStripMenuItem asignarDocentesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem administrarCursosToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem inscripciònACursosToolStripMenuItem;
     }
 }

@@ -23,6 +23,7 @@ namespace Data.Database
                 while (drAlumnoInscripcion.Read())
                 {
                     AlumnoInscripcion alumnoInscripcion = new AlumnoInscripcion();
+                    alumnoInscripcion.ID = (int)drAlumnoInscripcion["id_inscripcion"];
                     alumnoInscripcion.IDAlumno = (int)drAlumnoInscripcion["id_alumno"];
                     alumnoInscripcion.IDCurso = (int)drAlumnoInscripcion["id_curso"];
                     if (drAlumnoInscripcion["nota"] != DBNull.Value)

@@ -14,7 +14,7 @@ namespace UI.Desktop
 {
     public partial class Principal : Form
     {
-        Usuario usuarioActual;
+       Usuario usuarioActual;
         Personas personaActual;
         public Principal()
         {
@@ -82,16 +82,9 @@ namespace UI.Desktop
                     case Personas.TiposPersonas.Docente:
                         MessageBox.Show("Inicio de sesion como Docente");
                         break;
-                    
-
+          
                 }
-
-
             }
-
-
-
-
         }
 
         private void tsmiDocentes_Click(object sender, EventArgs e)
@@ -110,6 +103,12 @@ namespace UI.Desktop
         {
             DocenteCurso formDocenteCurso = new DocenteCurso();
             formDocenteCurso.ShowDialog();
+        }
+
+        private void inscripciònACursosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AlumnoInscripciones formAluInsc = new AlumnoInscripciones(personaActual);
+            formAluInsc.ShowDialog();
         }
     }
 }
