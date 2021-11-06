@@ -7,14 +7,73 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Business.Entities;
+using Business.Logic;
 
 namespace UI.Desktop
 {
     public partial class RegistroNotas : Form
     {
-        public RegistroNotas()
+        private Personas personaActual;
+        private int idCurso;
+        private bool band;
+        public RegistroNotas() 
         {
+            band = false;
             InitializeComponent();
+            dgvNotas.AutoGenerateColumns = false;
+        }
+        public RegistroNotas(Personas persona) : this()
+        {
+            personaActual = persona;
+            CargaCombo();
+        }
+        private void CargaCombo()
+        {
+            switch (personaActual.TipoPersona)
+            {
+                case Personas.TiposPersonas.Docente:
+                    var cursos = from c in CursoLogic.GetAll()
+                                 join m in MateriaLogic.GetAll() on c.IDMateria equals m.ID
+                                 join cm in ComisionesLogic.GetAll() on c.IDComision equals cm.ID
+                                 join dc in DocenteCursoLogic.GetAll() on c.ID equals dc.IDCurso
+                                 where dc.IDDocente.Equals(personaActual.ID)
+                                 select new { ID = c.ID, Descripcion = m.Descripcion + " " + cm.Descripcion + " " + c.AnioCalendario };
+                    cbCurso.DataSource = cursos.ToList();
+                    break;
+                case Personas.TiposPersonas.Administrativo:
+                    var todoscursos = from c in CursoLogic.GetAll()
+                                 join m in MateriaLogic.GetAll() on c.IDMateria equals m.ID
+                                 join cm in ComisionesLogic.GetAll() on c.IDComision equals cm.ID
+                                 select new { ID = c.ID, Descripcion = m.Descripcion + " " + cm.Descripcion + " " + c.AnioCalendario };
+                    cbCurso.DataSource = todoscursos.ToList();
+                    break;
+                default:
+                    break;
+            }
+            cbCurso.DisplayMember = "Descripcion";
+            cbCurso.ValueMember = "ID";
+            cbCurso.SelectedIndex = -1;
+        }
+        private void Listar()
+        {
+            var inscripciones = from i in AlumnoInscripcionesLogic.GetAll()
+                                where i.IDCurso == idCurso
+                                select i;
+            dgvNotas.DataSource = inscripciones.ToList();
+        }
+
+        private void cbCurso_SelectedValueChanged(object sender, EventArgs e)
+        {
+            if(band)
+            {
+                idCurso = Convert.ToInt32(cbCurso.SelectedValue);
+                Listar();
+            }
+            if(cbCurso.SelectedIndex == -1)
+            {
+                band = true;
+            }
         }
     }
 }

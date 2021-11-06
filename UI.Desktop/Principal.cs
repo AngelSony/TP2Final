@@ -88,10 +88,6 @@ namespace UI.Desktop
 
 
             }
-
-
-
-
         }
 
         private void tsmiDocentes_Click(object sender, EventArgs e)
@@ -110,6 +106,17 @@ namespace UI.Desktop
         {
             DocenteCurso formDocenteCurso = new DocenteCurso();
             formDocenteCurso.ShowDialog();
+        }
+
+        private void tsmiEspecialidades_Click(object sender, EventArgs e)
+        {
+            Especialidades formEspecialidad = new Especialidades();
+            formEspecialidad.ShowDialog();
+        }
+
+        private void registroDeNotasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            new RegistroNotas(personaActual).ShowDialog();
         }
     }
 }
