@@ -20,8 +20,6 @@ namespace UI.Desktop
             InitializeComponent();
             CargaCombos();
         }
-
-        
         public CursosDesktop(ModoForm modo) : this()
         {
             Modo = modo;
@@ -70,6 +68,7 @@ namespace UI.Desktop
             cbMateria.SelectedValue = CursoActual.IDMateria;
             txtCupo.Text = CursoActual.Cupo.ToString();
             txtAnioCalendario.Text = CursoActual.AnioCalendario.ToString();
+            ModoBoton();
         }
         private void ModoBoton()
         {
@@ -84,6 +83,7 @@ namespace UI.Desktop
                     break;
 
                 case ModoForm.Baja:
+                    EnableForm(false);
                     btnAceptar.Text = "Eliminar";
                     break;
 
@@ -94,6 +94,13 @@ namespace UI.Desktop
                     break;
 
             }
+        }
+        public void EnableForm(bool enable)
+        {
+            cbMateria.Enabled = enable;
+            cbComision.Enabled = enable;
+            txtCupo.Enabled = enable;
+            txtAnioCalendario.Enabled = enable;
         }
         private void CargaCombos()
         {
@@ -160,6 +167,11 @@ namespace UI.Desktop
                 GuardarCambios();
                 Close();
             }
+        }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }

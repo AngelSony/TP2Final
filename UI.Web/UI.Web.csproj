@@ -69,17 +69,28 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="AdvertenciaAccesoUsuario.aspx" />
     <Content Include="AdvertenciaLogin.aspx" />
-    <Content Include="Alumno.aspx" />
+    <Content Include="AlumnoInscripciones.aspx" />
     <Content Include="Cursos.aspx" />
     <Content Include="Default.aspx" />
-    <Content Include="frmPersonas.aspx" />
+    <Content Include="Alumno.aspx" />
+    <Content Include="Docente.aspx" />
     <Content Include="Login.aspx" />
+    <Content Include="Materias.aspx" />
     <Content Include="Planes.aspx" />
+    <Content Include="RegistroNota.aspx" />
     <Content Include="Usuarios.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AdvertenciaAccesoUsuario.aspx.cs">
+      <DependentUpon>AdvertenciaAccesoUsuario.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdvertenciaAccesoUsuario.aspx.designer.cs">
+      <DependentUpon>AdvertenciaAccesoUsuario.aspx</DependentUpon>
+    </Compile>
     <Compile Include="AdvertenciaLogin.aspx.cs">
       <DependentUpon>AdvertenciaLogin.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -87,12 +98,12 @@
     <Compile Include="AdvertenciaLogin.aspx.designer.cs">
       <DependentUpon>AdvertenciaLogin.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Alumno.aspx.cs">
-      <DependentUpon>Alumno.aspx</DependentUpon>
+    <Compile Include="AlumnoInscripciones.aspx.cs">
+      <DependentUpon>AlumnoInscripciones.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Alumno.aspx.designer.cs">
-      <DependentUpon>Alumno.aspx</DependentUpon>
+    <Compile Include="AlumnoInscripciones.aspx.designer.cs">
+      <DependentUpon>AlumnoInscripciones.aspx</DependentUpon>
     </Compile>
     <Compile Include="Cursos.aspx.cs">
       <DependentUpon>Cursos.aspx</DependentUpon>
@@ -108,12 +119,8 @@
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
-    <Compile Include="frmPersonas.aspx.cs">
-      <DependentUpon>frmPersonas.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="frmPersonas.aspx.designer.cs">
-      <DependentUpon>frmPersonas.aspx</DependentUpon>
+    <Compile Include="Docente.aspx.designer.cs">
+      <DependentUpon>Docente.aspx</DependentUpon>
     </Compile>
     <Compile Include="Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
@@ -121,6 +128,13 @@
     </Compile>
     <Compile Include="Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Materias.aspx.cs">
+      <DependentUpon>Materias.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Materias.aspx.designer.cs">
+      <DependentUpon>Materias.aspx</DependentUpon>
     </Compile>
     <Compile Include="Planes.aspx.cs">
       <DependentUpon>Planes.aspx</DependentUpon>
@@ -130,6 +144,13 @@
       <DependentUpon>Planes.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RegistroNota.aspx.cs">
+      <DependentUpon>RegistroNota.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="RegistroNota.aspx.designer.cs">
+      <DependentUpon>RegistroNota.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

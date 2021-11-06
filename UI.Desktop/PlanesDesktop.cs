@@ -49,7 +49,6 @@ namespace UI.Desktop
 
             listar();
             ModoBoton();
-
         }
         public override void MapearADatos()
         {
@@ -88,15 +87,13 @@ namespace UI.Desktop
                 case ModoForm.Alta:
                     btnAceptar.Text = "Guardar";
                     break;
-
                 case ModoForm.Modificacion:
                     btnAceptar.Text = "Guardar";
                     break;
-
                 case ModoForm.Baja:
+                    EnableForm(false);
                     btnAceptar.Text = "Eliminar";
                     break;
-
                 case ModoForm.Consulta:
                     btnAceptar.Text = "Aceptar";
                     break;
@@ -104,10 +101,16 @@ namespace UI.Desktop
                     break;
             }
         }
+        public void EnableForm(bool enable)
+        {
+            txtDescripcion.Enabled = enable;
+            txtEspecialidad.Enabled = enable;
+            toolStrip1.Enabled = enable;
+        }
+
         public override void GuardarCambios()
         {
             MapearADatos();
-            MessageBox.Show(materiasActuales.Count.ToString());
 
             if (Modo == ModoForm.Alta)
             {
@@ -117,6 +120,11 @@ namespace UI.Desktop
                     mat.IDPlan = planActual.ID;
                     MateriaLogic.Save(mat);
                 }
+            }
+            PlanLogic.Save(planActual);
+            
+            if (Modo == ModoForm.Alta)
+            {
                 MessageBox.Show("Plan Agregado con Éxito");
             }
             if (Modo == ModoForm.Modificacion)
@@ -125,7 +133,6 @@ namespace UI.Desktop
                 {
                     if(mat.State == BusinessEntity.States.Deleted)
                     {
-                        MessageBox.Show("Se va a eliminar: "+mat.ID);
                         MateriaLogic.Delete(mat.ID);
                     }
                 }
@@ -134,6 +141,7 @@ namespace UI.Desktop
                 {
                     if (mat.State != BusinessEntity.States.Deleted)
                     {
+                        mat.IDPlan = planActual.ID;
                         MateriaLogic.Save(mat);
                     }
                 }
@@ -212,9 +220,6 @@ namespace UI.Desktop
             MateriasDesktop formMateria = new MateriasDesktop(ref materiasActuales, ID, ApplicationForm.ModoForm.Baja);
             formMateria.ShowDialog();
             listar();
-        }
-        private void PlanesDesktop_Load(object sender, EventArgs e)
-        {
         }
     }
 }

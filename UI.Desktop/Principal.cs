@@ -8,11 +8,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Business.Entities;
+using Business.Logic;
 
 namespace UI.Desktop
 {
     public partial class Principal : Form
     {
+       Usuario usuarioActual;
+        Personas personaActual;
         public Principal()
         {
             InitializeComponent();
@@ -29,11 +32,6 @@ namespace UI.Desktop
             formUsuario.ShowDialog();
         }
 
-        private void tsmiCursos_Click(object sender, EventArgs e)
-        {
-            Cursos formCurso = new Cursos();
-            formCurso.ShowDialog();
-        }
 
         private void modulosToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -56,10 +54,36 @@ namespace UI.Desktop
 
         private void Principal_Shown(object sender, EventArgs e)
         {
-            Login formLogin = new Login();
+            Login formLogin = new Login(ref usuarioActual);
+            
             if (formLogin.ShowDialog() != DialogResult.OK)
             {
                 Dispose();
+            
+            }
+            else
+            {
+                usuarioActual = formLogin.usuarioActual;
+                usuarioActual = UsuarioLogic.GetUsuarioPorNombre(usuarioActual);
+                personaActual = PersonasLogic.GetOne(usuarioActual.IDPersona);
+                MessageBox.Show("Bienvenido " + personaActual.Nombre + " " + personaActual.Apellido, "UTN FRRO",
+               MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                switch(personaActual.TipoPersona)
+                {
+                    case Personas.TiposPersonas.Administrativo:
+                        MessageBox.Show("Inicio de sesion como administrativo");
+                        //SACARLE PERMISO DE NOTAS E INSCRIPCION
+                        break;
+                    case Personas.TiposPersonas.Alumno:
+                        MessageBox.Show("Inicio de sesion como alumno");
+                        //SACAR NOTAS, REPORTES;
+                        break;
+
+                    case Personas.TiposPersonas.Docente:
+                        MessageBox.Show("Inicio de sesion como Docente");
+                        break;
+          
+                }
             }
         }
 
@@ -67,6 +91,34 @@ namespace UI.Desktop
         {
             formPersonas Personas = new formPersonas(Business.Entities.Personas.TiposPersonas.Docente);
             Personas.ShowDialog();
+        }
+
+        private void administrarCursosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Cursos formCurso = new Cursos();
+            formCurso.ShowDialog();
+        }
+
+        private void asignarDocentesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DocenteCurso formDocenteCurso = new DocenteCurso();
+            formDocenteCurso.ShowDialog();
+        }
+
+        private void tsmiEspecialidades_Click(object sender, EventArgs e)
+        {
+            Especialidades formEspecialidad = new Especialidades();
+            formEspecialidad.ShowDialog();
+        }
+        private void inscribirseACursosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AlumnoInscripciones formAluInsc = new AlumnoInscripciones(personaActual);
+            formAluInsc.ShowDialog();
+        }
+
+        private void registrarNotasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            new RegistroNotas(personaActual).ShowDialog();
         }
     }
 }

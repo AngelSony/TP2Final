@@ -102,6 +102,7 @@ namespace UI.Desktop
             this.txtClave.Name = "txtClave";
             this.txtClave.Size = new System.Drawing.Size(343, 20);
             this.txtClave.TabIndex = 3;
+            this.txtClave.UseSystemPasswordChar = true;
             // 
             // label1
             // 

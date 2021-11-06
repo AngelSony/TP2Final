@@ -28,6 +28,5 @@ namespace UI.Desktop
         {
             Notificar(Text, mensaje, botones, icono);
         }
-
     }
 }

@@ -60,6 +60,7 @@ namespace UI.Desktop
                     btnAceptar.Text = "Guardar";
                     break;
                 case ModoForm.Baja:
+                    EnableForm(false);
                     btnAceptar.Text = "Eliminar";
                     break;
                 case ModoForm.Consulta:
@@ -69,7 +70,12 @@ namespace UI.Desktop
                     break;
             }
         }
-
+        private void EnableForm(bool enable)
+        {
+            txtDescripcion.Enabled = enable;
+            txtHSSemanales.Enabled = enable;
+            txtHSTotales.Enabled = enable;
+        }
         public override void MapearADatos()
         {
             if (Modo == ModoForm.Alta)

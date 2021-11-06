@@ -51,11 +51,64 @@ namespace Business.Logic
             {
                 return false;
             }
-            catch (Exception Ex)
+            catch (Exception)
             {
-                throw Ex;
+                return false;
+            }
+
+        }
+
+        public static void ValidarDocentes(DocenteCurso docenteCurso)
+        {
+            List<DocenteCurso> docentesCursos = DocenteCursoLogic.GetAll();
+            List<DocenteCurso> docenteCursosRepetidos = docentesCursos.Where(dc => dc.IDCurso == docenteCurso.IDCurso && dc.IDDocente == docenteCurso.IDDocente).ToList();
+            if (docenteCursosRepetidos.Count != 0)
+                throw new Exception("El docente ya se encuetra asignado al curso seleccionado");
+        }
+        public static Boolean EsNumeroPositivo(string text)
+        {
+            if (!Int32.TryParse(text,out int n))
+            {
+                return false;
+            }else if (Int32.Parse(text) < 0)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
             }
         }
+
+        public static Boolean ValidarCupo(Curso curso)
+        {
+            if(curso.Cupo.Equals(0))
+            {
+                 MessageBox.Show("NO HAY CUPOS PARA EL CURSO");
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+
+        public static Boolean ValidarAlumno(Personas alumno, Curso cur)
+        {
+            foreach (var al in AlumnoInscripcionesLogic.GetAll())
+            {
+                if (al.IDAlumno == alumno.ID && al.IDCurso == cur.ID)
+                {
+                    return false;
+                }
+
+            }
+            return true;
+
+        }
+
+
+
     }
 }
 
