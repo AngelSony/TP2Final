@@ -4,18 +4,20 @@
         <asp:Panel ID="Panel2" runat="server">
             <asp:DropDownList ID="ddlCursos" runat="server" Height="24px" Width="306px">
             </asp:DropDownList>
-            &nbsp;&nbsp;&nbsp;<asp:Button ID="btnInscribirse" runat="server" Text="Inscribirse" />
+            &nbsp;&nbsp;&nbsp;<asp:Button ID="btnInscribirse" runat="server" Text="Inscribirse" OnClick="btnInscribirse_Click" />
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <asp:Label ID="lblAdvertencia" runat="server" Enabled="False" Font-Bold="True" Font-Overline="False" Font-Size="Larger" ForeColor="Red" Text="ERROR: Usted ya esta inscripto en el curso." Visible="False"></asp:Label>
         </asp:Panel>
     </asp:Panel>
     <asp:Panel ID="Panel3" runat="server">
-        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None">
+        <asp:GridView ID="grdInscripciones" runat="server" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None">
             <AlternatingRowStyle BackColor="White" />
             <Columns>
                 <asp:BoundField DataField="ID" HeaderText="ID" SortExpression="ID" />
                 <asp:BoundField DataField="Nombre" HeaderText="Nombre" SortExpression="Nombre" />
                 <asp:BoundField DataField="Apellido" HeaderText="Apellido" SortExpression="Apellido" />
-                <asp:BoundField DataField="Comision" HeaderText="Comision" SortExpression="Comision" />
-                <asp:BoundField DataField="AnioDeCurso" HeaderText="Año de Curso" SortExpression="AnioDeCurso" />
+                <asp:BoundField DataField="Descripcion" HeaderText="Comision" SortExpression="Comision" />
+                <asp:BoundField DataField="AnioCalendario" HeaderText="Año de Curso" SortExpression="AnioDeCurso" />
                 <asp:BoundField DataField="Condicion" HeaderText="Condicion" SortExpression="Condicion" />
                 <asp:BoundField DataField="Nota" HeaderText="Nota" SortExpression="Nota" />
             </Columns>

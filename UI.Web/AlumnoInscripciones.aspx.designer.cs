@@ -51,6 +51,15 @@ namespace UI.Web
         protected global::System.Web.UI.WebControls.Button btnInscribirse;
 
         /// <summary>
+        /// Control lblAdvertencia.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblAdvertencia;
+
+        /// <summary>
         /// Control Panel3.
         /// </summary>
         /// <remarks>
@@ -60,12 +69,12 @@ namespace UI.Web
         protected global::System.Web.UI.WebControls.Panel Panel3;
 
         /// <summary>
-        /// Control GridView1.
+        /// Control grdInscripciones.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView GridView1;
+        protected global::System.Web.UI.WebControls.GridView grdInscripciones;
     }
 }

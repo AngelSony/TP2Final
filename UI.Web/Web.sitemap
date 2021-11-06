@@ -8,5 +8,7 @@
 		<siteMapNode url="~/Docente.aspx" title="Docentes"  description="Página de Docentes" />
 		<siteMapNode url="~/Materias.aspx" title="Materias"  description="Página de Materias" />
 		<siteMapNode url="~/RegistroNota.aspx" title="Registro de Notas"  description="Página de Notas" />
+		<siteMapNode url="~/AlumnoInscripciones.aspx" title="Inscripcion de alumnos a cursos"  description="Página de Inscripciones" />
+
 	</siteMapNode>
 </siteMap>

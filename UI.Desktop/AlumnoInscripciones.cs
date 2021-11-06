@@ -86,7 +86,7 @@ namespace UI.Desktop
             }
             else
             {
-                Notificar("Advertencia", "No se puede inscribir al curso dado que no hay cupos o usted ya está inscripto", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                Notificar("Advertencia", "Usted ya está inscripto en el curso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
 
         }
