@@ -98,6 +98,13 @@
     <Compile Include="AdvertenciaLogin.aspx.designer.cs">
       <DependentUpon>AdvertenciaLogin.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Alumno.aspx.cs">
+      <DependentUpon>Alumno.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Alumno.aspx.designer.cs">
+      <DependentUpon>Alumno.aspx</DependentUpon>
+    </Compile>
     <Compile Include="AlumnoInscripciones.aspx.cs">
       <DependentUpon>AlumnoInscripciones.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -118,6 +125,10 @@
     </Compile>
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Docente.aspx.cs">
+      <DependentUpon>Docente.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Docente.aspx.designer.cs">
       <DependentUpon>Docente.aspx</DependentUpon>

@@ -22,7 +22,7 @@ namespace UI.Web
                 {
                     Response.Redirect("~/AdvertenciaLogin.aspx");
                 }
-                else if ((int)Session["TipoPersona"] != (int)Personas.TiposPersonas.Alumno)
+                else if ((int)Session["TipoPersona"] != (int)Personas.TiposPersonas.Administrativo)
                 {
                     Response.Redirect("~/AdvertenciaAccesoUsuario.aspx");
                 }
