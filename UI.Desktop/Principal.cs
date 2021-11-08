@@ -74,6 +74,8 @@ namespace UI.Desktop
                             tsmiAsignarDocentes.Visible = false;
                             tsmiAdminCursos.Visible = false;
                             tsmiAdministracion.Visible = false;
+                            tsmiReporteCurso.Visible = false;
+                            tsmiReportePlan.Visible = false;
                             break;
                     }
                 }
