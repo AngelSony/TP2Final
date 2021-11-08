@@ -3,7 +3,7 @@
 	<siteMapNode url="~/Default.aspx" title="Home"  description="Página Principal">
 		<siteMapNode url="~/Login.aspx" title="Login"  description="Inicion de Sesión"/>
 		<siteMapNode title="Administración">
-			<siteMapNode url="~/Alumno.aspx" title="Alumnos"  description="Página de Alumnos" />
+			<siteMapNode url="~/Alumno.aspx" title="Alumnos" description="Página de Alumnos" />
 			<siteMapNode url="~/Docente.aspx" title="Docentes"  description="Página de Docentes" />
 			<siteMapNode url="~/Planes.aspx" title="Planes"  description="Página de Planes" />
 			<siteMapNode url="~/Materias.aspx" title="Materias"  description="Página de Materias" />

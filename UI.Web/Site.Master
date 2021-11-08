@@ -10,7 +10,12 @@
 
     <body>
         <form id="bodyForm" runat ="server">
-            <asp:Menu runat="server" ID="menu" DataSourceID="SiteMapDataSource" RenderingMode="Table">
+            <asp:Menu runat="server" ID="menu" DataSourceID="SiteMapDataSource" RenderingMode="Table" BackColor="#6699FF" Font-Bold="True" Font-Italic="False" ForeColor="Black" BorderColor="Black" BorderStyle="Solid" BorderWidth="1px" Orientation="Horizontal">
+                <StaticHoverStyle BackColor="#6699FF" />
+                <StaticMenuItemStyle BackColor="#6699FF" BorderColor="Black" BorderStyle="Solid" BorderWidth="1px" />
+                <StaticMenuStyle BackColor="#6699FF" />
+                <StaticSelectedStyle BackColor="#6699FF" />
+
             </asp:Menu>
             <asp:SiteMapDataSource ID="SiteMapDataSource" runat ="server" />
             <div>

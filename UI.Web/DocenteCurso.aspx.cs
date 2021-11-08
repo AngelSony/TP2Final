@@ -9,7 +9,7 @@ using Business.Logic;
 
 namespace UI.Web
 {
-    public partial class DocenteCurso : System.Web.UI.Page
+    public partial class DocenteCurso : Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -50,7 +50,6 @@ namespace UI.Web
                 ViewState["SelectedID"] = value;
             }
         }
-
         private bool IsEntitySelected
         {
             get

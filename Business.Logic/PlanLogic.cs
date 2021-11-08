@@ -59,12 +59,19 @@ namespace Business.Logic
 
         public static Object GetEspecialidadesDelPlan()
         {
-            var listado = from p in PlanLogic.GetAll()
-                          join esp in EspecialidadesLogic.GetAll() on p.IDEspecialidad equals esp.ID
+            try
+            {
+                var listado = from p in PlanLogic.GetAll()
+                              join esp in EspecialidadesLogic.GetAll() on p.IDEspecialidad equals esp.ID
 
-                          select new { ID = p.ID, Descripcion = p.Descripcion, IDEspecialidad = esp.Descripcion };
+                              select new { ID = p.ID, Descripcion = p.Descripcion, IDEspecialidad = esp.Descripcion };
 
-            return listado.ToList();
+                return listado.ToList();
+            }
+            catch(Exception Ex)
+            {
+                throw new Exception("Error al obtener los planes para el reporte", Ex);
+            }
 
         }
 
