@@ -201,7 +201,7 @@ namespace UI.Desktop
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.toolStripContainer1);
             this.Name = "DocenteCurso";
-            this.Text = "DocenteCurso";
+            this.Text = "Docentes - Cursos";
             this.Load += new System.EventHandler(this.DocenteCurso_Load);
             this.toolStripContainer1.ContentPanel.ResumeLayout(false);
             this.toolStripContainer1.TopToolStripPanel.ResumeLayout(false);

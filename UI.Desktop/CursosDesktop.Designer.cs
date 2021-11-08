@@ -204,7 +204,7 @@ namespace UI.Desktop
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "CursosDesktop";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "CursosDesktop";
+            this.Text = "Cursos";
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             this.ResumeLayout(false);

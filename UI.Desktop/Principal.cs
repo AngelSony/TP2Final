@@ -26,13 +26,6 @@ namespace UI.Desktop
             Dispose();
         }
 
-        private void tsmiUsuarios_Click(object sender, EventArgs e)
-        {
-            Usuarios formUsuario = new Usuarios();
-            formUsuario.ShowDialog();
-        }
-
-
         private void modulosToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Modulos formModulo = new Modulos();
@@ -64,46 +57,44 @@ namespace UI.Desktop
             if (formLogin.ShowDialog() != DialogResult.OK)
             {
                 Dispose();
-
             }
             else
             {
                 usuarioActual = formLogin.usuarioActual;
                 usuarioActual = UsuarioLogic.GetUsuarioPorNombre(usuarioActual);
                 personaActual = PersonasLogic.GetOne(usuarioActual.IDPersona);
-                MessageBox.Show("Bienvenido " + personaActual.Nombre + " " + personaActual.Apellido, "UTN FRRO",
-               MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBox.Show("Bienvenido " + personaActual.Nombre + " " + personaActual.Apellido, "UTN FRRO", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 switch (personaActual.TipoPersona)
                 {
                     case Personas.TiposPersonas.Administrativo:
-                        MessageBox.Show("Inicio de sesion como administrativo");
-                        inscribirseACursosToolStripMenuItem.Visible = false;
+                        MessageBox.Show("Inicio de sesion como Administrador", "Info de Sesión", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        tsmiInscripcion.Visible = false;
                         break;
                     case Personas.TiposPersonas.Alumno:
-                        MessageBox.Show("Inicio de sesion como alumno");
-                        asignarDocentesToolStripMenuItem.Visible = false;
-                        administrarCursosToolStripMenuItem.Visible = false;
+                        MessageBox.Show("Inicio de sesion como Alumno", "Info de Sesión", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        tsmiAsignarDocentes.Visible = false;
+                        tsmiAdminCursos.Visible = false;
                         tsmiMaterias.Visible = false;
                         tsmiDocentes.Visible = false;
                         tsmiEspecialidades.Visible = false;
                         tsmiPlanes.Visible = false;
                         tsmiComisiones.Visible = false;
-                        registrarNotasToolStripMenuItem.Visible = false;
+                        tsmiRegistroNotas.Visible = false;
                         tsmiMaterias.Visible = false;
                         break;
 
                     case Personas.TiposPersonas.Docente:
-                        MessageBox.Show("Inicio de sesion como Docente");
-                        asignarDocentesToolStripMenuItem.Visible = false;
-                        administrarCursosToolStripMenuItem.Visible = false;
-                        inscribirseACursosToolStripMenuItem.Visible = false;
+                        MessageBox.Show("Inicio de sesion como Docente", "Info de Sesión", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        tsmiAsignarDocentes.Visible = false;
+                        tsmiAsignarDocentes.Visible = false;
+                        tsmiAsignarDocentes.Visible = false;
                         tsmiMaterias.Visible = false;
                         tsmiAlumnos.Visible = false;
                         tsmiDocentes.Visible = false;
                         tsmiEspecialidades.Visible = false;
                         tsmiPlanes.Visible = false;
                         tsmiComisiones.Visible = false;
-                        tsmiCursos.Visible = false;
+                        tsmiAdminCursos.Visible = false;
                         break;
 
                 }
@@ -112,53 +103,39 @@ namespace UI.Desktop
 
         private void tsmiDocentes_Click(object sender, EventArgs e)
         {
-            formPersonas Personas = new formPersonas(Business.Entities.Personas.TiposPersonas.Docente);
-            Personas.ShowDialog();
+            new formPersonas(Personas.TiposPersonas.Docente).ShowDialog();
         }
-
-        private void administrarCursosToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Cursos formCurso = new Cursos();
-            formCurso.ShowDialog();
-        }
-
-        private void asignarDocentesToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            DocenteCurso formDocenteCurso = new DocenteCurso();
-            formDocenteCurso.ShowDialog();
-        }
-
         private void tsmiEspecialidades_Click(object sender, EventArgs e)
         {
-            Especialidades formEspecialidad = new Especialidades();
-            formEspecialidad.ShowDialog();
+            new Especialidades().ShowDialog();
         }
-        private void inscribirseACursosToolStripMenuItem_Click(object sender, EventArgs e)
+        private void tsmiAdminCursos_Click(object sender, EventArgs e)
         {
-            AlumnoInscripciones formAluInsc = new AlumnoInscripciones(personaActual);
-            formAluInsc.ShowDialog();
+            new Cursos().ShowDialog();
         }
-
-        private void registrarNotasToolStripMenuItem_Click(object sender, EventArgs e)
+        private void tsmiAsignarDocentes_Click(object sender, EventArgs e)
         {
-            new RegistroNotas(personaActual).ShowDialog();
+            new DocenteCurso().ShowDialog();
         }
-
-        private void cerrarSesiónToolStripMenuItem_Click(object sender, EventArgs e)
+        private void tsmiCerrarSesion_Click(object sender, EventArgs e)
         {
             Log();
         }
-
-        private void reporteDeCursosToolStripMenuItem_Click(object sender, EventArgs e)
+        private void tsmiReporteCurso_Click(object sender, EventArgs e)
         {
-            ReportesCursosForm rep = new ReportesCursosForm();
-            rep.ShowDialog();
+            new ReportesCursosForm().ShowDialog();
         }
-
-        private void reporteDePlanesToolStripMenuItem_Click(object sender, EventArgs e)
+        private void tsmiReportePlan_Click(object sender, EventArgs e)
         {
-            ReporteDePlanes rep = new ReporteDePlanes();
-            rep.ShowDialog();
+            new ReporteDePlanes().ShowDialog();
+        }
+        private void tsmiInscripcion_Click(object sender, EventArgs e)
+        {
+            new AlumnoInscripciones(personaActual).ShowDialog();
+        }
+        private void tsmiRegistroNotas_Click(object sender, EventArgs e)
+        {
+            new RegistroNotas(personaActual).ShowDialog();
         }
     }
 }

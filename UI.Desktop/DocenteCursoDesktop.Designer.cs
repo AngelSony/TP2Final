@@ -181,7 +181,7 @@ namespace UI.Desktop
             this.ClientSize = new System.Drawing.Size(339, 150);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "DocenteCursoDesktop";
-            this.Text = "DocenteCursoDesktop";
+            this.Text = "Docentes - Cursos";
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             this.ResumeLayout(false);
