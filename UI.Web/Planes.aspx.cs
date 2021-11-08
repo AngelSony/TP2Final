@@ -24,12 +24,24 @@ namespace UI.Web
                     Response.Redirect("~/AdvertenciaAccesoUsuario.aspx");
                 }
                 LoadGrid();
+                CargarCombo();
             }
         }
         private void LoadGrid()
         {
-            grdPlanes.DataSource = PlanLogic.GetAll();
+            var planes = from p in PlanLogic.GetAll()
+                         join e in EspecialidadesLogic.GetAll() on p.IDEspecialidad equals e.ID
+                         select new { p.ID, p.Descripcion, Especialidad = e.Descripcion };
+            grdPlanes.DataSource = planes.ToList();
             grdPlanes.DataBind();
+        }
+        private void CargarCombo()
+        {
+            ddEspecialidad.DataSource = EspecialidadesLogic.GetAll();
+            ddEspecialidad.DataTextField = "Descripcion";
+            ddEspecialidad.DataValueField = "ID";
+            ddEspecialidad.DataBind();
+            ddEspecialidad.Items.Insert(0, new ListItem("-- Seleccione --", "0"));
         }
         private Plan Entity
         {
@@ -76,12 +88,12 @@ namespace UI.Web
         {
             Entity = PlanLogic.GetOne(id);
             descripcionTextBox.Text = Entity.Descripcion;
-            especialdadTextBox.Text = Entity.IDEspecialidad.ToString(); //CAMBIAR
+            ddEspecialidad.SelectedValue = Entity.IDEspecialidad.ToString();
         }
         private void LoadEntity(Plan plan)
         {
             plan.Descripcion = descripcionTextBox.Text;
-            plan.IDEspecialidad = Convert.ToInt32( especialdadTextBox.Text);
+            plan.IDEspecialidad = Convert.ToInt32(ddEspecialidad.SelectedValue);
         }
         private void DeleteEntity(int id)
         {
@@ -94,12 +106,12 @@ namespace UI.Web
         private void EnableForm(bool enable)
         {
             descripcionTextBox.Enabled = enable;
-            especialdadTextBox.Enabled = enable;
+            ddEspecialidad.Enabled = enable;
         }
         private void ClearForm()
         {
             descripcionTextBox.Text = string.Empty;
-            especialdadTextBox.Text = string.Empty;
+            ddEspecialidad.SelectedValue = "0";
         }
         protected void editarLinkButton_Click(object sender, EventArgs e)
         {

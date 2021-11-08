@@ -6,8 +6,8 @@
             <AlternatingRowStyle BackColor="White" />
             <Columns>
                 <asp:BoundField HeaderText="ID Curso" DataField="ID" />
-                <asp:BoundField HeaderText="Materia" DataField="IDMateria" />
-                <asp:BoundField HeaderText="Comisión" DataField="IDComision" />
+                <asp:BoundField HeaderText="Materia" DataField="Materia" />
+                <asp:BoundField HeaderText="Comisión" DataField="Comision" />
                 <asp:BoundField HeaderText="Año Calendario" DataField="AnioCalendario" />
                 <asp:BoundField HeaderText="Cupo" DataField="Cupo" />
                 <asp:CommandField SelectText="Seleccionar" showSelectButton="True" />

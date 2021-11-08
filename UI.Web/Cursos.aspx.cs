@@ -84,7 +84,11 @@ namespace UI.Web
         }
         private void LoadGrid()
         {
-            gvCursos.DataSource = CursoLogic.GetAll();
+            var cursos = from c in CursoLogic.GetAll()
+                         join m in MateriaLogic.GetAll() on c.IDMateria equals m.ID
+                         join co in ComisionesLogic.GetAll() on c.IDComision equals co.ID
+                         select new { c.ID, Materia = m.Descripcion, Comision = co.Descripcion, c.Cupo, c.AnioCalendario };
+            gvCursos.DataSource = cursos.ToList();
             gvCursos.DataBind();
         }
         private void LoadForm(int id)

@@ -11,7 +11,7 @@
                     <Columns>
                         <asp:BoundField DataField="ID" HeaderText="ID" SortExpression="ID" />
                         <asp:BoundField DataField="Descripcion" HeaderText="Descripcion" SortExpression="Descripcion" />
-                        <asp:BoundField DataField="IDEspecialidad" HeaderText="IDEspecialidad" SortExpression="IDEspecialidad" />
+                        <asp:BoundField DataField="Especialidad" HeaderText="Especialidad" SortExpression="Especialidad" />
                         <asp:CommandField ShowSelectButton="True" />
                     </Columns>
                     <EditRowStyle BackColor="#2461BF" />
@@ -39,7 +39,9 @@
                 <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="descripcionTextBox" ErrorMessage="Completar Descripciòn" ForeColor="Red" ValidationGroup="validar">*</asp:RequiredFieldValidator>
                 <br />
                 <asp:Label ID="Label2" runat="server" Text="Especialidad: "></asp:Label>
-                <asp:TextBox ID="especialdadTextBox" runat="server"></asp:TextBox>
+                <asp:DropDownList ID="ddEspecialidad" runat="server">
+                </asp:DropDownList>
+                <asp:RangeValidator ID="RangeValidator1" runat="server" ControlToValidate="ddEspecialidad" ErrorMessage="Debe seleccionar una Especialidad" ForeColor="Red" MaximumValue="999999" MinimumValue="1" ValidationGroup="validar">*</asp:RangeValidator>
             </asp:Panel>
             <asp:Panel ID="formActionPanel" runat="server" Visible="False">
                 <asp:LinkButton ID="aceptarLinkButton" runat="server" OnClick="aceptarLinkButton_Click" ValidationGroup="validar">Aceptar</asp:LinkButton>
