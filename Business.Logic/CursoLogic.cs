@@ -57,5 +57,21 @@ namespace Business.Logic
                 throw Ex;
             }
         }
+
+
+        public static Object GetAllCursosComiMat()
+        {
+            var listado = from cur in GetAll()
+                          join mat in MateriaLogic.GetAll() on cur.IDMateria equals mat.ID
+                          join comi in ComisionesLogic.GetAll() on cur.IDComision equals comi.ID
+                          orderby cur.AnioCalendario descending
+                          select new { cur.ID, cur.AnioCalendario, IDComision = comi.Descripcion, IDMateria = mat.Descripcion, Cupo = cur.Cupo };
+
+            return listado.ToList();
+
+        }
+
+
     }
 }
+

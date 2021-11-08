@@ -148,5 +148,17 @@ namespace UI.Desktop
         {
             Log();
         }
+
+        private void reporteDeCursosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ReportesCursosForm rep = new ReportesCursosForm();
+            rep.ShowDialog();
+        }
+
+        private void reporteDePlanesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ReporteDePlanes rep = new ReporteDePlanes();
+            rep.ShowDialog();
+        }
     }
 }

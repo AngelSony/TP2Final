@@ -46,6 +46,8 @@ namespace UI.Desktop
             this.tsmiPlanes = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiComisiones = new System.Windows.Forms.ToolStripMenuItem();
             this.registrarNotasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.reporteDeCursosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.reporteDePlanesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -54,7 +56,9 @@ namespace UI.Desktop
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.archivoToolStripMenuItem,
             this.cuentaToolStripMenuItem,
-            this.administraciónToolStripMenuItem});
+            this.administraciónToolStripMenuItem,
+            this.reporteDeCursosToolStripMenuItem,
+            this.reporteDePlanesToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(1177, 24);
@@ -87,7 +91,7 @@ namespace UI.Desktop
             // cerrarSesiónToolStripMenuItem
             // 
             this.cerrarSesiónToolStripMenuItem.Name = "cerrarSesiónToolStripMenuItem";
-            this.cerrarSesiónToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.cerrarSesiónToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
             this.cerrarSesiónToolStripMenuItem.Text = "Cerrar Sesión";
             this.cerrarSesiónToolStripMenuItem.Click += new System.EventHandler(this.cerrarSesiónToolStripMenuItem_Click);
             // 
@@ -113,13 +117,13 @@ namespace UI.Desktop
             this.administrarCursosToolStripMenuItem,
             this.inscribirseACursosToolStripMenuItem});
             this.tsmiCursos.Name = "tsmiCursos";
-            this.tsmiCursos.Size = new System.Drawing.Size(180, 22);
+            this.tsmiCursos.Size = new System.Drawing.Size(154, 22);
             this.tsmiCursos.Text = "Cursos";
             // 
             // asignarDocentesToolStripMenuItem
             // 
             this.asignarDocentesToolStripMenuItem.Name = "asignarDocentesToolStripMenuItem";
-            this.asignarDocentesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.asignarDocentesToolStripMenuItem.Size = new System.Drawing.Size(175, 22);
             this.asignarDocentesToolStripMenuItem.Text = "Asignar Docentes";
             // 
             // administrarCursosToolStripMenuItem
@@ -139,49 +143,63 @@ namespace UI.Desktop
             // tsmiMaterias
             // 
             this.tsmiMaterias.Name = "tsmiMaterias";
-            this.tsmiMaterias.Size = new System.Drawing.Size(180, 22);
+            this.tsmiMaterias.Size = new System.Drawing.Size(154, 22);
             this.tsmiMaterias.Text = "Materias";
             // 
             // tsmiAlumnos
             // 
             this.tsmiAlumnos.Name = "tsmiAlumnos";
-            this.tsmiAlumnos.Size = new System.Drawing.Size(180, 22);
+            this.tsmiAlumnos.Size = new System.Drawing.Size(154, 22);
             this.tsmiAlumnos.Text = "Alumnos";
             this.tsmiAlumnos.Click += new System.EventHandler(this.tsmiAlumnos_Click);
             // 
             // tsmiDocentes
             // 
             this.tsmiDocentes.Name = "tsmiDocentes";
-            this.tsmiDocentes.Size = new System.Drawing.Size(180, 22);
+            this.tsmiDocentes.Size = new System.Drawing.Size(154, 22);
             this.tsmiDocentes.Text = "Docentes";
             this.tsmiDocentes.Click += new System.EventHandler(this.tsmiDocentes_Click);
             // 
             // tsmiEspecialidades
             // 
             this.tsmiEspecialidades.Name = "tsmiEspecialidades";
-            this.tsmiEspecialidades.Size = new System.Drawing.Size(180, 22);
+            this.tsmiEspecialidades.Size = new System.Drawing.Size(154, 22);
             this.tsmiEspecialidades.Text = "Especialidades";
             this.tsmiEspecialidades.Click += new System.EventHandler(this.tsmiEspecialidades_Click);
             // 
             // tsmiPlanes
             // 
             this.tsmiPlanes.Name = "tsmiPlanes";
-            this.tsmiPlanes.Size = new System.Drawing.Size(180, 22);
+            this.tsmiPlanes.Size = new System.Drawing.Size(154, 22);
             this.tsmiPlanes.Text = "Planes";
             this.tsmiPlanes.Click += new System.EventHandler(this.tsmiPlanes_Click);
             // 
             // tsmiComisiones
             // 
             this.tsmiComisiones.Name = "tsmiComisiones";
-            this.tsmiComisiones.Size = new System.Drawing.Size(180, 22);
+            this.tsmiComisiones.Size = new System.Drawing.Size(154, 22);
             this.tsmiComisiones.Text = "Comisiones";
             // 
             // registrarNotasToolStripMenuItem
             // 
             this.registrarNotasToolStripMenuItem.Name = "registrarNotasToolStripMenuItem";
-            this.registrarNotasToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.registrarNotasToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
             this.registrarNotasToolStripMenuItem.Text = "Registrar Notas";
             this.registrarNotasToolStripMenuItem.Click += new System.EventHandler(this.registrarNotasToolStripMenuItem_Click);
+            // 
+            // reporteDeCursosToolStripMenuItem
+            // 
+            this.reporteDeCursosToolStripMenuItem.Name = "reporteDeCursosToolStripMenuItem";
+            this.reporteDeCursosToolStripMenuItem.Size = new System.Drawing.Size(115, 20);
+            this.reporteDeCursosToolStripMenuItem.Text = "Reporte de Cursos";
+            this.reporteDeCursosToolStripMenuItem.Click += new System.EventHandler(this.reporteDeCursosToolStripMenuItem_Click);
+            // 
+            // reporteDePlanesToolStripMenuItem
+            // 
+            this.reporteDePlanesToolStripMenuItem.Name = "reporteDePlanesToolStripMenuItem";
+            this.reporteDePlanesToolStripMenuItem.Size = new System.Drawing.Size(114, 20);
+            this.reporteDePlanesToolStripMenuItem.Text = "Reporte De Planes";
+            this.reporteDePlanesToolStripMenuItem.Click += new System.EventHandler(this.reporteDePlanesToolStripMenuItem_Click);
             // 
             // Principal
             // 
@@ -220,5 +238,7 @@ namespace UI.Desktop
         private System.Windows.Forms.ToolStripMenuItem administrarCursosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem inscribirseACursosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem registrarNotasToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem reporteDeCursosToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem reporteDePlanesToolStripMenuItem;
     }
 }

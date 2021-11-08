@@ -56,5 +56,18 @@ namespace Business.Logic
                 throw Ex;
             }
         }
+
+        public static Object GetEspecialidadesDelPlan()
+        {
+            var listado = from p in PlanLogic.GetAll()
+                          join esp in EspecialidadesLogic.GetAll() on p.IDEspecialidad equals esp.ID
+
+                          select new { ID = p.ID, Descripcion = p.Descripcion, IDEspecialidad = esp.Descripcion };
+
+            return listado.ToList();
+
+        }
+
+
     }
 }
