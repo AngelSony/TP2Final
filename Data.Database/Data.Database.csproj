@@ -49,7 +49,6 @@
     <Compile Include="DocenteCursoAdapter.cs" />
     <Compile Include="EspecialidadesAdapter.cs" />
     <Compile Include="MateriaAdapter.cs" />
-    <Compile Include="ModuloAdapter.cs" />
     <Compile Include="PersonasAdapter.cs" />
     <Compile Include="PlanAdapter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

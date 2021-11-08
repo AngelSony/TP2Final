@@ -14,8 +14,7 @@
             <AlternatingRowStyle BackColor="White" />
             <Columns>
                 <asp:BoundField DataField="ID" HeaderText="ID" SortExpression="ID" />
-                <asp:BoundField DataField="Nombre" HeaderText="Nombre" SortExpression="Nombre" />
-                <asp:BoundField DataField="Apellido" HeaderText="Apellido" SortExpression="Apellido" />
+                <asp:BoundField DataField="Materia" HeaderText="Materia" SortExpression="Materia" />
                 <asp:BoundField DataField="Descripcion" HeaderText="Comision" SortExpression="Comision" />
                 <asp:BoundField DataField="AnioCalendario" HeaderText="Año de Curso" SortExpression="AnioDeCurso" />
                 <asp:BoundField DataField="Condicion" HeaderText="Condicion" SortExpression="Condicion" />

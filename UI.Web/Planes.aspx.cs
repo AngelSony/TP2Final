@@ -13,17 +13,17 @@ namespace UI.Web
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["TipoPersona"] == null)
+            if (!IsPostBack)
             {
-                Response.Redirect("~/AdvertenciaLogin.aspx");
-            }
-            else
-            {
-                if (!IsPostBack)
+                if (Session["TipoPersona"] == null)
                 {
-
-                    LoadGrid();
+                    Response.Redirect("~/AdvertenciaLogin.aspx");
                 }
+                else if ((int)Session["TipoPersona"] != (int)Personas.TiposPersonas.Administrativo)
+                {
+                    Response.Redirect("~/AdvertenciaAccesoUsuario.aspx");
+                }
+                LoadGrid();
             }
         }
         private void LoadGrid()

@@ -32,8 +32,7 @@ namespace UI.Desktop
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.dgvInscripcion = new System.Windows.Forms.DataGridView();
             this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Apellido = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Materia = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Comision = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Curso = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Condicion = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -63,7 +62,7 @@ namespace UI.Desktop
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(761, 359);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(651, 359);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // dgvInscripcion
@@ -73,8 +72,7 @@ namespace UI.Desktop
             this.dgvInscripcion.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvInscripcion.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ID,
-            this.Nombre,
-            this.Apellido,
+            this.Materia,
             this.Comision,
             this.Curso,
             this.Condicion,
@@ -86,7 +84,7 @@ namespace UI.Desktop
             this.dgvInscripcion.Name = "dgvInscripcion";
             this.dgvInscripcion.ReadOnly = true;
             this.dgvInscripcion.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvInscripcion.Size = new System.Drawing.Size(755, 295);
+            this.dgvInscripcion.Size = new System.Drawing.Size(645, 295);
             this.dgvInscripcion.TabIndex = 9;
             // 
             // ID
@@ -96,19 +94,12 @@ namespace UI.Desktop
             this.ID.Name = "ID";
             this.ID.ReadOnly = true;
             // 
-            // Nombre
+            // Materia
             // 
-            this.Nombre.DataPropertyName = "Nombre";
-            this.Nombre.HeaderText = "Nombre";
-            this.Nombre.Name = "Nombre";
-            this.Nombre.ReadOnly = true;
-            // 
-            // Apellido
-            // 
-            this.Apellido.DataPropertyName = "Apellido";
-            this.Apellido.HeaderText = "Apellido";
-            this.Apellido.Name = "Apellido";
-            this.Apellido.ReadOnly = true;
+            this.Materia.DataPropertyName = "Materia";
+            this.Materia.HeaderText = "Materia";
+            this.Materia.Name = "Materia";
+            this.Materia.ReadOnly = true;
             // 
             // Comision
             // 
@@ -141,7 +132,7 @@ namespace UI.Desktop
             // btnActualizar
             // 
             this.btnActualizar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnActualizar.Location = new System.Drawing.Point(510, 333);
+            this.btnActualizar.Location = new System.Drawing.Point(400, 333);
             this.btnActualizar.Name = "btnActualizar";
             this.btnActualizar.Size = new System.Drawing.Size(104, 23);
             this.btnActualizar.TabIndex = 10;
@@ -152,7 +143,7 @@ namespace UI.Desktop
             // btnSalir
             // 
             this.btnSalir.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSalir.Location = new System.Drawing.Point(657, 333);
+            this.btnSalir.Location = new System.Drawing.Point(547, 333);
             this.btnSalir.Name = "btnSalir";
             this.btnSalir.Size = new System.Drawing.Size(101, 23);
             this.btnSalir.TabIndex = 11;
@@ -162,7 +153,7 @@ namespace UI.Desktop
             // 
             // btnInscribirse
             // 
-            this.btnInscribirse.Location = new System.Drawing.Point(620, 3);
+            this.btnInscribirse.Location = new System.Drawing.Point(510, 3);
             this.btnInscribirse.Name = "btnInscribirse";
             this.btnInscribirse.Size = new System.Drawing.Size(138, 23);
             this.btnInscribirse.TabIndex = 12;
@@ -176,17 +167,18 @@ namespace UI.Desktop
             this.cbCurso.FormattingEnabled = true;
             this.cbCurso.Location = new System.Drawing.Point(3, 3);
             this.cbCurso.Name = "cbCurso";
-            this.cbCurso.Size = new System.Drawing.Size(611, 21);
+            this.cbCurso.Size = new System.Drawing.Size(501, 21);
             this.cbCurso.TabIndex = 13;
             // 
             // AlumnoInscripciones
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(761, 359);
+            this.ClientSize = new System.Drawing.Size(651, 359);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "AlumnoInscripciones";
-            this.Text = "AlumnoInscripciones";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.Text = "Inscripciones";
             this.tableLayoutPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvInscripcion)).EndInit();
             this.ResumeLayout(false);
@@ -197,16 +189,15 @@ namespace UI.Desktop
 
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.DataGridView dgvInscripcion;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Nombre;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Apellido;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Comision;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Curso;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Condicion;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Nota;
         private System.Windows.Forms.Button btnActualizar;
         private System.Windows.Forms.Button btnSalir;
         private System.Windows.Forms.Button btnInscribirse;
         private System.Windows.Forms.ComboBox cbCurso;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Materia;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Comision;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Curso;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Condicion;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Nota;
     }
 }

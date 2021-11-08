@@ -46,7 +46,7 @@ namespace UI.Web
                                  where dc.IDDocente.Equals(personaActual.ID)
                                  select new { ID = c.ID, Descripcion = m.Descripcion + " " + cm.Descripcion + " " + c.AnioCalendario };
                     cursosDropDown.DataSource = cursos.ToList();
-                    editarLinkButton.Enabled = false;
+                    elmininarLinkButton.Enabled = false;
                     break;
                 case Personas.TiposPersonas.Administrativo:
                     var todoscursos = from c in CursoLogic.GetAll()

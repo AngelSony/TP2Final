@@ -38,7 +38,7 @@ namespace UI.Desktop
                           join mat in MateriaLogic.GetAll() on cur.IDMateria equals mat.ID
                           join comi in ComisionesLogic.GetAll() on cur.IDComision equals comi.ID
                           where alu.ID == AlumnoActual.ID
-                          select new {alu_ins.ID, alu.Nombre , alu.Apellido,  cur.AnioCalendario, alu_ins.Nota,alu_ins.Condicion, comi.Descripcion };
+                          select new {alu_ins.ID, Materia = mat.Descripcion,  cur.AnioCalendario, alu_ins.Nota,alu_ins.Condicion, comi.Descripcion };
             dgvInscripcion.DataSource = listado.ToList();
 
         }

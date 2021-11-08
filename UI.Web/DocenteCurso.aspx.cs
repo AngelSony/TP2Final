@@ -15,27 +15,16 @@ namespace UI.Web
         {
             if (!IsPostBack)
             {
-
+                if (Session["TipoPersona"] == null)
+                {
+                    Response.Redirect("~/AdvertenciaLogin.aspx");
+                }
+                else if ((int)Session["TipoPersona"] != (int)Personas.TiposPersonas.Administrativo)
+                {
+                    Response.Redirect("~/AdvertenciaAccesoUsuario.aspx");
+                }
                 LoadGrid();
                 CargarCombo();
-
-            }
-            
-        }
-
-
-
-        Business.Entities.DocenteCurso _logic;
-
-        private Business.Entities.DocenteCurso Logic
-        {
-            get
-            {
-                if (_logic == null)
-                {
-                    _logic = new Business.Entities.DocenteCurso();
-                }
-                return _logic;
             }
         }
         private Business.Entities.DocenteCurso Entity
@@ -43,8 +32,6 @@ namespace UI.Web
             get;
             set;
         }
-
-
         private int SelectedID
         {
             get
@@ -71,20 +58,17 @@ namespace UI.Web
                 return (SelectedID != 0);
             }
         }
-
         public enum FormModes
         {
             Alta,
             Baja,
             Modificacion
         }
-
         public FormModes FormMode
         {
             get { return (FormModes)ViewState["FormMode"]; }
             set { ViewState["FormMode"] = value; }
         }
-
         private void LoadGrid()
         {
             grdDocenteCursos.DataSource = DocenteCursoLogic.GetAll();
@@ -120,8 +104,6 @@ namespace UI.Web
             ddlCurso.Items.Insert(0, new ListItem("-- Seleccione --", "0"));
 
         }
-
-
         private void LoadForm(int id)
         {
             Entity = DocenteCursoLogic.GetOne(id);
@@ -130,21 +112,16 @@ namespace UI.Web
             ddlCurso.SelectedValue = Entity.IDCurso.ToString();
             ddlDocente.SelectedValue = Entity.IDDocente.ToString();
         }
-
-
         private void LoadEntity(Business.Entities.DocenteCurso docenteCurso)
         {
             docenteCurso.Cargo = (Business.Entities.DocenteCurso.TiposCargos)ddlCargo.SelectedIndex ;
             docenteCurso.IDCurso = Convert.ToInt32(ddlCurso.SelectedValue);
             docenteCurso.IDDocente = Convert.ToInt32(ddlDocente.SelectedValue);
         }
-
-
         private void DeleteEntity(int id)
         {
             DocenteCursoLogic.Delete(id);
         }
-
         private void SaveEntity(Business.Entities.DocenteCurso DocenteCurso)
         {
             try
@@ -158,12 +135,10 @@ namespace UI.Web
             }
 
         }
-
         protected void grdDocenteCursos_SelectedIndexChanged(object sender, EventArgs e)
         {
             SelectedID = (int)grdDocenteCursos.SelectedValue;
         }
-
         private void EnableForm(bool enable)
         {
             IDTextBox.Enabled = enable;
@@ -171,13 +146,11 @@ namespace UI.Web
             ddlCurso.Enabled = enable;
             ddlDocente.Enabled = enable;
         }
-
         private void ClearForm()
         {
             ddlCurso.SelectedValue = "0";
             ddlDocente.SelectedValue = "0";
         }
-
         protected void eliminarLinkButton_Click(object sender, EventArgs e)
         {
             if (IsEntitySelected)
@@ -192,7 +165,6 @@ namespace UI.Web
 
             }
         }
-
         protected void nuevoLinkButton_Click(object sender, EventArgs e)
         {
             formPanel.Visible = true;
@@ -202,12 +174,10 @@ namespace UI.Web
             formActionPanel.Visible = true;
             gridActionPanel.Visible = false;
         }
-
         protected void cancelarLinkButton_Click(object sender, EventArgs e)
         {
             Response.Redirect("~/DocenteCurso.aspx");
         }
-
         protected void editarLinkButton_Click(object sender, EventArgs e)
         {
             if (IsEntitySelected)
@@ -222,7 +192,6 @@ namespace UI.Web
 
             }
         }
-
         protected void aceptarLinkButton_Click(object sender, EventArgs e)
         {
             switch (FormMode)

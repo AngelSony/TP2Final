@@ -1,18 +1,24 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <siteMap xmlns="http://schemas.microsoft.com/AspNet/SiteMap-File-1.0" >
-	<siteMapNode url="~/Default.aspx" title="Home"  description="Página principal">
-		<siteMapNode url="~/Alumno.aspx" title="Alumnos"  description="Página de Alumnos" />
-		<siteMapNode url="~/Cursos.aspx" title="Cursos"  description="Página de Cursos" />
-		<siteMapNode url="~/Login.aspx" title="Login"  description="Página de Login" />
-		<siteMapNode url="~/Planes.aspx" title="Planes"  description="Página de Planes" />
-		<siteMapNode url="~/Docente.aspx" title="Docentes"  description="Página de Docentes" />
-		<siteMapNode url="~/Materias.aspx" title="Materias"  description="Página de Materias" />
-		<siteMapNode url="~/RegistroNota.aspx" title="Registro de Notas"  description="Página de Notas" />
-		<siteMapNode url="~/AlumnoInscripciones.aspx" title="Inscripcion de alumnos a cursos"  description="Página de Inscripciones Alumno-Curso" />
-		<siteMapNode url="~/DocenteCurso.aspx" title="Inscripcion de docentes a cursos"  description="Página de Inscripciones Docente-Curso" />
-		<siteMapNode url="~/ReportesCursos.aspx" title="Reporte De Cursos"  description="Reporte De Cursos" />
-
-		<siteMapNode url="~/Comisiones.aspx" title="Comisiones"  description="Página de Comisiones" />
-		<siteMapNode url="~/Especialidades.aspx" title="Especialidades"  description="Página de Especialidades" />
+	<siteMapNode url="~/Default.aspx" title="Home"  description="Página Principal">
+		<siteMapNode url="~/Login.aspx" title="Login"  description="Inicion de Sesión"/>
+		<siteMapNode title="Administración">
+			<siteMapNode url="~/Alumno.aspx" title="Alumnos"  description="Página de Alumnos" />
+			<siteMapNode url="~/Docente.aspx" title="Docentes"  description="Página de Docentes" />
+			<siteMapNode url="~/Planes.aspx" title="Planes"  description="Página de Planes" />
+			<siteMapNode url="~/Materias.aspx" title="Materias"  description="Página de Materias" />
+			<siteMapNode url="~/Comisiones.aspx" title="Comisiones"  description="Página de Comisiones" />
+			<siteMapNode url="~/Especialidades.aspx" title="Especialidades"  description="Página de Especialidades" />
+		</siteMapNode>
+		<siteMapNode title="Cursos">
+			<siteMapNode url="~/Cursos.aspx" title="Administración de Cursos"  description="Página de Cursos" />
+			<siteMapNode url="~/AlumnoInscripciones.aspx" title="Inscripción a Cursos"  description="Página de Inscripciones Alumno-Curso" />
+			<siteMapNode url="~/DocenteCurso.aspx" title="Docentes - Cursos"  description="Página de Inscripciones Docente-Curso" />
+			<siteMapNode url="~/RegistroNota.aspx" title="Registro de Notas"  description="Página de Notas" />
+		</siteMapNode>
+			<siteMapNode title="Reportes">
+				<siteMapNode url="~/ReportesCursos.aspx" title="Reporte De Cursos"  description="Reporte De Cursos" />
+				<siteMapNode url="~/ReporteDePlanes.aspx" title="Reporte De Planes"  description="Reporte De Planes" />
+			</siteMapNode>
 	</siteMapNode>
 </siteMap>

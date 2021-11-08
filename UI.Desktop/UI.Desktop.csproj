@@ -142,12 +142,6 @@
     <Compile Include="MateriasDesktop.Designer.cs">
       <DependentUpon>MateriasDesktop.cs</DependentUpon>
     </Compile>
-    <Compile Include="Modulos.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Modulos.Designer.cs">
-      <DependentUpon>Modulos.cs</DependentUpon>
-    </Compile>
     <Compile Include="PersonaDesktop.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -236,9 +230,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MateriasDesktop.resx">
       <DependentUpon>MateriasDesktop.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Modulos.resx">
-      <DependentUpon>Modulos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PersonaDesktop.resx">
       <DependentUpon>PersonaDesktop.cs</DependentUpon>

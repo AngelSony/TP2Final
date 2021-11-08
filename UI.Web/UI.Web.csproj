@@ -99,12 +99,12 @@
     <Content Include="Alumno.aspx" />
     <Content Include="Docente.aspx" />
     <Content Include="DocenteCurso.aspx" />
+    <Content Include="Especialidades.aspx" />
     <Content Include="Login.aspx" />
     <Content Include="Materias.aspx" />
     <Content Include="Planes.aspx" />
     <Content Include="RegistroNota.aspx" />
     <Content Include="ReporteDePlanes.aspx" />
-    <Content Include="Usuarios.aspx" />
     <Content Include="Web.config" />
     <Content Include="ReportesCursos.aspx" />
   </ItemGroup>
@@ -172,6 +172,13 @@
     <Compile Include="DocenteCurso.aspx.designer.cs">
       <DependentUpon>DocenteCurso.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Especialidades.aspx.cs">
+      <DependentUpon>Especialidades.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Especialidades.aspx.designer.cs">
+      <DependentUpon>Especialidades.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -214,13 +221,6 @@
     </Compile>
     <Compile Include="Site.Master.designer.cs">
       <DependentUpon>Site.Master</DependentUpon>
-    </Compile>
-    <Compile Include="Usuarios.aspx.cs">
-      <DependentUpon>Usuarios.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Usuarios.aspx.designer.cs">
-      <DependentUpon>Usuarios.aspx</DependentUpon>
     </Compile>
     <Compile Include="ReportesCursos.aspx.cs">
       <DependentUpon>ReportesCursos.aspx</DependentUpon>
