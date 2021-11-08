@@ -17,7 +17,6 @@ namespace Business.Logic
             string expresion = @"^(([\w-]+\.)+[\w-]+|([a-zA-Z]{1}|[\w-]{2,}))@(([a-zA-Z]+[\w-]+\.){1,2}[a-zA-Z]{2,4})$";
             return Regex.IsMatch(email, expresion);
         }
-
         public static Boolean EsFechaValida(string fecha)
         {
             string expresion = @"^([0-2][0-9]|3[0-1])(\/|-)(0[1-9]|1[0-2])\2(\d{4})";
@@ -28,13 +27,16 @@ namespace Business.Logic
             string expresion = @"^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$";
             return Regex.IsMatch(clave, expresion);
         }
-
         public static Boolean EsUsuarioValido(Usuario usuario)
         {
             try
             {
                 Usuario miUsuario = UsuarioLogic.GetUsuarioPorNombre(usuario);
                 if (miUsuario.Equals(null))
+                {
+                    return false;
+                }
+                else if (!miUsuario.Habilitado)
                 {
                     return false;
                 }
@@ -57,7 +59,6 @@ namespace Business.Logic
             }
 
         }
-
         public static void ValidarDocentes(DocenteCurso docenteCurso)
         {
             List<DocenteCurso> docentesCursos = DocenteCursoLogic.GetAll();
@@ -79,12 +80,11 @@ namespace Business.Logic
                 return true;
             }
         }
-
         public static Boolean ValidarCupo(Curso curso)
         {
             if(curso.Cupo.Equals(0))
             {
-                 MessageBox.Show("NO HAY CUPOS PARA EL CURSO");
+                MessageBox.Show("NO HAY CUPOS PARA EL CURSO", "No hay cupo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return false;
             }
             else
@@ -92,7 +92,6 @@ namespace Business.Logic
                 return true;
             }
         }
-
         public static Boolean ValidarAlumno(Personas alumno, Curso cur)
         {
             foreach (var al in AlumnoInscripcionesLogic.GetAll())
@@ -101,14 +100,9 @@ namespace Business.Logic
                 {
                     return false;
                 }
-
             }
             return true;
-
         }
-
-
-
     }
 }
 

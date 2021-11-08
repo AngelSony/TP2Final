@@ -14,42 +14,28 @@ namespace UI.Desktop
 {
     public partial class Principal : Form
     {
-       Usuario usuarioActual;
+        Usuario usuarioActual;
         Personas personaActual;
         public Principal()
         {
             InitializeComponent();
         }
-
         private void tsmiSalir_Click(object sender, EventArgs e)
         {
             Dispose();
         }
-
-        private void modulosToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Modulos formModulo = new Modulos();
-            formModulo.ShowDialog();
-        }
-
-     
         private void tsmiPlanes_Click(object sender, EventArgs e)
         {
-            Planes formPlanes = new Planes();
-            formPlanes.ShowDialog();
+            new Planes().ShowDialog();
         }
-
         private void tsmiAlumnos_Click(object sender, EventArgs e)
         {
-            formPersonas Personas = new formPersonas(Business.Entities.Personas.TiposPersonas.Alumno);
-            Personas.ShowDialog();
+            new formPersonas(Personas.TiposPersonas.Alumno).ShowDialog();
         }
-
         private void Principal_Shown(object sender, EventArgs e)
         {
             Log();
         }
-
         private void Log()
         {
             Login formLogin = new Login(ref usuarioActual);
@@ -64,6 +50,7 @@ namespace UI.Desktop
                 usuarioActual = UsuarioLogic.GetUsuarioPorNombre(usuarioActual);
                 personaActual = PersonasLogic.GetOne(usuarioActual.IDPersona);
                 MessageBox.Show("Bienvenido " + personaActual.Nombre + " " + personaActual.Apellido, "UTN FRRO", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                VisibleButtons();
                 switch (personaActual.TipoPersona)
                 {
                     case Personas.TiposPersonas.Administrativo:
@@ -74,35 +61,32 @@ namespace UI.Desktop
                         MessageBox.Show("Inicio de sesion como Alumno", "Info de Sesión", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         tsmiAsignarDocentes.Visible = false;
                         tsmiAdminCursos.Visible = false;
-                        tsmiMaterias.Visible = false;
-                        tsmiDocentes.Visible = false;
-                        tsmiEspecialidades.Visible = false;
-                        tsmiPlanes.Visible = false;
-                        tsmiComisiones.Visible = false;
                         tsmiRegistroNotas.Visible = false;
-                        tsmiMaterias.Visible = false;
-                        reporteDeCursosToolStripMenuItem.Visible = false;
-                        reporteDePlanesToolStripMenuItem.Visible = false;
+                        tsmiReporteCurso.Visible = false;
+                        tsmiReportePlan.Visible = false;
+                        tsmiAdministracion.Visible = false;
                         break;
 
                     case Personas.TiposPersonas.Docente:
                         MessageBox.Show("Inicio de sesion como Docente", "Info de Sesión", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        tsmiInscripcion.Visible = false;
                         tsmiAsignarDocentes.Visible = false;
-                        tsmiAsignarDocentes.Visible = false;
-                        tsmiAsignarDocentes.Visible = false;
-                        tsmiMaterias.Visible = false;
-                        tsmiAlumnos.Visible = false;
-                        tsmiDocentes.Visible = false;
-                        tsmiEspecialidades.Visible = false;
-                        tsmiPlanes.Visible = false;
-                        tsmiComisiones.Visible = false;
                         tsmiAdminCursos.Visible = false;
+                        tsmiAdministracion.Visible = false;
                         break;
-
                 }
             }
         }
-
+        private void VisibleButtons()
+        {
+            tsmiInscripcion.Visible = true;
+            tsmiAdministracion.Visible = true;
+            tsmiAsignarDocentes.Visible = true;
+            tsmiAdminCursos.Visible = true;
+            tsmiRegistroNotas.Visible = true;
+            tsmiReporteCurso.Visible = true;
+            tsmiReportePlan.Visible = true;
+        }
         private void tsmiDocentes_Click(object sender, EventArgs e)
         {
             new formPersonas(Personas.TiposPersonas.Docente).ShowDialog();
@@ -139,10 +123,9 @@ namespace UI.Desktop
         {
             new RegistroNotas(personaActual).ShowDialog();
         }
-
-        private void tsmiMaterias_Click(object sender, EventArgs e)
+        private void tsmiComisiones_Click(object sender, EventArgs e)
         {
-           
+            new Comisiones().ShowDialog();
         }
     }
 }

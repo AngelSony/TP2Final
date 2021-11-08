@@ -24,7 +24,10 @@ namespace UI.Desktop
         {
             try
             {
-                dgvPlanes.DataSource = PlanLogic.GetAll();
+                var planes = from p in PlanLogic.GetAll()
+                             join e in EspecialidadesLogic.GetAll() on p.IDEspecialidad equals e.ID
+                             select new { p.ID, p.Descripcion, Especialidad = e.Descripcion };
+                dgvPlanes.DataSource = planes.ToList();
             }
             catch (Exception ex)
             {
@@ -56,7 +59,7 @@ namespace UI.Desktop
 
         private void tsbEditar_Click(object sender, EventArgs e)
         {
-            int ID = ((Plan)dgvPlanes.SelectedRows[0].DataBoundItem).ID;
+            int ID = Convert.ToInt32(dgvPlanes.SelectedRows[0].Cells["ID"].Value);
             PlanesDesktop formPlanes = new PlanesDesktop(ID, ApplicationForm.ModoForm.Modificacion);
             formPlanes.ShowDialog();
             Listar();
@@ -64,7 +67,7 @@ namespace UI.Desktop
 
         private void tsbEliminar_Click(object sender, EventArgs e)
         {
-            int ID = ((Plan)dgvPlanes.SelectedRows[0].DataBoundItem).ID;
+            int ID = Convert.ToInt32(dgvPlanes.SelectedRows[0].Cells["ID"].Value);
             PlanesDesktop formPlanes= new PlanesDesktop(ID, ApplicationForm.ModoForm.Baja);
             formPlanes.ShowDialog();
             Listar();

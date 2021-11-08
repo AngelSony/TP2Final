@@ -32,15 +32,15 @@ namespace UI.Desktop
             this.toolStripContainer1 = new System.Windows.Forms.ToolStripContainer();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.dgvPlanes = new System.Windows.Forms.DataGridView();
-            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Descripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.IDEspecialidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnActualizar = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.tsbNuevo = new System.Windows.Forms.ToolStripButton();
             this.tsbEditar = new System.Windows.Forms.ToolStripButton();
             this.tsbEliminar = new System.Windows.Forms.ToolStripButton();
+            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Descripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Especialidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.toolStripContainer1.ContentPanel.SuspendLayout();
             this.toolStripContainer1.TopToolStripPanel.SuspendLayout();
             this.toolStripContainer1.SuspendLayout();
@@ -92,7 +92,7 @@ namespace UI.Desktop
             this.dgvPlanes.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ID,
             this.Descripcion,
-            this.IDEspecialidad});
+            this.Especialidad});
             this.tableLayoutPanel1.SetColumnSpan(this.dgvPlanes, 2);
             this.dgvPlanes.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvPlanes.Location = new System.Drawing.Point(3, 3);
@@ -101,27 +101,6 @@ namespace UI.Desktop
             this.dgvPlanes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvPlanes.Size = new System.Drawing.Size(343, 162);
             this.dgvPlanes.TabIndex = 0;
-            // 
-            // ID
-            // 
-            this.ID.DataPropertyName = "ID";
-            this.ID.HeaderText = "ID";
-            this.ID.Name = "ID";
-            this.ID.ReadOnly = true;
-            // 
-            // Descripcion
-            // 
-            this.Descripcion.DataPropertyName = "Descripcion";
-            this.Descripcion.HeaderText = "Descripcion";
-            this.Descripcion.Name = "Descripcion";
-            this.Descripcion.ReadOnly = true;
-            // 
-            // IDEspecialidad
-            // 
-            this.IDEspecialidad.DataPropertyName = "IDEspecialidad";
-            this.IDEspecialidad.HeaderText = "ID Especialidad";
-            this.IDEspecialidad.Name = "IDEspecialidad";
-            this.IDEspecialidad.ReadOnly = true;
             // 
             // btnActualizar
             // 
@@ -186,6 +165,27 @@ namespace UI.Desktop
             this.tsbEliminar.Text = "toolStripButton3";
             this.tsbEliminar.Click += new System.EventHandler(this.tsbEliminar_Click);
             // 
+            // ID
+            // 
+            this.ID.DataPropertyName = "ID";
+            this.ID.HeaderText = "ID";
+            this.ID.Name = "ID";
+            this.ID.ReadOnly = true;
+            // 
+            // Descripcion
+            // 
+            this.Descripcion.DataPropertyName = "Descripcion";
+            this.Descripcion.HeaderText = "Descripcion";
+            this.Descripcion.Name = "Descripcion";
+            this.Descripcion.ReadOnly = true;
+            // 
+            // Especialidad
+            // 
+            this.Especialidad.DataPropertyName = "Especialidad";
+            this.Especialidad.HeaderText = "Especialidad";
+            this.Especialidad.Name = "Especialidad";
+            this.Especialidad.ReadOnly = true;
+            // 
             // Planes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -217,11 +217,11 @@ namespace UI.Desktop
         private System.Windows.Forms.DataGridView dgvPlanes;
         private System.Windows.Forms.Button btnActualizar;
         private System.Windows.Forms.Button btnCancelar;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Descripcion;
-        private System.Windows.Forms.DataGridViewTextBoxColumn IDEspecialidad;
         private System.Windows.Forms.ToolStripButton tsbNuevo;
         private System.Windows.Forms.ToolStripButton tsbEditar;
         private System.Windows.Forms.ToolStripButton tsbEliminar;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Descripcion;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Especialidad;
     }
 }

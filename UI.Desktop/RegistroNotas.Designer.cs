@@ -34,15 +34,15 @@ namespace UI.Desktop
             this.label1 = new System.Windows.Forms.Label();
             this.toolStripContainer1 = new System.Windows.Forms.ToolStripContainer();
             this.dgvNotas = new System.Windows.Forms.DataGridView();
-            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.btnSalir = new System.Windows.Forms.Button();
-            this.btnActualizar = new System.Windows.Forms.Button();
             this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Alumno = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Condición = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Nota = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.tsbEditar = new System.Windows.Forms.ToolStripButton();
             this.tsbEliminar = new System.Windows.Forms.ToolStripButton();
+            this.btnSalir = new System.Windows.Forms.Button();
+            this.btnActualizar = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.toolStripContainer1.ContentPanel.SuspendLayout();
             this.toolStripContainer1.TopToolStripPanel.SuspendLayout();
@@ -131,38 +131,6 @@ namespace UI.Desktop
             this.dgvNotas.Size = new System.Drawing.Size(448, 197);
             this.dgvNotas.TabIndex = 0;
             // 
-            // toolStrip1
-            // 
-            this.toolStrip1.Dock = System.Windows.Forms.DockStyle.None;
-            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsbEditar,
-            this.tsbEliminar});
-            this.toolStrip1.Location = new System.Drawing.Point(3, 0);
-            this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(89, 25);
-            this.toolStrip1.TabIndex = 0;
-            // 
-            // btnSalir
-            // 
-            this.btnSalir.Location = new System.Drawing.Point(376, 258);
-            this.btnSalir.Name = "btnSalir";
-            this.btnSalir.Size = new System.Drawing.Size(75, 23);
-            this.btnSalir.TabIndex = 3;
-            this.btnSalir.Text = "Salir";
-            this.btnSalir.UseVisualStyleBackColor = true;
-            this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
-            // 
-            // btnActualizar
-            // 
-            this.btnActualizar.Dock = System.Windows.Forms.DockStyle.Right;
-            this.btnActualizar.Location = new System.Drawing.Point(295, 258);
-            this.btnActualizar.Name = "btnActualizar";
-            this.btnActualizar.Size = new System.Drawing.Size(75, 23);
-            this.btnActualizar.TabIndex = 4;
-            this.btnActualizar.Text = "Actualizar";
-            this.btnActualizar.UseVisualStyleBackColor = true;
-            this.btnActualizar.Click += new System.EventHandler(this.btnActualizar_Click);
-            // 
             // ID
             // 
             this.ID.DataPropertyName = "ID";
@@ -191,6 +159,17 @@ namespace UI.Desktop
             this.Nota.Name = "Nota";
             this.Nota.ReadOnly = true;
             // 
+            // toolStrip1
+            // 
+            this.toolStrip1.Dock = System.Windows.Forms.DockStyle.None;
+            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsbEditar,
+            this.tsbEliminar});
+            this.toolStrip1.Location = new System.Drawing.Point(3, 0);
+            this.toolStrip1.Name = "toolStrip1";
+            this.toolStrip1.Size = new System.Drawing.Size(58, 25);
+            this.toolStrip1.TabIndex = 0;
+            // 
             // tsbEditar
             // 
             this.tsbEditar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
@@ -211,6 +190,27 @@ namespace UI.Desktop
             this.tsbEliminar.Text = "toolStripButton1";
             this.tsbEliminar.Click += new System.EventHandler(this.tsbEliminar_Click);
             // 
+            // btnSalir
+            // 
+            this.btnSalir.Location = new System.Drawing.Point(376, 258);
+            this.btnSalir.Name = "btnSalir";
+            this.btnSalir.Size = new System.Drawing.Size(75, 23);
+            this.btnSalir.TabIndex = 3;
+            this.btnSalir.Text = "Salir";
+            this.btnSalir.UseVisualStyleBackColor = true;
+            this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
+            // 
+            // btnActualizar
+            // 
+            this.btnActualizar.Dock = System.Windows.Forms.DockStyle.Right;
+            this.btnActualizar.Location = new System.Drawing.Point(295, 258);
+            this.btnActualizar.Name = "btnActualizar";
+            this.btnActualizar.Size = new System.Drawing.Size(75, 23);
+            this.btnActualizar.TabIndex = 4;
+            this.btnActualizar.Text = "Actualizar";
+            this.btnActualizar.UseVisualStyleBackColor = true;
+            this.btnActualizar.Click += new System.EventHandler(this.btnActualizar_Click);
+            // 
             // RegistroNotas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -219,7 +219,7 @@ namespace UI.Desktop
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "RegistroNotas";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "RegistroNotas";
+            this.Text = "Notas";
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             this.toolStripContainer1.ContentPanel.ResumeLayout(false);

@@ -24,7 +24,11 @@ namespace UI.Desktop
         {
             try
             {
-                dgvCursos.DataSource = CursoLogic.GetAll();
+                var cursos = from c in CursoLogic.GetAll()
+                             join m in MateriaLogic.GetAll() on c.IDMateria equals m.ID
+                             join co in ComisionesLogic.GetAll() on c.IDComision equals co.ID
+                             select new { c.ID, Materia = m.Descripcion, Comision = co.Descripcion, c.AnioCalendario, c.Cupo };
+                dgvCursos.DataSource = cursos.ToList();
             }
             catch(Exception Ex)
             {
@@ -47,14 +51,14 @@ namespace UI.Desktop
         }
         private void tspEditar_Click(object sender, EventArgs e)
         {
-            int ID = ((Curso)dgvCursos.SelectedRows[0].DataBoundItem).ID;
+            int ID = Convert.ToInt32(dgvCursos.SelectedRows[0].Cells["id_curso"].Value);
             CursosDesktop formCurso = new CursosDesktop(ID, ApplicationForm.ModoForm.Modificacion);
             formCurso.ShowDialog();
             Listar();
         }
         private void tspEliminar_Click(object sender, EventArgs e)
         {
-            int ID = ((Curso)dgvCursos.SelectedRows[0].DataBoundItem).ID;
+            int ID = Convert.ToInt32(dgvCursos.SelectedRows[0].Cells["id_curso"].Value);
             CursosDesktop formCurso = new CursosDesktop(ID, ApplicationForm.ModoForm.Baja);
             formCurso.ShowDialog();
             Listar();

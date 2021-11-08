@@ -38,8 +38,8 @@ namespace UI.Desktop
             this.btnActualizar = new System.Windows.Forms.Button();
             this.dgvCursos = new System.Windows.Forms.DataGridView();
             this.id_curso = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.id_materia = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.id_comision = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.materia = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.comision = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.anio_calendario = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cupos = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tsCursos.SuspendLayout();
@@ -135,8 +135,8 @@ namespace UI.Desktop
             this.dgvCursos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvCursos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.id_curso,
-            this.id_materia,
-            this.id_comision,
+            this.materia,
+            this.comision,
             this.anio_calendario,
             this.cupos});
             this.tableLayoutPanel1.SetColumnSpan(this.dgvCursos, 2);
@@ -156,19 +156,19 @@ namespace UI.Desktop
             this.id_curso.Name = "id_curso";
             this.id_curso.ReadOnly = true;
             // 
-            // id_materia
+            // materia
             // 
-            this.id_materia.DataPropertyName = "IDmateria";
-            this.id_materia.HeaderText = "Materia";
-            this.id_materia.Name = "id_materia";
-            this.id_materia.ReadOnly = true;
+            this.materia.DataPropertyName = "Materia";
+            this.materia.HeaderText = "Materia";
+            this.materia.Name = "materia";
+            this.materia.ReadOnly = true;
             // 
-            // id_comision
+            // comision
             // 
-            this.id_comision.DataPropertyName = "IDcomision";
-            this.id_comision.HeaderText = "Comision";
-            this.id_comision.Name = "id_comision";
-            this.id_comision.ReadOnly = true;
+            this.comision.DataPropertyName = "Comision";
+            this.comision.HeaderText = "Comision";
+            this.comision.Name = "comision";
+            this.comision.ReadOnly = true;
             // 
             // anio_calendario
             // 
@@ -215,8 +215,8 @@ namespace UI.Desktop
         private System.Windows.Forms.ToolStripButton tspEditar;
         private System.Windows.Forms.ToolStripButton tspEliminar;
         private System.Windows.Forms.DataGridViewTextBoxColumn id_curso;
-        private System.Windows.Forms.DataGridViewTextBoxColumn id_materia;
-        private System.Windows.Forms.DataGridViewTextBoxColumn id_comision;
+        private System.Windows.Forms.DataGridViewTextBoxColumn materia;
+        private System.Windows.Forms.DataGridViewTextBoxColumn comision;
         private System.Windows.Forms.DataGridViewTextBoxColumn anio_calendario;
         private System.Windows.Forms.DataGridViewTextBoxColumn cupos;
     }

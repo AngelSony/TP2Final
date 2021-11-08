@@ -14,54 +14,36 @@ namespace UI.Desktop
 {
     public partial class Login : Form
     {
-
-   
         public Usuario usuarioActual;
-
         public Login(ref Usuario usu)
         {
             InitializeComponent();
             usuarioActual = usu;
-            
         }
-
-
-      
-
         private void btnIngresar_Click(object sender, EventArgs e)
         {
             usuarioActual = new Usuario();
             usuarioActual.NombreUsuario = txtUsuario.Text;
             usuarioActual.Clave = txtClave.Text;
-
-            if(Validaciones.EsUsuarioValido(usuarioActual))
-            { 
-               
+            if (Validaciones.EsUsuarioValido(usuarioActual))
+            {
                 DialogResult = DialogResult.OK;
-                
-               }
+            }
             else
             {
-
-                MessageBox.Show("Usuario y/o contraseña incorrectos", "Login"
-                     , MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Usuario y/o contraseña incorrectos", "Login", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 limpiaCampos();
             }
-
         }
-
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             Dispose();
         }
-
         private void limpiaCampos()
         {
-            this.txtUsuario.Text = "";
-            this.txtClave.Text = "";
-            this.txtUsuario.Focus();
+            txtUsuario.Text = "";
+            txtClave.Text = "";
+            txtUsuario.Focus();
         }
-
-
     }
 }

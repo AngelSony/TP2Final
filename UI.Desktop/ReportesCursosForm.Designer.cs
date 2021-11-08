@@ -60,7 +60,8 @@ namespace UI.Desktop
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.rpwCursos);
             this.Name = "ReportesCursosForm";
-            this.Text = "ReportesCursosForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.Text = "Reporte de Cursos";
             this.Load += new System.EventHandler(this.ReportesCursosForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.CursoBindingSource)).EndInit();
             this.ResumeLayout(false);

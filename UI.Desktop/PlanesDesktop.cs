@@ -20,6 +20,7 @@ namespace UI.Desktop
         {
             InitializeComponent();
             dgvMaterias.AutoGenerateColumns = false;
+            CargaCombo();
             materiasActuales = new List<Materia>();
         }
         public PlanesDesktop(ModoForm modo) : this()
@@ -40,15 +41,22 @@ namespace UI.Desktop
                 }
             }
             MapearDeDatos();
+            ModoBoton();
+        }
+        public void CargaCombo()
+        {
+            cbEspecial.DataSource = EspecialidadesLogic.GetAll();
+            cbEspecial.DisplayMember = "Descripcion";
+            cbEspecial.ValueMember = "ID";
+            cbEspecial.SelectedIndex = -1;
         }
         public override void MapearDeDatos()
         {
             txtID.Text = planActual.ID.ToString();
             txtDescripcion.Text = planActual.Descripcion;
-            txtEspecialidad.Text = planActual.IDEspecialidad.ToString(); //CAMBIAR
+            cbEspecial.SelectedValue = planActual.IDEspecialidad;
 
-            listar();
-            ModoBoton();
+            Listar();
         }
         public override void MapearADatos()
         {
@@ -60,7 +68,7 @@ namespace UI.Desktop
             if (Modo == ModoForm.Alta || Modo == ModoForm.Modificacion)
             {
                 planActual.Descripcion= txtDescripcion.Text.Trim();
-                planActual.IDEspecialidad = Convert.ToInt32(txtEspecialidad.Text.Trim()); //CAMNIAR
+                planActual.IDEspecialidad = Convert.ToInt32(cbEspecial.SelectedValue);
             }
             switch (Modo)
             {
@@ -104,14 +112,12 @@ namespace UI.Desktop
         public void EnableForm(bool enable)
         {
             txtDescripcion.Enabled = enable;
-            txtEspecialidad.Enabled = enable;
+            cbEspecial.Enabled = enable;
             toolStrip1.Enabled = enable;
         }
-
         public override void GuardarCambios()
         {
             MapearADatos();
-
             if (Modo == ModoForm.Alta)
             {
                 PlanLogic.Save(planActual);
@@ -120,12 +126,7 @@ namespace UI.Desktop
                     mat.IDPlan = planActual.ID;
                     MateriaLogic.Save(mat);
                 }
-            }
-            PlanLogic.Save(planActual);
-            
-            if (Modo == ModoForm.Alta)
-            {
-                MessageBox.Show("Plan Agregado con Éxito");
+                Notificar("Plan Agregado con Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             if (Modo == ModoForm.Modificacion)
             {
@@ -145,7 +146,7 @@ namespace UI.Desktop
                         MateriaLogic.Save(mat);
                     }
                 }
-                MessageBox.Show("Plan Modificado con Éxito");
+                Notificar("Plan Modificado con éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             if(Modo == ModoForm.Baja)
             {
@@ -154,9 +155,10 @@ namespace UI.Desktop
                     MateriaLogic.Delete(mat.ID);
                 }
                 PlanLogic.Delete(planActual.ID);
+                Notificar("Plan Eliminado con éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
-        public void listar()
+        public void Listar()
         {
             List<Materia> matListar = new List<Materia>();
             foreach(Materia mat in materiasActuales)
@@ -176,22 +178,16 @@ namespace UI.Desktop
                 Notificar("Advertencia", "Campo Descripción incompleto", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
-            else if (string.IsNullOrWhiteSpace(txtEspecialidad.Text))
+            else if (cbEspecial.SelectedIndex == -1)
             {
-                Notificar("Advertencia", "Campo Apellido incompleto", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                Notificar("Advertencia", "Debe seleccionar una Especialidad", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
             else { return true; }
         }
         private void btnAceptar_Click(object sender, EventArgs e)
         {
-            if (Modo == ModoForm.Baja)
-            {
-                GuardarCambios();
-                Close();
-            }
-            else if (Validar())
-
+            if (Validar() || Modo == ModoForm.Baja)
             {
                 GuardarCambios();
                 Close();
@@ -205,21 +201,21 @@ namespace UI.Desktop
         {
             MateriasDesktop formMaterias = new MateriasDesktop(ref materiasActuales, ApplicationForm.ModoForm.Alta);
             formMaterias.ShowDialog();
-            listar();
+            Listar();
         }
         private void tsbEditar_Click(object sender, EventArgs e)
         {
             int ID = ((Materia)dgvMaterias.SelectedRows[0].DataBoundItem).ID;
             MateriasDesktop formMaterias = new MateriasDesktop(ref materiasActuales, ID, ApplicationForm.ModoForm.Modificacion);
             formMaterias.ShowDialog();
-            listar();
+            Listar();
         }
         private void tsbEliminar_Click(object sender, EventArgs e)
         {
             int ID = ((Materia)dgvMaterias.SelectedRows[0].DataBoundItem).ID;
             MateriasDesktop formMateria = new MateriasDesktop(ref materiasActuales, ID, ApplicationForm.ModoForm.Baja);
             formMateria.ShowDialog();
-            listar();
+            Listar();
         }
     }
 }

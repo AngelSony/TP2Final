@@ -31,10 +31,14 @@ namespace UI.Desktop
         {
             this.components = new System.ComponentModel.Container();
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
             this.PlanBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
             ((System.ComponentModel.ISupportInitialize)(this.PlanBindingSource)).BeginInit();
             this.SuspendLayout();
+            // 
+            // PlanBindingSource
+            // 
+            this.PlanBindingSource.DataSource = typeof(Business.Entities.Plan);
             // 
             // reportViewer1
             // 
@@ -49,10 +53,6 @@ namespace UI.Desktop
             this.reportViewer1.Size = new System.Drawing.Size(800, 450);
             this.reportViewer1.TabIndex = 0;
             // 
-            // PlanBindingSource
-            // 
-            this.PlanBindingSource.DataSource = typeof(Business.Entities.Plan);
-            // 
             // ReporteDePlanes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -60,7 +60,8 @@ namespace UI.Desktop
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.reportViewer1);
             this.Name = "ReporteDePlanes";
-            this.Text = "ReporteDePlanes";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.Text = "Reporte De Planes";
             this.Load += new System.EventHandler(this.ReporteDePlanes_Load);
             ((System.ComponentModel.ISupportInitialize)(this.PlanBindingSource)).EndInit();
             this.ResumeLayout(false);
