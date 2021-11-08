@@ -72,6 +72,7 @@
     <Content Include="AdvertenciaAccesoUsuario.aspx" />
     <Content Include="AdvertenciaLogin.aspx" />
     <Content Include="AlumnoInscripciones.aspx" />
+    <Content Include="Comisiones.aspx" />
     <Content Include="Cursos.aspx" />
     <Content Include="Default.aspx" />
     <Content Include="Alumno.aspx" />
@@ -111,6 +112,13 @@
     </Compile>
     <Compile Include="AlumnoInscripciones.aspx.designer.cs">
       <DependentUpon>AlumnoInscripciones.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Comisiones.aspx.cs">
+      <DependentUpon>Comisiones.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Comisiones.aspx.designer.cs">
+      <DependentUpon>Comisiones.aspx</DependentUpon>
     </Compile>
     <Compile Include="Cursos.aspx.cs">
       <DependentUpon>Cursos.aspx</DependentUpon>

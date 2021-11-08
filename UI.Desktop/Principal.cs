@@ -120,5 +120,11 @@ namespace UI.Desktop
         {
             new RegistroNotas(personaActual).ShowDialog();
         }
+
+        private void tsmiComisiones_Click(object sender, EventArgs e)
+        {
+            Comisiones formComisiones = new Comisiones();
+            formComisiones.ShowDialog();
+        }
     }
 }
