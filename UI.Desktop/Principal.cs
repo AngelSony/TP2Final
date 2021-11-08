@@ -90,6 +90,8 @@ namespace UI.Desktop
                         tsmiComisiones.Visible = false;
                         registrarNotasToolStripMenuItem.Visible = false;
                         tsmiMaterias.Visible = false;
+                        reporteDeCursosToolStripMenuItem.Visible = false;
+                        reporteDePlanesToolStripMenuItem.Visible = false;
                         break;
 
                     case Personas.TiposPersonas.Docente:
@@ -104,6 +106,8 @@ namespace UI.Desktop
                         tsmiPlanes.Visible = false;
                         tsmiComisiones.Visible = false;
                         tsmiCursos.Visible = false;
+                        reporteDeCursosToolStripMenuItem.Visible = false;
+                        reporteDePlanesToolStripMenuItem.Visible = false;
                         break;
 
                 }
@@ -159,6 +163,11 @@ namespace UI.Desktop
         {
             ReporteDePlanes rep = new ReporteDePlanes();
             rep.ShowDialog();
+        }
+
+        private void tsmiMaterias_Click(object sender, EventArgs e)
+        {
+           
         }
     }
 }

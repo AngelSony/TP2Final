@@ -117,7 +117,7 @@ namespace UI.Desktop
             this.administrarCursosToolStripMenuItem,
             this.inscribirseACursosToolStripMenuItem});
             this.tsmiCursos.Name = "tsmiCursos";
-            this.tsmiCursos.Size = new System.Drawing.Size(154, 22);
+            this.tsmiCursos.Size = new System.Drawing.Size(180, 22);
             this.tsmiCursos.Text = "Cursos";
             // 
             // asignarDocentesToolStripMenuItem
@@ -143,49 +143,48 @@ namespace UI.Desktop
             // tsmiMaterias
             // 
             this.tsmiMaterias.Name = "tsmiMaterias";
-            this.tsmiMaterias.Size = new System.Drawing.Size(154, 22);
+            this.tsmiMaterias.Size = new System.Drawing.Size(180, 22);
             this.tsmiMaterias.Text = "Materias";
+            this.tsmiMaterias.Click += new System.EventHandler(this.tsmiMaterias_Click);
             // 
             // tsmiAlumnos
             // 
             this.tsmiAlumnos.Name = "tsmiAlumnos";
-            this.tsmiAlumnos.Size = new System.Drawing.Size(154, 22);
+            this.tsmiAlumnos.Size = new System.Drawing.Size(180, 22);
             this.tsmiAlumnos.Text = "Alumnos";
             this.tsmiAlumnos.Click += new System.EventHandler(this.tsmiAlumnos_Click);
             // 
             // tsmiDocentes
             // 
             this.tsmiDocentes.Name = "tsmiDocentes";
-            this.tsmiDocentes.Size = new System.Drawing.Size(154, 22);
+            this.tsmiDocentes.Size = new System.Drawing.Size(180, 22);
             this.tsmiDocentes.Text = "Docentes";
             this.tsmiDocentes.Click += new System.EventHandler(this.tsmiDocentes_Click);
             // 
             // tsmiEspecialidades
             // 
             this.tsmiEspecialidades.Name = "tsmiEspecialidades";
-            this.tsmiEspecialidades.Size = new System.Drawing.Size(154, 22);
+            this.tsmiEspecialidades.Size = new System.Drawing.Size(180, 22);
             this.tsmiEspecialidades.Text = "Especialidades";
             this.tsmiEspecialidades.Click += new System.EventHandler(this.tsmiEspecialidades_Click);
             // 
             // tsmiPlanes
             // 
             this.tsmiPlanes.Name = "tsmiPlanes";
-            this.tsmiPlanes.Size = new System.Drawing.Size(154, 22);
+            this.tsmiPlanes.Size = new System.Drawing.Size(180, 22);
             this.tsmiPlanes.Text = "Planes";
             this.tsmiPlanes.Click += new System.EventHandler(this.tsmiPlanes_Click);
             // 
             // tsmiComisiones
             // 
             this.tsmiComisiones.Name = "tsmiComisiones";
-            this.tsmiComisiones.Size = new System.Drawing.Size(154, 22);
+            this.tsmiComisiones.Size = new System.Drawing.Size(180, 22);
             this.tsmiComisiones.Text = "Comisiones";
-            // 
-            this.tsmiComisiones.Click += new System.EventHandler(this.tsmiComisiones_Click);
             // 
             // registrarNotasToolStripMenuItem
             // 
             this.registrarNotasToolStripMenuItem.Name = "registrarNotasToolStripMenuItem";
-            this.registrarNotasToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
+            this.registrarNotasToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.registrarNotasToolStripMenuItem.Text = "Registrar Notas";
             this.registrarNotasToolStripMenuItem.Click += new System.EventHandler(this.registrarNotasToolStripMenuItem_Click);
             // 
