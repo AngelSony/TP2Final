@@ -18,8 +18,8 @@ namespace UI.Desktop
         {
             InitializeComponent();
             dgvPlanes.AutoGenerateColumns = false;
+            Listar();
         }
-
         public void Listar()
         {
             try
@@ -34,29 +34,20 @@ namespace UI.Desktop
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
-        private void Planes_Load(object sender, EventArgs e)
-        {
-            Listar();
-        }
-
         private void btnActualizar_Click(object sender, EventArgs e)
         {
             Listar();
         }
-
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             Close();
         }
-
         private void tsbNuevo_Click(object sender, EventArgs e)
         {
             PlanesDesktop formPlanes = new PlanesDesktop(ApplicationForm.ModoForm.Alta);
             formPlanes.ShowDialog();
             Listar();
         }
-
         private void tsbEditar_Click(object sender, EventArgs e)
         {
             int ID = Convert.ToInt32(dgvPlanes.SelectedRows[0].Cells["ID"].Value);
@@ -64,7 +55,6 @@ namespace UI.Desktop
             formPlanes.ShowDialog();
             Listar();
         }
-
         private void tsbEliminar_Click(object sender, EventArgs e)
         {
             int ID = Convert.ToInt32(dgvPlanes.SelectedRows[0].Cells["ID"].Value);
@@ -72,7 +62,5 @@ namespace UI.Desktop
             formPlanes.ShowDialog();
             Listar();
         }
-
-    
     }
 }

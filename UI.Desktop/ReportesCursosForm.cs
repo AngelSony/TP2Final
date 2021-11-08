@@ -20,16 +20,21 @@ namespace UI.Desktop
 
         private void ReportesCursosForm_Load(object sender, EventArgs e)
         {
-            var listado = from cur in CursoLogic.GetAll()
-                          join mat in MateriaLogic.GetAll() on cur.IDMateria equals mat.ID
-                          join comi in ComisionesLogic.GetAll() on cur.IDComision equals comi.ID
-                          orderby cur.AnioCalendario descending
-                          select new { cur.ID, cur.AnioCalendario, IDComision = comi.Descripcion , IDMateria = mat.Descripcion};
+            try { 
+                var listado = from cur in CursoLogic.GetAll()
+                              join mat in MateriaLogic.GetAll() on cur.IDMateria equals mat.ID
+                              join comi in ComisionesLogic.GetAll() on cur.IDComision equals comi.ID
+                              orderby cur.AnioCalendario descending
+                              select new { cur.ID, cur.AnioCalendario, IDComision = comi.Descripcion , IDMateria = mat.Descripcion};
 
-            CursoBindingSource.DataSource = listado.ToList();
+                CursoBindingSource.DataSource = listado.ToList();
 
-            this.rpwCursos.RefreshReport();
-           
+                rpwCursos.RefreshReport();
+            }
+            catch (Exception Ex)
+            {
+                MessageBox.Show(Ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

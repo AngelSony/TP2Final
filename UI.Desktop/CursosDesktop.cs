@@ -28,8 +28,15 @@ namespace UI.Desktop
         public CursosDesktop(int ID, ModoForm modo) : this()
         {
             Modo = modo;
-            CursoActual = CursoLogic.GetOne(ID);
+            try { 
+                CursoActual = CursoLogic.GetOne(ID);
+            }
+            catch (Exception Ex)
+            {
+                Notificar("Error", Ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
             MapearDeDatos();
+            ModoBoton();
         }
         public override void MapearADatos()
         {
@@ -68,7 +75,6 @@ namespace UI.Desktop
             cbMateria.SelectedValue = CursoActual.IDMateria;
             txtCupo.Text = CursoActual.Cupo.ToString();
             txtAnioCalendario.Text = CursoActual.AnioCalendario.ToString();
-            ModoBoton();
         }
         private void ModoBoton()
         {
@@ -104,33 +110,45 @@ namespace UI.Desktop
         }
         private void CargaCombos()
         {
-            cbMateria.DataSource = MateriaLogic.GetAll();
-            cbMateria.DisplayMember = "Descripcion";
-            cbMateria.ValueMember = "ID";
-            cbMateria.SelectedIndex = -1;
+            try { 
+                cbMateria.DataSource = MateriaLogic.GetAll();
+                cbMateria.DisplayMember = "Descripcion";
+                cbMateria.ValueMember = "ID";
+                cbMateria.SelectedIndex = -1;
 
-            cbComision.DataSource = ComisionesLogic.GetAll();
-            cbComision.DisplayMember = "Descripcion";
-            cbComision.ValueMember = "ID";
-            cbComision.SelectedIndex = -1;
+                cbComision.DataSource = ComisionesLogic.GetAll();
+                cbComision.DisplayMember = "Descripcion";
+                cbComision.ValueMember = "ID";
+                cbComision.SelectedIndex = -1;
+            }
+            catch (Exception Ex)
+            {
+                Notificar("Error", Ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
         public override void GuardarCambios()
         {
             MapearADatos();
-            CursoLogic.Save(CursoActual);
-            switch (Modo)
+            try { 
+                CursoLogic.Save(CursoActual);
+                switch (Modo)
+                {
+                    case ModoForm.Alta:
+                        Notificar("Curso registrado con éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        break;
+                    case ModoForm.Modificacion:
+                        Notificar("Curso actualizado con éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        break;
+                    case ModoForm.Baja:
+                        Notificar("Curso eliminado con éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        break;
+                    default:
+                        break;
+                }
+            }
+            catch (Exception Ex)
             {
-                case ModoForm.Alta:
-                    Notificar("Curso registrado con éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    break;
-                case ModoForm.Modificacion:
-                    Notificar("Curso actualizado con éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    break;
-                case ModoForm.Baja:
-                    Notificar("Curso eliminado con éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    break;
-                default:
-                    break;
+                Notificar("Error", Ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
         public override bool Validar()
@@ -145,11 +163,11 @@ namespace UI.Desktop
                 Notificar("Error", "El campo Cupo no debe estar vacío", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
-            /*else if(cbComision.SelectedValue == null)
+            else if(cbComision.SelectedValue == null)
             {
                 Notificar("Error", "Debe especificar una comisión", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
-            }*/
+            }
             else if (cbMateria.SelectedValue.Equals(null))
             {
                 Notificar("Error", "Debe especificar una materia", MessageBoxButtons.OK, MessageBoxIcon.Warning);

@@ -20,8 +20,6 @@ namespace UI.Desktop
             dgvEspecialidades.AutoGenerateColumns = false;
             listar();
         }
-
-
         public void listar()
         {
             try
@@ -33,24 +31,20 @@ namespace UI.Desktop
                 MessageBox.Show(Ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
         private void btnActualizar_Click(object sender, EventArgs e)
         {
             listar();
         }
-
         private void btnSalir_Click(object sender, EventArgs e)
         {
             Dispose();
         }
-
         private void tsbNuevo_Click(object sender, EventArgs e)
         {
             EspecialidadesDesktop formEspecialidad = new EspecialidadesDesktop(ApplicationForm.ModoForm.Alta);
             formEspecialidad.ShowDialog();
             listar();
         }
-
         private void tsbEditar_Click(object sender, EventArgs e)
         {
             int ID = ((Especialidad)dgvEspecialidades.SelectedRows[0].DataBoundItem).ID;
@@ -58,7 +52,6 @@ namespace UI.Desktop
             formEspecialidad.ShowDialog();
             listar();
         }
-
         private void tsbEliminar_Click(object sender, EventArgs e)
         {
             int ID = ((Especialidad)dgvEspecialidades.SelectedRows[0].DataBoundItem).ID;

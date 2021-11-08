@@ -22,17 +22,23 @@ namespace UI.Desktop
         }
         private void btnIngresar_Click(object sender, EventArgs e)
         {
-            usuarioActual = new Usuario();
-            usuarioActual.NombreUsuario = txtUsuario.Text;
-            usuarioActual.Clave = txtClave.Text;
-            if (Validaciones.EsUsuarioValido(usuarioActual))
+            try {
+                usuarioActual = new Usuario();
+                usuarioActual.NombreUsuario = txtUsuario.Text;
+                usuarioActual.Clave = txtClave.Text;
+                if (Validaciones.EsUsuarioValido(usuarioActual))
+                {
+                    DialogResult = DialogResult.OK;
+                }
+                else
+                {
+                    MessageBox.Show("Usuario y/o contraseña incorrectos", "Login", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    limpiaCampos();
+                }
+                }
+            catch (Exception Ex)
             {
-                DialogResult = DialogResult.OK;
-            }
-            else
-            {
-                MessageBox.Show("Usuario y/o contraseña incorrectos", "Login", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                limpiaCampos();
+                MessageBox.Show(Ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
         private void btnCancelar_Click(object sender, EventArgs e)

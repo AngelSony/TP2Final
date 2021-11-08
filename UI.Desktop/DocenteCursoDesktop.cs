@@ -15,49 +15,44 @@ namespace UI.Desktop
     public partial class DocenteCursoDesktop : ApplicationForm
     {
         private Business.Entities.DocenteCurso DocenteCursoSeleccionado;
-
         public DocenteCursoDesktop()
         {
             InitializeComponent();
             CargaCombos();
-
         }
-
         public DocenteCursoDesktop(ModoForm modo) : this()
         {
             Modo = modo;
             ModoBoton();
-
         }
         public DocenteCursoDesktop(int ID, ModoForm modo) : this()
         {
             Modo = modo;
-           DocenteCursoSeleccionado  = DocenteCursoLogic.GetOne(ID);
+            try {
+                DocenteCursoSeleccionado  = DocenteCursoLogic.GetOne(ID);
+            }
+            catch (Exception Ex)
+            {
+                Notificar("Error", Ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
             MapearDeDatos();
+            ModoBoton();
         }
-
-
         public override void MapearDeDatos()
         {
-
             txtID.Text = DocenteCursoSeleccionado.ID.ToString();
             cbCargo.SelectedItem = DocenteCursoSeleccionado.Cargo;
             cbCurso.SelectedValue = DocenteCursoSeleccionado.IDCurso;
             cbDocente.SelectedValue = DocenteCursoSeleccionado.IDDocente;
-            ModoBoton();
         }
-
         public override void MapearADatos()
         {
             if (Modo == ModoForm.Alta)
             {
-             DocenteCursoSeleccionado = new Business.Entities.DocenteCurso();
-
+                DocenteCursoSeleccionado = new Business.Entities.DocenteCurso();
             }
-
             if (Modo == ModoForm.Modificacion || Modo == ModoForm.Alta)
             {
-
                 DocenteCursoSeleccionado.Cargo = (Business.Entities.DocenteCurso.TiposCargos)cbCargo.SelectedIndex;
                 DocenteCursoSeleccionado.IDCurso = Convert.ToInt32(cbCurso.SelectedValue);
                 DocenteCursoSeleccionado.IDDocente = Convert.ToInt32 (cbDocente.SelectedValue);
@@ -66,12 +61,10 @@ namespace UI.Desktop
             {
                 case ModoForm.Alta:
                     DocenteCursoSeleccionado.State = BusinessEntity.States.New;
-
                     try
                     {
                         Validaciones.ValidarDocentes(DocenteCursoSeleccionado);
                         DocenteCursoSeleccionado.State = BusinessEntity.States.New;
-
                     }
                     catch(Exception Ex)
                     {
@@ -85,7 +78,6 @@ namespace UI.Desktop
                     break;
                 case ModoForm.Baja:
                     DocenteCursoSeleccionado.State = BusinessEntity.States.Deleted;
-                  
                     break;
                 case ModoForm.Consulta:
                     DocenteCursoSeleccionado.State = BusinessEntity.States.Unmodified;
@@ -94,7 +86,6 @@ namespace UI.Desktop
                     break;
             }
         }
-
         private void ModoBoton()
         {
             switch (Modo)
@@ -116,51 +107,44 @@ namespace UI.Desktop
                     break;
             }
         }
-
-            private void DocenteCursoDesktop_Load(object sender, EventArgs e)
-        {
-            
-        }
-
         private void CargaCombos()
         {
-
-            cbCargo.DataSource = Enum.GetValues(typeof(Business.Entities.DocenteCurso.TiposCargos));
+            try {
+                cbCargo.DataSource = Enum.GetValues(typeof(Business.Entities.DocenteCurso.TiposCargos));
            
-            cbDocente.DataSource = PersonasLogic.GetAll().Where(d => d.TipoPersona == Personas.TiposPersonas.Docente).Select(p => new { ID = p.ID, NombreApellido = $"{p.Nombre} {p.Apellido}" }).ToList();
-            cbDocente.DisplayMember = "NombreApellido";
-            cbDocente.ValueMember = "ID";
+                cbDocente.DataSource = PersonasLogic.GetAll().Where(d => d.TipoPersona == Personas.TiposPersonas.Docente).Select(p => new { ID = p.ID, NombreApellido = $"{p.Nombre} {p.Apellido}" }).ToList();
+                cbDocente.DisplayMember = "NombreApellido";
+                cbDocente.ValueMember = "ID";
 
+                var CursoMateria = from c in CursoLogic.GetAll()
+                                       join m in MateriaLogic.GetAll() on c.IDMateria equals m.ID
+                                       join cm in ComisionesLogic.GetAll() on c.IDComision equals cm.ID
+                                       select new {c.ID, Descripcion =  m.Descripcion + " " + cm.Descripcion + " " + c.AnioCalendario };
 
-
-            var CursoMateria = from c in CursoLogic.GetAll()
-                                   join m in MateriaLogic.GetAll() on c.IDMateria equals m.ID
-                                   join cm in ComisionesLogic.GetAll() on c.IDComision equals cm.ID
-                                   select new {c.ID, Descripcion =  m.Descripcion + " " + cm.Descripcion + " " + c.AnioCalendario };
-
-           
-
-
-            cbCurso.DataSource = CursoMateria.ToList();
-            cbCurso.DisplayMember = "Descripcion";
-            cbCurso.ValueMember = "ID";
+                cbCurso.DataSource = CursoMateria.ToList();
+                cbCurso.DisplayMember = "Descripcion";
+                cbCurso.ValueMember = "ID";
+            }
+            catch (Exception Ex)
+            {
+                Notificar("Error", Ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
-
-
-
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             Close();
         }
-
-
         public override void GuardarCambios()
         {
             MapearADatos();
-            DocenteCursoLogic.Save(DocenteCursoSeleccionado);
-
+            try {
+                DocenteCursoLogic.Save(DocenteCursoSeleccionado);
+            }
+            catch (Exception Ex)
+            {
+                Notificar("Error", Ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
-
         public override bool Validar()
         {
             if (string.IsNullOrWhiteSpace(cbDocente.Text))
@@ -181,17 +165,9 @@ namespace UI.Desktop
 
             else { return true; }
         }
-
-
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            if (Modo == ModoForm.Baja)
-            {
-                GuardarCambios();
-                Close();
-            }
-            else if (Validar())
-
+            if (Validar() || Modo == ModoForm.Baja)
             {
                 GuardarCambios();
                 Close();

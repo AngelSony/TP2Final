@@ -26,7 +26,6 @@ namespace UI.Desktop
             materiasActuales = mats;
             ModoBoton();
         }
-
         public MateriasDesktop(ref List<Materia> mats,int ID, ModoForm modo) : this()
         {
             Modo = modo;
@@ -39,15 +38,14 @@ namespace UI.Desktop
                 }
             }
             MapearDeDatos();
+            ModoBoton();
         }
-
         public override void MapearDeDatos()
         {
             txtID.Text = MateriaActual.ID.ToString();
             txtDescripcion.Text = MateriaActual.Descripcion;
             txtHSSemanales.Text = MateriaActual.HSSemanales.ToString();
             txtHSTotales.Text = MateriaActual.HSTotales.ToString();
-            ModoBoton();
         }
         private void ModoBoton()
         {
@@ -107,7 +105,6 @@ namespace UI.Desktop
                     break;
             }
         }
-
         public override void GuardarCambios() {
             MapearADatos();
             if (Modo == ModoForm.Alta)
@@ -115,7 +112,6 @@ namespace UI.Desktop
                 materiasActuales.Add(MateriaActual);
             }
         }
-
         public override bool Validar()
         {
             if (string.IsNullOrWhiteSpace(txtDescripcion.Text))
@@ -135,21 +131,14 @@ namespace UI.Desktop
             }
             else { return true; }
         }
-
         private void btnAceptar_Click(object sender, EventArgs e)
         {
-            if (Modo == ModoForm.Baja)
-            {
-                GuardarCambios();
-                Close();
-            }
-            else if (Validar())
+            if (Validar() || Modo == ModoForm.Baja)
             {
                 GuardarCambios();
                 Close();
             }
         }
-
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             Close();

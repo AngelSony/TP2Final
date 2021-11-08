@@ -29,7 +29,13 @@ namespace UI.Desktop
         {
             Modo = modo;
             ModoBoton();
-            comisionActual = ComisionesLogic.GetOne(ID);
+            try {
+                comisionActual = ComisionesLogic.GetOne(ID);
+            }
+            catch (Exception Ex)
+            {
+                Notificar("Error", Ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
             MapearDeDatos();
         }
         private void ModoBoton()
@@ -62,13 +68,19 @@ namespace UI.Desktop
             cbPlanes.Enabled = enable;
             txtAnioEspecialidad.Enabled = enable;
             txtDescripcion.Enabled = enable;
-            }
+        }
         private void CargaCombo()
         {
-            cbPlanes.DataSource = PlanLogic.GetAll();
-            cbPlanes.DisplayMember = "Descripcion";
-            cbPlanes.ValueMember = "ID";
-            cbPlanes.SelectedIndex = -1;
+            try {
+                cbPlanes.DataSource = PlanLogic.GetAll();
+                cbPlanes.DisplayMember = "Descripcion";
+                cbPlanes.ValueMember = "ID";
+                cbPlanes.SelectedIndex = -1;
+            }
+            catch (Exception Ex)
+            {
+                Notificar("Error", Ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
         public override void MapearDeDatos()
         {
@@ -108,21 +120,27 @@ namespace UI.Desktop
         }
         public override void GuardarCambios()
         {
-            MapearADatos();
-            ComisionesLogic.Save(comisionActual);
-            switch (Modo)
+            try {
+                MapearADatos();
+                ComisionesLogic.Save(comisionActual);
+                switch (Modo)
+                {
+                    case ModoForm.Alta:
+                        Notificar("Comisión registrada con éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        break;
+                    case ModoForm.Modificacion:
+                        Notificar("Comisión actualizada con éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        break;
+                    case ModoForm.Baja:
+                        Notificar("Comisión eliminada con éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        break;
+                    default:
+                        break;
+                }
+            }
+            catch (Exception Ex)
             {
-                case ModoForm.Alta:
-                    Notificar("Comisión registrada con éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    break;
-                case ModoForm.Modificacion:
-                    Notificar("Comisión actualizada con éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    break;
-                case ModoForm.Baja:
-                    Notificar("Comisión eliminada con éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    break;
-                default:
-                    break;
+                Notificar("Error", Ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
         private void btnAceptar_Click(object sender, EventArgs e)

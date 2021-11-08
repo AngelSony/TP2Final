@@ -21,14 +21,20 @@ namespace UI.Desktop
 
         private void ReporteDePlanes_Load(object sender, EventArgs e)
         {
-            var listado = from p in PlanLogic.GetAll()
-                          join esp in EspecialidadesLogic.GetAll() on p.IDEspecialidad equals esp.ID
+            try { 
+                var listado = from p in PlanLogic.GetAll()
+                              join esp in EspecialidadesLogic.GetAll() on p.IDEspecialidad equals esp.ID
                
-                          select new { ID = p.ID, Descripcion= p.Descripcion, IDEspecialidad = esp.Descripcion };
+                              select new { ID = p.ID, Descripcion= p.Descripcion, IDEspecialidad = esp.Descripcion };
 
-            PlanBindingSource.DataSource = listado.ToList();
+                PlanBindingSource.DataSource = listado.ToList();
              
-            this.reportViewer1.RefreshReport();
+                reportViewer1.RefreshReport();
+            }
+            catch (Exception Ex)
+            {
+                MessageBox.Show(Ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

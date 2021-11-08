@@ -24,13 +24,19 @@ namespace UI.Desktop
         }
         public void Listar()
         {
-            var PersonasUsuarios = from p in PersonasLogic.GetAll()
-                                   join u in UsuarioLogic.GetAll() on p.ID equals u.IDPersona
-                                   join pl in PlanLogic.GetAll() on p.IDPlan equals pl.ID
-                                   where p.TipoPersona.Equals(tipoPersona) 
-                                   select new { u.ID, u.NombreUsuario, u.Clave, u.Habilitado, p.Nombre, p.Apellido, p.Legajo, p.FechaNacimiento, p.Email, p.Direccion, p.Telefono, pl.Descripcion};
+            try { 
+                var PersonasUsuarios = from p in PersonasLogic.GetAll()
+                                       join u in UsuarioLogic.GetAll() on p.ID equals u.IDPersona
+                                       join pl in PlanLogic.GetAll() on p.IDPlan equals pl.ID
+                                       where p.TipoPersona.Equals(tipoPersona) 
+                                       select new { u.ID, u.NombreUsuario, u.Clave, u.Habilitado, p.Nombre, p.Apellido, p.Legajo, p.FechaNacimiento, p.Email, p.Direccion, p.Telefono, pl.Descripcion};
 
-            dgvPersonas.DataSource = PersonasUsuarios.ToList();
+                dgvPersonas.DataSource = PersonasUsuarios.ToList();
+            }
+            catch (Exception Ex)
+            {
+                MessageBox.Show(Ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
         private void btnActualizar_Click(object sender, EventArgs e)
         {

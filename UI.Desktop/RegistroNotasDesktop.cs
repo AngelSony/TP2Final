@@ -22,7 +22,13 @@ namespace UI.Desktop
         public RegistroNotasDesktop(int ID, ModoForm modo) : this()
         {
             Modo = modo;
-            inscripcionActual = AlumnoInscripcionesLogic.GetOne(ID);
+            try { 
+                inscripcionActual = AlumnoInscripcionesLogic.GetOne(ID);
+            }
+            catch (Exception Ex)
+            {
+                Notificar("Error", Ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
             ModoBoton();
             MapearDeDatos();
         }
@@ -53,15 +59,21 @@ namespace UI.Desktop
         }
         public override void MapearDeDatos()
         {
-            txtId.Text = inscripcionActual.ID.ToString();
-            Personas alu = PersonasLogic.GetOne(inscripcionActual.IDAlumno);
-            txtAlumno.Text = alu.Apellido + " " + alu.Nombre;
-            Curso cur = CursoLogic.GetOne(inscripcionActual.IDCurso);
-            Comision com = ComisionesLogic.GetOne(cur.IDComision);
-            Materia mat = MateriaLogic.GetOne(cur.IDMateria);
-            txtCurso.Text = com.Descripcion + " " + mat.Descripcion + " " + cur.AnioCalendario;
-            txtCondición.Text = inscripcionActual.Condicion;
-            txtNota.Text = inscripcionActual.Nota.ToString();
+            try { 
+                txtId.Text = inscripcionActual.ID.ToString();
+                Personas alu = PersonasLogic.GetOne(inscripcionActual.IDAlumno);
+                txtAlumno.Text = alu.Apellido + " " + alu.Nombre;
+                Curso cur = CursoLogic.GetOne(inscripcionActual.IDCurso);
+                Comision com = ComisionesLogic.GetOne(cur.IDComision);
+                Materia mat = MateriaLogic.GetOne(cur.IDMateria);
+                txtCurso.Text = com.Descripcion + " " + mat.Descripcion + " " + cur.AnioCalendario;
+                txtCondición.Text = inscripcionActual.Condicion;
+                txtNota.Text = inscripcionActual.Nota.ToString();
+            }
+            catch (Exception Ex)
+            {
+                Notificar("Error", Ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
         public override void MapearADatos()
         {
@@ -93,18 +105,25 @@ namespace UI.Desktop
         public override void GuardarCambios()
         {
             MapearADatos();
-            AlumnoInscripcionesLogic.Save(inscripcionActual);
-            switch (Modo)
-            {
-                case ModoForm.Modificacion:
-                    Notificar("Nota y condición actualizados con éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    break;
-                case ModoForm.Baja:
-                    Notificar("Inscripción eliminada con éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    break;
-                default:
-                    break;
+            try { 
+                AlumnoInscripcionesLogic.Save(inscripcionActual);
+                switch (Modo)
+                {
+                    case ModoForm.Modificacion:
+                        Notificar("Nota y condición actualizados con éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        break;
+                    case ModoForm.Baja:
+                        Notificar("Inscripción eliminada con éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        break;
+                    default:
+                        break;
+                }
             }
+            catch (Exception Ex)
+            {
+                Notificar("Error", Ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            
         }
         public override bool Validar()
         {

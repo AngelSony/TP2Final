@@ -31,24 +31,36 @@ namespace UI.Desktop
         public PlanesDesktop(int ID, ModoForm modo) : this()
         {
             Modo = modo;
-            planActual = PlanLogic.GetOne(ID);
-            foreach (Materia materia in MateriaLogic.GetAll())
-            {
-                if (materia.IDPlan.Equals(planActual.ID))
+            try {
+                planActual = PlanLogic.GetOne(ID);
+                foreach (Materia materia in MateriaLogic.GetAll())
                 {
-                    materiasActuales.Add(materia);
-                    materia.State = BusinessEntity.States.Unmodified;
+                    if (materia.IDPlan.Equals(planActual.ID))
+                    {
+                        materiasActuales.Add(materia);
+                        materia.State = BusinessEntity.States.Unmodified;
+                    }
                 }
+            }
+            catch (Exception Ex)
+            {
+                Notificar("Error", Ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             MapearDeDatos();
             ModoBoton();
         }
         public void CargaCombo()
         {
-            cbEspecial.DataSource = EspecialidadesLogic.GetAll();
-            cbEspecial.DisplayMember = "Descripcion";
-            cbEspecial.ValueMember = "ID";
-            cbEspecial.SelectedIndex = -1;
+            try { 
+                cbEspecial.DataSource = EspecialidadesLogic.GetAll();
+                cbEspecial.DisplayMember = "Descripcion";
+                cbEspecial.ValueMember = "ID";
+                cbEspecial.SelectedIndex = -1;
+            }
+            catch (Exception Ex)
+            {
+                Notificar("Error", Ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
         public override void MapearDeDatos()
         {
@@ -117,45 +129,51 @@ namespace UI.Desktop
         }
         public override void GuardarCambios()
         {
-            MapearADatos();
-            if (Modo == ModoForm.Alta)
-            {
-                PlanLogic.Save(planActual);
-                foreach (Materia mat in materiasActuales)
+            try { 
+                MapearADatos();
+                if (Modo == ModoForm.Alta)
                 {
-                    mat.IDPlan = planActual.ID;
-                    MateriaLogic.Save(mat);
-                }
-                Notificar("Plan Agregado con Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            if (Modo == ModoForm.Modificacion)
-            {
-                foreach (Materia mat in materiasActuales)
-                {
-                    if(mat.State == BusinessEntity.States.Deleted)
-                    {
-                        MateriaLogic.Delete(mat.ID);
-                    }
-                }
-                PlanLogic.Save(planActual);
-                foreach (Materia mat in materiasActuales)
-                {
-                    if (mat.State != BusinessEntity.States.Deleted)
+                    PlanLogic.Save(planActual);
+                    foreach (Materia mat in materiasActuales)
                     {
                         mat.IDPlan = planActual.ID;
                         MateriaLogic.Save(mat);
                     }
+                    Notificar("Plan Agregado con Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
-                Notificar("Plan Modificado con éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            if(Modo == ModoForm.Baja)
-            {
-                foreach (Materia mat in materiasActuales)
+                if (Modo == ModoForm.Modificacion)
                 {
-                    MateriaLogic.Delete(mat.ID);
+                    foreach (Materia mat in materiasActuales)
+                    {
+                        if(mat.State == BusinessEntity.States.Deleted)
+                        {
+                            MateriaLogic.Delete(mat.ID);
+                        }
+                    }
+                    PlanLogic.Save(planActual);
+                    foreach (Materia mat in materiasActuales)
+                    {
+                        if (mat.State != BusinessEntity.States.Deleted)
+                        {
+                            mat.IDPlan = planActual.ID;
+                            MateriaLogic.Save(mat);
+                        }
+                    }
+                    Notificar("Plan Modificado con éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
-                PlanLogic.Delete(planActual.ID);
-                Notificar("Plan Eliminado con éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                if(Modo == ModoForm.Baja)
+                {
+                    foreach (Materia mat in materiasActuales)
+                    {
+                        MateriaLogic.Delete(mat.ID);
+                    }
+                    PlanLogic.Delete(planActual.ID);
+                    Notificar("Plan Eliminado con éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            catch (Exception Ex)
+            {
+                Notificar("Error", Ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
         public void Listar()

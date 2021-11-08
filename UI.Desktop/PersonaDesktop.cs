@@ -27,16 +27,29 @@ namespace UI.Desktop
             tipoPersona = tipo;
             Text = tipoPersona.ToString();
             Modo = modo;
-            usrActual = UsuarioLogic.GetOne(ID);
-            perActual = PersonasLogic.GetOne(usrActual.IDPersona);
+            try {
+                usrActual = UsuarioLogic.GetOne(ID);
+                perActual = PersonasLogic.GetOne(usrActual.IDPersona);
+            }
+            catch (Exception Ex)
+            {
+                Notificar("Error", Ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
             MapearDeDatos();
+            ModoBoton();
         }
         private void CargaCombo()
         {
-            cbPlan.DataSource = PlanLogic.GetAll();
-            cbPlan.DisplayMember = "Descripcion";
-            cbPlan.ValueMember = "ID";
-            cbPlan.SelectedIndex = -1;
+            try { 
+                cbPlan.DataSource = PlanLogic.GetAll();
+                cbPlan.DisplayMember = "Descripcion";
+                cbPlan.ValueMember = "ID";
+                cbPlan.SelectedIndex = -1;
+            }
+            catch (Exception Ex)
+            {
+                Notificar("Error", Ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
         private void ModoBoton()
         {
@@ -73,7 +86,6 @@ namespace UI.Desktop
             cbPlan.SelectedValue = perActual.IDPlan;
             txtLegajo.Text = perActual.Legajo.ToString();
             txtFechaNac.Text = perActual.FechaNacimiento.ToString("dd/MM/yyyy");
-            ModoBoton();
         }
         public override void MapearADatos()
         {
@@ -124,21 +136,27 @@ namespace UI.Desktop
         public override void GuardarCambios()
         {
             MapearADatos();
-            PersonasLogic.Save(perActual);
-            usrActual.IDPersona = perActual.ID;
-            UsuarioLogic.Save(usrActual);
+            try {
+                PersonasLogic.Save(perActual);
+                usrActual.IDPersona = perActual.ID;
+                UsuarioLogic.Save(usrActual);
+            }
+            catch (Exception Ex)
+            {
+                Notificar("Error", Ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
 
             if (Modo == ModoForm.Alta)
             {
-                MessageBox.Show("Usuario Agregado con Éxito");
+                Notificar("Usuario Registrado con éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             if (Modo == ModoForm.Modificacion)
             {
-                MessageBox.Show("Usuario Modificado con Éxito");
+                Notificar("Usuario Modificado con éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             if(Modo == ModoForm.Baja)
             {
-                MessageBox.Show("Usuario Eliminado con Éxito");
+                Notificar("Usuario Eliminado con éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
         public override bool Validar()

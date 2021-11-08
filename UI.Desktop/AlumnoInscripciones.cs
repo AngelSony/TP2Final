@@ -26,20 +26,24 @@ namespace UI.Desktop
             AlumnoActual = alumno;
             listar();
             CargaCombo();
-            
         }
 
         public void listar()
         {
-            
-            var listado = from alu_ins in AlumnoInscripcionesLogic.GetAll()
-                          join cur in CursoLogic.GetAll() on alu_ins.IDCurso equals cur.ID
-                          join alu in PersonasLogic.GetAll() on alu_ins.IDAlumno equals alu.ID
-                          join mat in MateriaLogic.GetAll() on cur.IDMateria equals mat.ID
-                          join comi in ComisionesLogic.GetAll() on cur.IDComision equals comi.ID
-                          where alu.ID == AlumnoActual.ID
-                          select new {alu_ins.ID, Materia = mat.Descripcion,  cur.AnioCalendario, alu_ins.Nota,alu_ins.Condicion, comi.Descripcion };
-            dgvInscripcion.DataSource = listado.ToList();
+            try
+            {
+                var listado = from alu_ins in AlumnoInscripcionesLogic.GetAll()
+                              join cur in CursoLogic.GetAll() on alu_ins.IDCurso equals cur.ID
+                              join alu in PersonasLogic.GetAll() on alu_ins.IDAlumno equals alu.ID
+                              join mat in MateriaLogic.GetAll() on cur.IDMateria equals mat.ID
+                              join comi in ComisionesLogic.GetAll() on cur.IDComision equals comi.ID
+                              where alu.ID == AlumnoActual.ID
+                              select new { alu_ins.ID, Materia = mat.Descripcion, cur.AnioCalendario, alu_ins.Nota, alu_ins.Condicion, comi.Descripcion };
+                dgvInscripcion.DataSource = listado.ToList();
+            }catch(Exception Ex)
+            {
+                MessageBox.Show(Ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
 
         }
 
@@ -55,6 +59,7 @@ namespace UI.Desktop
 
         private void CargaCombo()
         {
+            try {
             var CursoMateria = from c in CursoLogic.GetAll()
                                join m in MateriaLogic.GetAll() on c.IDMateria equals m.ID
                                join cm in ComisionesLogic.GetAll() on c.IDComision equals cm.ID
@@ -64,29 +69,40 @@ namespace UI.Desktop
             cbCurso.DisplayMember = "Descripcion";
             cbCurso.ValueMember = "ID";
             cbCurso.SelectedIndex = -1;
+            }
+            catch (Exception Ex)
+            {
+                MessageBox.Show(Ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
 
         }
 
         private void btnInscribirse_Click(object sender, EventArgs e)
         {
-            AlumnoInscripcion AluIns = new AlumnoInscripcion();
+            try {
+                AlumnoInscripcion AluIns = new AlumnoInscripcion();
 
-            AluIns.IDCurso = Convert.ToInt32 (cbCurso.SelectedValue);
-            AluIns.IDAlumno = AlumnoActual.ID;
-            AluIns.Condicion = "Inscripto";
-            Curso cur =  CursoLogic.GetOne(AluIns.IDCurso);
+                AluIns.IDCurso = Convert.ToInt32 (cbCurso.SelectedValue);
+                AluIns.IDAlumno = AlumnoActual.ID;
+                AluIns.Condicion = "Inscripto";
+                Curso cur =  CursoLogic.GetOne(AluIns.IDCurso);
 
-            if (Validaciones.ValidarAlumno(AlumnoActual,cur) && Validaciones.ValidarCupo(cur))
-            {
-                AluIns.State = BusinessEntity.States.New;
-                AlumnoInscripcionesLogic.Save(AluIns);
-                cur.State = BusinessEntity.States.Modified;
-                CursoLogic.Save(cur);
-                listar();
+                if (Validaciones.ValidarAlumno(AlumnoActual,cur) && Validaciones.ValidarCupo(cur))
+                {
+                    AluIns.State = BusinessEntity.States.New;
+                    AlumnoInscripcionesLogic.Save(AluIns);
+                    cur.State = BusinessEntity.States.Modified;
+                    CursoLogic.Save(cur);
+                    listar();
+                }
+                else
+                {
+                    Notificar("Advertencia", "Usted ya está inscripto en el curso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
             }
-            else
+            catch (Exception Ex)
             {
-                Notificar("Advertencia", "Usted ya está inscripto en el curso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show(Ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
         }

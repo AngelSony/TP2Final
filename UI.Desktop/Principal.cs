@@ -46,35 +46,42 @@ namespace UI.Desktop
             }
             else
             {
-                usuarioActual = formLogin.usuarioActual;
-                usuarioActual = UsuarioLogic.GetUsuarioPorNombre(usuarioActual);
-                personaActual = PersonasLogic.GetOne(usuarioActual.IDPersona);
-                MessageBox.Show("Bienvenido " + personaActual.Nombre + " " + personaActual.Apellido, "UTN FRRO", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                VisibleButtons();
-                switch (personaActual.TipoPersona)
-                {
-                    case Personas.TiposPersonas.Administrativo:
-                        MessageBox.Show("Inicio de sesion como Administrador", "Info de Sesión", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        tsmiInscripcion.Visible = false;
-                        break;
-                    case Personas.TiposPersonas.Alumno:
-                        MessageBox.Show("Inicio de sesion como Alumno", "Info de Sesión", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        tsmiAsignarDocentes.Visible = false;
-                        tsmiAdminCursos.Visible = false;
-                        tsmiRegistroNotas.Visible = false;
-                        tsmiReporteCurso.Visible = false;
-                        tsmiReportePlan.Visible = false;
-                        tsmiAdministracion.Visible = false;
-                        break;
+                try {
+                    usuarioActual = formLogin.usuarioActual;
+                    usuarioActual = UsuarioLogic.GetUsuarioPorNombre(usuarioActual);
+                    personaActual = PersonasLogic.GetOne(usuarioActual.IDPersona);
+                    MessageBox.Show("Bienvenido " + personaActual.Nombre + " " + personaActual.Apellido, "UTN FRRO", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    VisibleButtons();
+                    switch (personaActual.TipoPersona)
+                    {
+                        case Personas.TiposPersonas.Administrativo:
+                            MessageBox.Show("Inicio de sesion como Administrador", "Info de Sesión", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            tsmiInscripcion.Visible = false;
+                            break;
+                        case Personas.TiposPersonas.Alumno:
+                            MessageBox.Show("Inicio de sesion como Alumno", "Info de Sesión", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            tsmiAsignarDocentes.Visible = false;
+                            tsmiAdminCursos.Visible = false;
+                            tsmiRegistroNotas.Visible = false;
+                            tsmiReporteCurso.Visible = false;
+                            tsmiReportePlan.Visible = false;
+                            tsmiAdministracion.Visible = false;
+                            break;
 
-                    case Personas.TiposPersonas.Docente:
-                        MessageBox.Show("Inicio de sesion como Docente", "Info de Sesión", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        tsmiInscripcion.Visible = false;
-                        tsmiAsignarDocentes.Visible = false;
-                        tsmiAdminCursos.Visible = false;
-                        tsmiAdministracion.Visible = false;
-                        break;
+                        case Personas.TiposPersonas.Docente:
+                            MessageBox.Show("Inicio de sesion como Docente", "Info de Sesión", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            tsmiInscripcion.Visible = false;
+                            tsmiAsignarDocentes.Visible = false;
+                            tsmiAdminCursos.Visible = false;
+                            tsmiAdministracion.Visible = false;
+                            break;
+                    }
                 }
+                catch (Exception Ex)
+                {
+                    MessageBox.Show(Ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+                
             }
         }
         private void VisibleButtons()

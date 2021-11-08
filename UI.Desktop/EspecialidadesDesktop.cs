@@ -19,9 +19,6 @@ namespace UI.Desktop
         {
             InitializeComponent();
         }
-
-
-
         public EspecialidadesDesktop(ModoForm modo) : this()
         {
             Modo = modo;
@@ -32,6 +29,7 @@ namespace UI.Desktop
             Modo = modo;
             EspecialidadActual = EspecialidadesLogic.GetOne(ID);
             MapearDeDatos();
+            ModoBoton();
         }
         public override void MapearADatos()
         {
@@ -60,16 +58,11 @@ namespace UI.Desktop
                 EspecialidadActual.Descripcion = txtDescripcion.Text;
             }
         }
-
-
-
         public override void MapearDeDatos()
         {
             txtID.Text = EspecialidadActual.ID.ToString();
             txtDescripcion.Text = EspecialidadActual.Descripcion.ToString();
         }
-
-
         private void ModoBoton()
         {
             switch (Modo)
@@ -94,11 +87,16 @@ namespace UI.Desktop
 
             }
         }
-
         public override void GuardarCambios()
         {
             MapearADatos();
-            EspecialidadesLogic.Save(EspecialidadActual);
+            try { 
+                EspecialidadesLogic.Save(EspecialidadActual);
+            }
+            catch (Exception Ex)
+            {
+                Notificar("Error", Ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
             switch (Modo)
             {
                 case ModoForm.Alta:
@@ -114,16 +112,6 @@ namespace UI.Desktop
                     break;
             }
         }
-
-
-
-
-
-
-
-
-
-
         public override bool Validar()
         {
             if (string.IsNullOrWhiteSpace(txtDescripcion.Text))
@@ -136,7 +124,6 @@ namespace UI.Desktop
                 return true;
             }
         }
-
         private void btnAceptar_Click(object sender, EventArgs e)
         {
             if (Validar())
@@ -145,7 +132,6 @@ namespace UI.Desktop
                 Close();
             }
         }
-
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             Close();
