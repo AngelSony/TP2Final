@@ -105,6 +105,7 @@ namespace UI.Desktop
             this.tsmiMaterias.Name = "tsmiMaterias";
             this.tsmiMaterias.Size = new System.Drawing.Size(180, 22);
             this.tsmiMaterias.Text = "Materias";
+            this.tsmiMaterias.Click += new System.EventHandler(this.tsmiMaterias_Click);
             // 
             // tsmiAlumnos
             // 

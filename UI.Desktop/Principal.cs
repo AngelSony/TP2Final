@@ -81,6 +81,8 @@ namespace UI.Desktop
                         tsmiComisiones.Visible = false;
                         tsmiRegistroNotas.Visible = false;
                         tsmiMaterias.Visible = false;
+                        reporteDeCursosToolStripMenuItem.Visible = false;
+                        reporteDePlanesToolStripMenuItem.Visible = false;
                         break;
 
                     case Personas.TiposPersonas.Docente:
@@ -136,6 +138,11 @@ namespace UI.Desktop
         private void tsmiRegistroNotas_Click(object sender, EventArgs e)
         {
             new RegistroNotas(personaActual).ShowDialog();
+        }
+
+        private void tsmiMaterias_Click(object sender, EventArgs e)
+        {
+           
         }
     }
 }
