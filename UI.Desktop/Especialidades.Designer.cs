@@ -145,7 +145,7 @@ namespace UI.Desktop
             this.tsbEliminar});
             this.toolStrip1.Location = new System.Drawing.Point(3, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(112, 25);
+            this.toolStrip1.Size = new System.Drawing.Size(81, 25);
             this.toolStrip1.TabIndex = 0;
             // 
             // tsbNuevo
@@ -185,6 +185,7 @@ namespace UI.Desktop
             this.ClientSize = new System.Drawing.Size(399, 257);
             this.Controls.Add(this.toolStripContainer1);
             this.Name = "Especialidades";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Especialidades";
             this.toolStripContainer1.ContentPanel.ResumeLayout(false);
             this.toolStripContainer1.TopToolStripPanel.ResumeLayout(false);

@@ -18,8 +18,9 @@ namespace UI.Desktop
         {
             InitializeComponent();
             dgvCursos.AutoGenerateColumns = false;
+            Listar();
         }
-        public void listar()
+        public void Listar()
         {
             try
             {
@@ -30,43 +31,33 @@ namespace UI.Desktop
                 MessageBox.Show(Ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
-        private void formCursos_Load(object sender, EventArgs e)
-        {
-            listar();
-        }
-
         private void btnActualizar_Click(object sender, EventArgs e)
         {
-            listar();
+            Listar();
         }
-
         private void btnSalir_Click(object sender, EventArgs e)
         {
             Dispose();
         }
-
         private void tsbNuevo_Click(object sender, EventArgs e)
         {
             CursosDesktop formCurso = new CursosDesktop(ApplicationForm.ModoForm.Alta);
             formCurso.ShowDialog();
-            listar();
+            Listar();
         }
-
         private void tspEditar_Click(object sender, EventArgs e)
         {
             int ID = ((Curso)dgvCursos.SelectedRows[0].DataBoundItem).ID;
             CursosDesktop formCurso = new CursosDesktop(ID, ApplicationForm.ModoForm.Modificacion);
             formCurso.ShowDialog();
-            listar();
+            Listar();
         }
-
         private void tspEliminar_Click(object sender, EventArgs e)
         {
             int ID = ((Curso)dgvCursos.SelectedRows[0].DataBoundItem).ID;
             CursosDesktop formCurso = new CursosDesktop(ID, ApplicationForm.ModoForm.Baja);
             formCurso.ShowDialog();
-            listar();
+            Listar();
         }
     }
 }

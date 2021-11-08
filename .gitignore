@@ -361,3 +361,6 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+/UI.Web/Especialidad.aspx
+/UI.Web/Especialidad.aspx.cs
+/UI.Web/Especialidad.aspx.designer.cs

@@ -30,6 +30,9 @@ namespace UI.Desktop
         private void InitializeComponent()
         {
             this.tsCursos = new System.Windows.Forms.ToolStrip();
+            this.tsbNuevo = new System.Windows.Forms.ToolStripButton();
+            this.tspEditar = new System.Windows.Forms.ToolStripButton();
+            this.tspEliminar = new System.Windows.Forms.ToolStripButton();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.btnSalir = new System.Windows.Forms.Button();
             this.btnActualizar = new System.Windows.Forms.Button();
@@ -39,9 +42,6 @@ namespace UI.Desktop
             this.id_comision = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.anio_calendario = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cupos = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tsbNuevo = new System.Windows.Forms.ToolStripButton();
-            this.tspEditar = new System.Windows.Forms.ToolStripButton();
-            this.tspEliminar = new System.Windows.Forms.ToolStripButton();
             this.tsCursos.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCursos)).BeginInit();
@@ -58,6 +58,36 @@ namespace UI.Desktop
             this.tsCursos.Size = new System.Drawing.Size(739, 25);
             this.tsCursos.TabIndex = 0;
             this.tsCursos.Text = "toolStrip1";
+            // 
+            // tsbNuevo
+            // 
+            this.tsbNuevo.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbNuevo.Image = global::UI.Desktop.Properties.Resources.InsertarBoton;
+            this.tsbNuevo.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbNuevo.Name = "tsbNuevo";
+            this.tsbNuevo.Size = new System.Drawing.Size(23, 22);
+            this.tsbNuevo.Text = "toolStripButton1";
+            this.tsbNuevo.Click += new System.EventHandler(this.tsbNuevo_Click);
+            // 
+            // tspEditar
+            // 
+            this.tspEditar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tspEditar.Image = global::UI.Desktop.Properties.Resources.ModificarBoton;
+            this.tspEditar.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tspEditar.Name = "tspEditar";
+            this.tspEditar.Size = new System.Drawing.Size(23, 22);
+            this.tspEditar.Text = "toolStripButton1";
+            this.tspEditar.Click += new System.EventHandler(this.tspEditar_Click);
+            // 
+            // tspEliminar
+            // 
+            this.tspEliminar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tspEliminar.Image = global::UI.Desktop.Properties.Resources.EliminarBoton;
+            this.tspEliminar.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tspEliminar.Name = "tspEliminar";
+            this.tspEliminar.Size = new System.Drawing.Size(23, 22);
+            this.tspEliminar.Text = "toolStripButton1";
+            this.tspEliminar.Click += new System.EventHandler(this.tspEliminar_Click);
             // 
             // tableLayoutPanel1
             // 
@@ -155,36 +185,6 @@ namespace UI.Desktop
             this.cupos.Name = "cupos";
             this.cupos.ReadOnly = true;
             // 
-            // tsbNuevo
-            // 
-            this.tsbNuevo.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbNuevo.Image = global::UI.Desktop.Properties.Resources.InsertarBoton;
-            this.tsbNuevo.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbNuevo.Name = "tsbNuevo";
-            this.tsbNuevo.Size = new System.Drawing.Size(23, 22);
-            this.tsbNuevo.Text = "toolStripButton1";
-            this.tsbNuevo.Click += new System.EventHandler(this.tsbNuevo_Click);
-            // 
-            // tspEditar
-            // 
-            this.tspEditar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tspEditar.Image = global::UI.Desktop.Properties.Resources.ModificarBoton;
-            this.tspEditar.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tspEditar.Name = "tspEditar";
-            this.tspEditar.Size = new System.Drawing.Size(23, 22);
-            this.tspEditar.Text = "toolStripButton1";
-            this.tspEditar.Click += new System.EventHandler(this.tspEditar_Click);
-            // 
-            // tspEliminar
-            // 
-            this.tspEliminar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tspEliminar.Image = global::UI.Desktop.Properties.Resources.EliminarBoton;
-            this.tspEliminar.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tspEliminar.Name = "tspEliminar";
-            this.tspEliminar.Size = new System.Drawing.Size(23, 22);
-            this.tspEliminar.Text = "toolStripButton1";
-            this.tspEliminar.Click += new System.EventHandler(this.tspEliminar_Click);
-            // 
             // Cursos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -195,7 +195,6 @@ namespace UI.Desktop
             this.Name = "Cursos";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Cursos";
-            this.Load += new System.EventHandler(this.formCursos_Load);
             this.tsCursos.ResumeLayout(false);
             this.tsCursos.PerformLayout();
             this.tableLayoutPanel1.ResumeLayout(false);
