@@ -13,17 +13,16 @@ namespace UI.Web
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-           
             if (!IsPostBack)
             {
-               /* if (Session["TipoPersona"] == null)
+                if (Session["TipoPersona"] == null)
                 {
                     Response.Redirect("~/AdvertenciaLogin.aspx");
                 }
                 else if ((int)Session["TipoPersona"] != (int)Personas.TiposPersonas.Administrativo)
                 {
                     Response.Redirect("~/AdvertenciaAccesoUsuario.aspx");
-                }*/
+                }
                 LoadGrid();
             }
         }
@@ -32,9 +31,6 @@ namespace UI.Web
             get;
             set;
         }
-
-
-
         private int SelectedID
         {
             get
@@ -97,7 +93,6 @@ namespace UI.Web
         {
             descripcionTextBox.Enabled = enable;
         }
-
         private void ClearForm()
         {
             descripcionTextBox.Text = string.Empty;
@@ -126,12 +121,10 @@ namespace UI.Web
             }
             Response.Redirect("~/Especialidades.aspx");
         }
-
         protected void cancelarLinkButton_Click(object sender, EventArgs e)
         {
             Response.Redirect("~/Especialidades.aspx");
         }
-
         protected void editarLinkButton_Click(object sender, EventArgs e)
         {
             if (IsEntitySelected)
@@ -145,7 +138,6 @@ namespace UI.Web
                 gridActionsPanel.Visible = false;
             }
         }
-
         protected void eliminarLinkButton_Click(object sender, EventArgs e)
         {
             if (IsEntitySelected)
@@ -159,7 +151,6 @@ namespace UI.Web
                 gridActionsPanel.Visible = false;
             }
         }
-
         protected void nuevoLinkButton_Click(object sender, EventArgs e)
         {
             formPanel.Visible = true;
@@ -169,7 +160,6 @@ namespace UI.Web
             formActionsPanel.Visible = true;
             gridActionsPanel.Visible = false;
         }
-
         protected void gvEspecialidades_SelectedIndexChanged(object sender, EventArgs e)
         {
             SelectedID = (int)gvEspecialidades.SelectedValue;

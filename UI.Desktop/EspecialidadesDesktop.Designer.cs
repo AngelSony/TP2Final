@@ -42,9 +42,9 @@ namespace UI.Desktop
             // tblEspecialidades
             // 
             this.tblEspecialidades.ColumnCount = 3;
-            this.tblEspecialidades.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 24.71264F));
-            this.tblEspecialidades.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 75.28735F));
-            this.tblEspecialidades.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 177F));
+            this.tblEspecialidades.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tblEspecialidades.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tblEspecialidades.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tblEspecialidades.Controls.Add(this.txtDescripcion, 1, 1);
             this.tblEspecialidades.Controls.Add(this.btnAceptar, 1, 2);
             this.tblEspecialidades.Controls.Add(this.btnCancelar, 2, 2);
@@ -54,11 +54,12 @@ namespace UI.Desktop
             this.tblEspecialidades.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tblEspecialidades.Location = new System.Drawing.Point(0, 0);
             this.tblEspecialidades.Name = "tblEspecialidades";
-            this.tblEspecialidades.RowCount = 3;
-            this.tblEspecialidades.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tblEspecialidades.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tblEspecialidades.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 38F));
-            this.tblEspecialidades.Size = new System.Drawing.Size(519, 107);
+            this.tblEspecialidades.RowCount = 4;
+            this.tblEspecialidades.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tblEspecialidades.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tblEspecialidades.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tblEspecialidades.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tblEspecialidades.Size = new System.Drawing.Size(428, 87);
             this.tblEspecialidades.TabIndex = 0;
             // 
             // txtDescripcion
@@ -67,16 +68,16 @@ namespace UI.Desktop
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtDescripcion.BackColor = System.Drawing.SystemColors.Window;
-            this.txtDescripcion.Location = new System.Drawing.Point(87, 37);
+            this.txtDescripcion.Location = new System.Drawing.Point(72, 29);
             this.txtDescripcion.Name = "txtDescripcion";
-            this.txtDescripcion.Size = new System.Drawing.Size(251, 20);
+            this.txtDescripcion.Size = new System.Drawing.Size(271, 20);
             this.txtDescripcion.TabIndex = 0;
             // 
             // btnAceptar
             // 
             this.btnAceptar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnAceptar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnAceptar.Location = new System.Drawing.Point(263, 71);
+            this.btnAceptar.Location = new System.Drawing.Point(268, 55);
             this.btnAceptar.Name = "btnAceptar";
             this.btnAceptar.Size = new System.Drawing.Size(75, 29);
             this.btnAceptar.TabIndex = 1;
@@ -86,7 +87,7 @@ namespace UI.Desktop
             // 
             // btnCancelar
             // 
-            this.btnCancelar.Location = new System.Drawing.Point(344, 71);
+            this.btnCancelar.Location = new System.Drawing.Point(349, 55);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(76, 29);
             this.btnCancelar.TabIndex = 2;
@@ -102,7 +103,7 @@ namespace UI.Desktop
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(3, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(78, 34);
+            this.label1.Size = new System.Drawing.Size(63, 26);
             this.label1.TabIndex = 3;
             this.label1.Text = "ID";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -113,9 +114,9 @@ namespace UI.Desktop
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(3, 34);
+            this.label2.Location = new System.Drawing.Point(3, 26);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(78, 34);
+            this.label2.Size = new System.Drawing.Size(63, 26);
             this.label2.TabIndex = 4;
             this.label2.Text = "Descripcion";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -127,19 +128,20 @@ namespace UI.Desktop
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtID.BackColor = System.Drawing.SystemColors.Control;
             this.txtID.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.txtID.Location = new System.Drawing.Point(87, 3);
+            this.txtID.Location = new System.Drawing.Point(72, 3);
             this.txtID.Name = "txtID";
             this.txtID.ReadOnly = true;
-            this.txtID.Size = new System.Drawing.Size(251, 20);
+            this.txtID.Size = new System.Drawing.Size(271, 20);
             this.txtID.TabIndex = 5;
             // 
             // EspecialidadesDesktop
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(519, 107);
+            this.ClientSize = new System.Drawing.Size(428, 87);
             this.Controls.Add(this.tblEspecialidades);
             this.Name = "EspecialidadesDesktop";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Especialidades";
             this.tblEspecialidades.ResumeLayout(false);
             this.tblEspecialidades.PerformLayout();
