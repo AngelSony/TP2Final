@@ -180,8 +180,6 @@ namespace UI.Desktop
             this.tsmiComisiones.Size = new System.Drawing.Size(154, 22);
             this.tsmiComisiones.Text = "Comisiones";
             // 
-            this.tsmiComisiones.Click += new System.EventHandler(this.tsmiComisiones_Click);
-            // 
             // registrarNotasToolStripMenuItem
             // 
             this.registrarNotasToolStripMenuItem.Name = "registrarNotasToolStripMenuItem";
