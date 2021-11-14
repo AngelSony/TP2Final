@@ -21,7 +21,6 @@ namespace UI.Web
         protected void btnAceptar_Click(object sender, EventArgs e)
         {
             usuario = new Usuario();
-            PersonasLogic lp = new PersonasLogic();
             usuario.NombreUsuario = txtUsuario.Text;
             usuario.Clave = txtClave.Text;
 
@@ -30,12 +29,14 @@ namespace UI.Web
 
                 usuario = UsuarioLogic.GetUsuarioPorNombre(usuario);
                 personas = PersonasLogic.GetOne(usuario.IDPersona);
-                Session ["Persona"] = (Personas)personas;
+                Session ["Persona"] = personas;
                 Session["TipoPersona"] = PersonasLogic.GetOne(usuario.IDPersona).TipoPersona;
                 
                 lblMensaje.Text = "Bienvenido al sistema Academia: " + PersonasLogic.GetOne(usuario.IDPersona).Nombre +" "+ PersonasLogic.GetOne(usuario.IDPersona).Apellido +" Usted ingreso al sistema como: " + PersonasLogic.GetOne(usuario.IDPersona).TipoPersona;
                 lblMensaje.Visible = true;
-               
+
+                Response.Redirect("~/Login.aspx");
+
             }
             else
             {

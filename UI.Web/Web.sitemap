@@ -16,9 +16,9 @@
 			<siteMapNode url="~/DocenteCurso.aspx" title="Docentes - Cursos"  description="Página de Inscripciones Docente-Curso" />
 			<siteMapNode url="~/RegistroNota.aspx" title="Registro de Notas"  description="Página de Notas" />
 		</siteMapNode>
-			<siteMapNode title="Reportes">
-				<siteMapNode url="~/ReportesCursos.aspx" title="Reporte De Cursos"  description="Reporte De Cursos" />
-				<siteMapNode url="~/ReporteDePlanes.aspx" title="Reporte De Planes"  description="Reporte De Planes" />
-			</siteMapNode>
+		<siteMapNode title="Reportes">
+			<siteMapNode url="~/ReportesCursos.aspx" title="Reporte De Cursos"  description="Reporte De Cursos" />
+			<siteMapNode url="~/ReporteDePlanes.aspx" title="Reporte De Planes"  description="Reporte De Planes" />
+		</siteMapNode>
 	</siteMapNode>
 </siteMap>
