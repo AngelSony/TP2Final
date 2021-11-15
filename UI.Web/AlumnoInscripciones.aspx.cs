@@ -73,20 +73,25 @@ namespace UI.Web
             AluIns.IDCurso = Convert.ToInt32(ddlCursos.SelectedValue);
             AluIns.IDAlumno = AlumnoActual.ID;
             AluIns.Condicion = "Inscripto";
-            Curso cur = CursoLogic.GetOne(AluIns.IDCurso);
 
-            if (Validaciones.ValidarAlumno(AlumnoActual, cur) && Validaciones.ValidarCupo(cur))
+            if (!Validaciones.ValidarCupo(AluIns.IDCurso))
             {
-                AluIns.State = BusinessEntity.States.New;
-                AlumnoInscripcionesLogic.Save(AluIns);
-                cur.State = BusinessEntity.States.Modified;
-                CursoLogic.Save(cur);
-                Response.Redirect("~/AlumnoInscripciones.aspx");
-
+                lblAdvertencia.Text = "ERROR: No hay más cupos para este Curso";
+                lblAdvertencia.Visible = true;
             }
             else
             {
-                lblAdvertencia.Visible = true;
+                if (Validaciones.ValidarAlumno(AluIns.IDAlumno, AluIns.IDCurso))
+                {
+                    AluIns.State = BusinessEntity.States.New;
+                    AlumnoInscripcionesLogic.Save(AluIns);
+                    Response.Redirect("~/AlumnoInscripciones.aspx");
+                }
+                else
+                {
+                    lblAdvertencia.Text = "ERROR: Usted ya está inscripto en el curso";
+                    lblAdvertencia.Visible = true;
+                }
             }
         }
     }

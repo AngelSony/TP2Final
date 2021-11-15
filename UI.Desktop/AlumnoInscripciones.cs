@@ -51,12 +51,10 @@ namespace UI.Desktop
         {
             listar();
         }
-
         private void btnSalir_Click(object sender, EventArgs e)
         {
             Close();
         }
-
         private void CargaCombo()
         {
             try {
@@ -76,7 +74,6 @@ namespace UI.Desktop
             }
 
         }
-
         private void btnInscribirse_Click(object sender, EventArgs e)
         {
             try {
@@ -85,26 +82,30 @@ namespace UI.Desktop
                 AluIns.IDCurso = Convert.ToInt32 (cbCurso.SelectedValue);
                 AluIns.IDAlumno = AlumnoActual.ID;
                 AluIns.Condicion = "Inscripto";
-                Curso cur =  CursoLogic.GetOne(AluIns.IDCurso);
 
-                if (Validaciones.ValidarAlumno(AlumnoActual,cur) && Validaciones.ValidarCupo(cur))
+                if (!Validaciones.ValidarCupo(AluIns.IDCurso))
                 {
-                    AluIns.State = BusinessEntity.States.New;
-                    AlumnoInscripcionesLogic.Save(AluIns);
-                    cur.State = BusinessEntity.States.Modified;
-                    CursoLogic.Save(cur);
-                    listar();
+                    Notificar("Advertencia", "Ya no quedan cupos disponibles en este Curso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
                 else
                 {
-                    Notificar("Advertencia", "Usted ya está inscripto en el curso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    if (Validaciones.ValidarAlumno(AluIns.IDAlumno, AluIns.IDCurso))
+                    {
+                        AluIns.State = BusinessEntity.States.New;
+                        AlumnoInscripcionesLogic.Save(AluIns);
+                        Notificar("Advertencia", "Se ha Inscripto con éxito", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        listar();
+                    }
+                    else
+                    {
+                        Notificar("Advertencia", "Usted ya está inscripto en el curso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
                 }
             }
             catch (Exception Ex)
             {
                 MessageBox.Show(Ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
         }
     }
 }

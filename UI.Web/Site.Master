@@ -11,7 +11,7 @@
 
     <body>
         <form id="bodyForm" runat ="server">
-            <asp:Menu runat="server" ID="menu" DataSourceID="SiteMapDataSource" RenderingMode="Table" BackColor="#6699FF" Font-Bold="True" Font-Italic="False" ForeColor="Black" BorderColor="Black" BorderStyle="Solid" BorderWidth="1px" Orientation="Horizontal">
+            <asp:Menu runat="server" ID="menu" RenderingMode="Table" BackColor="#6699FF" Font-Bold="True" Font-Italic="False" ForeColor="Black" BorderColor="Black" BorderStyle="Solid" BorderWidth="1px" Orientation="Horizontal" DataSourceID="SiteMapDataSource" OnMenuItemDataBound="menu_MenuItemDataBound">
                 <StaticHoverStyle BackColor="#6699FF" />
                 <StaticMenuItemStyle BackColor="#6699FF" BorderColor="Black" BorderStyle="Solid" BorderWidth="1px" />
                 <StaticMenuStyle BackColor="#6699FF" />
@@ -20,7 +20,7 @@
 
 
             </asp:Menu>
-            <asp:SiteMapDataSource ID="SiteMapDataSource" runat ="server" />
+            <asp:SiteMapDataSource ID="SiteMapDataSource" runat ="server" ShowStartingNode="false" />
             <div>
                 <asp:ContentPlaceHolder ID="bodyContentPlaceHolder" runat ="server">
                 </asp:ContentPlaceHolder>

@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 using System.Text.RegularExpressions;
 using Data.Database;
 using Business.Entities;
-using System.Windows.Forms;
 
 namespace Business.Logic
 {
@@ -80,11 +79,10 @@ namespace Business.Logic
                 return true;
             }
         }
-        public static Boolean ValidarCupo(Curso curso)
+        public static Boolean ValidarCupo(int ID)
         {
-            if(curso.Cupo.Equals(0))
+            if(CursoLogic.GetOne(ID).Cupo.Equals(0))
             {
-                MessageBox.Show("NO HAY CUPOS PARA EL CURSO", "No hay cupo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return false;
             }
             else
@@ -92,11 +90,11 @@ namespace Business.Logic
                 return true;
             }
         }
-        public static Boolean ValidarAlumno(Personas alumno, Curso cur)
+        public static Boolean ValidarAlumno(int IDalu, int IDcur)
         {
             foreach (var al in AlumnoInscripcionesLogic.GetAll())
             {
-                if (al.IDAlumno == alumno.ID && al.IDCurso == cur.ID)
+                if (al.IDAlumno == IDalu && al.IDCurso == IDcur)
                 {
                     return false;
                 }

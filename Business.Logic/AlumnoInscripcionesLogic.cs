@@ -49,8 +49,11 @@ namespace Business.Logic
         {
             try
             {
+                Curso cur = CursoLogic.GetOne(GetOne(ID).IDCurso);
+                cur.Cupo++;
+                cur.State = BusinessEntity.States.Modified;
+                CursoLogic.Save(cur);
                 new AlumnosInscripcionesAdapter().Delete(ID);
-
             }
             catch (Exception Ex)
             {
