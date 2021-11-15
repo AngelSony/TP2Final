@@ -1,4 +1,6 @@
 ﻿<%@ Page Title="Especialidades" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Especialidades.aspx.cs" Inherits="UI.Web.Especialidades" %>
+<%@ Register Src="~/UserControl.ascx" TagPrefix="ucTextBox" TagName="uc1" %>
+
 
 <asp:Content ID="Content1" ContentPlaceHolderID="bodyContentPlaceHolder" runat="server">
     <asp:Panel ID="gridPanel" runat="server">
@@ -32,9 +34,8 @@
     </asp:Panel>
     <asp:Panel ID="formPanel" Visible="false" runat="server">
         <br />
-        <asp:Label ID="descripcionLabel" runat="server" Text="Descripción"></asp:Label>
-        <asp:TextBox ID="descripcionTextBox" runat="server"></asp:TextBox>
-        <asp:RequiredFieldValidator ID="descripcionValidator" runat="server" ControlToValidate="descripcionTextBox" ErrorMessage="La descripción no puede estar vacía" ForeColor="Red" ValidationGroup="validar">*</asp:RequiredFieldValidator>
+      
+        <ucTextBox:uc1 ID="descTextBox" runat="server" labelText="Descripcion" />
         <br />
     </asp:Panel>
     <asp:Panel ID="formActionsPanel" runat="server" Visible="False">

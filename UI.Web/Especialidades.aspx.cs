@@ -7,6 +7,7 @@ using System.Web.UI.WebControls;
 using Business.Logic;
 using Business.Entities;
 
+
 namespace UI.Web
 {
     public partial class Especialidades : System.Web.UI.Page
@@ -75,11 +76,11 @@ namespace UI.Web
         private void LoadForm(int id)
         {
             Entity = EspecialidadesLogic.GetOne(id);
-            descripcionTextBox.Text = Entity.Descripcion;
+            descTextBox.Text = Entity.Descripcion;
         }
         private void LoadEntity(Especialidad es)
         {
-            es.Descripcion = descripcionTextBox.Text;
+            es.Descripcion = descTextBox.Text;
         }
         private void DeleteEntity(int id)
         {
@@ -91,11 +92,11 @@ namespace UI.Web
         }
         private void EnableForm(bool enable)
         {
-            descripcionTextBox.Enabled = enable;
+            descTextBox.Enable = enable;
         }
         private void ClearForm()
         {
-            descripcionTextBox.Text = string.Empty;
+            descTextBox.Text = string.Empty;
         }
         protected void aceptarLinkButton_Click(object sender, EventArgs e)
         {

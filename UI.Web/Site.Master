@@ -1,6 +1,7 @@
 ﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="UI.Web.Site" %>
 
  <!DOCTYPE html>
+
 <html xmlns ="http://www.w3.org/1999/xhtml" >
 
     <head runat="server">
@@ -15,6 +16,8 @@
                 <StaticMenuItemStyle BackColor="#6699FF" BorderColor="Black" BorderStyle="Solid" BorderWidth="1px" />
                 <StaticMenuStyle BackColor="#6699FF" />
                 <StaticSelectedStyle BackColor="#6699FF" />
+
+
 
             </asp:Menu>
             <asp:SiteMapDataSource ID="SiteMapDataSource" runat ="server" />
