@@ -37,8 +37,14 @@ namespace Business.Logic
         {
             try
             {
+                if(AluIns.State == BusinessEntity.States.New)
+                {
+                    if(CursoLogic.GetOne(AluIns.IDCurso).Cupo == 0)
+                    {
+                        throw new Exception("No existen cupos disponibles para este curso");
+                    }
+                }
                 new AlumnosInscripcionesAdapter().Save(AluIns);
-
             }
             catch (Exception Ex)
             {

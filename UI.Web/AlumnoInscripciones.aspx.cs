@@ -68,18 +68,13 @@ namespace UI.Web
 
         protected void btnInscribirse_Click(object sender, EventArgs e)
         {
-            AlumnoInscripcion AluIns = new AlumnoInscripcion();
+             AlumnoInscripcion AluIns = new AlumnoInscripcion();
 
             AluIns.IDCurso = Convert.ToInt32(ddlCursos.SelectedValue);
             AluIns.IDAlumno = AlumnoActual.ID;
             AluIns.Condicion = "Inscripto";
 
-            if (!Validaciones.ValidarCupo(AluIns.IDCurso))
-            {
-                lblAdvertencia.Text = "ERROR: No hay más cupos para este Curso";
-                lblAdvertencia.Visible = true;
-            }
-            else
+            try
             {
                 if (Validaciones.ValidarAlumno(AluIns.IDAlumno, AluIns.IDCurso))
                 {
@@ -92,6 +87,10 @@ namespace UI.Web
                     lblAdvertencia.Text = "ERROR: Usted ya está inscripto en el curso";
                     lblAdvertencia.Visible = true;
                 }
+            }catch(Exception Ex)
+            {
+                lblAdvertencia.Text = "ERROR: " + Ex.Message;
+                lblAdvertencia.Visible = true;
             }
         }
     }

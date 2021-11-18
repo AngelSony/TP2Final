@@ -83,23 +83,16 @@ namespace UI.Desktop
                 AluIns.IDAlumno = AlumnoActual.ID;
                 AluIns.Condicion = "Inscripto";
 
-                if (!Validaciones.ValidarCupo(AluIns.IDCurso))
+                if (Validaciones.ValidarAlumno(AluIns.IDAlumno, AluIns.IDCurso))
                 {
-                    Notificar("Advertencia", "Ya no quedan cupos disponibles en este Curso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    AluIns.State = BusinessEntity.States.New;
+                    AlumnoInscripcionesLogic.Save(AluIns);
+                    Notificar("Advertencia", "Se ha Inscripto con éxito", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    listar();
                 }
                 else
                 {
-                    if (Validaciones.ValidarAlumno(AluIns.IDAlumno, AluIns.IDCurso))
-                    {
-                        AluIns.State = BusinessEntity.States.New;
-                        AlumnoInscripcionesLogic.Save(AluIns);
-                        Notificar("Advertencia", "Se ha Inscripto con éxito", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        listar();
-                    }
-                    else
-                    {
-                        Notificar("Advertencia", "Usted ya está inscripto en el curso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    }
+                    Notificar("Advertencia", "Usted ya está inscripto en el curso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
             }
             catch (Exception Ex)

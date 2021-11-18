@@ -79,17 +79,6 @@ namespace Business.Logic
                 return true;
             }
         }
-        public static Boolean ValidarCupo(int ID)
-        {
-            if(CursoLogic.GetOne(ID).Cupo.Equals(0))
-            {
-                return false;
-            }
-            else
-            {
-                return true;
-            }
-        }
         public static Boolean ValidarAlumno(int IDalu, int IDcur)
         {
             foreach (var al in AlumnoInscripcionesLogic.GetAll())
